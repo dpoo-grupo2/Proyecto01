@@ -6,5 +6,5 @@ private String nombreSede;
 private String direccionSede;
 private String horarioAtencion;
 private administradorLocal adminL; 
-private HashMap<String,HashMap<String,CategoriaVehiculo>> mapEstadoVehiculo;
+private HashMap<String,HashMap<String,CategoriaVehiculo>> mapEstadoVehiculo;//mapa de estados
 }
