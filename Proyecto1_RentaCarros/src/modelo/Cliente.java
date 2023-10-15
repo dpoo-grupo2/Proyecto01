@@ -2,12 +2,12 @@ package modelo;
 
 public class Cliente 
 {
-private String edad; // pq edad str?? y no int
+private Integer edad; 
 private String cedula;
 private String correoElectronico;
 private String fechaNacimiento;
 
-Cliente(String edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
+Cliente(Integer edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
 {
 	this.edad = edad;
 	this.cedula = cedula;
@@ -15,7 +15,7 @@ Cliente(String edad,String cedula, String correoElectronico,String fechaNacimien
 	this.fechaNacimiento = fechaNacimiento;
 }
 
-public String getEdad() {
+public Integer getEdad() {
 	return this.edad;
 }
 public String getCedula()
