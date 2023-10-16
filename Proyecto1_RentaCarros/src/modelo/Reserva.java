@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Reserva
 {
 	private boolean estadoTarjeta;
@@ -9,11 +11,13 @@ public class Reserva
 	private String fechaEntrega;
 	private String horaEntrega;
 	private String horaRecogida;
-	private Seguro[] lstSeguros;
+	private ArrayList<Seguro> lstSeguros;
 	private Cliente clienteRes;
+	private int valorReserva;
+	private ArrayList<ConductorAdicional> lstConductores;
 	
 	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida,String fechaEntrega
-			,String horaEntrega,Seguro[] lstSeguros, Cliente clienteRes)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores)
 	{
 		
 		
@@ -26,6 +30,8 @@ public class Reserva
 		this.horaRecogida = horaRecogida;
 		this.lstSeguros = lstSeguros;
 		this.clienteRes = clienteRes;
+		this.valorReserva = valorReserva;
+		this.lstConductores = lstConductores;
 	
 	}
 	
@@ -54,7 +60,7 @@ public class Reserva
 		return this.horaRecogida;
 	}
 	
-	public Seguro[] getLstSeguro()
+	public ArrayList<Seguro> getLstSeguro()
 	{
 		return this.lstSeguros;
 	}
@@ -73,5 +79,37 @@ public class Reserva
 	{
 		return this.clienteRes;
 	}
+	
+	public int getValor() 
+	{
+		return valorReserva;
 		
+	}
+	
+	public int modValor(int valorNuevo) 
+	{
+		valorReserva = valorNuevo;
+		return valorReserva;
+		
+	}
+	public ArrayList<ConductorAdicional> getConductores()
+	{
+		return lstConductores;
+	}
+	
+	public ArrayList<Seguro> addSeguro(Seguro seguro)
+	{
+		lstSeguros.add(seguro);
+		return lstSeguros;
+		
+	}
+	public ArrayList<Seguro> delSeguro(int posEl)
+	{
+		lstSeguros.remove(posEl);
+		return lstSeguros;	
+	}
+//	public int obtenerDias() 
+//	{
+//		
+//	}
 }
