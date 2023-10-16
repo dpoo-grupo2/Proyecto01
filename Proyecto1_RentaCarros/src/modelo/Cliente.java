@@ -16,7 +16,8 @@ public class Cliente extends Usuario
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-	public Integer getEdad() {
+	public Integer getEdad() 
+	{
 		return this.edad;
 	}
 	public String getCedula()
