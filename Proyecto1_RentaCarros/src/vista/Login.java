@@ -1,6 +1,9 @@
 package vista;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -64,9 +67,37 @@ public class Login {
 		String correo = input("Ingrese  su correo: ");
 		String usuario = input("Ingrese el usuario que desea: ");
 		String contraseña = input("Ingrese  su contraseña: ");
-		
+		sobreEscribirData(usuario,contraseña,nombre);
 	}
 	
+	private void sobreEscribirData(String usuario,String contraseña, String nombre) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+usuario+","+contraseña+","+nombre+",Cliente";
+	        File file = new File("Proyecto1_RentaCarros/data/Usuarios.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+
 	private String input(String mensaje)
 	{
 	    try

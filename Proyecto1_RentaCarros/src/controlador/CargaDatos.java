@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import modelo.Usuario;
 
@@ -54,7 +56,7 @@ public class CargaDatos {
     }
 
 	private static void cargarUsuarios(File archivoUsuarios) {
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+		Map<String,Usuario> usuarios = new HashMap<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -65,15 +67,10 @@ public class CargaDatos {
                     String nombreCompleto  = partes[2].trim();
                     String tipoUsuario = partes[3].trim();
                     Usuario clsUsuario = new Usuario(usuario,contraseña,nombreCompleto,tipoUsuario);
-                    usuarios.add(clsUsuario);
-                    try {
-                    	System.out.println(usuario +", "+contraseña+", "+nombreCompleto+", "+tipoUsuario);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error");
-                    }
+                    usuarios.put(usuario,clsUsuario);
                 } 
             }
-
+            System.out.println(usuarios);
         } catch (IOException e) {
             e.printStackTrace();
         }
