@@ -1,0 +1,1 @@
+estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,valorTotal

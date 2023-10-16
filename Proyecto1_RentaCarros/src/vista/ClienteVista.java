@@ -44,9 +44,31 @@ public class ClienteVista {
 	            System.out.println("Recuerde que debe ingresar un número entre 1 y 2");
 	        }
 
-	        if (1 == opcion) 
-	        {
-	           
+	        if (opcion == 1) {
+	            
+	            
+	            System.out.println("\n¿En cual sede desea generar su reserva?");
+	            System.out.println("1. Sede Norte");
+	            System.out.println("2. Sede Centro");
+	            System.out.println("3. Sede Sur");
+
+	            int sedeOption;
+	            try {
+	                sedeOption = Integer.parseInt(input("Ingrese su opción para la sede "));
+	            } catch (Exception e) {
+	                System.out.println("Opción no válida.");
+	                continue;  
+	            }
+
+	            if (sedeOption == 1) {
+	                System.out.println("Ha seleccionado la Sede Norte para su reserva.");
+	            } else if (sedeOption == 2) {
+	                System.out.println("Ha seleccionado la Sede Centro para su reserva.");
+	            } else if (sedeOption == 3) {
+	                System.out.println("Ha seleccionado la Sede Sur para su reserva.");
+	            } else {
+	                System.out.println("Opción de sede no válida.");
+	            }
 	        } 
 	        
 	        else if (2 == opcion) {
