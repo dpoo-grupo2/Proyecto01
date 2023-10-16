@@ -36,8 +36,9 @@ public class AdministradorGeneral {
 		System.out.println("Bienvenido Administrador "+usuario);
 		System.out.println("1- Registrar vehiculo");
 		System.out.println("2- Quitar vehiculo");
-		System.out.println("3- Cambiar de sede Vehiculo");
-		System.out.println("4- Salir");
+		System.out.println("3- gestionar Seguros");
+		System.out.println("4- Modificar informacion sede");
+		System.out.println("5- Salir");
 		try {
 		opcion = Integer.parseInt(input("Ingrese su opcion: "));
 		}
@@ -57,6 +58,10 @@ public class AdministradorGeneral {
 			
 		}
 		else if (4 == opcion) 
+		{
+			
+		}
+		else if (5 == opcion) 
 		{
 			
 		}
