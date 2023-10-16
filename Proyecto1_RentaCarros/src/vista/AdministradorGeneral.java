@@ -10,7 +10,6 @@ public class AdministradorGeneral {
 	private int opcion;
 	private boolean centinela;
 	private Administrador admin;
-	
 	public String input(String mensaje)
 	{
 	    try
