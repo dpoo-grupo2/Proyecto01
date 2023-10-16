@@ -36,7 +36,7 @@ public class CargaDatos {
                     String idCategoria = partes[10].trim();
                     try {
                         
-                        System.out.println(placa+color+marca+modelo+anio+transmision+gpsVehiculo+estadoActual+capacidadPersonas+categoria+idCategoria);
+                        System.out.println(placa+", "+color+", "+marca+", "+modelo+", "+anio+", "+transmision+", "+gpsVehiculo+", "+estadoActual+", "+capacidadPersonas+", "+categoria+", "+idCategoria);
                     } catch (NumberFormatException e) {
                         System.out.println("Error");
                     }
