@@ -2,7 +2,6 @@ package modelo;
 
 public class Reserva
 {
-	private int tarifaDiaria; // varia dependiendo del dia y temporada
 	private boolean estadoTarjeta;
 	private String sedeEntrega;
 	private String sedeRecogida;
@@ -13,11 +12,11 @@ public class Reserva
 	private Seguro[] lstSeguros;
 	private Cliente clienteRes;
 	
-	public Reserva(int tarifaDiaria,boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida,String fechaEntrega
+	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida,String fechaEntrega
 			,String horaEntrega,Seguro[] lstSeguros, Cliente clienteRes)
 	{
 		
-		this.tarifaDiaria = tarifaDiaria;
+		
 		this.estadoTarjeta = estadoTarjeta;
 		this.sedeEntrega = sedeEntrega;
 		this.sedeRecogida = sedeRecogida;
@@ -74,10 +73,5 @@ public class Reserva
 	{
 		return this.clienteRes;
 	}
-	
-	public int getTarifa() 
-	{
-	return this.tarifaDiaria;	
-	}
-	
+		
 }
