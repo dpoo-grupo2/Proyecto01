@@ -47,4 +47,3 @@ claudiatorres45,bkKmB98765,Claudia Torres Díaz,Cliente
 cristianrojas46,lqLnC09876,Cristian Rojas Martínez,Cliente
 andresreyes47,ssSaO10987,Andrés Reyes González,Cliente
 nataliafuentes48,ktIrP21098,Natalia Fuentes Pérez,Cliente
-thomas1204,thomas,thomas,Cliente

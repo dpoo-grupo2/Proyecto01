@@ -13,12 +13,12 @@ import modelo.Usuario;
 
 public class CargaDatos { 
 	
-	public static void cargarInformacionVehiculos(String string) 
+	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
     }
 
-    private static void cargarVehiculos(File archivoVehiculos) {
+    private void cargarVehiculos(File archivoVehiculos) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoVehiculos))) {
             String linea;
@@ -51,11 +51,11 @@ public class CargaDatos {
         
     }
     
-    public static void cargarInformacionUsuarios(String string) {
-    	cargarUsuarios(new File (string));
+    public Map<String, Usuario> cargarInformacionUsuarios(String string) {
+    	return cargarUsuarios(new File (string));
     }
 
-	private static void cargarUsuarios(File archivoUsuarios) {
+	private  Map<String, Usuario> cargarUsuarios(File archivoUsuarios) {
 		Map<String,Usuario> usuarios = new HashMap<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
@@ -74,6 +74,7 @@ public class CargaDatos {
         } catch (IOException e) {
             e.printStackTrace();
         }
+		return usuarios;
 	}
 
 

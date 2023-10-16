@@ -10,6 +10,11 @@ public class ClienteVista {
 	private int opcion;
 	private boolean centinela;
 	private Cliente cliente;
+	
+	public void ClienteVista(){
+		
+	}
+	
 	public String input(String mensaje)
 	{
 	    try

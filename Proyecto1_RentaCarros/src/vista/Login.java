@@ -7,12 +7,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Map;
 
 import controlador.CargaDatos;
+import modelo.AdministradorLocal;
+import modelo.Usuario;
 
 public class Login {
 	
 	private CargaDatos cargaDatos;
+	
+	private Map<String,Usuario> usuarios;
 	
 	public static void main(String[] args)
     {
@@ -53,9 +58,37 @@ public class Login {
 		}
 	}
 	private void ejecutarIniciarSesion() {
+		
 		String usuario = input("Ingrese su usuario: ");
 		String contraseña = input("Ingrese su contraseña: ");
 		
+		if (usuarios.containsKey(usuario)) {
+			Usuario clsUsuario = usuarios.get(usuario);
+			
+			if(contraseña.equals(clsUsuario.getPassword())) {
+				
+				if(clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) {
+					AdministradorGeneral administradorGeneral = new AdministradorGeneral();
+					administradorGeneral.menu(usuario);
+				}
+				else if(clsUsuario.getTipoUsuario().equals("AdministradorLocal")) {
+					AdministradorLocal administradorLocal = new AdministradorLocal();
+					administradorLocal.menu(usuario);
+				}
+				else if(clsUsuario.getTipoUsuario().equals("Empleado")) {
+					EmpleadoVista empleado = new EmpleadoVista();
+					empleado.menu(usuario);
+				}
+				else if(clsUsuario.getTipoUsuario().equals("AdministradorLocal")) {
+					AdministradorLocal administradorLocal = new AdministradorLocal();
+					administradorLocal.menu(usuario);
+				}
+				else if(clsUsuario.getTipoUsuario().equals("Cliente")) {
+					ClienteVista cliente = new ClienteVista();
+					cliente.menu(usuario);
+				}
+			}
+		}
 	}
 
 	private void ejecutarRegistrarCliente() {
@@ -116,7 +149,7 @@ public class Login {
 	
 	private void CargarDatos(){
 		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
-		cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
+		var usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
 		
 	}
 }
