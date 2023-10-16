@@ -46,8 +46,7 @@ public class ClienteVista {
 
 	        if (opcion == 1) {
 	            
-	            
-	            System.out.println("\n¿En cual sede desea generar su reserva?");
+	            System.out.println("\nEn cual sede desea generar su reserva:\n");
 	            System.out.println("1. Sede Norte");
 	            System.out.println("2. Sede Centro");
 	            System.out.println("3. Sede Sur");
@@ -60,15 +59,35 @@ public class ClienteVista {
 	                continue;  
 	            }
 
-	            if (sedeOption == 1) {
-	                System.out.println("Ha seleccionado la Sede Norte para su reserva.");
-	            } else if (sedeOption == 2) {
-	                System.out.println("Ha seleccionado la Sede Centro para su reserva.");
-	            } else if (sedeOption == 3) {
-	                System.out.println("Ha seleccionado la Sede Sur para su reserva.");
-	            } else {
-	                System.out.println("Opción de sede no válida.");
+	            if (sedeOption == 1) 
+	            {
+	                System.out.println("\nHa seleccionado la Sede Norte para su reserva.");
+	                sedeNorte();
+	            } 
+	            
+	            else if (sedeOption == 2) 
+	            {
+	                System.out.println("\nHa seleccionado la Sede Centro para su reserva.");
+	                sedeCentro();
+	            } 
+	            
+	            else if (sedeOption == 3) 
+	            {
+	                System.out.println("\nHa seleccionado la Sede Sur para su reserva.");
+	                sedeSur();
+	            } 
+	            
+	            else 
+	            {
+	                System.out.println("Opción de sede no válida.");	                
 	            }
+	            
+	            System.out.println("\nReserva registrada exitosamente en el sistema...");
+	            System.exit(0);
+	            
+	            
+	            
+	            
 	        } 
 	        
 	        else if (2 == opcion) {
@@ -81,5 +100,24 @@ public class ClienteVista {
 	            System.out.println("Esa no es una opción válida.");
 	        }
 	    }
-	}	
+	}
+	
+	public void sedeNorte() 
+	{
+		
+	}
+		
+	
+	public void sedeCentro() 
+	{
+		
+	}
+	
+	
+	public void sedeSur() 
+	{
+		
+	}
+	
+	
 }
