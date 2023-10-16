@@ -98,10 +98,15 @@ public class Login {
 		String nombre = input("Ingrese su nombre completo ");
 		int edad = Integer.parseInt(input("Ingrese su edad "));
 		String cedula = input("Ingrese  su cedula ");
-		String fechaNacimiento = input("Ingrese  su fecha de nacimiento (DD/MM/AA): ");
+		String fechaNacimiento = input("Ingrese  su fecha de nacimiento (DD/MM/AA) ");
 		String correo = input("Ingrese  su correo ");
 		String usuario = input("Ingrese el usuario que desea ");
 		String contraseña = input("Ingrese  su contraseña ");
+		
+		String numeroLicencia = input("Ingrese  su numero de la licencia de conducion ");
+		String paisExpedicion = input("Ingrese  el pais donde expidio su licencia ");
+		String fechaVencimiendo = input("Ingrese  la fecha de vencimiento de su licencia ");
+		
 		sobreEscribirData(usuario,contraseña,nombre);
 		System.out.println("\nHaz sido registrado exitosamente, por favor vuelve a iniciar la aplicación... ");
         System.exit(0);
@@ -120,7 +125,7 @@ public class Login {
 	        fw = new FileWriter(file.getAbsoluteFile(), true);
 	        bw = new BufferedWriter(fw);
 	        bw.write(data);
-	        System.out.println("información agregada!");
+	        System.out.println("¡Información agregada!");
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    } finally {
