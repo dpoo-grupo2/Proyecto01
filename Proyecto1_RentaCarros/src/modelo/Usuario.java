@@ -31,7 +31,7 @@ public class Usuario
 		return nombreCompleto;
 	}
 	
-	private String getTipoUsuario() {
+	public String getTipoUsuario() {
 		return tipoUsuario;
 	}
 }

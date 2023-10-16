@@ -7,23 +7,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import modelo.Usuario;
+<<<<<<< HEAD
 import modelo.Vehiculo;
 import modelo.CategoriaVehiculo;
 public class CargaDatos {
+=======
+
+public class CargaDatos { 
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	
+<<<<<<< HEAD
 	private static List<Usuario> usuarios
 	private static CategoriaVehiculo categoria;
 	private static CargaDatos carga;
 	private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = new HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>>();
 	private Vehiculo vehiculo;
 	public static void cargarInformacionVehiculos(String string) 
+=======
+	public void cargarInformacionVehiculos(String string) 
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	{
     	cargarVehiculos(new File(string));
     }
 
-    private static void cargarVehiculos(File archivoVehiculos) {
+    private void cargarVehiculos(File archivoVehiculos) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoVehiculos))) {
             String linea;
@@ -61,6 +71,7 @@ public class CargaDatos {
         
     }
     
+<<<<<<< HEAD
     private static HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
     {
     	ArrayList<Vehiculo> lstVehiculos = new ArrayList();
@@ -105,9 +116,14 @@ public class CargaDatos {
     }
     public static void cargarInformacionUsuarios(String string) {
     	cargarUsuarios(new File (string));
+=======
+    public Map<String, Usuario> cargarInformacionUsuarios(String string) {
+    	return cargarUsuarios(new File (string));
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
     }
 
-	private static void cargarUsuarios(File archivoUsuarios) {
+	private  Map<String, Usuario> cargarUsuarios(File archivoUsuarios) {
+		Map<String,Usuario> usuarios = new HashMap<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -118,18 +134,14 @@ public class CargaDatos {
                     String nombreCompleto  = partes[2].trim();
                     String tipoUsuario = partes[3].trim();
                     Usuario clsUsuario = new Usuario(usuario,contraseña,nombreCompleto,tipoUsuario);
-                    usuarios.add(clsUsuario);
-                    try {
-                    	System.out.println(usuario +", "+contraseña+", "+nombreCompleto+", "+tipoUsuario);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error");
-                    }
+                    usuarios.put(usuario,clsUsuario);
                 } 
             }
-
+            System.out.println(usuarios);
         } catch (IOException e) {
             e.printStackTrace();
         }
+		return usuarios;
 	}
 
 
