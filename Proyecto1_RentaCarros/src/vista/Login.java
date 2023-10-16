@@ -15,7 +15,7 @@ import modelo.Usuario;
 
 public class Login {
 	
-	private CargaDatos cargaDatos;
+	private CargaDatos cargaDatos = new CargaDatos();
 	
 	private Map<String,Usuario> usuarios;
 	

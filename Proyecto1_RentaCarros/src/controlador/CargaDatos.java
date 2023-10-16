@@ -9,26 +9,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import modelo.Usuario;
-<<<<<<< HEAD
-import modelo.Vehiculo;
 import modelo.CategoriaVehiculo;
-public class CargaDatos {
-=======
+import modelo.Usuario;
+import modelo.Vehiculo;
 
 public class CargaDatos { 
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
-	
-<<<<<<< HEAD
-	private static List<Usuario> usuarios
-	private static CategoriaVehiculo categoria;
-	private static CargaDatos carga;
 	private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = new HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>>();
-	private Vehiculo vehiculo;
-	public static void cargarInformacionVehiculos(String string) 
-=======
+	private static CategoriaVehiculo categoria;
+	
+	
 	public void cargarInformacionVehiculos(String string) 
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	{
     	cargarVehiculos(new File(string));
     }
@@ -51,11 +41,9 @@ public class CargaDatos {
                     String capacidadPersonas = partes[8].trim();
                     String categoria = partes[9].trim();
                     String idCategoria = partes[10].trim();
-
                     try {
                         
                         System.out.println(placa+", "+color+", "+marca+", "+modelo+", "+anio+", "+transmicion+", "+gpsVehiculo+", "+estadoActual+", "+capacidadPersonas+", "+categoria+", "+idCategoria);
-
                         Vehiculo vel = new Vehiculo(placa, color, marca, modelo, Integer.parseInt(anio), transmicion, gpsVehiculo, estadoActual, Integer.parseInt(capacidadPersonas), categoria, Integer.parseInt(idCategoria));
                         addSede(vel);
                         System.out.println(sedes);
@@ -71,7 +59,6 @@ public class CargaDatos {
         
     }
     
-<<<<<<< HEAD
     private static HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
     {
     	ArrayList<Vehiculo> lstVehiculos = new ArrayList();
@@ -114,12 +101,10 @@ public class CargaDatos {
 		return sedes;
     	
     }
-    public static void cargarInformacionUsuarios(String string) {
-    	cargarUsuarios(new File (string));
-=======
+    
+    
     public Map<String, Usuario> cargarInformacionUsuarios(String string) {
     	return cargarUsuarios(new File (string));
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
     }
 
 	private  Map<String, Usuario> cargarUsuarios(File archivoUsuarios) {
