@@ -9,13 +9,13 @@ import java.io.IOException;
 public class CargaDatos {
 
 	
-	public void cargarInformacionVehiculos(File archivoVehiculos) 
+	public static void cargarInformacionVehiculos(String string) 
 	{
     	
-    	cargarVehiculos(new File("data/ListaVehiculos.txt"));
+    	cargarVehiculos(new File(string));
     }
 
-    private void cargarVehiculos(File archivoVehiculos) {
+    private static void cargarVehiculos(File archivoVehiculos) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoVehiculos))) {
             String linea;
@@ -45,5 +45,8 @@ public class CargaDatos {
             e.printStackTrace();
         }
     }
-	
+    public static void main(String[] args)
+    {
+    	cargarInformacionVehiculos("D:\\Universidad\\semestre 3\\DPOO\\workspace\\Proyecto01\\Proyecto1_RentaCarros\\data\\ListaVehiculos.txt");
+    	}
 }
