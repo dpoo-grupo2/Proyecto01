@@ -102,17 +102,62 @@ public class Login {
 		String correo = input("Ingrese  su correo ");
 		String usuario = input("Ingrese el usuario que desea ");
 		String contraseña = input("Ingrese  su contraseña ");
+		String [] infoCliente = {nombre,Integer.toString(edad),cedula,fechaNacimiento,correo,usuario,contraseña};
 		
 		String numeroLicencia = input("Ingrese  su numero de la licencia de conducion ");
 		String paisExpedicion = input("Ingrese  el pais donde expidio su licencia ");
-		String fechaVencimiendo = input("Ingrese  la fecha de vencimiento de su licencia ");
+		String fechaVencimientoLicencia = input("Ingrese  la fecha de vencimiento de su licencia ");
+		String [] infoLicencia = {numeroLicencia,paisExpedicion,fechaVencimientoLicencia};
 		
-		sobreEscribirData(usuario,contraseña,nombre);
+		String tipoPago = input("Ingrese  el medio de pago: ");
+		String numeroTarjeta = input("Ingrese  el pais donde expidio su licencia: ");
+		String fechaVencimientoTarjeta = input("Ingrese  la fecha de vencimiento de su licencia: ");
+		String [] infoMedio = {tipoPago,numeroTarjeta,fechaVencimientoTarjeta};
+		
+		sobreEscribirUsuarios(usuario,contraseña,nombre);
+		sobreEscribirClientes(	nombre,Integer.toString(edad),cedula,fechaNacimiento,correo,usuario,contraseña,
+								numeroLicencia,paisExpedicion,fechaVencimientoLicencia,
+								tipoPago,numeroTarjeta,fechaVencimientoTarjeta);
 		System.out.println("\nHaz sido registrado exitosamente, por favor vuelve a iniciar la aplicación... ");
         System.exit(0);
 	}
 	
-	private void sobreEscribirData(String usuario,String contraseña, String nombre) {
+	private void sobreEscribirClientes(String nombre, String edad, String cedula,String fechaNacimiento,String correo,
+			String usuario, String contraseña,String numeroLicencia,String paisExpedicion,String fechaVencimientoLicencia,
+			String tipoPago,String numeroTarjeta,String fechaVencimientoTarjeta) {
+		
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+usuario+","+contraseña+","+nombre+","+edad+","+cedula+","+fechaNacimiento+","+correo+ ";"
+	        				+numeroLicencia+","+paisExpedicion+","+fechaVencimientoLicencia+";"
+	        				+tipoPago+","+numeroTarjeta+","+fechaVencimientoTarjeta;
+	        
+	        File file = new File("Proyecto1_RentaCarros/data/Clientes.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+		
+	}
+
+	private void sobreEscribirUsuarios(String usuario,String contraseña, String nombre) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
 
