@@ -59,7 +59,7 @@ public class CargaDatos {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(",");
-                if (partes.length == 3) {
+                if (partes.length == 4) {
                     String usuario = partes[0].trim();
                     String contraseña = partes[1].trim();
                     String nombreCompleto  = partes[2].trim();
