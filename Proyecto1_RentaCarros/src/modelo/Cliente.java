@@ -7,9 +7,9 @@ public class Cliente extends Usuario
 	private String correoElectronico;
 	private String fechaNacimiento;
 
-	public Cliente(String login, String password, String nombreCompleto,Integer edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
+	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
 	{
-		super(login, password, nombreCompleto);
+		super(login, password, nombreCompleto,tipoUsuario);
 		this.edad = edad;
 		this.cedula = cedula;
 		this.correoElectronico = correoElectronico;

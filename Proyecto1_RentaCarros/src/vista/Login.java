@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import controlador.CargaDatos;
 
 public class Login {
+	
+	private CargaDatos cargaDatos;
+	
 	public static void main(String[] args)
     {
-    	//CargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
     	Login login = new Login();
+    	login.CargarDatos();
     	login.ejecutarAplicacion();
     	}
 	
-	public void ejecutarAplicacion()
+	private void ejecutarAplicacion()
 	{
 		System.out.println("-----------------Bienvenido a Car Rental-----------------");
     	System.out.println("1. Iniciar sesion");
@@ -52,7 +55,7 @@ public class Login {
 		
 	}
 
-	public void ejecutarRegistrarCliente() {
+	private void ejecutarRegistrarCliente() {
 		
 		String nombre = input("Ingrese su nombre completo: ");
 		int edad = Integer.parseInt(input("Ingrese su edad: "));
@@ -64,7 +67,7 @@ public class Login {
 		
 	}
 	
-	public String input(String mensaje)
+	private String input(String mensaje)
 	{
 	    try
 	    {
@@ -78,5 +81,11 @@ public class Login {
 	        e.printStackTrace();
 	    }
 	    return null;
+	}
+	
+	private void CargarDatos(){
+		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+		cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/usuarios.txt");
+		
 	}
 }

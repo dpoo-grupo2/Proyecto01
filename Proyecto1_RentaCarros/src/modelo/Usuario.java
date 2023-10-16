@@ -6,13 +6,14 @@ public class Usuario
 	private String login;
 	private String password;
 	private String nombreCompleto;
+	private String tipoUsuario;
 	
-	public Usuario(String login, String password, String nombreCompleto) 
+	public Usuario(String login, String password, String nombreCompleto, String tipoUsuario) 
 	{ 
 		this.login = login;
 		this.password = password;
 		this.nombreCompleto = nombreCompleto;
-	
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 	public String getLogin() 
@@ -30,4 +31,7 @@ public class Usuario
 		return nombreCompleto;
 	}
 	
+	private String getTipoUsuario() {
+		return tipoUsuario;
+	}
 }

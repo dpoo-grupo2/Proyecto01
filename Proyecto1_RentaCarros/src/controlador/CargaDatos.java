@@ -4,15 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.List;
 
+import modelo.Usuario;
 
 public class CargaDatos {
-
+	
+	private static List<Usuario> usuarios; 
 	
 	public static void cargarInformacionVehiculos(String string) 
 	{
-    	
     	cargarVehiculos(new File(string));
     }
 
@@ -47,4 +48,33 @@ public class CargaDatos {
             e.printStackTrace();
         }
     }
+    
+    public static void cargarInformacionUsuarios(String string) {
+    	cargarUsuarios(new File (string));
+    }
+
+	private static void cargarUsuarios(File archivoUsuarios) {
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length == 3) {
+                    String usuario = partes[0].trim();
+                    String contraseña = partes[1].trim();
+                    String nombreCompleto  = partes[2].trim();
+                    String tipoUsuario = partes[3].trim();
+                    Usuario clsUsuario = new Usuario(usuario,contraseña,nombreCompleto,tipoUsuario);
+                    usuarios.add(clsUsuario);
+                    try {
+                    	System.out.println(usuario +", "+contraseña+", "+nombreCompleto+", "+tipoUsuario);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error");
+                    }
+                } 
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 }
