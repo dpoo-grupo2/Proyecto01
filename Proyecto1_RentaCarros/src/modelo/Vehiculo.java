@@ -3,10 +3,10 @@ package modelo;
 public class Vehiculo 
 {
 	private String placa;
-	private int anio;
 	private String color;
 	private String marca;
 	private String modelo;
+	private int anio;
 	private String transimicion;
 	private String gpsVehiuculo; // Esta es la sede (asi fue como lo pusimos en nuestros datos
 	private String estadoActual; // Esto es en manetenimiento y eso
@@ -14,7 +14,7 @@ public class Vehiculo
 	private String categoria;
 	private int idCategoria;
 	
- 	public Vehiculo(String placa,int anio,String color,String marca,String modelo, String transmicion, String gpsVehiculo, String estadoActual, int capacidadPersonas,
+	public Vehiculo(String placa,String color,String marca,String modelo, int anio, String transmicion, String gpsVehiculo, String estadoActual, int capacidadPersonas,
 			String categoria,int idCategoria) 
  	{
 		 this.placa = placa;

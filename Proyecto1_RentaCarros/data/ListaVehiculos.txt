@@ -1,4 +1,4 @@
-placa,color,marca,modelo,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria
+placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria
 ABC123,rojo,Chevrolet,Spark,2020,mecanico,sedeCentro,alquilado,4,pequenio,1
 DEF456,azul,Ford,Fiesta,2019,mecanico,sedeNorte,disponible,5,sedan,2
 GHI789,verde,Nissan,X-Trail,2021,automatico,sedeSur,mantenimiento,7,SUV,3
@@ -46,6 +46,6 @@ CDE345,negro,Honda,Prelude,2021,automatico,sedeSur,limpieza,4,lujo,4
 EFG678,plata,Chevrolet,Corvette,2020,mecanico,sedeCentro,disponible,2,lujo,4
 GHI901,rojo,Porsche,911,2018,automatico,sedeNorte,mantenimiento,2,lujo,4
 TBG124,azul,Nissan,GTR,2018,mecanico,sedeSur,alquilado,2,lujo,4
-GOL000,negro,Volkswagen,Gol,2013,mecanico,sedeCentro,disponible,5,pequenio,1
+GOL000,negro,Volkswagen,Gol,2017,mecanico,sedeCentro,disponible,5,pequenio,1
 SEX069,violeta,Susuki,Swift,2020,mecanico,sedeNorte,mantenimiento,5,pequenio,1
 TAS690,gris,Nissan,March,2022,mecanico,sedeSur,limpieza,5,pequenio,1
