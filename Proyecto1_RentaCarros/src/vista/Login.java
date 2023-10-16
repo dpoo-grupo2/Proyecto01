@@ -85,7 +85,7 @@ public class Login {
 	
 	private void CargarDatos(){
 		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
-		cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/usuarios.txt");
+		cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
 		
 	}
 }

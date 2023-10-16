@@ -4,13 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Usuario;
 
-public class CargaDatos {
-	
-	private static List<Usuario> usuarios; 
+public class CargaDatos { 
 	
 	public static void cargarInformacionVehiculos(String string) 
 	{
@@ -55,6 +54,7 @@ public class CargaDatos {
     }
 
 	private static void cargarUsuarios(File archivoUsuarios) {
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
             while ((linea = br.readLine()) != null) {
