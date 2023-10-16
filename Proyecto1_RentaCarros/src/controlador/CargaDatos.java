@@ -47,8 +47,10 @@ public class CargaDatos {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
     
+<<<<<<< HEAD
     public static void cargarInformacionUsuarios(String string) {
     	cargarUsuarios(new File (string));
     }
@@ -77,4 +79,8 @@ public class CargaDatos {
             e.printStackTrace();
         }
 	}
+=======
+    
+
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 }
