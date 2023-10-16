@@ -1,11 +1,14 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Cliente extends Usuario
 {
 	private Integer edad; 
 	private String cedula;
 	private String correoElectronico;
 	private String fechaNacimiento;
+	private Reserva reserva;
 
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
 	{
@@ -31,6 +34,24 @@ public class Cliente extends Usuario
 	public String getFechaNacimiento() 
 	{
 		return this.fechaNacimiento;	
+	}
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva) 
+	{
+		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores);
+		añadirReserva(lstReserva);
+		return reserva;
+	}
+	public void añadirReserva(ArrayList<Reserva> lstReserva) 
+	{
+	lstReserva.add(reserva);
+	}
+	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
+	{
+		int valorFinal = 0;
+		int nDias = 0; // toca calcular los dias
+		valorFinal +=tarifaDiaria*nDias;
+		return valorFinal;
+		
 	}
 
 }
