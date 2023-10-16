@@ -15,7 +15,7 @@ import modelo.Usuario;
 
 public class Login {
 	
-	private CargaDatos cargaDatos;
+	private CargaDatos cargaDatos = new CargaDatos();
 	
 	private Map<String,Usuario> usuarios;
 	
@@ -40,12 +40,12 @@ public class Login {
 				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
 				if (opcion_seleccionada == 1)
 					ejecutarIniciarSesion();
-				else if (opcion_seleccionada == 2 )//&& usuarios != null)
+				else if (opcion_seleccionada == 2 && usuarios != null)
 					ejecutarRegistrarCliente();
-				/***else if (usuarios == null)
+				else if (usuarios == null)
 				{
 					System.out.println("No se pudo cargar la base de datos de los usuarios.");
-				}***/
+				}
 				else
 				{
 					System.out.println("Por favor seleccione una opción válida.");
@@ -150,6 +150,7 @@ public class Login {
 	private void CargarDatos(){
 		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
 		var usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
+		this.usuarios = usuarios;
 		
 	}
 }
