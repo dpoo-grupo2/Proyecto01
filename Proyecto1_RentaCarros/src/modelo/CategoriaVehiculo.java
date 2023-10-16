@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 
-import uniandes.dpoo.taller2.modelo.Producto;
 
 public class CategoriaVehiculo {
 private String nombreCategoria;
