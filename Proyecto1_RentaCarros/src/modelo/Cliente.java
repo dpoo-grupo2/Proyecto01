@@ -35,9 +35,9 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias) 
 	{
-		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores);
+		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias);
 		añadirReserva(lstReserva);
 		return reserva;
 	}
@@ -48,8 +48,13 @@ public class Cliente extends Usuario
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
 		int valorFinal = 0;
-		int nDias = 0; // toca calcular los dias
+		int nDias = reserva.getDias();//
 		valorFinal +=tarifaDiaria*nDias;
+		valorFinal += tarifaConductor*lstConductores.size();
+		for (int i = 0; i < lstSeguros.size(); i++) {
+			Seguro seguro = lstSeguros.get(i);
+			valorFinal += seguro.getValorSeguro();
+		}
 		return valorFinal;
 		
 	}

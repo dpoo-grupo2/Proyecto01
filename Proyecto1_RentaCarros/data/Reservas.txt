@@ -1,1 +1,1 @@
-estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,valorTotal
+estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,lstSeguro,cliente,valorReserva,lstConductores,dias
