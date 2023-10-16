@@ -31,40 +31,29 @@ public class ClienteVista {
 	    return null;
 	}
 	
-	public void menu(String usuario) 
-	{
-		centinela = true;
-		while (centinela) {
-			
-		
-		System.out.println("Bienvenido Administrador "+usuario);
-		System.out.println("1- Reservar vehículo");
-		System.out.println("2- Salir");
-		try {
-		opcion = Integer.parseInt(input("Ingrese su opcion: "));
-		}
-		catch(Exception e)
-		{
-			System.out.println("Recuerde que debe ingresar un numero entre 1 y 4");
-		}
-		if (1 == opcion) 
-		{
-			
-		}
-		else if(2 == opcion) {
-			
-		}
+	public void menu(String usuario) {
+	    centinela = true;
+	    while (centinela) {
+	        System.out.println("\nBienvenido Cliente " + usuario + "\n");
+	        System.out.println("1- Reservar vehículo");
+	        System.out.println("2- Salir");
 
-			
-		else 
-		{
-			System.out.println("Esa no es una opcion");
-		}
-		
-		
-		
-		
-		}
+	        try {
+	            opcion = Integer.parseInt(input("Ingrese su opción "));
+	        } catch (Exception e) {
+	            System.out.println("Recuerde que debe ingresar un número entre 1 y 2");
+	        }
+
+	        if (1 == opcion) 
+	        {
+	           
+	        } else if (2 == opcion) {
+	            System.out.println("\nSaliendo del sistema...");
+	            System.exit(0);
+	        } else {
+	            System.out.println("Esa no es una opción válida.");
+	        }
+	    }
 	}
 	
 	

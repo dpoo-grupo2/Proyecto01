@@ -32,13 +32,13 @@ public class AdminLocal {
 		while (centinela) {
 			
 		
-		System.out.println("Bienvenido Administrador "+usuario);
+		System.out.println("\nBienvenido Administrador local "+usuario+"\n");
 		System.out.println("1- Registrar y gestionar empleados");
 		System.out.println("2- Crear usuarios");
 		System.out.println("3- Controlar inventario");
 		System.out.println("4- Salir");
 		try {
-		opcion = Integer.parseInt(input("Ingrese su opcion: "));
+		opcion = Integer.parseInt(input("Ingrese su opcion "));
 		}
 		catch(Exception e)
 		{
@@ -57,7 +57,8 @@ public class AdminLocal {
 		}
 		else if (4 == opcion) 
 		{
-			
+			System.out.println("\nSaliendo del sistema...");
+            System.exit(0);
 		}
 		else 
 		{

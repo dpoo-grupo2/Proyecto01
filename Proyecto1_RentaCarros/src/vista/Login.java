@@ -28,7 +28,7 @@ public class Login {
 	
 	private void ejecutarAplicacion()
 	{
-		System.out.println("-----------------Bienvenido a Car Rental-----------------");
+		System.out.println("\n-----------------Bienvenido a Car Rental-----------------\n");
     	System.out.println("1. Iniciar sesion");
     	System.out.println("2. Registrarse");
 
@@ -58,38 +58,40 @@ public class Login {
 		}
 	}
 	private void ejecutarIniciarSesion() {
-		
-		String usuario = input("Ingrese su usuario: ");
-		String contraseña = input("Ingrese su contraseña: ");
-		
-		if (usuarios.containsKey(usuario)) {
-			Usuario clsUsuario = usuarios.get(usuario);
-			
-			if(contraseña.equals(clsUsuario.getPassword())) {
-				
-				if(clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) {
-					AdministradorGeneral administradorGeneral = new AdministradorGeneral();
-					administradorGeneral.menu(usuario);
-				}
-				else if(clsUsuario.getTipoUsuario().equals("AdministradorLocal")) {
-					AdministradorLocal administradorLocal = new AdministradorLocal();
-					administradorLocal.menu(usuario);
-				}
-				else if(clsUsuario.getTipoUsuario().equals("Empleado")) {
-					EmpleadoVista empleado = new EmpleadoVista();
-					empleado.menu(usuario);
-				}
-				else if(clsUsuario.getTipoUsuario().equals("AdministradorLocal")) {
-					AdministradorLocal administradorLocal = new AdministradorLocal();
-					administradorLocal.menu(usuario);
-				}
-				else if(clsUsuario.getTipoUsuario().equals("Cliente")) {
-					ClienteVista cliente = new ClienteVista();
-					cliente.menu(usuario);
-				}
-			}
-		}
+	    boolean loginExitoso = false;
+
+	    while (!loginExitoso) {
+	        String usuario = input("\nIngrese su usuario ");
+	        String contraseña = input("Ingrese su contraseña ");
+
+	        if (usuarios.containsKey(usuario)) {
+	            Usuario clsUsuario = usuarios.get(usuario);
+
+	            if (contraseña.equals(clsUsuario.getPassword())) {
+	                loginExitoso = true;
+
+	                if (clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) {
+	                    AdministradorGeneral administradorGeneral = new AdministradorGeneral();
+	                    administradorGeneral.menu(usuario);
+	                } else if (clsUsuario.getTipoUsuario().equals("AdministradorLocal")) {
+	                    AdminLocal administradorLocal = new AdminLocal();
+	                    administradorLocal.menu(usuario);
+	                } else if (clsUsuario.getTipoUsuario().equals("Empleado")) {
+	                    EmpleadoVista empleado = new EmpleadoVista();
+	                    empleado.menu(usuario);
+	                } else if (clsUsuario.getTipoUsuario().equals("Cliente")) {
+	                    ClienteVista cliente = new ClienteVista();
+	                    cliente.menu(usuario);
+	                }
+	            }
+	        }
+
+	        if (!loginExitoso) {
+	            System.out.println("\nUsuario o contraseña inválida, vuelva a intentarlo.");
+	        }
+	    }
 	}
+
 
 	private void ejecutarRegistrarCliente() {
 		
@@ -101,6 +103,8 @@ public class Login {
 		String usuario = input("Ingrese el usuario que desea: ");
 		String contraseña = input("Ingrese  su contraseña: ");
 		sobreEscribirData(usuario,contraseña,nombre);
+		System.out.println("\nHaz sido registrado exitosamente, por favor vuelve a iniciar la aplicación... ");
+        System.exit(0);
 	}
 	
 	private void sobreEscribirData(String usuario,String contraseña, String nombre) {

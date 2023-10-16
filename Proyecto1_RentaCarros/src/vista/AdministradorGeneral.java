@@ -32,14 +32,14 @@ public class AdministradorGeneral {
 		while (centinela) {
 			
 		
-		System.out.println("Bienvenido Administrador "+usuario);
+		System.out.println("\nBienvenido Administrador general "+usuario+"\n");
 		System.out.println("1- Registrar vehiculo");
 		System.out.println("2- Quitar vehiculo");
 		System.out.println("3- gestionar Seguros");
 		System.out.println("4- Modificar informacion sede");
 		System.out.println("5- Salir");
 		try {
-		opcion = Integer.parseInt(input("Ingrese su opcion: "));
+		opcion = Integer.parseInt(input("Ingrese su opcion "));
 		}
 		catch(Exception e)
 		{
@@ -62,7 +62,8 @@ public class AdministradorGeneral {
 		}
 		else if (5 == opcion) 
 		{
-			
+			System.out.println("\nSaliendo del sistema...");
+            System.exit(0);
 		}
 		else 
 		{

@@ -32,13 +32,13 @@ public class EmpleadoVista {
 		while (centinela) {
 			
 		
-		System.out.println("Bienvenido Administrador "+usuario);
+		System.out.println("\nBienvenido Empleado "+usuario+"\n");
 		System.out.println("1- Registrar conductores adicionales a una reserva");
 		System.out.println("2- Actualizar estado de los vehículos");
 		System.out.println("3- Reportar mantenimiento de vehículo");
 		System.out.println("4- Salir");
 		try {
-		opcion = Integer.parseInt(input("Ingrese su opcion: "));
+		opcion = Integer.parseInt(input("Ingrese su opcion "));
 		}
 		catch(Exception e)
 		{
@@ -57,7 +57,8 @@ public class EmpleadoVista {
 		}
 		else if (4 == opcion) 
 		{
-			
+			System.out.println("\nSaliendo del sistema...");
+            System.exit(0);
 		}
 		else 
 		{
