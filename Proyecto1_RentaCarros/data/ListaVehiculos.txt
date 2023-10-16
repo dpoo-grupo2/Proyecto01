@@ -1,4 +1,4 @@
-placa,color,marca,modelo,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria
+placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria
 ABC123,rojo,Chevrolet,Spark,2020,mecanico,sedeCentro,alquilado,4,pequenio,1
 DEF456,azul,Ford,Fiesta,2019,mecanico,sedeNorte,disponible,5,sedan,2
 GHI789,verde,Nissan,X-Trail,2021,automatico,sedeSur,mantenimiento,7,SUV,3
