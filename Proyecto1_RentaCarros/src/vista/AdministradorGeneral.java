@@ -3,13 +3,21 @@ package vista;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
+import controlador.CargaDatos;
 import modelo.Administrador;
+import modelo.CategoriaVehiculo;
+import modelo.Vehiculo;
 
 public class AdministradorGeneral {
 	private int opcion;
 	private boolean centinela;
-	private Administrador admin;
+	private Administrador admin = new Administrador();
+	private Vehiculo culo;
+	
+	public CargaDatos carga = new CargaDatos();
+	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 	public String input(String mensaje)
 	{
 	    try
@@ -47,7 +55,8 @@ public class AdministradorGeneral {
 			
 			if (1 == opcion) 
 			{
-				
+				culo =admin.registrarVehiculo("TU MAMA EN 4","rojo","Chevrolet","Spark",2020,"mecanico","sedeCentro","alquilado",4,"pequenio",1,sedes);
+				System.out.println(culo.getPlaca());
 			}
 			
 			else if(2 == opcion) 

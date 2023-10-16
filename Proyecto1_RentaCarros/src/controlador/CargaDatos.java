@@ -128,6 +128,11 @@ public class CargaDatos {
         }
 		return usuarios;
 	}
+	public HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> getSedes()
+	{
+		return sedes;
+		
+	}
 
 
 

@@ -58,5 +58,10 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
+//	public Vehiculo verDisponiblidad(String sede,String categoria,fecha) 
+//	{
+//		
+//	}
+	
 
 }
