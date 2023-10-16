@@ -95,13 +95,13 @@ public class Login {
 
 	private void ejecutarRegistrarCliente() {
 		
-		String nombre = input("Ingrese su nombre completo: ");
-		int edad = Integer.parseInt(input("Ingrese su edad: "));
-		String cedula = input("Ingrese  su cedula: ");
+		String nombre = input("Ingrese su nombre completo ");
+		int edad = Integer.parseInt(input("Ingrese su edad "));
+		String cedula = input("Ingrese  su cedula ");
 		String fechaNacimiento = input("Ingrese  su fecha de nacimiento (DD/MM/AA): ");
-		String correo = input("Ingrese  su correo: ");
-		String usuario = input("Ingrese el usuario que desea: ");
-		String contraseña = input("Ingrese  su contraseña: ");
+		String correo = input("Ingrese  su correo ");
+		String usuario = input("Ingrese el usuario que desea ");
+		String contraseña = input("Ingrese  su contraseña ");
 		sobreEscribirData(usuario,contraseña,nombre);
 		System.out.println("\nHaz sido registrado exitosamente, por favor vuelve a iniciar la aplicación... ");
         System.exit(0);

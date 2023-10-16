@@ -47,14 +47,17 @@ public class ClienteVista {
 	        if (1 == opcion) 
 	        {
 	           
-	        } else if (2 == opcion) {
+	        } 
+	        
+	        else if (2 == opcion) {
 	            System.out.println("\nSaliendo del sistema...");
 	            System.exit(0);
-	        } else {
+	        } 
+	        
+	        else 
+	        {
 	            System.out.println("Esa no es una opción válida.");
 	        }
 	    }
-	}
-	
-	
+	}	
 }
