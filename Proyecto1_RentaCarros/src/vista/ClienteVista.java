@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import modelo.Cliente;
+import vista.Login;
 
 public class ClienteVista {
 	private int opcion;
 	private boolean centinela;
+	private boolean centinela1;
 	private Cliente cliente;
 	
 	public void ClienteVista(){
@@ -62,19 +64,20 @@ public class ClienteVista {
 	            if (sedeOption == 1) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Norte para su reserva.");
-	                sedeNorte();
+	                
+	                categoriaParaAlquilar();
 	            } 
 	            
 	            else if (sedeOption == 2) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Centro para su reserva.");
-	                sedeCentro();
+	                categoriaParaAlquilar();
 	            } 
 	            
 	            else if (sedeOption == 3) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Sur para su reserva.");
-	                sedeSur();
+	                categoriaParaAlquilar();
 	            } 
 	            
 	            else 
@@ -85,9 +88,7 @@ public class ClienteVista {
 	            System.out.println("\nReserva registrada exitosamente en el sistema...");
 	            System.exit(0);
 	            
-	            
-	            
-	            
+	           	                 
 	        } 
 	        
 	        else if (2 == opcion) {
@@ -102,22 +103,47 @@ public class ClienteVista {
 	    }
 	}
 	
-	public void sedeNorte() 
+	public void categoriaParaAlquilar() 
 	{
-		
+				
+		centinela1 = true;
+	    while (centinela1) {
+	        
+	        System.out.println("\nQue categoria de vehiculo desea alquilar:");
+	        System.out.println("1. Pequenio");
+            System.out.println("2. Sedan");
+            System.out.println("3. SUV");
+            System.out.println("4. Lujo");
+	        try {
+	            opcion = Integer.parseInt(input("Ingrese su opción "));
+	        } catch (Exception e) {
+	            System.out.println("Recuerde que debe ingresar un número entre 1 y 4");
+	        }
+
+	        if (opcion == 1) 
+	        {
+	        	System.exit(0);
+	        }
+	        
+	        else if (opcion == 2) 
+	        {
+	        	System.exit(0);
+	        }
+	        
+	        else if (opcion == 3) 
+	        {
+	        	System.exit(0);
+	        }
+	        
+	        else if (opcion == 4) 
+	        {
+	        	System.exit(0);
+	        }
+	        
+	        else 
+            {
+                System.out.println("Opción de sede no válida.");	                
+            }
+	    }
 	}
-		
-	
-	public void sedeCentro() 
-	{
-		
-	}
-	
-	
-	public void sedeSur() 
-	{
-		
-	}
-	
-	
 }
