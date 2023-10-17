@@ -14,7 +14,7 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
-	private CargaDatos carga;
+	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 
 
