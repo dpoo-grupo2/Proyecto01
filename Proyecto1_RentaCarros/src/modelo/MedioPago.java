@@ -3,10 +3,10 @@ package modelo;
 public class MedioPago 
 {
 	private String tipo;
-	private long numero;
+	private String numero;
 	private String fechaVencimiento;  
 	
-	public MedioPago(String tipo, long numero, String fechaVencimiento) 
+	public MedioPago(String tipo, String numero, String fechaVencimiento) 
 	{
         this.tipo = tipo;
         this.numero = numero;
@@ -17,7 +17,7 @@ public class MedioPago
         return tipo;
     }
 	
-	public long getNumero() {
+	public String getNumero() {
         return numero;
     }
 	

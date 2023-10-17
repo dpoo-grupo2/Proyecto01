@@ -5,14 +5,12 @@ public class LicenciaConduccion
 	private int numero; 
     private String paisExpedicion;
     private String fechaVencimiento;
-    private String imagenLicencia; // toca ver q hacemos con esto
    
-    public LicenciaConduccion(int numero, String paisExpedicion, String fechaVencimiento, String imagenLicencia) 
+    public LicenciaConduccion(int numero, String paisExpedicion, String fechaVencimiento) 
     {
 	    this.numero = numero;
 	    this.paisExpedicion = paisExpedicion;
 	    this.fechaVencimiento = fechaVencimiento;
-	    this.imagenLicencia = imagenLicencia;
     }
    
     public int getNumero() 
@@ -29,10 +27,6 @@ public class LicenciaConduccion
     {
 	    return this.fechaVencimiento;
     }
-   
-    public String imagenLicencia() 
-    {
-	    return this.imagenLicencia;
-    }
+  
 }
 
