@@ -144,6 +144,11 @@ public class CargaDatos {
 		return lstSegurosGeneral;
 		
 	}
+	public ArrayList<Reserva> getLstReserva()
+	{
+		return lstReservas;
+		
+	}
 
 
 
