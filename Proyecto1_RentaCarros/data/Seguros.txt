@@ -1,6 +1,7 @@
-
+nombre,valor
 CRO,3409
 CRO,45
 CRO,45
 CRO,345
 cro,45
+TH04,40

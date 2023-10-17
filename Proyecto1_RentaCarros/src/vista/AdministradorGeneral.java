@@ -65,8 +65,15 @@ public class AdministradorGeneral {
 			
 			else if(2 == opcion) 
 			{{try {
+				String sede = input("Ingrese la sede en la que se encuentra el vehiculo: ");
+				String placa = input("Ingrese la placa del vehiculo que desea eliminar: ");
+				String dispo = input("Ingrese la disponibilidad del vehiculo: ");
+				int cat = Integer.parseInt(input("Ingrese el ID de la categoria del vehiculo: "));
 				
-				eliminarVehiculo(admin.eliminarVehiculo(sedes, "sedeCentro", "ABC123", "alquilado", 1));
+				File temp = eliminarVehiculo(admin.eliminarVehiculo(sedes, sede, placa, dispo, cat));
+				File bd = new File("Proyecto1_RentaCarros/data/PruebaCarros.txt");
+				bd.delete();
+				temp.renameTo(bd);
 				System.out.println("\nCarro eliminado correctamente...\n");
 			}
 			catch(Exception e) 
@@ -136,7 +143,7 @@ public class AdministradorGeneral {
 			else if (2 == opcion) 
 			{
 				String nombreSeguro = input("Ingrese el nombre del seguro que desea eliminar: ");
-				boolean resultado = admin.eleminiarSeguro(nombreSeguro);
+				boolean resultado = admin.eliminarSeguro(nombreSeguro);
 				if (!resultado)
 				{
 					System.out.println("\nEl seguro no pudo elimianrse con exito");
@@ -284,7 +291,7 @@ public class AdministradorGeneral {
 //		
 //	}
 //	
-	public static  void eliminarVehiculo(Vehiculo vehiculo){        
+	public static  File eliminarVehiculo(Vehiculo vehiculo){        
 
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
 		
@@ -303,7 +310,6 @@ public class AdministradorGeneral {
                 }
                 lstVehiculos.delete();
                 archivoTemp.renameTo(lstVehiculos);
-                System.out.println("lega hasya aqui");
                 br.close();
             }else{
                 System.out.println("El archivo no Existe");
@@ -311,6 +317,7 @@ public class AdministradorGeneral {
         } catch (Exception ex) {
              System.out.println(ex.getMessage());
         }
+        return archivoTemp;
     }
 	
 	public static void escribirArchivo(File archivo,String info){
@@ -331,19 +338,15 @@ public class AdministradorGeneral {
 
 	    try {
 	        String data = "\n"+nombreSeguro+","+Integer.toString(valorSeguro);
-	        System.out.println(data);
 	        File file = new File("Proyecto1_RentaCarros/data/Seguros.txt");
-	        System.out.println(file);
-	        System.out.println("-----------");
 	        if (!file.exists()) {
 	            file.createNewFile();
 	        }
 	        fw = new FileWriter(file.getAbsoluteFile(), true);
 	        bw = new BufferedWriter(fw);
 	        bw.write(data);
-	        System.out.println("¡Información agregada!");
-	    } catch (IOException e) {
-	    	System.out.println("PANA ESTE ES EL PUTO ERROR");
+	        System.out.println("\n¡Información agregada!");
+	    } catch (IOException e) {	    	
 	        e.printStackTrace();
 	    } finally {
 	        try {

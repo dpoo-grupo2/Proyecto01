@@ -108,7 +108,7 @@ catch(Exception e)
 return false;
 }
 }
-public boolean eleminiarSeguro(String nombreSeguro)
+public boolean eliminarSeguro(String nombreSeguro)
 {
 try{
 int pos = lstSeguroGrande.size()+1;
