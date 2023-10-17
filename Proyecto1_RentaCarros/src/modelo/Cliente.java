@@ -1,5 +1,9 @@
 package modelo;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +18,6 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
-//	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 	
 	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
@@ -57,6 +60,7 @@ public class Cliente extends Usuario
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 
 	{
 	lstReserva.add(reserva);
+	//sobreEscribirReserva();
 	}
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
@@ -70,6 +74,35 @@ public class Cliente extends Usuario
 		}
 		return valorFinal;
 		
+	}
+	private void sobreEscribirReserva(boolean estadoTarjeta,String sedeEntrega,String sedeRecogida,String fechaRecogida,String horaRecogida,
+			String fechaEntrega,String horaEntrega,String lstSeguro,String usuario,int valorReserva,String lstConductores,int dias,int idReserva) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
+	        horaEntrega+","+lstSeguro+","+usuario+","+Integer.toString(valorReserva)+","+lstConductores+","+Integer.toString(dias)+","+Integer.toBinaryString(idReserva);
+	        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
 	}
 //	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
 //	{

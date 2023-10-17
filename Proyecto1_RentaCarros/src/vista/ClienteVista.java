@@ -88,6 +88,7 @@ public class ClienteVista {
 	                System.out.println("\nHa seleccionado la Sede Centro para su reserva.");
 	                Sede = "SedeCentro";
 	                categoriaParaAlquilar();
+	                
 	                System.out.println("\nReserva registrada exitosamente en el sistema...");
 		            System.exit(0);
 	            } 
@@ -124,8 +125,8 @@ public class ClienteVista {
 	public void categoriaParaAlquilar() 
 	{
 				
-		centinela1 = true;
-	    while (centinela1) {
+		centinela = true;
+	    while (centinela) {
 	        
 	        System.out.println("\nQue categoria de vehiculo desea alquilar:");
 	        System.out.println("1. Pequenio");
@@ -141,6 +142,7 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
+		        	centinela = false;
 		        }
 		        
 		        else if (opcion == 2) 
@@ -150,6 +152,7 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
+		        	centinela = false;
 		        }
 		        
 		        else if (opcion == 3) 
@@ -159,7 +162,7 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
-		        	
+		        	centinela = false;
 		        }
 		        
 		        else if (opcion == 4) 
@@ -169,6 +172,7 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
+		        	centinela = false;
 		        }
 		        
 		        else 
