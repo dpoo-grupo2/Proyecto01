@@ -65,6 +65,7 @@ public class AdministradorGeneral {
 			
 			else if(2 == opcion) 
 			{{try {
+				
 				eliminarVehiculo(admin.eliminarVehiculo(sedes, "sedeCentro", "ABC123", "alquilado", 1));
 				System.out.println("\nCarro eliminado correctamente...\n");
 			}
@@ -126,6 +127,7 @@ public class AdministradorGeneral {
 	            }
 	            else {
 	            	System.out.println("\nEl seguro fue agregado con exito...");
+	            	sobreEscribirSeguros(nombreSeguro,valorSeguro);
 		            centinela=false;
 	            }
 	            
@@ -283,7 +285,7 @@ public class AdministradorGeneral {
 //	}
 //	
 	public static  void eliminarVehiculo(Vehiculo vehiculo){        
-        
+
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
 		
         String nomTemp="temp.txt";
@@ -321,5 +323,36 @@ public class AdministradorGeneral {
 		       } catch (Exception ex) { 
 		          System.out.println(ex.getMessage());
 		       } 
+	}
+	private void sobreEscribirSeguros(String nombreSeguro,int valorSeguro) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+nombreSeguro+","+Integer.toString(valorSeguro);
+	        System.out.println(data);
+	        File file = new File("Proyecto1_RentaCarros/data/Seguros.txt");
+	        System.out.println(file);
+	        System.out.println("-----------");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	    	System.out.println("PANA ESTE ES EL PUTO ERROR");
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
 	}
 }
