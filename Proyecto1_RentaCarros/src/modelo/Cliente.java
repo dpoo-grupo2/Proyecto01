@@ -51,9 +51,9 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva,Vehiculo vehiculo) 
 	{
-		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias,idReserva);
+		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias,idReserva, vehiculo);
 		añadirReserva(lstReserva);
 		
 		return reserva;
@@ -105,14 +105,19 @@ public class Cliente extends Usuario
 	        }
 	    }
 	}
-	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+	public Vehiculo verDisponiblidad(String sede,String categoria,Date fechaEntrega,Date fechaRecogida) 
 	{
 		ArrayList<String> lstPlacas = new ArrayList<String>();
 		try 
 		{
 			for (int i = 0; i < carga.getLstReserva().size(); i++) {
 				Reserva res = carga.getLstReserva().get(i);
-				res.getFechaRecogida()
+				if (fechaEnRango(fechaEntrega,fechaRecogida,res.getFechaRecogida()) && fechaEnRango(fechaEntrega,fechaRecogida,res.getFechaRecogida())) 
+				{
+					Vehiculo vel = res.getvehiculo();
+					String placa = vel.getPlaca();
+					lstPlacas.add(placa);
+				}
 			}
 			
 			

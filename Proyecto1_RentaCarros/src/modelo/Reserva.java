@@ -8,8 +8,8 @@ public class Reserva
 	private boolean estadoTarjeta;
 	private String sedeEntrega;
 	private String sedeRecogida;
-	private Date fechaRecogida;
-	private Date fechaEntrega;
+	private java.util.Date fechaRecogida;
+	private java.util.Date fechaEntrega;
 	private String horaEntrega;
 	private String horaRecogida;
 	private ArrayList<Seguro> lstSeguros;
@@ -18,17 +18,17 @@ public class Reserva
 	private ArrayList<ConductorAdicional> lstConductores;
 	private int dias;
 	private int idReserva;
-	
-	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida,Date fechaEntrega
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias,int idReserva)
+	private Vehiculo vehiculo;
+	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias,int idReserva,Vehiculo vehiculo)
 	{
 		
 		
 		this.estadoTarjeta = estadoTarjeta;
 		this.sedeEntrega = sedeEntrega;
 		this.sedeRecogida = sedeRecogida;
-		this.fechaRecogida = fechaRecogida;
-		this.fechaEntrega = fechaEntrega;
+		this.fechaRecogida = fechaRecogida2;
+		this.fechaEntrega = fechaEntrega2;
 		this.horaEntrega = horaEntrega;
 		this.horaRecogida = horaRecogida;
 		this.lstSeguros = lstSeguros;
@@ -37,6 +37,7 @@ public class Reserva
 		this.lstConductores = lstConductores;
 		this.dias = dias;
 		this.idReserva = idReserva;
+		this.vehiculo = vehiculo;
 	}
 	
 	public boolean getTarjeta()
@@ -44,12 +45,12 @@ public class Reserva
 		return this.estadoTarjeta;
 	}
 	
-	public Date getFechaEntrega()
+	public java.util.Date getFechaEntrega()
 	{
 		return this.fechaEntrega;
 	}
 	
-	public Date getFechaRecogida()
+	public java.util.Date getFechaRecogida()
 	{
 		return this.fechaRecogida;
 	}
@@ -94,7 +95,11 @@ public class Reserva
 		return dias;
 		
 	}
-	
+	public Vehiculo getvehiculo() 
+	{
+		return vehiculo;
+		
+	}
 	public int idReserva() 
 	{
 		return idReserva;
