@@ -16,9 +16,10 @@ public class Reserva
 	private int valorReserva;
 	private ArrayList<ConductorAdicional> lstConductores;
 	private int dias;
+	private int idReserva;
 	
 	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida,String fechaEntrega
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias,int idReserva)
 	{
 		
 		
@@ -34,7 +35,7 @@ public class Reserva
 		this.valorReserva = valorReserva;
 		this.lstConductores = lstConductores;
 		this.dias = dias;
-	
+		this.idReserva = idReserva;
 	}
 	
 	public boolean getTarjeta()
@@ -90,6 +91,12 @@ public class Reserva
 	public int getDias()
 	{
 		return dias;
+		
+	}
+	
+	public int idReserva() 
+	{
+		return idReserva;
 		
 	}
 	public int modValor(int valorNuevo) 
