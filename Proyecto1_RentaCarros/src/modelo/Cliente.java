@@ -1,8 +1,13 @@
 package modelo;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import controlador.CargaDatos;
 
 public class Cliente extends Usuario
@@ -14,7 +19,6 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
-//	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 	
 	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
@@ -47,7 +51,7 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
 	{
 		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias,idReserva);
 		añadirReserva(lstReserva);
@@ -57,6 +61,7 @@ public class Cliente extends Usuario
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 
 	{
 	lstReserva.add(reserva);
+	//sobreEscribirReserva();
 	}
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
@@ -71,18 +76,64 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
-//	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
-//	{
-//		try 
-//		{
-//			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
-//			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
-//		}
-//		catch(Exception e)
-//		{}
-//		return null;
-//		
-//	}
-	
+	private void sobreEscribirReserva(boolean estadoTarjeta,String sedeEntrega,String sedeRecogida,String fechaRecogida,String horaRecogida,
+			String fechaEntrega,String horaEntrega,String lstSeguro,String usuario,int valorReserva,String lstConductores,int dias,int idReserva) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
 
-}
+	    try {
+	        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
+	        horaEntrega+","+lstSeguro+","+usuario+","+Integer.toString(valorReserva)+","+lstConductores+","+Integer.toString(dias)+","+Integer.toBinaryString(idReserva);
+	        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+	{
+		ArrayList<String> lstPlacas = new ArrayList<String>();
+		try 
+		{
+			for (int i = 0; i < carga.getLstReserva().size(); i++) {
+				Reserva res = carga.getLstReserva().get(i);
+				res.getFechaRecogida()
+			}
+			
+			
+			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
+			
+		}
+		catch(Exception e)
+		{}
+		return null;
+		
+	}
+	private boolean fechaEnRango(Date fechaEntregaF,Date fechaRecibidoF,Date fechaRevisar) 
+	{
+		
+        
+        if (fechaRevisar.after(fechaEntregaF) && fechaRevisar.before(fechaRecibidoF)) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+	}
+

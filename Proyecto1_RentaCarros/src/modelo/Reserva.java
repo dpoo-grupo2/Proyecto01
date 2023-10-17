@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Reserva
@@ -7,8 +8,8 @@ public class Reserva
 	private boolean estadoTarjeta;
 	private String sedeEntrega;
 	private String sedeRecogida;
-	private String fechaRecogida;
-	private String fechaEntrega;
+	private Date fechaRecogida;
+	private Date fechaEntrega;
 	private String horaEntrega;
 	private String horaRecogida;
 	private ArrayList<Seguro> lstSeguros;
@@ -18,7 +19,7 @@ public class Reserva
 	private int dias;
 	private int idReserva;
 	
-	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida,String fechaEntrega
+	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida,Date fechaEntrega
 			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias,int idReserva)
 	{
 		
@@ -43,12 +44,12 @@ public class Reserva
 		return this.estadoTarjeta;
 	}
 	
-	public String getFechaEntrega()
+	public Date getFechaEntrega()
 	{
 		return this.fechaEntrega;
 	}
 	
-	public String getFechaRecogida()
+	public Date getFechaRecogida()
 	{
 		return this.fechaRecogida;
 	}
