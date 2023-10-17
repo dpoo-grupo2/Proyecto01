@@ -1,19 +1,12 @@
 package vista;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.CategoriaVehiculo;
-import modelo.Usuario;
-import modelo.Vehiculo;
 import vista.Login;
 
 
@@ -71,17 +64,19 @@ public class AdministradorGeneral {
 			
 			else if(2 == opcion) 
 			{
-				
+				EliminarLineaConPalabra();
+				System.out.println("\nCarro eliminado correctamente...\n");
+				menu(usuario);
 			}
 			
 			else if(3 == opcion) 
 			{
-				
+				menu(usuario);
 			}
 			
 			else if (4 == opcion) 
 			{
-				
+				menu(usuario);
 			}
 			
 			else if (5 == opcion) 
@@ -145,6 +140,46 @@ public class AdministradorGeneral {
 	    }
 	}
 	
+
+	private void eliminarLinea(int numeroLinea) {
+        File inputFile = new File("Proyecto1_RentaCarros/data/PruebaCarros");
+        File tempFile = new File("Proyecto1_RentaCarros/data/tempListaVehiculos.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+
+            String currentLine;
+            int lineCounter = 0;
+
+            while ((currentLine = reader.readLine()) != null) {
+                lineCounter++;
+                if (lineCounter != numeroLinea) {
+                    writer.write(currentLine);
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Rename the temporary file to the original file
+        if (tempFile.renameTo(inputFile)) {
+            System.out.println("Linea eliminada exitosamente.");
+        } else {
+            System.out.println("No se pudo eliminar la linea.");
+        }
+    }
+
+    // Method to prompt user for the line number to delete and call eliminarLinea
+    private void EliminarLineaConPalabra() {
+        try {
+            int numeroLinea = Integer.parseInt(input("Ingrese el número de la línea que desea eliminar: "));
+            eliminarLinea(numeroLinea);
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor, ingrese un número válido.");
+        }
+    }
+
 	
 		
 }

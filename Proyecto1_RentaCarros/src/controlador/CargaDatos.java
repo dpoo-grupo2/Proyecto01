@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import modelo.CategoriaVehiculo;
+import modelo.Reserva;
 import modelo.Sede;
 import modelo.Seguro;
 import modelo.Usuario;
@@ -20,7 +21,7 @@ public class CargaDatos {
 	private static CategoriaVehiculo categoria;
 	private static ArrayList<Sede> lstSedes;
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
-	
+	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -143,6 +144,7 @@ public class CargaDatos {
 		return lstSegurosGeneral;
 		
 	}
+
 
 
 
