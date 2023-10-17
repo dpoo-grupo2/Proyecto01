@@ -12,19 +12,13 @@ public class Cliente extends Usuario
 	private String correoElectronico;
 	private String fechaNacimiento;
 	private Reserva reserva;
-<<<<<<< HEAD
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
-=======
 	private CargaDatos carga;
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 
-<<<<<<< HEAD
+
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
-=======
-	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento)
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	{
 		
 		super(login, password, nombreCompleto,tipoUsuario);
