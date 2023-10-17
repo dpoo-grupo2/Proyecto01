@@ -89,7 +89,6 @@ public class Vehiculo
 	{//nose si toca poner otro atributo que sea "tipo de usuario" para asegurarnos que solo lo puedan mod los que lo tienen permitido
 		estadoActual = nuevoEstado;
 		return estadoActual;
-	}//falta ver esto bien
-
+	}
 
 }

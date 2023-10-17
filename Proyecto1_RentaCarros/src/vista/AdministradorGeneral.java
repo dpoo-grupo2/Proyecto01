@@ -45,7 +45,7 @@ public class AdministradorGeneral {
 			System.out.println("\nBienvenido Administrador general "+usuario+"\n");
 			System.out.println("1- Registrar vehiculo");
 			System.out.println("2- Quitar vehiculo");
-			System.out.println("3- gestionar Seguros");
+			System.out.println("3- Gestionar Seguros");
 			System.out.println("4- Salir");
 			try {
 			opcion = Integer.parseInt(input("Ingrese su opcion "));
@@ -78,7 +78,7 @@ public class AdministradorGeneral {
 			}
 			catch(Exception e) 
 			{
-			System.out.println("esa informacion ed vehiculo esta mal");	
+			System.out.println("La informacion el vehiculo esta mal");	
 			}
 			}
 				menu(usuario);
@@ -93,7 +93,7 @@ public class AdministradorGeneral {
 			else if (4 == opcion) 
 			{
 				System.out.println("\nSaliendo del sistema...");
-	            System.exit(0);
+				break;
 			}
 			
 			else 
@@ -110,10 +110,10 @@ public class AdministradorGeneral {
 		System.out.println("");
 		System.out.println("Menu de seguros");
 		System.out.println("");
-		System.out.println("1- añadir seguro");
-		System.out.println("2- eliminar seguro");
-		System.out.println("3- modificar informacion seguro");
-		System.out.println("4- salir");
+		System.out.println("1- Añadir seguro");
+		System.out.println("2- Eliminar seguro");
+		System.out.println("3- Modificar informacion seguro");
+		System.out.println("4- Salir");
 		try {
 			opcion = Integer.parseInt(input("Ingrese su opcion "));
 			}
@@ -144,24 +144,28 @@ public class AdministradorGeneral {
 			{
 				String nombreSeguro = input("Ingrese el nombre del seguro que desea eliminar: ");
 				boolean resultado = admin.eliminarSeguro(nombreSeguro);
+				File temp = eliminarSeguro(nombreSeguro);
+				File bd = new File("Proyecto1_RentaCarros/data/Seguros.txt");
+				bd.delete();
+				temp.renameTo(bd);
 				if (!resultado)
 				{
-					System.out.println("\nEl seguro no pudo elimianrse con exito");
+					System.out.println("\nEl seguro no pudo eliminarse con exito");
 				}
 				else
 				{
 					System.out.println("\nEl seguro se elimino con exito");
 					centinela = false;
 				}
-				}
+			}
 			else if(3 == opcion) 
 			{
 				centinela = true;
 				while (centinela) {
 				String nombreSeguro = input("Ingrese el nombre del seguro que desea modificar");
 				System.out.println("Menu opciones a modificar");
-				System.out.println("1- nombre");
-				System.out.println("2- valor de seguro");
+				System.out.println("1- Nombre");
+				System.out.println("2- Valor de seguro");
 				try {
 				int opcion = Integer.parseInt(input("->"));
 				
@@ -170,11 +174,11 @@ public class AdministradorGeneral {
 					String nombre = input("Ingrese el nombre por el cual desea modificar el seguro: ");
 					Seguro res = admin.modificarInfo(nombreSeguro, "nombre", nombre);
 					if (res == null) {
-						System.out.println("el seguro no pudo ser modificado con exito");
+						System.out.println("El seguro no pudo ser modificado con exito");
 					}
 					else {
 					System.out.println(res);
-					System.out.println("el seguro fue modificado con exito");
+					System.out.println("El seguro fue modificado con exito");
 					centinela = false;
 				}}
 
@@ -267,30 +271,32 @@ public class AdministradorGeneral {
 	    }
 	}
 	
-
-//	private void eliminarVehiculo (Vehiculo vehiculo)
-//	{
-//		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
-//		{
-//			String line;
-//			String input = "";
-//			while ((line = reader.readLine()) != null) {
-//				String[] carInfo = line. split (", ");
-//				if (vehiculo.getPlaca().equals(carInfo[0])) {
-//				}else {
-//					input += line+" \n";
-//				}
-//			}
-//			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
-//				fileOut.write(input. getBytes ());
-//				fileOut.close();
-//	
-//		}catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	}
-//	
+	public File eliminarSeguro(String nombre) {
+		
+		File lstSeguros = new File ("Proyecto1_RentaCarros/data/Seguros.txt");
+			
+		String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
+		File archivoTemp=new File(nomTemp);
+		try {
+			if(lstSeguros.exists()){
+				BufferedReader br = new BufferedReader(new FileReader(lstSeguros));
+				String linea;
+				while((linea=br .readLine())!=null) {
+					String[] partes = linea.split(",");
+					if (!nombre.equals(partes[0])) {
+	                       escribirArchivo(archivoTemp, linea);
+	                    }           
+	                }
+  	                br.close();
+	            }else{
+	                System.out.println("El archivo no Existe");
+	            }
+	        } catch (Exception ex) {
+	             System.out.println(ex.getMessage());
+	        }
+	        return archivoTemp;
+	}
+	
 	public static  File eliminarVehiculo(Vehiculo vehiculo){        
 
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
@@ -308,8 +314,6 @@ public class AdministradorGeneral {
                        escribirArchivo(archivoTemp, linea);
                     }           
                 }
-                lstVehiculos.delete();
-                archivoTemp.renameTo(lstVehiculos);
                 br.close();
             }else{
                 System.out.println("El archivo no Existe");
@@ -332,6 +336,7 @@ public class AdministradorGeneral {
 		          System.out.println(ex.getMessage());
 		       } 
 	}
+	
 	private void sobreEscribirSeguros(String nombreSeguro,int valorSeguro) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
