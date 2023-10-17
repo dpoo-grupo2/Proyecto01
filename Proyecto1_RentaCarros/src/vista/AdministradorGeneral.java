@@ -65,6 +65,7 @@ public class AdministradorGeneral {
 			
 			else if(2 == opcion) 
 			{{try {
+				
 				eliminarVehiculo(admin.eliminarVehiculo(sedes, "sedeCentro", "ABC123", "alquilado", 1));
 				System.out.println("\nCarro eliminado correctamente...\n");
 			}
@@ -126,6 +127,7 @@ public class AdministradorGeneral {
 	            }
 	            else {
 	            	System.out.println("\nEl seguro fue agregado con exito...");
+	            	sobreEscribirSeguros(nombreSeguro,valorSeguro);
 		            centinela=false;
 	            }
 	            
@@ -259,26 +261,99 @@ public class AdministradorGeneral {
 	}
 	
 
-	private void eliminarVehiculo (Vehiculo vehiculo)
-	{
-		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
-		{
-			String line;
-			String input = "";
-			while ((line = reader.readLine()) != null) {
-				String[] carInfo = line. split (", ");
-				if (vehiculo.getPlaca().equals(carInfo[0])) {
-				}else {
-					input += line+" \n";
-				}
-			}
-			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
-				fileOut.write(input. getBytes ());
-				fileOut.close();
-	
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void eliminarVehiculo (Vehiculo vehiculo)
+//	{
+//		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
+//		{
+//			String line;
+//			String input = "";
+//			while ((line = reader.readLine()) != null) {
+//				String[] carInfo = line. split (", ");
+//				if (vehiculo.getPlaca().equals(carInfo[0])) {
+//				}else {
+//					input += line+" \n";
+//				}
+//			}
+//			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
+//				fileOut.write(input. getBytes ());
+//				fileOut.close();
+//	
+//		}catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
+//	
+	public static  void eliminarVehiculo(Vehiculo vehiculo){        
 
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
+		
+        String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
+        File archivoTemp=new File(nomTemp);
+        String placa = vehiculo.getPlaca();
+        try {
+            if(lstVehiculos.exists()){
+                BufferedReader br = new BufferedReader(new FileReader(lstVehiculos));
+                String linea;
+                while((linea=br .readLine())!=null) {
+                	String[] partes = linea.split(",");
+                	if (!placa.equals(partes[0])) {
+                       escribirArchivo(archivoTemp, linea);
+                    }           
+                }
+                lstVehiculos.delete();
+                archivoTemp.renameTo(lstVehiculos);
+                System.out.println("lega hasya aqui");
+                br.close();
+            }else{
+                System.out.println("El archivo no Existe");
+            }
+        } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+        }
+    }
+	
+	public static void escribirArchivo(File archivo,String info){
+		  try {
+		           if(!archivo.exists()){
+		               archivo.createNewFile();
+		           }
+		          BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo,true), "utf-8"));
+		          bw.write(info + "\r\n");
+		          bw.close();
+		       } catch (Exception ex) { 
+		          System.out.println(ex.getMessage());
+		       } 
+	}
+	private void sobreEscribirSeguros(String nombreSeguro,int valorSeguro) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+nombreSeguro+","+Integer.toString(valorSeguro);
+	        System.out.println(data);
+	        File file = new File("Proyecto1_RentaCarros/data/Seguros.txt");
+	        System.out.println(file);
+	        System.out.println("-----------");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	    	System.out.println("PANA ESTE ES EL PUTO ERROR");
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
 }

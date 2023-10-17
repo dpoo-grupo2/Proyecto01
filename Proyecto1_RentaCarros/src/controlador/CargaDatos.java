@@ -50,12 +50,11 @@ public class CargaDatos {
                     String idCategoria = partes[10].trim();
                     try {
                         
-                        System.out.println(placa+", "+color+", "+marca+", "+modelo+", "+anio+", "+transmicion+", "+gpsVehiculo+", "+estadoActual+", "+capacidadPersonas+", "+categoria+", "+idCategoria);
+                   
                         Vehiculo vel = new Vehiculo(placa, color, marca, modelo, Integer.parseInt(anio), transmicion, gpsVehiculo, estadoActual, Integer.parseInt(capacidadPersonas), categoria, Integer.parseInt(idCategoria));
                         addSede(vel);
-                        System.out.println(sedes);
                     } catch (NumberFormatException e) {
-                        System.out.println("Error");
+
                     }
                 } 
             }
@@ -131,7 +130,6 @@ public class CargaDatos {
                     usuarios.put(usuario,clsUsuario);
                 } 
             }
-            System.out.println(usuarios);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -180,7 +178,6 @@ public class CargaDatos {
                     clientes.put(usuario,clsCliente);
                 } 
             }
-            System.out.println(clientes);
         } catch (Exception e) {
             e.printStackTrace();
         }

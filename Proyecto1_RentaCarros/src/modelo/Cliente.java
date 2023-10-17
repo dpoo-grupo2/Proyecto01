@@ -14,13 +14,14 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
+//	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
+	
 	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 
 
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
 	{
-		
 		super(login, password, nombreCompleto,tipoUsuario);
 		this.edad = edad;
 		this.cedula = cedula;
@@ -70,18 +71,18 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
-	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
-	{
-		try 
-		{
-			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
-			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
-		}
-		catch(Exception e)
-		{}
-		return null;
-		
-	}
+//	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+//	{
+//		try 
+//		{
+//			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+//			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
+//		}
+//		catch(Exception e)
+//		{}
+//		return null;
+//		
+//	}
 	
 
 }
