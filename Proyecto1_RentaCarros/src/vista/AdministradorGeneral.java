@@ -286,7 +286,7 @@ public class AdministradorGeneral {
         
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
 		
-        String nomTemp="temp.txt";
+        String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
         File archivoTemp=new File(nomTemp);
         String placa = vehiculo.getPlaca();
         try {
@@ -301,9 +301,10 @@ public class AdministradorGeneral {
                 }
                 lstVehiculos.delete();
                 archivoTemp.renameTo(lstVehiculos);
+                System.out.println("lega hasya aqui");
                 br.close();
             }else{
-                System.out.println("Fichero No Existe");
+                System.out.println("El archivo no Existe");
             }
         } catch (Exception ex) {
              System.out.println(ex.getMessage());
