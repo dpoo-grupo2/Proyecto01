@@ -9,9 +9,9 @@ public class Sede
 	private String direccionSede;
 	private String horarioAtencion;
 	private AdministradorLocal adminL; 
-	private HashMap<String,HashMap<String,CategoriaVehiculo>> mapEstadoVehiculo;//mapa de estados
+	private HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstadoVehiculo;//mapa de estados
 	
-	 public Sede(String nombreSede, String direccionSede, String horarioAtencion, AdministradorLocal adminL, HashMap<String, HashMap<String, CategoriaVehiculo>> mapEstadoVehiculo) 
+	 public Sede(String nombreSede, String direccionSede, String horarioAtencion, AdministradorLocal adminL, HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstadoVehiculo) 
 	 {
 	        this.nombreSede = nombreSede;
 	        this.direccionSede = direccionSede;
@@ -37,7 +37,7 @@ public class Sede
 	        return adminL;
 	    }
 
-	    public HashMap<String, HashMap<String, CategoriaVehiculo>> getMapEstadoVehiculo() {
+	    public HashMap<String,HashMap<Integer,CategoriaVehiculo>> getMapEstadoVehiculo() {
 	        return mapEstadoVehiculo;
 	    }
 }

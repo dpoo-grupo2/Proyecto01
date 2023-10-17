@@ -119,11 +119,9 @@ public class Cliente extends Usuario
 					lstPlacas.add(placa);
 				}
 			}
-			
-			
 			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
 			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
-			
+			CategoriaVehiculo lstCatE = mapCategoria.get(categoria);
 		}
 		catch(Exception e)
 		{}
@@ -139,5 +137,5 @@ public class Cliente extends Usuario
         } else {
             return false;
         }
-	}
+	}}
 

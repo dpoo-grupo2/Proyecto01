@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import modelo.AdministradorLocal;
 import modelo.CategoriaVehiculo;
 import modelo.Cliente;
 import modelo.LicenciaConduccion;
@@ -20,9 +21,8 @@ import modelo.Usuario;
 import modelo.Vehiculo;
 
 public class CargaDatos { 
-	private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = new HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>>();
+	private static HashMap<String,Sede> sedes = new HashMap<String,Sede>();
 	private static CategoriaVehiculo categoria;
-	private static ArrayList<Sede> lstSedes;
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	public void cargarInformacionVehiculos(String string) 
@@ -80,38 +80,42 @@ public class CargaDatos {
     	
     }
     
-    private static HashMap<String,HashMap<Integer,CategoriaVehiculo>> addCategoriaDisponibilidad(HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad,Vehiculo vehiculo)
+    private static HashMap<String,HashMap<Integer,CategoriaVehiculo>> addCategoriaDisponibilidad(Sede objSede,Vehiculo vehiculo)
     {
-    	if (!disponibilidad.containsKey(vehiculo.getEstado())) 
+    	HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstadoVehiculo =objSede.getMapEstadoVehiculo();
+    	if (!mapEstadoVehiculo.containsKey(vehiculo.getEstado())) 
     	{
     		HashMap<Integer,CategoriaVehiculo> mapCat = new HashMap<Integer,CategoriaVehiculo>(); 
-    		disponibilidad.put(vehiculo.getEstado(),mapCat);
+    		mapEstadoVehiculo.put(vehiculo.getEstado(),mapCat);
     	}
-    	HashMap<Integer,CategoriaVehiculo> map2 = disponibilidad.get(vehiculo.getEstado());
+    	HashMap<Integer,CategoriaVehiculo> map2 = mapEstadoVehiculo.get(vehiculo.getEstado());
     	addVehiculoCat(map2,vehiculo);
     	
-		return disponibilidad;	
+		return mapEstadoVehiculo;	
     }
     
-    private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSede(Vehiculo vehiculo)
+    private static HashMap<String,Sede> addSede(Vehiculo vehiculo)
     {
     	
+    	Sede sede = new Sede(vehiculo.getGps(),"No hay dirección","No hay horario",null,null);
     	if (!sedes.containsKey(vehiculo.getGps())) 
     	{	
+    		AdministradorLocal adminLocal = null;
     		HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad = new HashMap<String,HashMap<Integer,CategoriaVehiculo>>();
-//    		sede = new Sede();
-//    		lstSedes.add(sede);
-    		sedes.put(vehiculo.getGps(),disponibilidad);
+    		sede = new Sede(vehiculo.getGps(),"No hay dirección","No hay horario",adminLocal,disponibilidad);
+    		
+    		sedes.put(vehiculo.getGps(),sede);
     	}
-    	HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad2 = sedes.get(vehiculo.getGps());
-    	addCategoriaDisponibilidad(disponibilidad2,vehiculo);
+    	Sede objSede = sedes.get(vehiculo.getGps());
+    	addCategoriaDisponibilidad(objSede,vehiculo);
     	
 		return sedes;
     	
     }
     
-    
-    public HashMap<String, Usuario> cargarInformacionUsuarios(String string) {
+
+
+	public HashMap<String, Usuario> cargarInformacionUsuarios(String string) {
     	return cargarUsuarios(new File (string));
     }
 
@@ -184,7 +188,7 @@ public class CargaDatos {
 		return clientes;
 	}
 	
-	public HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> getSedes()
+	public HashMap<String,Sede> getSedes()
 	{
 		return sedes;
 		
