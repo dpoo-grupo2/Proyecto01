@@ -18,6 +18,17 @@ public class Seguro
     public int getValorSeguro() {
         return valorSeguro;
     }
+    public int modValor(int nuevoValor) 
+    {
+    	valorSeguro = nuevoValor;
+		return valorSeguro;
+    }
+    public String modNombre(String nuevoNombre) 
+    {
+    	nombreSeguro=nuevoNombre;
+		return nombreSeguro;
+    	
+    }
     
     
 }
