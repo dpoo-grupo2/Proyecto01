@@ -66,34 +66,34 @@ private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSe
 
 public Vehiculo eliminarVehiculo(HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes,String sede,String placa,String disponibilidad,int idCategoria)
 {
-try{
-HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = sedes.get(sede);
-HashMap<Integer,CategoriaVehiculo> mapCategoria = dispon.get(disponibilidad);
-CategoriaVehiculo categoria = mapCategoria.get(idCategoria);
-ArrayList<Vehiculo> lstVehiculos = categoria.getLst();
-int pos = 0;
-for (int i = 0; i < lstVehiculos.size(); i++) {
-	if (lstVehiculos.get(i).getPlaca().equals(placa))
-	{
-	pos = i;
-	break;
+	try{
+		HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = sedes.get(sede);
+		HashMap<Integer,CategoriaVehiculo> mapCategoria = dispon.get(disponibilidad);
+		CategoriaVehiculo categoria = mapCategoria.get(idCategoria);
+		ArrayList<Vehiculo> lstVehiculos = categoria.getLst();
+		int pos = 0;
+		for (int i = 0; i < lstVehiculos.size(); i++) {
+			if (lstVehiculos.get(i).getPlaca().equals(placa))
+			{
+			pos = i;
+			break;
+			}
+		}
+		if (!lstVehiculos.get(pos).getPlaca().equals(placa))
+		{
+		return null;
+		}
+		else
+		{
+			Vehiculo vehiculo= lstVehiculos.get(pos);
+			lstVehiculos.remove(pos);
+			return vehiculo;
+		}
 	}
-}
-if (!lstVehiculos.get(pos).getPlaca().equals(placa))
-{
-return null;
-}
-else
-{
-Vehiculo vehiculo= lstVehiculos.get(pos);
-lstVehiculos.remove(pos);
-return vehiculo;
-}
-}
-catch(Exception e)
-{
-	return null;
-}
+	catch(Exception e)
+	{
+		return null;
+	}
 }
 
 public boolean añadirElementSeguros(Seguro nuevoSeguro)

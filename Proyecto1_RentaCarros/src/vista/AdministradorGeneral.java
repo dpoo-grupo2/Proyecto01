@@ -148,26 +148,67 @@ public class AdministradorGeneral {
 	}
 	
 
-	private void eliminarVehiculo (Vehiculo vehiculo)
-	{
-		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
-		{
-			String line;
-			String input = "";
-			while ((line = reader.readLine()) != null) {
-				String[] carInfo = line. split (", ");
-				if (vehiculo.getPlaca().equals(carInfo[0])) {
-				}else {
-					input += line+" \n";
-				}
-			}
-			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
-				fileOut.write(input. getBytes ());
-				fileOut.close();
+//	private void eliminarVehiculo (Vehiculo vehiculo)
+//	{
+//		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
+//		{
+//			String line;
+//			String input = "";
+//			while ((line = reader.readLine()) != null) {
+//				String[] carInfo = line. split (", ");
+//				if (vehiculo.getPlaca().equals(carInfo[0])) {
+//				}else {
+//					input += line+" \n";
+//				}
+//			}
+//			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
+//				fileOut.write(input. getBytes ());
+//				fileOut.close();
+//	
+//		}catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
+//	
+	public static  void eliminarVehiculo(Vehiculo vehiculo){        
+        
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
+		
+        String nomTemp="temp.txt";
+        File archivoTemp=new File(nomTemp);
+        String placa = vehiculo.getPlaca();
+        try {
+            if(lstVehiculos.exists()){
+                BufferedReader br = new BufferedReader(new FileReader(lstVehiculos));
+                String linea;
+                while((linea=br .readLine())!=null) {
+                	String[] partes = linea.split(",");
+                	if (!placa.equals(partes[0])) {
+                       escribirArchivo(archivoTemp, linea);
+                    }           
+                }
+                lstVehiculos.delete();
+                archivoTemp.renameTo(lstVehiculos);
+                br.close();
+            }else{
+                System.out.println("Fichero No Existe");
+            }
+        } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+        }
+    }
 	
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
+	public static void escribirArchivo(File archivo,String info){
+		  try {
+		           if(!archivo.exists()){
+		               archivo.createNewFile();
+		           }
+		          BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo,true), "utf-8"));
+		          bw.write(info + "\r\n");
+		          bw.close();
+		       } catch (Exception ex) { 
+		          System.out.println(ex.getMessage());
+		       } 
 	}
-
 }
