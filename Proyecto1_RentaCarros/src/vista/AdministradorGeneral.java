@@ -1,20 +1,28 @@
 package vista;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 
 import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.CategoriaVehiculo;
+import modelo.Usuario;
 import modelo.Vehiculo;
+import vista.Login;
+
 
 public class AdministradorGeneral {
 	private int opcion;
 	private boolean centinela;
 	private Administrador admin = new Administrador();
-	private Vehiculo culo;
+
+	
 	
 	public CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
@@ -55,8 +63,10 @@ public class AdministradorGeneral {
 			
 			if (1 == opcion) 
 			{
-				culo =admin.registrarVehiculo("TU MAMA EN 4","rojo","Chevrolet","Spark",2020,"mecanico","sedeCentro","alquilado",4,"pequenio",1,sedes);
-				System.out.println(culo.getPlaca());
+				ejecutarRegistrarCarro();
+				System.out.println("\nCarro registrado correctamente...\n");
+				menu(usuario);
+	            
 			}
 			
 			else if(2 == opcion) 
@@ -85,5 +95,56 @@ public class AdministradorGeneral {
 				System.out.println("Esa no es una opcion");
 			}
 		}
-	}	
+	}
+	
+	private void ejecutarRegistrarCarro() {
+		
+		String placa = input("\nIngrese la placa del vehiculo ");
+		String color = input("Ingrese  el color del vehiculo ");
+		String marca = input("Ingrese  la marcad del vehiculo ");
+		String modelo = input("Ingrese el modelo del vehiculo ");
+		int anio = Integer.parseInt(input("Ingrese el anio en el cual se fabrico el vehiculo "));
+		String transmision = input("Ingrese la transmision del vehiculo ");
+		String gpsVehiculo = input("Ingrese la sede en donde estara el vehiculo ");
+		String estadoActual = input("Ingrese  el estado del vehiculo ");
+		String capacidadPersonas = input("Ingrese la capacidad de personas que tiene el vehiculo ");
+		String Categoria = input("Ingrese la categoria del vehiculo ");
+		String idCategoria = input("Ingrese el ID de la categoria");
+		
+		sobreEscribirData(placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria);
+		
+	}
+	
+	private void sobreEscribirData(String placa,String color,String marca,String modelo,Integer anio,String transmision,
+			String gpsVehiculo,String estadoActual,String capacidadPersonas, String Categoria,String idCategoria) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+placa+","+color+","+marca+","+modelo+","+anio+","+transmision+","+gpsVehiculo+","+
+	    estadoActual+","+capacidadPersonas+","+Categoria+","+idCategoria;
+	        File file = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+	
+	
+		
 }

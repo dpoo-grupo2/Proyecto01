@@ -32,8 +32,8 @@ public class AdminLocal {
 		while (centinela) {
 			
 			System.out.println("\nBienvenido Administrador local "+usuario+"\n");
-			System.out.println("1- Registrar y gestionar empleados");
-			System.out.println("2- Crear usuarios");
+			System.out.println("1- Gestionar empleados");
+			System.out.println("2- Crear empleados");
 			System.out.println("3- Controlar inventario");
 			System.out.println("4- Salir");
 			

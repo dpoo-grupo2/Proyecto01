@@ -106,9 +106,6 @@ public class ClienteVista {
 	                System.out.println("Opción de sede no válida.");	                
 	            }
 	            
-	            System.out.println("\nReserva registrada exitosamente en el sistema...");
-	            System.exit(0);
-	            
 	           	                 
 	        } 
 	        
@@ -162,6 +159,7 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
+		        	
 		        }
 		        
 		        else if (opcion == 4) 
@@ -169,7 +167,6 @@ public class ClienteVista {
 		        	Categoria = "Lujo";
 		        	fechaRecogida();
 		        	fechaEntrega();
-		        	System.out.println("hola");
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        }
@@ -283,5 +280,15 @@ public class ClienteVista {
 	        }
 	    }
 	}
+	
+	
+	public void VerificarDisponibilidad()
+	{
+		
+	}
+	
+	
+	
+	
 	
 }
