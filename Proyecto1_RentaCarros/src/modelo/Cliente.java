@@ -21,7 +21,7 @@ public class Cliente extends Usuario
 	private MedioPago medioPago;
 	
 	private CargaDatos carga = new CargaDatos();
-	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
+	private HashMap<String,Sede> sedes = carga.getSedes();
 
 
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
@@ -119,9 +119,20 @@ public class Cliente extends Usuario
 					lstPlacas.add(placa);
 				}
 			}
-			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+			Sede objSede = sedes.get(sede);
+			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = objSede.getMapEstadoVehiculo();
 			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
-			CategoriaVehiculo lstCatE = mapCategoria.get(categoria);
+			CategoriaVehiculo objCategoria = mapCategoria.get(categoria);
+			boolean Estado = false;
+			for (int i = 0; i < objCategoria.getLst().size(); i++) {
+				if (!lstPlacas.contains(objCategoria.getLst().get(i).getPlaca())) 
+				{
+					Estado = true;
+					break;
+				}
+				
+			}
+			
 		}
 		catch(Exception e)
 		{}
