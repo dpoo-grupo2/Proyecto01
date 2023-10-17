@@ -1,6 +1,9 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import controlador.CargaDatos;
 
 public class Cliente extends Usuario
 {
@@ -9,9 +12,12 @@ public class Cliente extends Usuario
 	private String correoElectronico;
 	private String fechaNacimiento;
 	private Reserva reserva;
+	private CargaDatos carga;
+	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 
-	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento) // falta implementar usuario
+	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento)
 	{
+		
 		super(login, password, nombreCompleto,tipoUsuario);
 		this.edad = edad;
 		this.cedula = cedula;
@@ -58,10 +64,18 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
-//	public Vehiculo verDisponiblidad(String sede,String categoria,fecha) 
-//	{
-//		
-//	}
+	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+	{
+		try 
+		{
+			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
+		}
+		catch(Exception e)
+		{}
+		return null;
+		
+	}
 	
 
 }

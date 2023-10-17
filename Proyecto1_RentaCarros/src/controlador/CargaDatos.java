@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 import modelo.CategoriaVehiculo;
+import modelo.Sede;
+import modelo.Seguro;
 import modelo.Usuario;
 import modelo.Vehiculo;
 
 public class CargaDatos { 
 	private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = new HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>>();
 	private static CategoriaVehiculo categoria;
-	
+	private static ArrayList<Sede> lstSedes;
+	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	
 	public void cargarInformacionVehiculos(String string) 
 	{
@@ -91,8 +94,10 @@ public class CargaDatos {
     {
     	
     	if (!sedes.containsKey(vehiculo.getGps())) 
-    	{
+    	{	
     		HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad = new HashMap<String,HashMap<Integer,CategoriaVehiculo>>();
+//    		sede = new Sede();
+//    		lstSedes.add(sede);
     		sedes.put(vehiculo.getGps(),disponibilidad);
     	}
     	HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad2 = sedes.get(vehiculo.getGps());
@@ -131,6 +136,11 @@ public class CargaDatos {
 	public HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> getSedes()
 	{
 		return sedes;
+		
+	}
+	public ArrayList<Seguro> getLstSeguro()
+	{
+		return lstSegurosGeneral;
 		
 	}
 
