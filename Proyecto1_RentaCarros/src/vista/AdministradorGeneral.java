@@ -141,45 +141,26 @@ public class AdministradorGeneral {
 	}
 	
 
-	private void eliminarLinea(int numeroLinea) {
-        File inputFile = new File("Proyecto1_RentaCarros/data/PruebaCarros");
-        File tempFile = new File("Proyecto1_RentaCarros/data/tempListaVehiculos.txt");
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
-
-            String currentLine;
-            int lineCounter = 0;
-
-            while ((currentLine = reader.readLine()) != null) {
-                lineCounter++;
-                if (lineCounter != numeroLinea) {
-                    writer.write(currentLine);
-                    writer.newLine();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Rename the temporary file to the original file
-        if (tempFile.renameTo(inputFile)) {
-            System.out.println("Linea eliminada exitosamente.");
-        } else {
-            System.out.println("No se pudo eliminar la linea.");
-        }
-    }
-
-    // Method to prompt user for the line number to delete and call eliminarLinea
-    private void EliminarLineaConPalabra() {
-        try {
-            int numeroLinea = Integer.parseInt(input("Ingrese el número de la línea que desea eliminar: "));
-            eliminarLinea(numeroLinea);
-        } catch (NumberFormatException e) {
-            System.out.println("Por favor, ingrese un número válido.");
-        }
-    }
-
+	private void eliminarVehiculo (Vehiculo vehiculo)
+	{
+		try (BufferedReader reader = new BufferedReader (new FileReader ("Proyecto1_RentaCarros/data/PruebaCarros")))
+		{
+			String line;
+			String input = "";
+			while ((line = reader.readLine()) != null) {
+				String[] carInfo = line. split (", ");
+				if (vehiculo. getvehiculoId().equals (carInfo[0])) {
+				}else {
+					input += line+" \n";
+				}
+			}
+			FileOutputStream fileOut = new FileOutputStream ("Proyecto1_RentaCarros/data/PruebaCarros");
+				fileOut.write(input. getBytes ());
+				fileOut.close();
 	
-		
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
