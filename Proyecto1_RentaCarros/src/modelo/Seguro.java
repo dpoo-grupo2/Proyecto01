@@ -29,6 +29,11 @@ public class Seguro
 		return nombreSeguro;
     	
     }
-    
+    public String toString() 
+    {
+    	
+		return "Nombre seguro: "+nombreSeguro+", Valor seguro"+valorSeguro;
+    	
+    }
     
 }

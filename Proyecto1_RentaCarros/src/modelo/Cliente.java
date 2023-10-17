@@ -12,10 +12,13 @@ public class Cliente extends Usuario
 	private String correoElectronico;
 	private String fechaNacimiento;
 	private Reserva reserva;
-	private CargaDatos carga;
+	private LicenciaConduccion licencia;
+	private MedioPago medioPago;
+	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 
-	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento)
+
+	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
 	{
 		
 		super(login, password, nombreCompleto,tipoUsuario);
@@ -23,6 +26,8 @@ public class Cliente extends Usuario
 		this.cedula = cedula;
 		this.correoElectronico = correoElectronico;
 		this.fechaNacimiento = fechaNacimiento;
+		this.licencia = licencia;
+		this.medioPago = medioPago;
 	}
 	
 	public Integer getEdad() 
