@@ -7,6 +7,7 @@ import java.util.Map;
 import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.CategoriaVehiculo;
+import modelo.Vehiculo;
 import vista.Login;
 
 
@@ -63,9 +64,15 @@ public class AdministradorGeneral {
 			}
 			
 			else if(2 == opcion) 
-			{
-				EliminarLineaConPalabra();
+			{{try {
+				eliminarVehiculo(admin.eliminarVehiculo(sedes, "sedeCentro", "ABC123", "alquilado", 1));
 				System.out.println("\nCarro eliminado correctamente...\n");
+			}
+			catch(Exception e) 
+			{
+			System.out.println("esa informacion ed vehiculo esta mal");	
+			}
+			}
 				menu(usuario);
 			}
 			
@@ -149,7 +156,7 @@ public class AdministradorGeneral {
 			String input = "";
 			while ((line = reader.readLine()) != null) {
 				String[] carInfo = line. split (", ");
-				if (vehiculo. getvehiculoId().equals (carInfo[0])) {
+				if (vehiculo.getPlaca().equals(carInfo[0])) {
 				}else {
 					input += line+" \n";
 				}

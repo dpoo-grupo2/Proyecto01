@@ -64,7 +64,7 @@ private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSe
 }
 
 
-public boolean eliminarVehiculo(HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes,String sede,String placa,String disponibilidad,int idCategoria)
+public Vehiculo eliminarVehiculo(HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes,String sede,String placa,String disponibilidad,int idCategoria)
 {
 try{
 HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = sedes.get(sede);
@@ -81,17 +81,18 @@ for (int i = 0; i < lstVehiculos.size(); i++) {
 }
 if (!lstVehiculos.get(pos).getPlaca().equals(placa))
 {
-return false;
+return null;
 }
 else
 {
+Vehiculo vehiculo= lstVehiculos.get(pos);
 lstVehiculos.remove(pos);
-return true;
+return vehiculo;
 }
 }
 catch(Exception e)
 {
-	return false;
+	return null;
 }
 }
 
