@@ -31,16 +31,16 @@ public class Login {
 	
 	private void ejecutarAplicacion()
 	{
-		System.out.println("\n-----------------Bienvenido a Car Rental-----------------\n");
-    	System.out.println("1. Iniciar sesion");
-    	System.out.println("2. Registrarse");
-
 		boolean continuar = true;
 		while (continuar)
 		{
+			System.out.println("\n-----------------Bienvenido a Car Rental-----------------\n");
+			System.out.println("1. Iniciar sesion");
+			System.out.println("2. Registrarse");
+			
 			try
 			{
-				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
+				int opcion_seleccionada = Integer.parseInt(input("\nPor favor seleccione una opción"));
 				if (opcion_seleccionada == 1)
 					ejecutarIniciarSesion();
 				else if (opcion_seleccionada == 2 && usuarios != null)
@@ -51,7 +51,7 @@ public class Login {
 				}
 				else
 				{
-					System.out.println("Por favor seleccione una opción válida.");
+					System.out.println("\nPor favor seleccione una opción válida.");
 				}
 			}
 			catch (NumberFormatException e)
@@ -208,5 +208,6 @@ public class Login {
 		HashMap<String,Cliente> clientes = cargaDatos.cargarInformacionClientes("Proyecto1_RentaCarros/data/Clientes.txt");
 		this.usuarios = usuarios;		
 		this.clientes = clientes;
+		System.out.println("");
 	}
 }

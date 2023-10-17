@@ -51,3 +51,5 @@ SEX069,violeta,Susuki,Swift,2020,mecanico,sedeNorte,mantenimiento,5,pequenio,1
 TAS690,gris,Nissan,March,2022,mecanico,sedeSur,limpieza,5,pequenio,1
 q,w,e,r,1,q,w,e,r,t,r
 11,1,1,1,1,1,1,1,1,,1
+1,1,,1,1,1,1,,1,1,1
+1,1,1,1,1,1,,1,1,1,1

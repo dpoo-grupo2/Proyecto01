@@ -5,12 +5,14 @@ public class ConductorAdicional
 	private String nombres;
 	private String telefono;
 	private String correoElectronico;
-	 
-	public ConductorAdicional(String nombres, String telefono, String correoElectronico) 
+	private LicenciaConduccion licencia; 
+	
+	public ConductorAdicional(String nombres, String telefono, String correoElectronico, LicenciaConduccion licencia) 
 	{
 	       this.nombres = nombres;
 	       this.telefono = telefono;
 	       this.correoElectronico = correoElectronico;
+	       this.licencia = licencia;
 	}
 	 
 	public String getNombres() 
@@ -26,5 +28,9 @@ public class ConductorAdicional
 	public String getCorreoElectronico() 
 	{
 	       return correoElectronico;
+	}
+	
+	public LicenciaConduccion getLicencia() {
+		return licencia;
 	}
 }
