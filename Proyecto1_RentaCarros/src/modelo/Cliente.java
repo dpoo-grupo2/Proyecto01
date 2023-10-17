@@ -14,9 +14,16 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
+<<<<<<< HEAD
 	private CargaDatos carga;
 //	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
 	
+=======
+	private CargaDatos carga = new CargaDatos();
+	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
+
+
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
 	{
 		super(login, password, nombreCompleto,tipoUsuario);

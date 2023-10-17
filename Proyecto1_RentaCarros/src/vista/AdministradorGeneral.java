@@ -7,6 +7,7 @@ import java.util.Map;
 import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.CategoriaVehiculo;
+import modelo.Seguro;
 import modelo.Vehiculo;
 import vista.Login;
 
@@ -45,8 +46,7 @@ public class AdministradorGeneral {
 			System.out.println("1- Registrar vehiculo");
 			System.out.println("2- Quitar vehiculo");
 			System.out.println("3- gestionar Seguros");
-			System.out.println("4- Modificar informacion sede");
-			System.out.println("5- Salir");
+			System.out.println("4- Salir");
 			try {
 			opcion = Integer.parseInt(input("Ingrese su opcion "));
 			}
@@ -78,15 +78,11 @@ public class AdministradorGeneral {
 			
 			else if(3 == opcion) 
 			{
+				menuSeguro(usuario);
 				menu(usuario);
 			}
 			
 			else if (4 == opcion) 
-			{
-				menu(usuario);
-			}
-			
-			else if (5 == opcion) 
 			{
 				System.out.println("\nSaliendo del sistema...");
 	            System.exit(0);
@@ -98,7 +94,122 @@ public class AdministradorGeneral {
 			}
 		}
 	}
+	private void menuSeguro(String usuario) 
+	{	
+		centinela = true;
 	
+	while (centinela) {
+		System.out.println("");
+		System.out.println("Menu de seguros");
+		System.out.println("");
+		System.out.println("1- añadir seguro");
+		System.out.println("2- eliminar seguro");
+		System.out.println("3- modificar informacion seguro");
+		System.out.println("4- salir");
+		try {
+			opcion = Integer.parseInt(input("Ingrese su opcion "));
+			}
+			catch(Exception e)
+			{
+				System.out.println("Recuerde que debe ingresar un numero entre 1 y 4");
+			}
+			if (1 == opcion) 
+			{
+				String nombreSeguro = input("Ingrese el nombre del seguro que desea añadir: ");
+				int valorSeguro = Integer.parseInt(input("Ingrese el valor del seguro que desea añadir: "));
+	            Seguro objSeguro = new Seguro(nombreSeguro,valorSeguro);
+	            boolean resultado = admin.añadirElementSeguros(objSeguro);
+	            if (!resultado) 
+	            {
+	            	System.out.println("\nEl seguro no se pudo añadir con exito");
+
+	            }
+	            else {
+	            	System.out.println("\nEl seguro fue agregado con exito...");
+		            centinela=false;
+	            }
+	            
+
+			}
+			else if (2 == opcion) 
+			{
+				String nombreSeguro = input("Ingrese el nombre del seguro que desea eliminar: ");
+				boolean resultado = admin.eleminiarSeguro(nombreSeguro);
+				if (!resultado)
+				{
+					System.out.println("\nEl seguro no pudo elimianrse con exito");
+				}
+				else
+				{
+					System.out.println("\nEl seguro se elimino con exito");
+					centinela = false;
+				}
+				}
+			else if(3 == opcion) 
+			{
+				centinela = true;
+				while (centinela) {
+				String nombreSeguro = input("Ingrese el nombre del seguro que desea modificar");
+				System.out.println("Menu opciones a modificar");
+				System.out.println("1- nombre");
+				System.out.println("2- valor de seguro");
+				try {
+				int opcion = Integer.parseInt(input("->"));
+				
+				if (opcion == 1) 
+				{
+					String nombre = input("Ingrese el nombre por el cual desea modificar el seguro: ");
+					Seguro res = admin.modificarInfo(nombreSeguro, "nombre", nombre);
+					if (res == null) {
+						System.out.println("el seguro no pudo ser modificado con exito");
+					}
+					else {
+					System.out.println(res);
+					System.out.println("el seguro fue modificado con exito");
+					centinela = false;
+				}}
+
+					
+				
+				else if (opcion == 2)
+				{
+					int valor = Integer.parseInt(input("Ingrese el valor por el cual desea cambiar"));
+					Seguro res =admin.modificarInfo(nombreSeguro, "valor", Integer.toString(valor));
+						if (res == null) 
+						{
+							System.out.println("el seguro no pudo ser modificado.");
+						}
+						else {
+						System.out.println(res);
+						System.out.println("el seguro fue modificado con exito");
+						centinela = false;
+						}
+				}
+			
+				
+				else 
+				{
+					System.out.println("\nRecuerde que el valor debe ser 1 o 2");
+					
+				}
+				
+				
+				}
+				catch(Exception e) 
+				{
+					System.out.println("\nRecuerde que debe ser un numero");
+				}
+				}
+	
+			}
+			else if (opcion == 4) 
+			{
+				centinela = false;
+			}
+			
+
+	}
+	}
 	private void ejecutarRegistrarCarro() {
 		
 		String placa = input("\nIngrese la placa del vehiculo ");

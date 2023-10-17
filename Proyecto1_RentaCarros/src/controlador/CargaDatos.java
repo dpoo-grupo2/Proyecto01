@@ -201,8 +201,11 @@ public class CargaDatos {
 		return lstReservas;
 		
 	}
-
-
+public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
+{
+	lstSegurosGeneral = lstNuevo;
+	return lstSegurosGeneral; 
+}
 
 
 }

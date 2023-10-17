@@ -100,6 +100,7 @@ public boolean añadirElementSeguros(Seguro nuevoSeguro)
 {
 try{
 	lstSeguroGrande.add(nuevoSeguro);
+	carga.settteLstSeguros(lstSeguroGrande);
 	return true;
 	}
 catch(Exception e)
@@ -120,6 +121,7 @@ for (int i = 0; i < lstSeguroGrande.size(); i++) {
 	
 }
 lstSeguroGrande.remove(pos);
+carga.settteLstSeguros(lstSeguroGrande);
 return true;
 }
 catch(Exception e)
@@ -128,7 +130,7 @@ return false;
 }
 
 }
-public boolean modificarInfo(String nombreSeguro,String opcion,String nuevoValor)
+public Seguro modificarInfo(String nombreSeguro,String opcion,String nuevoValor)
 {
 Seguro obj = null;
 for (int i = 0; i < lstSeguroGrande.size(); i++) {
@@ -140,16 +142,18 @@ for (int i = 0; i < lstSeguroGrande.size(); i++) {
 if (opcion.equals("nombre"))
 {
 obj.modNombre(nuevoValor);
+	return obj;
 }
 else if (opcion.equals("valor"))
 {
 obj.modValor(Integer.parseInt(nuevoValor));
+return obj;
 }
 else
 {
-return false;
+return null;
 }
-	return false;
+
 
 }
 }

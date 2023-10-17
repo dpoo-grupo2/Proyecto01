@@ -1,6 +1,9 @@
 package vista;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -52,7 +55,9 @@ public class AdminLocal {
 			
 			else if(2 == opcion) 
 			{
-				
+				ejecutarRegistrarEmpleado();
+				System.out.println("\nUsuario registrado correctamente...\n");
+				menu(usuario);
 			}
 			else if(3 == opcion) 
 			{
@@ -71,4 +76,45 @@ public class AdminLocal {
 			}
 		}
 	}
+	
+	
+	private void ejecutarRegistrarEmpleado() {
+		
+		String login = input("\nIngrese el login que quiere ");
+		String password = input("Ingrese  la contraseña que va a usar ");
+		String nombreCompleto = input("Ingrese su nombre completo ");
+		String tipo = input("Ingrese el tipo de usuario ");
+		
+		sobreEscribirData(login, password, nombreCompleto, tipo);
+		
+	}
+	
+	private void sobreEscribirData(String login, String password, String nombreCompleto, String tipo) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+login+","+password+","+nombreCompleto+","+tipo;
+	        File file = new File("Proyecto1_RentaCarros/data/Usuarios.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+	
 }
