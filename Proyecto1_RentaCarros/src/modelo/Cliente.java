@@ -6,7 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import controlador.CargaDatos;
 
 public class Cliente extends Usuario
@@ -50,7 +51,7 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
 	{
 		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias,idReserva);
 		añadirReserva(lstReserva);
@@ -104,18 +105,35 @@ public class Cliente extends Usuario
 	        }
 	    }
 	}
-//	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
-//	{
-//		try 
-//		{
-//			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
-//			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
-//		}
-//		catch(Exception e)
-//		{}
-//		return null;
-//		
-//	}
-	
+	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+	{
+		ArrayList<String> lstPlacas = new ArrayList<String>();
+		try 
+		{
+			for (int i = 0; i < carga.getLstReserva().size(); i++) {
+				Reserva res = carga.getLstReserva().get(i);
+				res.getFechaRecogida()
+			}
+			
+			
+			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
+			
+		}
+		catch(Exception e)
+		{}
+		return null;
+		
+	}
+	private boolean fechaEnRango(Date fechaEntregaF,Date fechaRecibidoF,Date fechaRevisar) 
+	{
+		
+        
+        if (fechaRevisar.after(fechaEntregaF) && fechaRevisar.before(fechaRecibidoF)) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+	}
 
-}
