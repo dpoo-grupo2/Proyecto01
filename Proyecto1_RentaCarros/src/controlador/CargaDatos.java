@@ -10,15 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 import modelo.CategoriaVehiculo;
-<<<<<<< HEAD
 import modelo.Cliente;
 import modelo.LicenciaConduccion;
 import modelo.MedioPago;
-=======
 import modelo.Reserva;
 import modelo.Sede;
 import modelo.Seguro;
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 import modelo.Usuario;
 import modelo.Vehiculo;
 
