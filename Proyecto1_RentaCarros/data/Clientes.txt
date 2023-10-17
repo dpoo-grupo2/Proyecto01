@@ -1,2 +1,2 @@
 usuario,contraseña,nombre,edad,cedula,fechaNacimiento,correo;numeroLicencia,paisExpedicion,fechaVencimientoLicencia;tipoPago,numeroTarjeta,fechaVencimientoTarjeta
-3,3,3,3,3,3,3;3,Colombia,3,credito,3,3
+3,3,3,3,3,3,3;3,Colombia,3;credito,3,3

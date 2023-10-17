@@ -7,17 +7,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import controlador.CargaDatos;
 import modelo.AdministradorLocal;
 import modelo.Usuario;
+import modelo.Cliente;
 
 public class Login {
 	
 	private CargaDatos cargaDatos = new CargaDatos();
 	
-	private Map<String,Usuario> usuarios;
+	private HashMap<String,Usuario> usuarios;
+	private HashMap<String,Cliente> clientes;
 	
 	public static void main(String[] args)
     {
@@ -102,24 +105,22 @@ public class Login {
 		String correo = input("Ingrese  su correo ");
 		String usuario = input("Ingrese el usuario que desea ");
 		String contraseña = input("Ingrese  su contraseña ");
-		String [] infoCliente = {nombre,Integer.toString(edad),cedula,fechaNacimiento,correo,usuario,contraseña};
 		
 		String numeroLicencia = input("Ingrese  su numero de la licencia de conducion ");
 		String paisExpedicion = input("Ingrese  el pais donde expidio su licencia ");
 		String fechaVencimientoLicencia = input("Ingrese  la fecha de vencimiento de su licencia ");
-		String [] infoLicencia = {numeroLicencia,paisExpedicion,fechaVencimientoLicencia};
-		
+				
 		String tipoPago = input("Ingrese  el medio de pago: ");
-		String numeroTarjeta = input("Ingrese  el pais donde expidio su licencia: ");
-		String fechaVencimientoTarjeta = input("Ingrese  la fecha de vencimiento de su licencia: ");
-		String [] infoMedio = {tipoPago,numeroTarjeta,fechaVencimientoTarjeta};
-		
+		String numeroTarjeta = input("Ingrese  el numero de su tarjeta: ");
+		String fechaVencimientoTarjeta = input("Ingrese  la fecha de vencimiento de su tarjeta: ");
+				
 		sobreEscribirUsuarios(usuario,contraseña,nombre);
+		
 		sobreEscribirClientes(	nombre,Integer.toString(edad),cedula,fechaNacimiento,correo,usuario,contraseña,
 								numeroLicencia,paisExpedicion,fechaVencimientoLicencia,
 								tipoPago,numeroTarjeta,fechaVencimientoTarjeta);
+		
 		System.out.println("\nHaz sido registrado exitosamente, por favor vuelve a iniciar la aplicación... ");
-        System.exit(0);
 	}
 	
 	private void sobreEscribirClientes(String nombre, String edad, String cedula,String fechaNacimiento,String correo,
@@ -203,8 +204,9 @@ public class Login {
 	
 	private void CargarDatos(){
 		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
-		var usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
-		this.usuarios = usuarios;
-		
+		HashMap<String, Usuario> usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
+		HashMap<String,Cliente> clientes = cargaDatos.cargarInformacionClientes("Proyecto1_RentaCarros/data/Clientes.txt");
+		this.usuarios = usuarios;		
+		this.clientes = clientes;
 	}
 }
