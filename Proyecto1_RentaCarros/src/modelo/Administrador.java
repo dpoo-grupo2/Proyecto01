@@ -3,10 +3,15 @@ package modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import controlador.CargaDatos;
+
 public class Administrador 
 {
 private CategoriaVehiculo categoria;
 private Vehiculo vehiculo;
+private CargaDatos carga = new CargaDatos();
+private ArrayList<Seguro> lstSeguroGrande = carga.getLstSeguro();
+
 public Vehiculo registrarVehiculo(String placa,String color,String marca,String modelo, int anio, String transmicion, String gpsVehiculo, String estadoActual, int capacidadPersonas,
 		String categoria,int idCategoria,HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes) 
 {
@@ -56,5 +61,95 @@ private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSe
 	
 	return sedes;
 	
+}
+
+
+public Vehiculo eliminarVehiculo(HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes,String sede,String placa,String disponibilidad,int idCategoria)
+{
+try{
+HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = sedes.get(sede);
+HashMap<Integer,CategoriaVehiculo> mapCategoria = dispon.get(disponibilidad);
+CategoriaVehiculo categoria = mapCategoria.get(idCategoria);
+ArrayList<Vehiculo> lstVehiculos = categoria.getLst();
+int pos = 0;
+for (int i = 0; i < lstVehiculos.size(); i++) {
+	if (lstVehiculos.get(i).getPlaca().equals(placa))
+	{
+	pos = i;
+	break;
+	}
+}
+if (!lstVehiculos.get(pos).getPlaca().equals(placa))
+{
+return null;
+}
+else
+{
+Vehiculo vehiculo= lstVehiculos.get(pos);
+lstVehiculos.remove(pos);
+return vehiculo;
+}
+}
+catch(Exception e)
+{
+	return null;
+}
+}
+
+public boolean añadirElementSeguros(Seguro nuevoSeguro)
+{
+try{
+	lstSeguroGrande.add(nuevoSeguro);
+	return true;
+	}
+catch(Exception e)
+{
+return false;
+}
+}
+public boolean eleminiarSeguro(String nombreSeguro)
+{
+try{
+int pos = lstSeguroGrande.size()+1;
+for (int i = 0; i < lstSeguroGrande.size(); i++) {
+	if (lstSeguroGrande.get(i).getNombreSeguro().equals(nombreSeguro))
+	{
+	pos = i;
+	break;
+	}
+	
+}
+lstSeguroGrande.remove(pos);
+return true;
+}
+catch(Exception e)
+{
+return false;
+}
+
+}
+public boolean modificarInfo(String nombreSeguro,String opcion,String nuevoValor)
+{
+Seguro obj = null;
+for (int i = 0; i < lstSeguroGrande.size(); i++) {
+	if (lstSeguroGrande.get(i).getNombreSeguro().equals(nombreSeguro))
+	{
+	obj = lstSeguroGrande.get(i);
+	}
+}
+if (opcion.equals("nombre"))
+{
+obj.modNombre(nuevoValor);
+}
+else if (opcion.equals("valor"))
+{
+obj.modValor(Integer.parseInt(nuevoValor));
+}
+else
+{
+return false;
+}
+	return false;
+
 }
 }

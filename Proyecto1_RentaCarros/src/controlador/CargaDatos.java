@@ -10,17 +10,24 @@ import java.util.List;
 import java.util.Map;
 
 import modelo.CategoriaVehiculo;
+<<<<<<< HEAD
 import modelo.Cliente;
 import modelo.LicenciaConduccion;
 import modelo.MedioPago;
+=======
+import modelo.Reserva;
+import modelo.Sede;
+import modelo.Seguro;
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 import modelo.Usuario;
 import modelo.Vehiculo;
 
 public class CargaDatos { 
 	private static HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = new HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>>();
 	private static CategoriaVehiculo categoria;
-	
-	
+	private static ArrayList<Sede> lstSedes;
+	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
+	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -94,8 +101,10 @@ public class CargaDatos {
     {
     	
     	if (!sedes.containsKey(vehiculo.getGps())) 
-    	{
+    	{	
     		HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad = new HashMap<String,HashMap<Integer,CategoriaVehiculo>>();
+//    		sede = new Sede();
+//    		lstSedes.add(sede);
     		sedes.put(vehiculo.getGps(),disponibilidad);
     	}
     	HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad2 = sedes.get(vehiculo.getGps());
@@ -185,6 +194,17 @@ public class CargaDatos {
 		return sedes;
 		
 	}
+	public ArrayList<Seguro> getLstSeguro()
+	{
+		return lstSegurosGeneral;
+		
+	}
+	public ArrayList<Reserva> getLstReserva()
+	{
+		return lstReservas;
+		
+	}
+
 
 
 

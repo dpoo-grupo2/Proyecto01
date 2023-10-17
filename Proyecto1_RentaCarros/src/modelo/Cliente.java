@@ -1,6 +1,9 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import controlador.CargaDatos;
 
 public class Cliente extends Usuario
 {
@@ -9,11 +12,21 @@ public class Cliente extends Usuario
 	private String correoElectronico;
 	private String fechaNacimiento;
 	private Reserva reserva;
+<<<<<<< HEAD
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
+=======
+	private CargaDatos carga;
+	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 
+<<<<<<< HEAD
 	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
+=======
+	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula, String correoElectronico,String fechaNacimiento)
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	{
+		
 		super(login, password, nombreCompleto,tipoUsuario);
 		this.edad = edad;
 		this.cedula = cedula;
@@ -39,10 +52,11 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, String fechaRecogida, String horaRecogida, String fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva) 
 	{
-		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias);
+		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,lstConductores,dias,idReserva);
 		añadirReserva(lstReserva);
+		
 		return reserva;
 	}
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 
@@ -62,10 +76,18 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
-//	public Vehiculo verDisponiblidad(String sede,String categoria,fecha) 
-//	{
-//		
-//	}
+	public Vehiculo verDisponiblidad(String sede,String categoria,String fecha) 
+	{
+		try 
+		{
+			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = sedes.get(sede);
+			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get(categoria);
+		}
+		catch(Exception e)
+		{}
+		return null;
+		
+	}
 	
 
 }
