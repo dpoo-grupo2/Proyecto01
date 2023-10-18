@@ -222,13 +222,12 @@ public class ClienteVista {
 	        dateFormat.setLenient(false);
 
 	        try {
-	            // Obtener la fecha de recogida
+	            
 	            Date fechaRecogidaDate = dateFormat.parse(FechaRecibido);
 
-	            // Solicitar la fecha de entrega
+	            
 	            FechaEntrega = input("\nDigite la fecha en la cual va a entregar el vehículo (DD/MM/AA)");
 
-	            // Parsear la fecha de entrega
 	            Date fechaEntregaDate = dateFormat.parse(FechaEntrega);
 
 	            if (fechaEntregaDate.after(fechaRecogidaDate)) {
