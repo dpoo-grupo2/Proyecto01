@@ -146,6 +146,7 @@ public class ClienteVista {
 		int idCategoria = 0;
 		Date horaEntrega = null;
 		Date horaRecogida =null; 
+		long dias = 0;
 		centinela = true;
 	    while (centinela) {
 	        
@@ -192,6 +193,9 @@ public class ClienteVista {
 		        	esNullVeh = false;
 		        	horaEntrega = HoraRecogida();
 		        	horaEntrega = HoraEntrega();
+		        	dias = CalcularDias(fechaEntrega1, fechaRecogida1);
+		        	SedeEntrega();
+		        	SedeRecogida();
 		        	centinela = false;
 		        }
 		        
@@ -230,6 +234,7 @@ public class ClienteVista {
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	seleccionarSeguros();
+
 		        	centinela = false;
 		        }
 		        else if (opcion == 5) 
@@ -263,7 +268,7 @@ public class ClienteVista {
 
 	        
 	    }
-	    //generarReserva(false,sede);
+//	    generarReserva(false,sede,);
 	}
 	private ArrayList<Seguro> seleccionarSeguros() {
 		ArrayList<Seguro> lstSeguros = cargaDatos.getLstSeguro();
@@ -337,7 +342,99 @@ public class ClienteVista {
 		return null;
 		
 	}
-	
+	private String SedeEntrega() 
+	{
+		centinela = true;
+		while (centinela) {
+		System.out.println("\nEn cual sede desea Entregar su vehiculo:\n");
+        System.out.println("1. Sede Norte");
+        System.out.println("2. Sede Centro");
+        System.out.println("3. Sede Sur");
+        System.out.println("4. Salir aplicacion");
+
+        int sedeOption = 0;
+        try {
+            sedeOption = Integer.parseInt(input("Ingrese su opción para la sede "));
+        } catch (Exception e) {
+            System.out.println("Opción no válida.");
+            continue;  
+        }
+
+        if (sedeOption == 1) 
+        {
+            System.out.println("\nHa seleccionado la Sede Norte para entregar el vehiculo.");
+            sede = "sedeNorte";
+            centinela = false;
+        } 
+        
+        else if (sedeOption == 2) 
+        {
+            System.out.println("\nHa seleccionado la Sede Centro para entregar su vehiculo.");
+            sede = "sedeCentro";
+            centinela = false;
+        } 
+        
+        else if (sedeOption == 3) 
+        {
+            System.out.println("\nHa seleccionado la Sede Sur para entregar su vehiculo.");
+            sede = "sedeSur";
+            centinela = false;
+        }
+        else if (sedeOption == 4) 
+        {
+        	System.out.println("saliendo");
+        	System.exit(0);
+        }
+		}
+        return sede;
+		
+	}
+	private String SedeRecogida() 
+	{
+		centinela = true;
+		while (centinela) {
+		System.out.println("\nEn cual sede desea Recogida su vehiculo:\n");
+        System.out.println("1. Sede Norte");
+        System.out.println("2. Sede Centro");
+        System.out.println("3. Sede Sur");
+        System.out.println("4. Salir aplicacion");
+
+        int sedeOption = 0;
+        try {
+            sedeOption = Integer.parseInt(input("Ingrese su opción para la sede "));
+        } catch (Exception e) {
+            System.out.println("Opción no válida.");
+            continue;  
+        }
+
+        if (sedeOption == 1) 
+        {
+            System.out.println("\nHa seleccionado la Sede Norte para recogida el vehiculo.");
+            sede = "sedeNorte";
+            centinela = false;
+        } 
+        
+        else if (sedeOption == 2) 
+        {
+            System.out.println("\nHa seleccionado la Sede Centro para recogida su vehiculo.");
+            sede = "sedeCentro";
+            centinela = false;
+        } 
+        
+        else if (sedeOption == 3) 
+        {
+            System.out.println("\nHa seleccionado la Sede Sur para recogida su vehiculo.");
+            sede = "sedeSur";
+            centinela = false;
+        }
+        else if (sedeOption == 4) 
+        {
+        	System.out.println("saliendo");
+        	System.exit(0);
+        }
+		}
+        return sede;
+	}
 	public Date fechaRecogida() {
 	    centinela2 = true;
 	    while (centinela2) {
