@@ -59,6 +59,7 @@ public class AdministradorGeneral {
 			if (1 == opcion) 
 			{
 				ejecutarRegistrarCarro();
+				System.out.println(sedes);
 				System.out.println("\nCarro registrado correctamente...\n");
 				menu(usuario);
 	            
