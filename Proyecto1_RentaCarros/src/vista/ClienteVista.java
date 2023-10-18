@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.ConductorAdicional; 
 import modelo.LicenciaConduccion;
+import modelo.Usuario;
 import modelo.Vehiculo;
 import controlador.CargaDatos;
 
@@ -24,13 +25,14 @@ public class ClienteVista {
 	private boolean centinela4;
 	private boolean centinela5;
 	private boolean centinela6;
-	private Cliente cliente;
+	private Usuario cliente;
 	private String Sede;
 	private String Categoria;
 	private String FechaRecibido;
 	private String FechaEntrega;
 	private String HoraRecibido;
 	private String HoraEntrega;
+	private CargaDatos cargaDatos;
 	
 	public ClienteVista(){
 		
@@ -54,7 +56,7 @@ public class ClienteVista {
 	
 	public void menu(String usuario) {
 	    centinela = true;
-	    cliente = CargaDatos.obtenerUsuario(usuario);
+	    cliente = cargaDatos.obtenerUsuario(usuario);
 	    
 	    
 	    while (centinela) {
