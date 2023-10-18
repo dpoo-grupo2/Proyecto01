@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.ConductorAdicional; 
 import modelo.LicenciaConduccion;
+import modelo.Vehiculo;
+import controlador.CargaDatos;
 
 public class ClienteVista {
 	private int opcion;
@@ -52,6 +54,9 @@ public class ClienteVista {
 	
 	public void menu(String usuario) {
 	    centinela = true;
+	    cliente = CargaDatos.obtenerUsuario(usuario);
+	    
+	    
 	    while (centinela) {
 	        System.out.println("\nBienvenido Cliente " + usuario + "\n");
 	        System.out.println("1- Reservar vehículo");
@@ -174,6 +179,7 @@ public class ClienteVista {
 		        	Categoria = "Lujo";
 		        	fechaRecogida();
 		        	fechaEntrega();
+		        	
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -246,6 +252,10 @@ public class ClienteVista {
 	    }
 	}
 	
+	public Vehiculo VerDisponiblidad(String sede, String categoria, Date fechaRecogida, Date fechaEntrega) 
+	{
+		return cliente.verDisponiblidad(sede, categoria, fechaRecogida, fechaEntrega);
+	}
 	
 	public void HoraRecogida() {
 	    centinela4 = true;
