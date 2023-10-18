@@ -242,12 +242,7 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	lstSegurosGeneral = lstNuevo;
 	return lstSegurosGeneral; 
 }
-<<<<<<< HEAD
 
-	
-
-
-=======
 public Cliente obtenerUsuarioCliente(String usuario) 
 {
 	return (Cliente) usuarios.get(usuario);
@@ -268,5 +263,4 @@ public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String
 	return null;
 	
 }
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 }
