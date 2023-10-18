@@ -149,6 +149,12 @@ public class Cliente extends Usuario
 				}
 				
 			}
+			
+			if (Estado) 
+			{
+				return veh;
+			}
+			
 			return null;
 			
 		}
