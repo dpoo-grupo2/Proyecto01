@@ -16,11 +16,11 @@ public class Reserva
 	private Cliente clienteRes;
 	private int valorReserva;
 	private ArrayList<ConductorAdicional> lstConductores;
-	private int dias;
+	private long dias;
 	private int idReserva;
 	private Vehiculo vehiculo;
 	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,int idReserva,Vehiculo vehiculo)
 	{
 		
 		
@@ -89,7 +89,7 @@ public class Reserva
 		return valorReserva;
 		
 	}
-	public int getDias()
+	public long getDias()
 	{
 		return dias;
 		

@@ -66,7 +66,7 @@ public class Cliente extends Usuario
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
 		int valorFinal = 0;
-		int nDias = reserva.getDias();//
+		long nDias = reserva.getDias();//
 		valorFinal +=tarifaDiaria*nDias;
 		valorFinal += tarifaConductor*lstConductores.size();
 		for (int i = 0; i < lstSeguros.size(); i++) {

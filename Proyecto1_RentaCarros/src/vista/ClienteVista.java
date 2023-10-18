@@ -2,6 +2,7 @@ package vista;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -12,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.ConductorAdicional; 
 import modelo.LicenciaConduccion;
+import modelo.Reserva;
+import modelo.Seguro;
 import modelo.Usuario;
 import modelo.Vehiculo;
 import controlador.CargaDatos;
@@ -141,6 +144,8 @@ public class ClienteVista {
 	public void categoriaParaAlquilar(String usuario) 
 	{
 		int idCategoria = 0;
+		Date horaEntrega = null;
+		Date horaRecogida =null; 
 		centinela = true;
 	    while (centinela) {
 	        
@@ -149,6 +154,8 @@ public class ClienteVista {
             System.out.println("2. Sedan");
             System.out.println("3. SUV");
             System.out.println("4. Lujo");
+            System.out.println("5- Menu Principal");
+            System.out.println("5- salir");
 	        try {
 	            opcion = Integer.parseInt(input("Ingrese su opción "));
 	            if (opcion == 1) 
@@ -164,8 +171,9 @@ public class ClienteVista {
 		        		valDispo.getPlaca();
 		        	}
 		        	esNullVeh = false;
-		        	HoraRecogida();
-		        	HoraEntrega();
+		        	horaRecogida = HoraRecogida();
+		        	horaEntrega = HoraEntrega();
+		        	
 		        	centinela = false;
 		        }
 		        
@@ -182,8 +190,8 @@ public class ClienteVista {
 		        		valDispo.getPlaca();
 		        	}
 		        	esNullVeh = false;
-		        	HoraRecogida();
-		        	HoraEntrega();
+		        	horaEntrega = HoraRecogida();
+		        	horaEntrega = HoraEntrega();
 		        	centinela = false;
 		        }
 		        
@@ -221,9 +229,19 @@ public class ClienteVista {
 		        	esNullVeh = false;
 		        	HoraRecogida();
 		        	HoraEntrega();
+		        	seleccionarSeguros();
 		        	centinela = false;
 		        }
-		        
+		        else if (opcion == 5) 
+		        {
+		        	System.out.println("Volviendo al menu principal...");
+		        	menu(usuario);
+		        }
+		        else if (opcion == 6) 
+		        {
+		        	System.out.println("Saliendo de al aplicacion");
+		        	System.exit(0);
+		        }
 		        else 
 	            {
 
@@ -245,6 +263,79 @@ public class ClienteVista {
 
 	        
 	    }
+	    //generarReserva(false,sede);
+	}
+	private ArrayList<Seguro> seleccionarSeguros() {
+		ArrayList<Seguro> lstSeguros = cargaDatos.getLstSeguro();
+		ArrayList<Seguro> lstSeleccionados = new ArrayList<Seguro>();
+		centinela = true;
+		int e = 0;
+		while(centinela) {
+		System.out.println();
+		System.out.println("Los seguros disponibles son:");
+		for (int i = 0; i < lstSeguros.size(); i++) {
+			Seguro el = lstSeguros.get(i);
+			System.out.println((i+1)+") "+el);	
+			e = i+1;
+		}
+		System.out.println((e+1)+") Elminiar un Seguro");
+		System.out.println((e+2)+") Ninguno");
+		System.out.println("");
+		System.out.println("Ingrese el numero del seguro que desea adquirir (si desea adquirir mas luego se le volvera a preguntar)");
+		int segr = Integer.parseInt(input("-> "));
+		if (segr <= lstSeguros.size() && segr >0) 
+		{
+			lstSeleccionados.add(lstSeguros.get(segr-1));
+			System.out.println("El seguro "+lstSeguros.get(segr)+ " fue añadido con exito");
+		}
+		else if(segr == e+1)
+				{
+			for (int i = 0; i < lstSeguros.size(); i++) {
+				Seguro el = lstSeguros.get(i);
+				System.out.println((i+1)+") "+el);	
+				e = i+1;
+			}
+			System.out.println((e+1)+") Ninguno");
+			System.out.println("Ingrese el numero de seguro el cual desea eliminar:");
+			int opcion = Integer.parseInt(input("-> "));
+			if (segr <= lstSeguros.size() && segr >0) 
+			{
+				lstSeleccionados.remove(lstSeleccionados.get(segr-1));
+				System.out.println("El seguro "+lstSeguros.get(segr-1)+ " fue añadido con exito");
+			}
+				}
+		else if (segr ==e+2) 
+		{
+			System.out.println("continuando proceso generar reserva...");
+			return lstSeguros;
+		}
+		}
+		return lstSeleccionados;
+		
+	}
+	public long CalcularDias(Date fechaf,Date fechai) 
+	{
+		// Convierte las fechas en objetos Calendar
+		        Calendar cal1 = Calendar.getInstance();
+		        cal1.setTime(fechai);
+
+		        Calendar cal2 = Calendar.getInstance();
+		        cal2.setTime(fechaf);
+
+		        // Calcula la diferencia en milisegundos
+		        long diferenciaEnMilisegundos = cal2.getTimeInMillis() - cal1.getTimeInMillis();
+
+		        // Convierte la diferencia en días
+		        long diferenciaEnDias = diferenciaEnMilisegundos / (24 * 60 * 60 * 1000);
+
+		        return diferenciaEnDias;
+		    
+	} 
+	public Reserva generarReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo) 
+	{
+		return null;
+		
 	}
 	
 	public Date fechaRecogida() {
@@ -309,15 +400,16 @@ public class ClienteVista {
 		
 	}
 	
-	public void HoraRecogida() {
+	public Date HoraRecogida() {
 	    centinela4 = true;
+	    Date hora = null;
 	    while (centinela4) {
 	        HoraRecibido = input("\nDigite la hora en la cual va a recoger el vehículo (HH:mm)");
 
 	        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 	        timeFormat.setLenient(false); 
 	        try {
-	            Date hora = timeFormat.parse(HoraRecibido);
+	            hora = timeFormat.parse(HoraRecibido);
 	            
 	            if (HoraRecibido.equals(timeFormat.format(hora))) {
 	                System.out.println("Hora ingresada correctamente en el formato HH:mm.");
@@ -329,10 +421,12 @@ public class ClienteVista {
 	            System.out.println("La hora no está en el formato correcto (HH:mm). Intente de nuevo.");
 	        }
 	    }
+	    return hora;
 	}
 
-	public void HoraEntrega() {
+	public Date HoraEntrega() {
 	    centinela5 = true;
+	    Date hora =null;
 	    while (centinela5) {
 	        HoraEntrega = input("\nDigite la hora en la cual va a devolver el vehículo (HH:mm)");
 
@@ -340,7 +434,7 @@ public class ClienteVista {
 	        timeFormat.setLenient(false);  
 
 	        try {
-	            Date hora = timeFormat.parse(HoraEntrega);
+	            hora = timeFormat.parse(HoraEntrega);
 	            
 	            if (HoraEntrega.equals(timeFormat.format(hora))) {
 	                System.out.println("Hora ingresada correctamente en el formato HH:mm.");
@@ -352,5 +446,6 @@ public class ClienteVista {
 	            System.out.println("La hora no está en el formato correcto (HH:mm). Intente de nuevo.");
 	        }
 	    }
+		return hora;
 	}
 }
