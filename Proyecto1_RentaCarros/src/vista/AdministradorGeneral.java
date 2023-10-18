@@ -73,7 +73,7 @@ public class AdministradorGeneral {
 				int cat = Integer.parseInt(input("Ingrese el ID de la categoria del vehiculo: "));
 				
 				File temp = eliminarVehiculo(admin.eliminarVehiculo(sedes, sede, placa, dispo, cat));
-				File bd = new File("Proyecto1_RentaCarros/data/PruebaCarros.txt");
+				File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
 				bd.delete();
 				temp.renameTo(bd);
 				System.out.println("\nCarro eliminado correctamente...\n");
@@ -301,7 +301,7 @@ public class AdministradorGeneral {
 	
 	public static  File eliminarVehiculo(Vehiculo vehiculo){        
 
-		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/PruebaCarros.txt");
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
 		
         String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
         File archivoTemp=new File(nomTemp);
