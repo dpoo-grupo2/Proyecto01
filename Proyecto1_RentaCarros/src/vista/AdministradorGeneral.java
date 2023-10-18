@@ -7,6 +7,7 @@ import java.util.Map;
 import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.CategoriaVehiculo;
+import modelo.Sede;
 import modelo.Seguro;
 import modelo.Vehiculo;
 import vista.Login;
@@ -20,7 +21,7 @@ public class AdministradorGeneral {
 	
 	
 	public CargaDatos carga = new CargaDatos();
-	private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes = carga.getSedes();
+	private HashMap<String,Sede> sedes = carga.getSedes();
 	public String input(String mensaje)
 	{
 	    try
