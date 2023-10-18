@@ -67,7 +67,8 @@ private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSe
 public Vehiculo eliminarVehiculo(HashMap<String,Sede> sedes,String sede,String placa,String disponibilidad,int idCategoria)
 {
 	try{
-		HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = sedes.get(sede);
+		Sede psede = sedes.get(sede);
+		HashMap<String,HashMap<Integer,CategoriaVehiculo>> dispon = psede.getMapEstadoVehiculo();
 		HashMap<Integer,CategoriaVehiculo> mapCategoria = dispon.get(disponibilidad);
 		CategoriaVehiculo categoria = mapCategoria.get(idCategoria);
 		ArrayList<Vehiculo> lstVehiculos = categoria.getLst();

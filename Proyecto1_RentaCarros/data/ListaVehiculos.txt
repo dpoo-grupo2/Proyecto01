@@ -53,3 +53,6 @@ q,w,e,r,1,q,w,e,r,t,r
 11,1,1,1,1,1,1,1,1,,1
 1,1,,1,1,1,1,,1,1,1
 1,1,1,1,1,1,,1,1,1,1
+111,,1,1,1,1,1,q,1q,1,11
+11,rokjo,tu,dse,20200,mec,sedeCentro,disponible,3,2,2
+1,1,sdes,cuo,2002,mec,sedeNorte,disponible,50,2,2
