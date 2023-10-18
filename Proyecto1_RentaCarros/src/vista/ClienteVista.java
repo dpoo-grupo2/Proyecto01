@@ -138,7 +138,7 @@ public class ClienteVista {
 	
 	public void categoriaParaAlquilar() 
 	{
-				
+		int idCategoria = 0;
 		centinela = true;
 	    while (centinela) {
 	        
@@ -152,6 +152,7 @@ public class ClienteVista {
 	            if (opcion == 1) 
 		        {
 		        	categoria = "Pequenio";
+		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
 		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
@@ -168,6 +169,7 @@ public class ClienteVista {
 		        else if (opcion == 2) 
 		        {
 		        	categoria = "Sedan";
+		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
 		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
@@ -184,6 +186,7 @@ public class ClienteVista {
 		        else if (opcion == 3) 
 		        {
 		        	categoria = "SUV";
+		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
 		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
@@ -199,6 +202,7 @@ public class ClienteVista {
 		        else if (opcion == 4) 
 		        {
 		        	categoria = "Lujo";
+		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
 		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
