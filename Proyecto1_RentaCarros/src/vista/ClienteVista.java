@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.ConductorAdicional; 
 import modelo.LicenciaConduccion;
+import modelo.Vehiculo;
 import controlador.CargaDatos;
 
 public class ClienteVista {
@@ -255,8 +256,9 @@ public class ClienteVista {
 	    }
 	}
 	
-	public void VerDisponiblidad(String sede, String categoria, Date fechaRecogida, Date fechaEntrega) {
-		cliente.verDisponiblidad(sede, categoria, fechaRecogida, fechaEntrega);
+	public Vehiculo VerDisponiblidad(String sede, String categoria, Date fechaRecogida, Date fechaEntrega) 
+	{
+		return cliente.verDisponiblidad(sede, categoria, fechaRecogida, fechaEntrega);
 	}
 	
 	public void HoraRecogida() {
