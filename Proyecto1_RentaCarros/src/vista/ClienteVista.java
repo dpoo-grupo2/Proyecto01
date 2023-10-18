@@ -37,6 +37,8 @@ public class ClienteVista {
 	private Date FechaRecibido1;
 	private Date FechaEntrega1;
 	
+	private boolean esNullVeh = false;
+	
 	public ClienteVista(){
 		
 	}
@@ -91,8 +93,8 @@ public class ClienteVista {
 	            if (sedeOption == 1) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Norte para su reserva.");
-	                sede = "SedeNorte";
-	                categoriaParaAlquilar();
+	                sede = "sedeNorte";
+	                categoriaParaAlquilar(usuario);
 	                System.out.println("\nReserva registrada exitosamente en el sistema...");
 		            System.exit(0);
 	            } 
@@ -100,8 +102,8 @@ public class ClienteVista {
 	            else if (sedeOption == 2) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Centro para su reserva.");
-	                sede = "SedeCentro";
-	                categoriaParaAlquilar();
+	                sede = "sedeCentro";
+	                categoriaParaAlquilar(usuario);
 	                
 	                System.out.println("\nReserva registrada exitosamente en el sistema...");
 		            System.exit(0);
@@ -110,8 +112,8 @@ public class ClienteVista {
 	            else if (sedeOption == 3) 
 	            {
 	                System.out.println("\nHa seleccionado la Sede Sur para su reserva.");
-	                sede = "SedeSur";
-	                categoriaParaAlquilar();
+	                sede = "sedeSur";
+	                categoriaParaAlquilar(usuario);
 	                System.out.println("\nReserva registrada exitosamente en el sistema...");
 		            System.exit(0);
 	            } 
@@ -136,7 +138,7 @@ public class ClienteVista {
 	    }
 	}
 	
-	public void categoriaParaAlquilar() 
+	public void categoriaParaAlquilar(String usuario) 
 	{
 		int idCategoria = 0;
 		centinela = true;
@@ -147,7 +149,7 @@ public class ClienteVista {
             System.out.println("2. Sedan");
             System.out.println("3. SUV");
             System.out.println("4. Lujo");
-//	        try {
+	        try {
 	            opcion = Integer.parseInt(input("Ingrese su opción "));
 	            if (opcion == 1) 
 		        {
@@ -158,9 +160,10 @@ public class ClienteVista {
 		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
-		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
+		        		esNullVeh = true;
+		        		valDispo.getPlaca();
 		        	}
-		        	System.out.println(valDispo);
+		        	esNullVeh = false;
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -175,9 +178,10 @@ public class ClienteVista {
 		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
-		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
+		        		esNullVeh = true;
+		        		valDispo.getPlaca();
 		        	}
-		        	System.out.println(valDispo);
+		        	esNullVeh = false;
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -192,8 +196,10 @@ public class ClienteVista {
 		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
+		        		esNullVeh = true;
+		        		valDispo.getPlaca();
 		        	}
-		        	System.out.println(valDispo);
+		        	esNullVeh = false;
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -208,8 +214,11 @@ public class ClienteVista {
 		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
+		        		esNullVeh = true;
+		        		valDispo.getPlaca();
+		        		
 		        	}
-		        	System.out.println(valDispo);
+		        	esNullVeh = false;
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -217,15 +226,22 @@ public class ClienteVista {
 		        
 		        else 
 	            {
+
 	                System.out.println("Opción de sede no válida.");	                
 	            }
 	            
 	            
-//	        } 
-//	        catch (Exception e) 
-//	        {
-//	            System.out.println("Recuerde que debe ingresar un número entre 1 y 4");
-//	        }
+	        } 
+	        catch (Exception e) 
+	        {
+	        	if (esNullVeh) 
+	        	{
+	        		System.out.println("No hay vehiculos disponibles en esa sede, de esa categoria para esa fecha");	
+	        	}
+	        	
+	            System.out.println("Recuerde que debe ingresar un número entre 1 y 4");
+	            menu(usuario);
+	        }
 
 	        
 	    }
@@ -288,11 +304,9 @@ public class ClienteVista {
 	
 	public Vehiculo VerDisponibilidad(String sede, int categoria, Date fechaRecogida, Date fechaEntrega) 
 	{
-		System.out.println("kkkkkkkkkkkk");
-		System.out.println(cliente.verDisponibilidad(sede, categoria, fechaRecogida, fechaEntrega));
-		cliente.verDisponibilidad(sede, categoria, fechaRecogida, fechaEntrega);
-		System.out.println("voned");
-		return null;
+		
+		return cliente.verDisponibilidad(sede, categoria, fechaRecogida, fechaEntrega);
+		
 	}
 	
 	public void HoraRecogida() {
