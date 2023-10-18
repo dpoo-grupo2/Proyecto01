@@ -66,7 +66,7 @@ public class EmpleadoVista {
 		int categoria = Integer.parseInt(input("Ingrese el ID de la categoria del vehiculo: "));
 		String placa = input("Ingrese la placa del vehiculo a modificar: ");
 		String nEstado = input("Ingrese el nuevo estado del vehiculo");
-		Vehiculo vehiculo = carga.buscarVehiculo(sede, estado, categoria, placa);
+		Vehiculo vehiculo = carga.obtenerVehiculo(sede, estado, categoria, placa);
 		vehiculo.cambiarEstado(nEstado); 
 	}
 

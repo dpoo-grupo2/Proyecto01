@@ -249,6 +249,7 @@ public Cliente obtenerUsuarioCliente(String usuario)
 }
 public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
 {
+	try {
 	Sede objSede = sedes.get(sede);
 	HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstado =objSede.getMapEstadoVehiculo();
 	HashMap<Integer,CategoriaVehiculo> mapCategoria = mapEstado.get(estado);
@@ -261,6 +262,10 @@ public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String
 		}
 	}
 	return null;
-	
-}
+	}
+	catch(Exception e) 
+	{
+	return null;	
+	}
+	}
 }
