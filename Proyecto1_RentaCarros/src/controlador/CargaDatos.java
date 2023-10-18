@@ -209,9 +209,9 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	lstSegurosGeneral = lstNuevo;
 	return lstSegurosGeneral; 
 }
-public Usuario obtenerUsuario(String usuario) 
+public Cliente obtenerUsuarioCliente(String usuario) 
 {
-	return usuarios.get(usuario);
+	return (Cliente) usuarios.get(usuario);
 }
 public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
 {
