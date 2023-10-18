@@ -22,6 +22,7 @@ import modelo.Vehiculo;
 
 public class CargaDatos { 
 	private static HashMap<String,Sede> sedes = new HashMap<String,Sede>();
+	private static HashMap<String,Usuario> usuarios = new HashMap<String,Usuario>();
 	private static CategoriaVehiculo categoria;
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
@@ -208,6 +209,16 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	lstSegurosGeneral = lstNuevo;
 	return lstSegurosGeneral; 
 }
-
-
+public Usuario obtenerUsuario(String usuario) 
+{
+	return usuarios.get(usuario);
+}
+public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
+{
+	Sede objSede = sedes.get(sede);
+	HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstado =objSede.getMapEstadoVehiculo();
+	 mapEstado.get(estado);
+	return null;
+	
+}
 }
