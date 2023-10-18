@@ -154,8 +154,12 @@ public class ClienteVista {
 		        	categoria = "Pequenio";
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
-		        	System.out.println(VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1));
+		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	if (valDispo == null) 
+		        	{
+		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
+		        	}
+		        	System.out.println(valDispo);
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -166,8 +170,12 @@ public class ClienteVista {
 		        	categoria = "Sedan";
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
-		        	System.out.println(VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1));
+		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	if (valDispo == null) 
+		        	{
+		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
+		        	}
+		        	System.out.println(valDispo);
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -178,8 +186,11 @@ public class ClienteVista {
 		        	categoria = "SUV";
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
-		        	System.out.println(VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1));
+		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	if (valDispo == null) 
+		        	{
+		        	}
+		        	System.out.println(valDispo);
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
@@ -190,8 +201,12 @@ public class ClienteVista {
 		        	categoria = "Lujo";
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
-		        	System.out.println(VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1));
+		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	if (valDispo == null) 
+		        	{
+		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
+		        	}
+		        	System.out.println(valDispo);
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	centinela = false;
