@@ -22,7 +22,7 @@ public Vehiculo registrarVehiculo(String placa,String color,String marca,String 
 
 private HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
 {
-	ArrayList<Vehiculo> lstVehiculos = new ArrayList();
+	ArrayList<Vehiculo> lstVehiculos = new ArrayList<Vehiculo>();
 	if (!categoria2.containsKey(carro.getIdCat())) 
 	{
 		

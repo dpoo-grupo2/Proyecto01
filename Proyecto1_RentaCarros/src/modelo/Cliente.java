@@ -123,15 +123,33 @@ public class Cliente extends Usuario
 			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = objSede.getMapEstadoVehiculo();
 			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
 			CategoriaVehiculo objCategoria = mapCategoria.get(categoria);
+			Vehiculo veh = new Vehiculo(categoria, categoria, categoria, categoria, edad, categoria, categoria, categoria, edad, categoria, edad);
 			boolean Estado = false;
 			for (int i = 0; i < objCategoria.getLst().size(); i++) {
 				if (!lstPlacas.contains(objCategoria.getLst().get(i).getPlaca())) 
 				{
+					veh = objCategoria.getLst().get(i);
 					Estado = true;
 					break;
 				}
 				
 			}
+			if (Estado)
+			{
+				return veh;
+			}
+			mapCategoria= mapDisponibilidad .get("alquilado");
+			objCategoria = mapCategoria.get(categoria);
+			for (int i = 0; i < objCategoria.getLst().size(); i++) {
+				if (!lstPlacas.contains(objCategoria.getLst().get(i).getPlaca())) 
+				{
+					veh = objCategoria.getLst().get(i);
+					Estado = true;
+					break;
+				}
+				
+			}
+			return null;
 			
 		}
 		catch(Exception e)
