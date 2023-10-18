@@ -34,8 +34,7 @@ public class EmpleadoVista {
 			System.out.println("\nBienvenido Empleado "+usuario+"\n");
 			System.out.println("1- Registrar conductores adicionales a una reserva");
 			System.out.println("2- Actualizar estado de los vehículos");
-			System.out.println("3- Reportar mantenimiento de vehículo");
-			System.out.println("4- Salir");
+			System.out.println("3- Salir");
 			
 			try 
 			{
@@ -55,12 +54,7 @@ public class EmpleadoVista {
 				
 			}
 			
-			else if(3 == opcion) 
-			{
-				
-			}
-			
-			else if (4 == opcion) 
+			else if (3 == opcion) 
 			{
 				System.out.println("\nSaliendo del sistema...");
 	            System.exit(0);

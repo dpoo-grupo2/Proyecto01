@@ -218,20 +218,24 @@ public class ClienteVista {
 	public void fechaEntrega() {
 	    centinela3 = true;
 	    while (centinela3) {
-	        FechaEntrega = input("\nDigite la fecha en la cual va a entregar el vehículo (DD/MM/AA)");
-	        
 	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-	        dateFormat.setLenient(false);  
+	        dateFormat.setLenient(false);
+
 	        try {
-	            Date fecha = dateFormat.parse(FechaEntrega);
-	            
-	            if (FechaEntrega.equals(dateFormat.format(fecha))) {
-	                System.out.println("Fecha ingresada correctamente en el formato DD/MM/AA.");
-	                centinela3 = false; 
-	                
-	                
+	            // Obtener la fecha de recogida
+	            Date fechaRecogidaDate = dateFormat.parse(FechaRecibido);
+
+	            // Solicitar la fecha de entrega
+	            FechaEntrega = input("\nDigite la fecha en la cual va a entregar el vehículo (DD/MM/AA)");
+
+	            // Parsear la fecha de entrega
+	            Date fechaEntregaDate = dateFormat.parse(FechaEntrega);
+
+	            if (fechaEntregaDate.after(fechaRecogidaDate)) {
+	                System.out.println("Fecha de entrega válida.");
+	                centinela3 = false;
 	            } else {
-	                System.out.println("La fecha no es válida para el formato DD/MM/AA. Intente de nuevo.");
+	                System.out.println("La fecha de entrega debe ser posterior a la fecha de recogida. Intente de nuevo.");
 	            }
 	        } catch (ParseException e) {
 	            System.out.println("La fecha no está en el formato correcto (DD/MM/AA). Intente de nuevo.");
