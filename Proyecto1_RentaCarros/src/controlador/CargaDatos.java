@@ -168,8 +168,8 @@ public class CargaDatos {
                     String pais = info[1].trim();
                     String fechaVencimientoLicencia = info[2].trim();
                    
-                    int numLicencia = Integer.parseInt(numeroLicencia);
-                    LicenciaConduccion licencia = new LicenciaConduccion(numLicencia,pais,fechaVencimientoLicencia);
+                    
+                    LicenciaConduccion licencia = new LicenciaConduccion(numeroLicencia,pais,fechaVencimientoLicencia);
                                        
                     String infoMedio  = partes[2].trim();
                     String[] infoTarget = infoMedio.split(",");

@@ -2,20 +2,20 @@ package modelo;
 
 public class LicenciaConduccion
 {
-	private int numero; 
+	private String numeroLicencia; 
     private String paisExpedicion;
     private String fechaVencimiento;
    
-    public LicenciaConduccion(int numero, String paisExpedicion, String fechaVencimiento) 
+    public LicenciaConduccion(String numeroLicencia, String paisExpedicion, String fechaVencimiento) 
     {
-	    this.numero = numero;
+	    this.numeroLicencia = numeroLicencia;
 	    this.paisExpedicion = paisExpedicion;
 	    this.fechaVencimiento = fechaVencimiento;
     }
    
-    public int getNumero() 
+    public String getNumero() 
     {
-	    return this.numero;
+	    return this.numeroLicencia;
     }
    
     public String paisExpedicion() 
