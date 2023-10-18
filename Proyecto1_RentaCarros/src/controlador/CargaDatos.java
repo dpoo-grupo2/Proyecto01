@@ -28,6 +28,7 @@ public class CargaDatos {
 	private static CategoriaVehiculo categoria;
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
+	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -188,6 +189,7 @@ public class CargaDatos {
         } catch (Exception e) {
             e.printStackTrace();
         }
+		this.lstCliente = clientes;
 		return clientes;
 	}
 	
@@ -245,7 +247,7 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 
 public Cliente obtenerUsuarioCliente(String usuario) 
 {
-	return (Cliente) usuarios.get(usuario);
+	return lstCliente.get(usuario);
 }
 public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
 {

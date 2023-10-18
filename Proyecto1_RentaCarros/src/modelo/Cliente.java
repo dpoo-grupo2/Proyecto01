@@ -105,13 +105,16 @@ public class Cliente extends Usuario
 	        }
 	    }
 	}
-	public Vehiculo verDisponiblidad(String sede,String categoria,Date fechaEntrega,Date fechaRecogida) 
+	public Vehiculo verDisponibilidad(String sede,int categoria,Date fechaEntrega,Date fechaRecogida) 
 	{
+		System.out.println("porsiacaso");
 		ArrayList<String> lstPlacas = new ArrayList<String>();
 		try 
 		{
+			System.out.println("lalalalal");
 			for (int i = 0; i < carga.getLstReserva().size(); i++) {
 				Reserva res = carga.getLstReserva().get(i);
+				System.out.println("lollloolol");
 				if (fechaEnRango(fechaEntrega,fechaRecogida,res.getFechaRecogida()) && fechaEnRango(fechaEntrega,fechaRecogida,res.getFechaRecogida())) 
 				{
 					Vehiculo vel = res.getvehiculo();
@@ -122,8 +125,9 @@ public class Cliente extends Usuario
 			Sede objSede = sedes.get(sede);
 			HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapDisponibilidad = objSede.getMapEstadoVehiculo();
 			HashMap<Integer,CategoriaVehiculo> mapCategoria= mapDisponibilidad .get("disponible");
+			System.out.println("hhhhhhh");
 			CategoriaVehiculo objCategoria = mapCategoria.get(categoria);
-			Vehiculo veh = new Vehiculo(categoria, categoria, categoria, categoria, edad, categoria, categoria, categoria, edad, categoria, edad);
+			Vehiculo veh = new Vehiculo(sede, sede, sede, sede, categoria, sede, sede, sede, categoria, sede, categoria);
 			boolean Estado = false;
 			for (int i = 0; i < objCategoria.getLst().size(); i++) {
 				if (!lstPlacas.contains(objCategoria.getLst().get(i).getPlaca())) 
@@ -159,9 +163,9 @@ public class Cliente extends Usuario
 			
 		}
 		catch(Exception e)
-		{}
+		{
 		return null;
-		
+		}
 	}
 	private boolean fechaEnRango(Date fechaEntregaF,Date fechaRecibidoF,Date fechaRevisar) 
 	{

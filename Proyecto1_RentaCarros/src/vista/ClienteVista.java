@@ -25,7 +25,7 @@ public class ClienteVista {
 	private boolean centinela4;
 	private boolean centinela5;
 	private boolean centinela6;
-	private Usuario cliente;
+	private Cliente cliente = new Cliente(null, null, null, null, 0, null, null, null, null, null);
 	private String sede;
 	private String categoria;
 	private String FechaRecibido;
@@ -59,8 +59,8 @@ public class ClienteVista {
 	
 	public void menu(String usuario) {
 	    centinela = true;
-	    cliente = cargaDatos.obtenerUsuarioCliente(usuario);
-	    
+	    cliente = (Cliente) cargaDatos.obtenerUsuarioCliente(usuario);
+	    System.out.println(cliente.getNombreCompleto());
 	    
 	    while (centinela) {
 	        System.out.println("\nBienvenido Cliente " + usuario + "\n");
@@ -147,7 +147,7 @@ public class ClienteVista {
             System.out.println("2. Sedan");
             System.out.println("3. SUV");
             System.out.println("4. Lujo");
-	        try {
+//	        try {
 	            opcion = Integer.parseInt(input("Ingrese su opción "));
 	            if (opcion == 1) 
 		        {
@@ -155,7 +155,7 @@ public class ClienteVista {
 		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
 		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
@@ -172,7 +172,7 @@ public class ClienteVista {
 		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
 		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
@@ -189,7 +189,7 @@ public class ClienteVista {
 		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
 		        	}
@@ -205,10 +205,9 @@ public class ClienteVista {
 		        	idCategoria = opcion;
 		        	Date fechaRecogida1 = fechaRecogida();
 		        	Date fechaEntrega1 = fechaEntrega();
-		        	Vehiculo valDispo =VerDisponiblidad(sede, categoria, fechaRecogida1, fechaEntrega1);
+		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
 		        	if (valDispo == null) 
 		        	{
-		        		System.out.println("FUNCIONAAAAAAAAA AAAAAAAAAAAAAAAAAAA");
 		        	}
 		        	System.out.println(valDispo);
 		        	HoraRecogida();
@@ -222,11 +221,11 @@ public class ClienteVista {
 	            }
 	            
 	            
-	        } 
-	        catch (Exception e) 
-	        {
-	            System.out.println("Recuerde que debe ingresar un número entre 1 y 4");
-	        }
+//	        } 
+//	        catch (Exception e) 
+//	        {
+//	            System.out.println("Recuerde que debe ingresar un número entre 1 y 4");
+//	        }
 
 	        
 	    }
@@ -287,9 +286,13 @@ public class ClienteVista {
 		return null;
 	}
 	
-	public Vehiculo VerDisponiblidad(String sede, String categoria, Date fechaRecogida, Date fechaEntrega) 
+	public Vehiculo VerDisponibilidad(String sede, int categoria, Date fechaRecogida, Date fechaEntrega) 
 	{
-		return ((Cliente) cliente).verDisponiblidad(sede, categoria, fechaRecogida, fechaEntrega);
+		System.out.println("kkkkkkkkkkkk");
+		System.out.println(cliente.verDisponibilidad(sede, categoria, fechaRecogida, fechaEntrega));
+		cliente.verDisponibilidad(sede, categoria, fechaRecogida, fechaEntrega);
+		System.out.println("voned");
+		return null;
 	}
 	
 	public void HoraRecogida() {
