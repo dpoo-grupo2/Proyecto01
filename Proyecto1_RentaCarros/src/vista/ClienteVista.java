@@ -146,7 +146,6 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
-		        	agregarConductorAdicional();
 		        	centinela = false;
 		        }
 		        
@@ -157,7 +156,6 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
-		        	agregarConductorAdicional();
 		        	centinela = false;
 		        }
 		        
@@ -168,7 +166,6 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
-		        	agregarConductorAdicional();
 		        	centinela = false;
 		        }
 		        
@@ -179,7 +176,6 @@ public class ClienteVista {
 		        	fechaEntrega();
 		        	HoraRecogida();
 		        	HoraEntrega();
-		        	agregarConductorAdicional();
 		        	centinela = false;
 		        }
 		        
@@ -295,54 +291,4 @@ public class ClienteVista {
 	        }
 	    }
 	}
-	
-	
-	public void agregarConductorAdicional() {
-	    
-		ArrayList<ConductorAdicional> conductoresAdicionales = new ArrayList<>();
-
-		centinela6 = true;
-		
-		while (centinela6) {
-	        System.out.println("\nDesea agregar un conductor adicional a su reserva?");
-	        System.out.println("1. Sí");
-	        System.out.println("2. No");
-
-	        int opcionConductorAdicional;
-	        try {
-	            opcionConductorAdicional = Integer.parseInt(input("Ingrese su opción "));
-	        } catch (Exception e) {
-	            System.out.println("Opción no válida.");
-	            return;
-	        }
-
-	        if (opcionConductorAdicional == 1) {
-
-	            String nombres = input("\nIngrese el nombre del conductor adicional");
-	            String telefono = input("Ingrese el teléfono del conductor adicional");
-	            String correoElectronico = input("Ingrese el correo electrónico del conductor adicional");
-	            String numeroLicencia = input("Ingrese el número de licencia del conductor adicional");
-	            String paisExpedicion = input("Ingrese el país de expedición de la licencia del conductor adicional");
-	            String fechaVencimiento = input("Ingrese la fecha de vencimiento de la licencia del conductor adicional");
-
-	            LicenciaConduccion licencia = new LicenciaConduccion(numeroLicencia, paisExpedicion, fechaVencimiento);
-
-	            ConductorAdicional conductorAdicional = new ConductorAdicional(nombres, telefono, correoElectronico, licencia);
-
-	            conductoresAdicionales.add(conductorAdicional);
-
-	            System.out.println("\nConductor adicional agregado a la reserva.");
-	        } else if (opcionConductorAdicional == 2) {
-	            System.out.println("No se agregarán más conductores adicionales a la reserva.");
-	            centinela6 = false;  
-	        } else {
-	            System.out.println("Opción no válida.");
-	        }
-	    }
-	}
-	
-	
-	
-	
-	
 }

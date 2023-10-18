@@ -1,8 +1,10 @@
 package controlador;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -188,6 +190,37 @@ public class CargaDatos {
 		return clientes;
 	}
 	
+	public void sobreEscribirAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+			String paisExpedicion, String fechaVencimiento) {
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = ("\n"+placa+","+nombres+","+telefono+","+correoElectronico+","+numeroLicencia+","+paisExpedicion+","+fechaVencimiento);
+	        
+	        File file = new File("Proyecto1_RentaCarros/data/ConductoresAdicionales.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+		
+	}
+	
 	public HashMap<String,Sede> getSedes()
 	{
 		return sedes;
@@ -208,6 +241,8 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	lstSegurosGeneral = lstNuevo;
 	return lstSegurosGeneral; 
 }
+
+	
 
 
 }

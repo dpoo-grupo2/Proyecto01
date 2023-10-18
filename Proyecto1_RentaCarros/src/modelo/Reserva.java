@@ -20,7 +20,7 @@ public class Reserva
 	private int idReserva;
 	private Vehiculo vehiculo;
 	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias,int idReserva,Vehiculo vehiculo)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo)
 	{
 		
 		
@@ -34,7 +34,6 @@ public class Reserva
 		this.lstSeguros = lstSeguros;
 		this.clienteRes = clienteRes;
 		this.valorReserva = valorReserva;
-		this.lstConductores = lstConductores;
 		this.dias = dias;
 		this.idReserva = idReserva;
 		this.vehiculo = vehiculo;
@@ -111,6 +110,12 @@ public class Reserva
 		return valorReserva;
 		
 	}
+	
+	public ArrayList<ConductorAdicional> addConductores(ArrayList<ConductorAdicional> lstConductores){
+		this.lstConductores = lstConductores;
+		return lstConductores;
+	}
+	
 	public ArrayList<ConductorAdicional> getConductores()
 	{
 		return lstConductores;
