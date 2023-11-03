@@ -61,7 +61,7 @@ public class Cliente extends Usuario
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 
 	{
 	lstReserva.add(reserva);
-	//sobreEscribirReserva();
+//	sobreEscribirReserva(reserva));
 	}
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
@@ -76,14 +76,27 @@ public class Cliente extends Usuario
 		return valorFinal;
 		
 	}
-	private void sobreEscribirReserva(boolean estadoTarjeta,String sedeEntrega,String sedeRecogida,String fechaRecogida,String horaRecogida,
-			String fechaEntrega,String horaEntrega,String lstSeguro,String usuario,int valorReserva,String lstConductores,int dias,int idReserva) {
+	private void sobreEscribirReserva(Reserva reserva) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
-
+	    Cliente clienteRes = reserva.getClienteRes();
+	    //obteniendo valor de todas las varibales para escribirlas en el txt
+	    boolean estadoTarjeta = reserva.getTarjeta();
+	    String sedeEntrega = reserva.getSedeEntrega();
+	    String sedeRecogida = reserva.getSedeRecogida();
+	    Date fechaRecogida = reserva.getFechaRecogida();
+	    String horaRecogida = reserva.getHoraRecogida();
+	    Date fechaEntrega = reserva.getFechaEntrega();
+	    String horaEntrega = reserva.getHoraEntrega();
+	    ArrayList<Seguro> lstSeguro = reserva.getLstSeguro(); // toca ver como poner esto en el txt
+	    String usuario = clienteRes.getLogin();
+	    int valorReserva = reserva.getValor();
+	    ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
+	    long dias = reserva.getDias();
+	    int idReserva = reserva.getIdReserva();
 	    try {
 	        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
-	        horaEntrega+","+lstSeguro+","+usuario+","+Integer.toString(valorReserva)+","+lstConductores+","+Integer.toString(dias)+","+Integer.toBinaryString(idReserva);
+	        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+Integer.toBinaryString(idReserva);
 	        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
 	        if (!file.exists()) {
 	            file.createNewFile();

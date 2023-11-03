@@ -31,11 +31,12 @@ public class ClienteVista {
 	private Cliente cliente = new Cliente(null, null, null, null, 0, null, null, null, null, null);
 	private String sede;
 	private String categoria;
-	private String FechaRecibido;
-	private String FechaEntrega;
+	private Date fechaRecogida;
+	private Date fechaEntrega;
 	private String HoraRecibido;
 	private String HoraEntrega;
 	private CargaDatos cargaDatos = new CargaDatos();
+	private String sedeEntrega;
 	
 	private Date FechaRecibido1;
 	private Date FechaEntrega1;
@@ -174,7 +175,6 @@ public class ClienteVista {
 		        	esNullVeh = false;
 		        	horaRecogida = HoraRecogida();
 		        	horaEntrega = HoraEntrega();
-		        	
 		        	centinela = false;
 		        }
 		        
@@ -182,9 +182,9 @@ public class ClienteVista {
 		        {
 		        	categoria = "Sedan";
 		        	idCategoria = opcion;
-		        	Date fechaRecogida1 = fechaRecogida();
-		        	Date fechaEntrega1 = fechaEntrega();
-		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida1, fechaEntrega1);
+		        	fechaRecogida = fechaRecogida();
+		        	fechaEntrega = fechaEntrega();
+		        	Vehiculo valDispo =VerDisponibilidad(sede, idCategoria, fechaRecogida, fechaEntrega);
 		        	if (valDispo == null) 
 		        	{
 		        		esNullVeh = true;
@@ -193,7 +193,7 @@ public class ClienteVista {
 		        	esNullVeh = false;
 		        	horaEntrega = HoraRecogida();
 		        	horaEntrega = HoraEntrega();
-		        	dias = CalcularDias(fechaEntrega1, fechaRecogida1);
+		        	dias = CalcularDias(fechaEntrega, fechaRecogida);
 		        	SedeEntrega();
 		        	SedeRecogida();
 		        	centinela = false;
@@ -234,7 +234,6 @@ public class ClienteVista {
 		        	HoraRecogida();
 		        	HoraEntrega();
 		        	seleccionarSeguros();
-
 		        	centinela = false;
 		        }
 		        else if (opcion == 5) 
@@ -268,7 +267,8 @@ public class ClienteVista {
 
 	        
 	    }
-//	    generarReserva(false,sede,);
+//	    Reserva reserva = generarReserva(false,"sede sur", "sede norte", fechaRecogida, "20:00",fechaEntrega,"10:00",new ArrayList<Seguro>, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo);
+//	    generarReserva(reserva);
 	}
 	private ArrayList<Seguro> seleccionarSeguros() {
 		ArrayList<Seguro> lstSeguros = cargaDatos.getLstSeguro();

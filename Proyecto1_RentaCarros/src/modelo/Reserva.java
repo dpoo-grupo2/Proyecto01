@@ -54,12 +54,12 @@ public class Reserva
 		return this.fechaRecogida;
 	}
 	
-	public String getHoraaEntrega()
+	public String getHoraEntrega()
 	{
 		return this.horaEntrega;
 	}
 	
-	public String gethoraRecogida()
+	public String getHoraRecogida()
 	{
 		return this.horaRecogida;
 	}
@@ -99,7 +99,7 @@ public class Reserva
 		return vehiculo;
 		
 	}
-	public int idReserva() 
+	public int getIdReserva() 
 	{
 		return idReserva;
 		
