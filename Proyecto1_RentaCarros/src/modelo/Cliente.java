@@ -19,7 +19,7 @@ public class Cliente extends Usuario
 	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
-	
+	private ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,Sede> sedes = carga.getSedes();
 
@@ -51,11 +51,13 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,ArrayList<Reserva> lstReserva,int dias, int idReserva,Vehiculo vehiculo) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias, int idReserva,Vehiculo vehiculo) 
 	{
+		System.out.println("esta dentro de cliente");
 		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo);
-		añadirReserva(lstReserva);
-		
+		añadirReserva(lstReservas);
+		sobreEscribirReserva(reserva);
+		System.out.println("SE SUPONE QUE YA SE ESTA AGREGANDO");
 		return reserva;
 	}
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 

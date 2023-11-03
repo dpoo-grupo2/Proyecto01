@@ -38,8 +38,8 @@ public class ClienteVista {
 	private CargaDatos cargaDatos = new CargaDatos();
 	private String sedeEntrega;
 	
-	private Date FechaRecibido1;
-	private Date FechaEntrega1;
+	private String fechaRecogida1;
+	private String fechaEntrega1;
 	
 	private boolean esNullVeh = false;
 	
@@ -267,8 +267,9 @@ public class ClienteVista {
 
 	        
 	    }
-//	    Reserva reserva = generarReserva(false,"sede sur", "sede norte", fechaRecogida, "20:00",fechaEntrega,"10:00",new ArrayList<Seguro>, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo);
-//	    generarReserva(reserva);
+	    Reserva reserva = generarReserva(false,"sede sur", "sede norte", fechaRecogida, "20:00",fechaEntrega,"10:00",new ArrayList<Seguro>(),cliente,0,5,23,new Vehiculo(usuario, usuario, usuario, usuario, idCategoria, usuario, usuario, usuario, idCategoria, usuario, idCategoria),new ArrayList<ConductorAdicional>());
+	    
+	    System.out.println("ya se crea la reserva");
 	}
 	private ArrayList<Seguro> seleccionarSeguros() {
 		ArrayList<Seguro> lstSeguros = cargaDatos.getLstSeguro();
@@ -336,10 +337,10 @@ public class ClienteVista {
 		        return diferenciaEnDias;
 		    
 	} 
-	public Reserva generarReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo) 
+	public Reserva generarReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2,String horaEntrega
+																									,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo,ArrayList<ConductorAdicional> lstConductores) 
 	{
-		return null;
+		return cliente.crearReserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida2, horaRecogida, fechaEntrega2, horaEntrega,clienteRes,lstSeguros, valorReserva,lstConductores,dias, idReserva, vehiculo);
 		
 	}
 	private String SedeEntrega() 
@@ -438,14 +439,14 @@ public class ClienteVista {
 	public Date fechaRecogida() {
 	    centinela2 = true;
 	    while (centinela2) {
-	        FechaRecibido = input("\nDigite la fecha en la cual va a recoger el vehículo (DD/MM/AA)");
+	        fechaRecogida1 = input("\nDigite la fecha en la cual va a recoger el vehículo (DD/MM/AA)");
 	        
 	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 	        dateFormat.setLenient(false);  
 	        try {
-	            Date fecha = dateFormat.parse(FechaRecibido);
+	            Date fecha = dateFormat.parse(fechaRecogida1);
 	            
-	            if (FechaRecibido.equals(dateFormat.format(fecha))) {
+	            if (fechaRecogida1.equals(dateFormat.format(fecha))) {
 	                System.out.println("Fecha ingresada correctamente en el formato DD/MM/AA.");
 	                centinela2 = false; 
 	                return fecha;
@@ -468,12 +469,12 @@ public class ClienteVista {
 
 	        try {
 	            
-	            Date fechaRecogidaDate = dateFormat.parse(FechaRecibido);
+	            Date fechaRecogidaDate = dateFormat.parse(fechaRecogida1);
 
 	            
-	            FechaEntrega = input("\nDigite la fecha en la cual va a entregar el vehículo (DD/MM/AA)");
+	            fechaEntrega1 = input("\nDigite la fecha en la cual va a entregar el vehículo (DD/MM/AA)");
 
-	            Date fechaEntregaDate = dateFormat.parse(FechaEntrega);
+	            Date fechaEntregaDate = dateFormat.parse(fechaEntrega1);
 
 	            if (fechaEntregaDate.after(fechaRecogidaDate)) {
 	                System.out.println("Fecha de entrega válida.");

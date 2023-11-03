@@ -132,4 +132,9 @@ public class Reserva
 		lstSeguros.remove(posEl);
 		return lstSeguros;	
 	}
+	public String toString() 
+	{
+		return Integer.toString(idReserva)+" a es una reserva";
+		
+	}
 }
