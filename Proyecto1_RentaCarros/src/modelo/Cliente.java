@@ -61,10 +61,7 @@ public class Cliente extends Usuario
 		return reserva;
 	}
 	public void añadirReserva(ArrayList<Reserva> lstReserva) 
-	{
-	lstReserva.add(reserva);
-//	sobreEscribirReserva(reserva));
-	}
+	{}
 	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
 	{
 		int valorFinal = 0;

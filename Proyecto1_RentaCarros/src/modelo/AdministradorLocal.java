@@ -21,4 +21,9 @@ public class AdministradorLocal
 	{
         return nombre;
     }
+	public void gestionarEmpelados() 
+	{
+		System.out.println("ole esto q se supone que hace? XDDDDD");
+	}
+	
 }
