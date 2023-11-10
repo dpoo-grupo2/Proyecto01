@@ -1,1 +1,1 @@
-placa,nombre, telefono,correoElectronico,numeroLicencia,paisExpedicion,fechaVencimiento
+idReserva,nombre, telefono,correoElectronico,numeroLicencia,paisExpedicion,fechaVencimiento
