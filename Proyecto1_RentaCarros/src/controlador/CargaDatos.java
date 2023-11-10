@@ -29,6 +29,7 @@ public class CargaDatos {
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
+	private int idReserva = 0;
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
