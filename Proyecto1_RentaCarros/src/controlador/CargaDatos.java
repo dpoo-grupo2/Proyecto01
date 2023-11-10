@@ -36,6 +36,7 @@ public class CargaDatos {
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
 	private int idReserva = 0;
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -262,7 +263,7 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	return lstSegurosGeneral; 
 }
 
-public Cliente obtenerUsuarioCliente(String usuario) 
+public Cliente getUsuarioCliente(String usuario) 
 {
 	return lstCliente.get(usuario);
 }
@@ -302,15 +303,17 @@ public void CargarReservas(File archivoReservas )
             	String sedeEntrega = partes[2];
             	String sedeRecogida = partes[3];
             	Date fechaRecogida = dateFormat.parse(partes[4]);
-//            	HoraRecogida no como hacerlo y q paja mirar a estas horas
+            	String horaRecogida = partes[5];
             	Date fechaEntrega = dateFormat.parse(partes[6]);
-//            	HoraEntrega partes[7]
-            	ArrayList<Seguro> lstSeguro = new ArrayList<Seguro>();
-            	String nameCliente = partes[8];//falta obtener el obj cliente
+            	String horaEntrega= partes[7];
+            	ArrayList<Seguro> lstSeguros = new ArrayList<Seguro>();
+            	Cliente objCliente = getUsuarioCliente(partes[8]);
             	int valorReserva = Integer.parseInt(partes[9]);
             	ArrayList<ConductorAdicional> lstConductores = new ArrayList<ConductorAdicional>();
             	int dias = Integer.parseInt(partes[11]);
-//            	Reserva reserva = new Reserva();
+            	Vehiculo veh = new Vehiculo(sedeRecogida, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, dias);
+            	Reserva reserva = new Reserva(estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega
+            			,horaEntrega,lstSeguros,objCliente,valorReserva,dias,idReserva,veh);
         		
         	}
         	catch(Exception e)
