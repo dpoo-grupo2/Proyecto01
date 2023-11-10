@@ -105,7 +105,7 @@ public class VentanaLogin extends JFrame
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.Y_AXIS));
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.X_AXIS));
         
-        
+        //lol
         
         JPanel panelOeste = new JPanel();
         add(panelOeste, BorderLayout.WEST);
