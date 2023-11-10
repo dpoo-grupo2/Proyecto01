@@ -1,3 +1,3 @@
-estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,lstSeguro,cliente,valorReserva,lstConductores,dias,idReserva
-false,sede sur,sede norte,null,20:00,null,10:00,lstSeguro,3,0,lstConductores,5,10111
-false,sede sur,sede norte,null,20:00,null,10:00,lstSeguro,3,0,lstConductores,5,10111
+estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,lstSeguro,cliente,valorReserva,lstConductores,dias,idReserva,placa
+false,sede sur,sede norte,null,20:00,null,10:00,lstSeguro,3,0,lstConductores,5,10111,AAA123
+false,sede sur,sede norte,null,20:00,null,10:00,lstSeguro,3,0,lstConductores,5,10111,AAA145

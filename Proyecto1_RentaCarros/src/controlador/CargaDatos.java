@@ -311,10 +311,10 @@ public void CargarReservas(File archivoReservas )
             	int valorReserva = Integer.parseInt(partes[9]);
             	ArrayList<ConductorAdicional> lstConductores = new ArrayList<ConductorAdicional>();
             	int dias = Integer.parseInt(partes[11]);
-            	Vehiculo veh = new Vehiculo(sedeRecogida, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, dias);
+            	Vehiculo veh = new Vehiculo(sedeRecogida, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, dias);//getVehiculo(); toca ver bien que parametros le paso
             	Reserva reserva = new Reserva(estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega
             			,horaEntrega,lstSeguros,objCliente,valorReserva,dias,idReserva,veh);
-        		
+        		lstReservas.add(reserva);
         	}
         	catch(Exception e)
         	{
