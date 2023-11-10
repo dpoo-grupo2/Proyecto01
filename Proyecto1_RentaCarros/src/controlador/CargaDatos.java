@@ -3,17 +3,22 @@ package controlador;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
 
 import modelo.AdministradorLocal;
 import modelo.CategoriaVehiculo;
 import modelo.Cliente;
+import modelo.ConductorAdicional;
 import modelo.LicenciaConduccion;
 import modelo.MedioPago;
 import modelo.Reserva;
@@ -29,6 +34,8 @@ public class CargaDatos {
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
+	private int idReserva = 0;
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -239,6 +246,16 @@ public class CargaDatos {
 		return lstReservas;
 		
 	}
+	public Reserva getReserva(int id){
+		for (Reserva i:lstReservas) 
+		{		
+		if (i.getIdReserva() == id) 
+		{
+			return i ;
+		}
+		}
+		return null;
+	}
 public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 {
 	lstSegurosGeneral = lstNuevo;
@@ -249,7 +266,7 @@ public Cliente obtenerUsuarioCliente(String usuario)
 {
 	return lstCliente.get(usuario);
 }
-public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
+public Vehiculo getVehiculo(String sede,String estado,int idCategoria,String placa) 
 {
 	try {
 	Sede objSede = sedes.get(sede);
@@ -270,4 +287,87 @@ public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String
 	return null;	
 	}
 	}
+public void CargarReservas(File archivoReservas ) 
+{
+	try (BufferedReader br = new BufferedReader(new FileReader(archivoReservas))) {
+        String linea;
+
+        while ((linea = br.readLine()) != null) 
+        {
+        	String[] partes = linea.split(",");
+
+        	try {
+        		idReserva=Integer.parseInt(partes[0]); 
+            	boolean estadoTarjeta = Boolean.parseBoolean(partes[1]);
+            	String sedeEntrega = partes[2];
+            	String sedeRecogida = partes[3];
+            	Date fechaRecogida = dateFormat.parse(partes[4]);
+//            	HoraRecogida no como hacerlo y q paja mirar a estas horas
+            	Date fechaEntrega = dateFormat.parse(partes[6]);
+//            	HoraEntrega partes[7]
+            	ArrayList<Seguro> lstSeguro = new ArrayList<Seguro>();
+            	String nameCliente = partes[8];//falta obtener el obj cliente
+            	int valorReserva = Integer.parseInt(partes[9]);
+            	ArrayList<ConductorAdicional> lstConductores = new ArrayList<ConductorAdicional>();
+            	int dias = Integer.parseInt(partes[11]);
+//            	Reserva reserva = new Reserva();
+        		
+        	}
+        	catch(Exception e)
+        	{
+        		continue;
+        	}
+        }
+	}
+	catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+private void sobreEscribirReserva(Reserva reserva) {
+	BufferedWriter bw = null;
+    FileWriter fw = null;
+    Cliente clienteRes = reserva.getClienteRes();
+    //obteniendo valor de todas las varibales para escribirlas en el txt
+    boolean estadoTarjeta = reserva.getTarjeta();
+    String sedeEntrega = reserva.getSedeEntrega();
+    String sedeRecogida = reserva.getSedeRecogida();
+    Date fechaRecogida = reserva.getFechaRecogida();
+    String horaRecogida = reserva.getHoraRecogida();
+    Date fechaEntrega = reserva.getFechaEntrega();
+    String horaEntrega = reserva.getHoraEntrega();
+    ArrayList<Seguro> lstSeguro = reserva.getLstSeguro(); // toca ver como poner esto en el txt
+    String usuario = clienteRes.getLogin();
+    int valorReserva = reserva.getValor();
+    ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
+    long dias = reserva.getDias();
+    int idReserva = reserva.getIdReserva();
+    try {
+        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
+        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+Integer.toBinaryString(idReserva);
+        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        fw = new FileWriter(file.getAbsoluteFile(), true);
+        bw = new BufferedWriter(fw);
+        bw.write(data);
+        System.out.println("¡Información agregada!");
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (bw != null)
+                bw.close();
+            if (fw != null)
+                fw.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
 }
