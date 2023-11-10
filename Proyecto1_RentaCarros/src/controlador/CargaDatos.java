@@ -7,11 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
 
 import modelo.AdministradorLocal;
 import modelo.CategoriaVehiculo;
@@ -33,6 +35,7 @@ public class CargaDatos {
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
 	private int idReserva = 0;
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 	public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
@@ -298,6 +301,15 @@ public void CargarReservas(File archivoReservas )
             	boolean estadoTarjeta = Boolean.parseBoolean(partes[1]);
             	String sedeEntrega = partes[2];
             	String sedeRecogida = partes[3];
+            	Date fechaRecogida = dateFormat.parse(partes[4]);
+//            	HoraRecogida no como hacerlo y q paja mirar a estas horas
+            	Date fechaEntrega = dateFormat.parse(partes[6]);
+//            	HoraEntrega partes[7]
+            	ArrayList<Seguro> lstSeguro = new ArrayList<Seguro>();
+            	String nameCliente = partes[8];//falta obtener el obj cliente
+            	int valorReserva = Integer.parseInt(partes[9]);
+            	ArrayList<ConductorAdicional> lstConductores = new ArrayList<ConductorAdicional>();
+            	int dias = Integer.parseInt(partes[11]);
 //            	Reserva reserva = new Reserva();
         		
         	}
