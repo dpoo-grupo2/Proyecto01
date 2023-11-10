@@ -90,5 +90,10 @@ public class Vehiculo
 		estadoActual = nuevoEstado;
 		return estadoActual;
 	}
-
+	public String toString() 
+    {
+    	
+		return "PLACAAAAAAAAA "+placa+ " El estado"+estadoActual+" Categoria "+categoria +"idCat " +idCategoria;
+    	
+    }
 }

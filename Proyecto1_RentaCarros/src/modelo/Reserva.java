@@ -16,11 +16,11 @@ public class Reserva
 	private Cliente clienteRes;
 	private int valorReserva;
 	private ArrayList<ConductorAdicional> lstConductores;
-	private int dias;
+	private long dias;
 	private int idReserva;
 	private Vehiculo vehiculo;
 	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,int idReserva,Vehiculo vehiculo)
 	{
 		
 		
@@ -54,12 +54,12 @@ public class Reserva
 		return this.fechaRecogida;
 	}
 	
-	public String getHoraaEntrega()
+	public String getHoraEntrega()
 	{
 		return this.horaEntrega;
 	}
 	
-	public String gethoraRecogida()
+	public String getHoraRecogida()
 	{
 		return this.horaRecogida;
 	}
@@ -89,7 +89,7 @@ public class Reserva
 		return valorReserva;
 		
 	}
-	public int getDias()
+	public long getDias()
 	{
 		return dias;
 		
@@ -99,7 +99,7 @@ public class Reserva
 		return vehiculo;
 		
 	}
-	public int idReserva() 
+	public int getIdReserva() 
 	{
 		return idReserva;
 		
@@ -131,5 +131,10 @@ public class Reserva
 	{
 		lstSeguros.remove(posEl);
 		return lstSeguros;	
+	}
+	public String toString() 
+	{
+		return Integer.toString(idReserva)+" a es una reserva";
+		
 	}
 }

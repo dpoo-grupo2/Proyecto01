@@ -4,8 +4,3 @@ CRO,45
 CRO,45
 CRO,345
 cro,45
-<<<<<<< HEAD
-=======
-TH04,40
-CROS,76498
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
