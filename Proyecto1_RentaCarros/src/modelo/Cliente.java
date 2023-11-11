@@ -16,7 +16,6 @@ public class Cliente extends Usuario
 	private String cedula;
 	private String correoElectronico;
 	private String fechaNacimiento;
-	private Reserva reserva;
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
 	private ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
@@ -54,27 +53,17 @@ public class Cliente extends Usuario
 	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias, int idReserva,Vehiculo vehiculo) 
 	{
 		System.out.println("esta dentro de cliente");
-		reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo);
-		añadirReserva(lstReservas);
+		Reserva reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo,lstConductores);
+		añadirReserva(reserva);
 		sobreEscribirReserva(reserva);
 		System.out.println("SE SUPONE QUE YA SE ESTA AGREGANDO");
 		return reserva;
 	}
-	public void añadirReserva(ArrayList<Reserva> lstReserva) 
-	{}
-	public int calcularValor(ArrayList<Seguro> lstSeguros,ArrayList<ConductorAdicional> lstConductores,int tarifaDiaria,int tarifaConductor) 
+	public void añadirReserva(Reserva reserva) 
 	{
-		int valorFinal = 0;
-		long nDias = reserva.getDias();//
-		valorFinal +=tarifaDiaria*nDias;
-		valorFinal += tarifaConductor*lstConductores.size();
-		for (int i = 0; i < lstSeguros.size(); i++) {
-			Seguro seguro = lstSeguros.get(i);
-			valorFinal += seguro.getValorSeguro();
-		}
-		return valorFinal;
-		
+		lstReservas.add(reserva);
 	}
+	
 	private void sobreEscribirReserva(Reserva reserva) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
