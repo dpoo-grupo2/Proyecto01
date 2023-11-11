@@ -19,8 +19,12 @@ public class Reserva
 	private long dias;
 	private int idReserva;
 	private Vehiculo vehiculo;
-	public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,int idReserva,Vehiculo vehiculo)
+	private int idCategoria;
+	private int tarifaDiaria;
+	private static int tarifaConductor;
+
+public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,int idReserva,Vehiculo vehiculo,ArrayList<ConductorAdicional> lstConductores)
 	{
 		
 		
@@ -37,6 +41,9 @@ public class Reserva
 		this.dias = dias;
 		this.idReserva = idReserva;
 		this.vehiculo = vehiculo;
+		this.idCategoria = vehiculo.getIdCat();
+		this.tarifaDiaria = getTarifa(idCategoria);
+		this.lstConductores = lstConductores;
 	}
 	
 	public boolean getTarjeta()
@@ -104,6 +111,29 @@ public class Reserva
 		return idReserva;
 		
 	}
+	public int getTarifa(int cat) 
+	{
+		if (cat == 1) 
+		{
+			return 20000;
+		}
+		else if(cat == 2) 
+		{
+			return 40000;
+		}
+		else if (cat == 3) 
+		{
+			return 60000;
+		}
+		else if(cat == 4) 
+		{
+			return 80000;
+		}
+		else 
+		{
+			return 0;
+		}
+	}	
 	public int modValor(int valorNuevo) 
 	{
 		valorReserva = valorNuevo;
@@ -131,6 +161,18 @@ public class Reserva
 	{
 		lstSeguros.remove(posEl);
 		return lstSeguros;	
+	}
+	public int calcularValor() 
+	{
+		int valorFinal = 0;
+		valorFinal +=tarifaDiaria*dias;
+		valorFinal += tarifaConductor*lstConductores.size();
+		for (int i = 0; i < lstSeguros.size(); i++) {
+			Seguro seguro = lstSeguros.get(i);
+			valorFinal += seguro.getValorSeguro();
+		}
+		return valorFinal;
+		
 	}
 	public String toString() 
 	{

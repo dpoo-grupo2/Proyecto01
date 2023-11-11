@@ -34,7 +34,7 @@ public class CargaDatos {
 	private static ArrayList<Seguro> lstSegurosGeneral = new ArrayList<Seguro>();
 	private static ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
-	private int idReserva = 0;
+	private String idReserva = "0";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 	public void cargarInformacionVehiculos(String string) 
@@ -288,7 +288,20 @@ public Vehiculo getVehiculo(String sede,String estado,int idCategoria,String pla
 	return null;	
 	}
 	}
-public void CargarReservas(File archivoReservas ) 
+public Reserva getReserva(String id) 
+{
+	for(Reserva res: lstReservas) 
+	{
+		if(id.equals(res.getIdReserva())) 
+		{
+			return res;
+		}
+		
+	}
+	return null;
+	
+}
+public ArrayList<Reserva> cargarReservas(File archivoReservas ) 
 {
 	try (BufferedReader br = new BufferedReader(new FileReader(archivoReservas))) {
         String linea;
@@ -298,7 +311,7 @@ public void CargarReservas(File archivoReservas )
         	String[] partes = linea.split(",");
 
         	try {
-        		idReserva=Integer.parseInt(partes[0]); 
+        		idReserva= partes[0]; 
             	boolean estadoTarjeta = Boolean.parseBoolean(partes[1]);
             	String sedeEntrega = partes[2];
             	String sedeRecogida = partes[3];
@@ -311,16 +324,23 @@ public void CargarReservas(File archivoReservas )
             	int valorReserva = Integer.parseInt(partes[9]);
             	ArrayList<ConductorAdicional> lstConductores = new ArrayList<ConductorAdicional>();
             	int dias = Integer.parseInt(partes[11]);
-            	Vehiculo veh = new Vehiculo(sedeRecogida, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, sedeRecogida, sedeRecogida, dias, sedeRecogida, dias);//getVehiculo(); toca ver bien que parametros le paso
+            	String placa = partes[12];
+            	int idCategoria = Integer.parseInt(sedeRecogida);
+            	
+            	Vehiculo veh = getVehiculo(sedeEntrega,"alquilado",idCategoria,placa);//getVehiculo(); toca ver bien que parametros le paso
             	Reserva reserva = new Reserva(estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega
-            			,horaEntrega,lstSeguros,objCliente,valorReserva,dias,idReserva,veh);
+            			,horaEntrega,lstSeguros,objCliente,valorReserva,dias,idReserva,veh,lstConductores);
+            	objCliente.añadirReserva(reserva);
         		lstReservas.add(reserva);
+
         	}
         	catch(Exception e)
         	{
         		continue;
         	}
+        	
         }
+
 	}
 	catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
@@ -329,8 +349,9 @@ public void CargarReservas(File archivoReservas )
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
+	return lstReservas;
 }
+
 private void sobreEscribirReserva(Reserva reserva) {
 	BufferedWriter bw = null;
     FileWriter fw = null;
