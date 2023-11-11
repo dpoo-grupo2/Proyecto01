@@ -140,15 +140,7 @@ public class VentanaSignUp extends JFrame
 	{
 		JOptionPane.showMessageDialog(this, "¡Haz sido correctamente registrado!", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 	}
-    
-    
-    public static void main(String[] args) 
-    {
-        VentanaLogin ventana = new VentanaLogin();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);
-    }
-    
+       
     
     class JTextFieldWithHint extends JTextField implements FocusListener {
         private final String hint;

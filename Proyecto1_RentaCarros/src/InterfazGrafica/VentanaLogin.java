@@ -70,7 +70,10 @@ public class VentanaLogin extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                
+            	MenuCliente MenuCliente = new MenuCliente();
+            	MenuCliente.setLocationRelativeTo(null);
+            	MenuCliente.setVisible(true);
+                dispose();    
             	
             }
         });
@@ -85,10 +88,10 @@ public class VentanaLogin extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            VentanaSignUp ventanaSignUp = new VentanaSignUp();
-            ventanaSignUp.setLocationRelativeTo(null);
-            ventanaSignUp.setVisible(true);
-            dispose();
+	            VentanaSignUp ventanaSignUp = new VentanaSignUp();
+	            ventanaSignUp.setLocationRelativeTo(null);
+	            ventanaSignUp.setVisible(true);
+	            dispose();
             	
             }
         });
