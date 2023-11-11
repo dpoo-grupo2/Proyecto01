@@ -36,14 +36,15 @@ public class MenuCliente extends JFrame
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
         
-        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Cliente: ");
+        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Cliente!");
         labelIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
         labelIniciarSesion.setFont(new Font("Arial", Font.BOLD, 30));
         panelCentro.add(labelIniciarSesion);
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-          
+        final JPClienteReserva jPClienteReserva = new JPClienteReserva();  
+        
         JButton btnReserva = new JButton("Reservar vehículo");
         btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
         btnReserva.setBackground(new Color(32, 182, 182));
@@ -53,7 +54,11 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	modificarReserva();
+            	remove(panelCentro);
+                
+                add(jPClienteReserva, BorderLayout.CENTER);
+                revalidate();
+                repaint();
             	
             }
         });
@@ -68,7 +73,7 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            
+            	modificarReserva();
             	
             }
         });
@@ -123,12 +128,14 @@ public class MenuCliente extends JFrame
         panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.Y_AXIS));
         panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.X_AXIS));
 
+          
     }
 
-        
+      
+    
     public void modificarReserva()
 	{
-		JOptionPane.showInputDialog(this, "Digite la matrícula del vehículo el cual reservo: \n (AAA000)", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 	}
     
     

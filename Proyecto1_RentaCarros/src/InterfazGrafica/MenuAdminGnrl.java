@@ -36,9 +36,9 @@ public class MenuAdminGnrl extends JFrame
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
         
-        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Adminsitrador: ");
+        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Adminsitrador general! ");
         labelIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
-        labelIniciarSesion.setFont(new Font("Arial", Font.BOLD, 30));
+        labelIniciarSesion.setFont(new Font("Arial", Font.BOLD, 25));
         panelCentro.add(labelIniciarSesion);
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
@@ -114,7 +114,7 @@ public class MenuAdminGnrl extends JFrame
         JPanel panelOeste = new JPanel();
         add(panelOeste, BorderLayout.WEST);
         panelOeste.setBackground(new Color(200, 182, 182));
-        ImageIcon imagen2 = new ImageIcon("Proyecto1_RentaCarros/data/CarroCliente (1).png");
+        ImageIcon imagen2 = new ImageIcon("Proyecto1_RentaCarros/data/Admin.png");
         JLabel labelImagen2 = new JLabel(imagen2);
         panelOeste.add(labelImagen2);
         panelOeste.setPreferredSize(new Dimension(130, 10));
@@ -134,12 +134,16 @@ public class MenuAdminGnrl extends JFrame
             int seleccion = JOptionPane.showOptionDialog(null, "¿Qué acción desea realizar?", "CarRental", 
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
             
-            if (seleccion == 0) {
+            if (seleccion == 0) 
+            {
                 System.out.println(" ");
-            } else if (seleccion == 1) {
-                System.out.println(" ");
-            } else {
                 
+            } else if (seleccion == 1) 
+            {
+                System.out.println(" ");
+                
+            } else 
+            {
                 System.out.println("");
         }
 	}

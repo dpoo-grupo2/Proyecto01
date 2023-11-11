@@ -109,7 +109,8 @@ public class VentanaSignUp extends JFrame
             	VentanaLogin VentanaLogin = new VentanaLogin();
             	VentanaLogin.setLocationRelativeTo(null);
             	VentanaLogin.setVisible(true);
-                dispose(); 
+            	dispose(); 
+                
             	
             }
         });

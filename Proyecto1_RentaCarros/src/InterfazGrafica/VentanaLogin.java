@@ -1,15 +1,28 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.util.HashMap;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import controlador.CargaDatos;
+import modelo.Cliente;
+import modelo.Usuario;
+import vista.AdminLocal;
+import vista.AdministradorGeneral;
+import vista.ClienteVista;
+import vista.EmpleadoVista;
+import vista.Login;
 
 public class VentanaLogin extends JFrame 
 {
 	private JLabel lblRelleno;
 	private JLabel lblRelleno2;
 	private JLabel lblRelleno3;
+	
+	private CargaDatos cargaDatos = new CargaDatos();
+	private HashMap<String,Usuario> usuarios;
+	private HashMap<String,Cliente> clientes;
 	
     public VentanaLogin() 
     {
@@ -18,7 +31,7 @@ public class VentanaLogin extends JFrame
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
-
+        CargarDatos();
         
         
         JPanel panelNorte = new JPanel();
@@ -70,10 +83,57 @@ public class VentanaLogin extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	MenuAdminGnrl MenuAdminGnrl = new MenuAdminGnrl();
-            	MenuAdminGnrl.setLocationRelativeTo(null);
-            	MenuAdminGnrl.setVisible(true);
-                dispose();    
+            	boolean loginExitoso = false;
+            	String login = textFieldLogin.getText();
+                String contraseña = textFieldContraseña.getText();
+
+                if (usuarios.containsKey(login)) {
+    	            Usuario clsUsuario = usuarios.get(login);
+
+    	            if (contraseña.equals(clsUsuario.getPassword())) {
+    	                loginExitoso = true;
+    	                
+    	                System.out.println(clsUsuario.getTipoUsuario());
+    	                
+    	                if (clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) 
+    	                {
+    	                	
+    	                    MenuAdminGnrl menuAdminGnrl = new MenuAdminGnrl();
+    	                    menuAdminGnrl.setLocationRelativeTo(null);
+    	                    menuAdminGnrl.setVisible(true);
+    	    	            dispose();
+    	    	            
+    	                } else if (clsUsuario.getTipoUsuario().equals("AdministradorLocal")) 
+    	                {
+    	                    
+    	                	MenuAdminSede menuAdminSede = new MenuAdminSede();
+    	                	menuAdminSede.setLocationRelativeTo(null);
+    	                	menuAdminSede.setVisible(true);
+    	    	            dispose();
+    	    	            
+    	                } else if (clsUsuario.getTipoUsuario().equals("Empleado")) 
+    	                {
+    	                    
+    	                    MenuEmpleado menuEmpleado = new MenuEmpleado();
+    	                    menuEmpleado.setLocationRelativeTo(null);
+    	                    menuEmpleado.setVisible(true);
+    	    	            dispose();
+    	    	            
+    	                } else if (clsUsuario.getTipoUsuario().equals("Cliente")) {
+    	                    
+    	                	MenuCliente menuCliente = new MenuCliente();
+    	                	menuCliente.setLocationRelativeTo(null);
+    	                	menuCliente.setVisible(true);
+    	    	            dispose();
+    	                }
+    	            }
+    	        }
+
+ 
+                else {
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta. Vuelve a intentar.");
+                }
+            	
             	
             }
         });
@@ -111,7 +171,7 @@ public class VentanaLogin extends JFrame
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.Y_AXIS));
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.X_AXIS));
         
-        //lol
+        
         
         JPanel panelOeste = new JPanel();
         add(panelOeste, BorderLayout.WEST);
@@ -126,8 +186,19 @@ public class VentanaLogin extends JFrame
         VentanaLogin ventana = new VentanaLogin();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
+        
+        
     }
     
+    
+    public void CargarDatos(){
+		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+		HashMap<String, Usuario> usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
+		HashMap<String,Cliente> clientes = cargaDatos.cargarInformacionClientes("Proyecto1_RentaCarros/data/Clientes.txt");
+		this.usuarios = usuarios;		
+		this.clientes = clientes;
+		System.out.println("");
+	}
     
     class JTextFieldWithHint extends JTextField implements FocusListener {
         private final String hint;
