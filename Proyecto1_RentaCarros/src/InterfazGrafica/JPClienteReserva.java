@@ -10,6 +10,8 @@ import javax.swing.border.LineBorder;
 
 public class JPClienteReserva extends JPanel {
 
+	private JLabel lblRelleno;
+	
     public JPClienteReserva() 
     {
     	 
@@ -18,26 +20,73 @@ public class JPClienteReserva extends JPanel {
         setBackground(new Color(200, 4, 182));
         setBorder(new EmptyBorder(70, 160, 150, 160));
         
-        JLabel labelSelect = new JLabel("Seleccione su sede:");
+        JLabel labelSelect = new JLabel("Seleccione la sede para resevar:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 30));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
         
 		add(labelSelect);
 
-		JButton btnReserva = new JButton("Reservar vehículo");
-        btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
-        btnReserva.setBackground(new Color(32, 182, 182));
-        btnReserva.setForeground(Color.WHITE);
-        btnReserva.setBorder(new LineBorder(Color.BLACK, 2));
-        btnReserva.addActionListener(new ActionListener() {
+		lblRelleno = new JLabel(" ");
+        add(lblRelleno);
+		
+        JPClienteSede jPClienteSede = new JPClienteSede();
+        
+		JButton btnNorte = new JButton("Sede norte");
+		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
+		btnNorte.setBackground(new Color(32, 182, 182));
+		btnNorte.setForeground(Color.WHITE);
+		btnNorte.setBorder(new LineBorder(Color.BLACK, 2));
+		btnNorte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	remove(JPClienteReserva.this);
+                add(jPClienteSede, BorderLayout.CENTER);
+                revalidate();
+                repaint();
             	
             }
         });
-        add(btnReserva);
-		
+        add(btnNorte);
+        
+        
+        JButton btnCentro= new JButton("Sede centro");
+        btnCentro.setFont(new Font("Arial", Font.BOLD, 20));
+        btnCentro.setBackground(new Color(32, 182, 182));
+        btnCentro.setForeground(Color.WHITE);
+        btnCentro.setBorder(new LineBorder(Color.BLACK, 2));
+        btnCentro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	remove(JPClienteReserva.this);
+                add(jPClienteSede, BorderLayout.CENTER);
+                revalidate();
+                repaint();
+            	
+            }
+        });
+        add(btnCentro);
+        
+        
+        JButton btnSur = new JButton("Sede sur");
+        btnSur.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSur.setBackground(new Color(32, 182, 182));
+        btnSur.setForeground(Color.WHITE);
+        btnSur.setBorder(new LineBorder(Color.BLACK, 2));
+        btnSur.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	remove(JPClienteReserva.this);
+                add(jPClienteSede, BorderLayout.CENTER);
+                revalidate();
+                repaint();
+            	
+            }
+        });
+        add(btnSur);
+        
+		        
     }
 }
