@@ -288,6 +288,19 @@ public Vehiculo getVehiculo(String sede,String estado,int idCategoria,String pla
 	return null;	
 	}
 	}
+public Reserva getReserva(String id) 
+{
+	for(Reserva res: lstReservas) 
+	{
+		if(id.equals(res.getIdReserva())) 
+		{
+			return res;
+		}
+		
+	}
+	return null;
+	
+}
 public void CargarReservas(File archivoReservas ) 
 {
 	try (BufferedReader br = new BufferedReader(new FileReader(archivoReservas))) {
