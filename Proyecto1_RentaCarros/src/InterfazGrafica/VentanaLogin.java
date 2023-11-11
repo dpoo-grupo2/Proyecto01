@@ -70,9 +70,9 @@ public class VentanaLogin extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	MenuEmpleado MenuEmpleado = new MenuEmpleado();
-            	MenuEmpleado.setLocationRelativeTo(null);
-            	MenuEmpleado.setVisible(true);
+            	MenuAdminGnrl MenuAdminGnrl = new MenuAdminGnrl();
+            	MenuAdminGnrl.setLocationRelativeTo(null);
+            	MenuAdminGnrl.setVisible(true);
                 dispose();    
             	
             }
