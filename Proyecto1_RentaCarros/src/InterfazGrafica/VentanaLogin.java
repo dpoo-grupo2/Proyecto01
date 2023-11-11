@@ -85,7 +85,10 @@ public class VentanaLogin extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                
+            VentanaSignUp ventanaSignUp = new VentanaSignUp();
+            ventanaSignUp.setLocationRelativeTo(null);
+            ventanaSignUp.setVisible(true);
+            dispose();
             	
             }
         });
