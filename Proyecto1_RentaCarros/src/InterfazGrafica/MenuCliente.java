@@ -53,7 +53,7 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                
+            	modificarReserva();
             	
             }
         });
@@ -72,6 +72,10 @@ public class MenuCliente extends JFrame
             	
             }
         });
+        
+        
+        
+        
         panelCentro.add(btnModificar);
         
         JButton btnSalir = new JButton("Salir");
@@ -83,7 +87,10 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            
+            	VentanaLogin VentanaLogin = new VentanaLogin();
+            	VentanaLogin.setLocationRelativeTo(null);
+            	VentanaLogin.setVisible(true);
+                dispose(); 
             	
             }
         });
@@ -118,14 +125,11 @@ public class MenuCliente extends JFrame
 
     }
 
-    
-    public static void main(String[] args) 
-    {
-        VentanaLogin ventana = new VentanaLogin();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);
-    }
-    
+        
+    public void modificarReserva()
+	{
+		JOptionPane.showInputDialog(this, "Digite la matrícula del vehículo el cual reservo: \n (AAA000)", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+	}
     
     
 }
