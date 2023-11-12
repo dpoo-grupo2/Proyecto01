@@ -17,8 +17,8 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
 
 	private JLabel lblRelleno;
 	private CargaDatos cargaDatos = new CargaDatos();
-	private ArrayList <String> comboBoxOptions = new ArrayList <String>();
-	private JComboBox<String> lblComboBox;
+//	private ArrayList <String> comboBoxOptions = new ArrayList <String>();
+//	private JComboBox<String> lblComboBox;
 //	private ArrayList<Seguro> seguros = CargaDatos.getLstSeguro();  
 	
     public JPEliminarSeguro(MenuAdminGnrl vent) 
@@ -39,15 +39,15 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
         add(lblRelleno); 
         
 //        lblComboBox = new JComboBox<>(comboBoxOptions);
-        lblComboBox.addActionListener(this);
-        add(lblComboBox);
+//        lblComboBox.addActionListener(this);
+//        add(lblComboBox);
         
           
         JPSeguroEditado sH = new JPSeguroEditado(vent);
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -84,7 +84,11 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
 		
 	}
 
-    
+	public static void main(String[] args) 
+    {
+        VentanaLogin ventana = new VentanaLogin();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);}
 		        
     
 }

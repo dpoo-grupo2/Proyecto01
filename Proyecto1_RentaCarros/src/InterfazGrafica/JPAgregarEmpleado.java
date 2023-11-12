@@ -20,11 +20,11 @@ public class JPAgregarEmpleado extends JPanel {
     	
         setLayout(new GridLayout(7, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 60, 160));
+        setBorder(new EmptyBorder(60, 160, 60, 160));
         
         JLabel labelSelect = new JLabel("Adicione todos los del nuevo empleado:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 22));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
 
         add(labelSelect);
 
@@ -33,9 +33,9 @@ public class JPAgregarEmpleado extends JPanel {
         addTextFieldWithHint("Nombre completo");
         addTextFieldWithHint("Contraseña");
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -48,7 +48,7 @@ public class JPAgregarEmpleado extends JPanel {
         });
         
         
-        JButton btnSiguiente = new JButton("Siguiente");
+        JButton btnSiguiente = new JButton("Crear");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
         btnSiguiente.setBackground(new Color(32, 182, 182));
         btnSiguiente.setForeground(Color.WHITE);

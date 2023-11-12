@@ -8,7 +8,7 @@ import javax.swing.border.*;
 public class MenuEmpleado extends JFrame 
 {
 	private JLabel lblRelleno;
-	
+	private JPanel panelCentro;
 	
     public MenuEmpleado() 
     {
@@ -31,52 +31,51 @@ public class MenuEmpleado extends JFrame
 
         
         
-        JPanel panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
+        panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
         
-        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Empleado: ");
+        JLabel labelIniciarSesion = new JLabel("¡Bienvenido Empleado!");
         labelIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
         labelIniciarSesion.setFont(new Font("Arial", Font.BOLD, 30));
         panelCentro.add(labelIniciarSesion);
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-          
-        JButton btnReserva = new JButton("Registrar conductores adicionales");
-        btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
-        btnReserva.setBackground(new Color(32, 182, 182));
-        btnReserva.setForeground(Color.WHITE);
-        btnReserva.setBorder(new LineBorder(Color.BLACK, 2));
-        btnReserva.addActionListener(new ActionListener() {
+        JPRegistrarConductor jPRegistrarConductor = new JPRegistrarConductor(this);  
+        
+        JButton btnAgregar = new JButton("Registrar conductores adicionales");
+        btnAgregar.setFont(new Font("Arial", Font.BOLD, 20));
+        btnAgregar.setBackground(new Color(32, 182, 182));
+        btnAgregar.setForeground(Color.WHITE);
+        btnAgregar.setBorder(new LineBorder(Color.BLACK, 2));
+        btnAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
             	agregarConductores();
-            	
+            	nuevoCentro(jPRegistrarConductor);
             }
         });
-        panelCentro.add(btnReserva);
+        panelCentro.add(btnAgregar);
 
-        JButton btnModificar = new JButton("Actualizar estado vehículo");
-        btnModificar.setFont(new Font("Arial", Font.BOLD, 20));
-        btnModificar.setBackground(new Color(32, 182, 182));
-        btnModificar.setForeground(Color.WHITE);
-        btnModificar.setBorder(new LineBorder(Color.BLACK, 2));
-        btnModificar.addActionListener(new ActionListener() {
+        JPActualizarEstadoV jPActualizarEstadoV = new JPActualizarEstadoV(this);
+        
+        JButton btnActualizar = new JButton("Actualizar estado vehículo");
+        btnActualizar.setFont(new Font("Arial", Font.BOLD, 20));
+        btnActualizar.setBackground(new Color(32, 182, 182));
+        btnActualizar.setForeground(Color.WHITE);
+        btnActualizar.setBorder(new LineBorder(Color.BLACK, 2));
+        btnActualizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            
-            	
+            	actualizarEstado();
+            	nuevoCentro(jPActualizarEstadoV);
             }
         });
-        
-        
-        
-        
-        panelCentro.add(btnModificar);
+        panelCentro.add(btnActualizar);
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
@@ -124,12 +123,23 @@ public class MenuEmpleado extends JFrame
         panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.X_AXIS));
 
     }
-
-  
+    
+    
     public void agregarConductores()
 	{
-		JOptionPane.showInputDialog(this, "Digite la matrícula del vehículo el cual reservo: \n (AAA000)", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 	}
     
+    public void actualizarEstado()
+	{
+    	JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+	}
     
+    public void nuevoCentro(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
 }

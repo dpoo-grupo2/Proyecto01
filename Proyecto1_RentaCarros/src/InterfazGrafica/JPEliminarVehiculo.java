@@ -13,29 +13,34 @@ import javax.swing.border.LineBorder;
 public class JPEliminarVehiculo extends JPanel {
 
 	private JLabel lblRelleno;
-	
+//	lblRelleno = new JLabel(" ");
+//    add(lblRelleno);
     public JPEliminarVehiculo() 
     {
     	 
     	
-        setLayout(new GridLayout(5, 1, 0, 18));
+        setLayout(new GridLayout(5, 1, 16, 20));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 60, 160));
+        setBorder(new EmptyBorder(70, 110, 60, 110));
         
-        JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
-        labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
-
+        JLabel labelSelect = new JLabel("Adicione todos los");
+        labelSelect.setHorizontalAlignment(SwingConstants.RIGHT);
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
         add(labelSelect);
 
+        JLabel labelSelect2 = new JLabel("datos del vehículo:");
+        labelSelect2.setHorizontalAlignment(SwingConstants.LEFT);
+        labelSelect2.setFont(new Font("Arial", Font.BOLD, 26));
+        add(labelSelect2);
+        
         addTextFieldWithHint("Sede ubicación");
         addTextFieldWithHint("Disponibilidad vehículo");
         addTextFieldWithHint("Matrícula");
         addTextFieldWithHint("Categoría vehpiculo");
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -61,9 +66,9 @@ public class JPEliminarVehiculo extends JPanel {
             	
             }
         });
-        add(btnSiguiente);
-        add(btnSalir);
         
+        add(btnSalir);
+        add(btnSiguiente);
     }
 
     private void addTextFieldWithHint(String hint) {

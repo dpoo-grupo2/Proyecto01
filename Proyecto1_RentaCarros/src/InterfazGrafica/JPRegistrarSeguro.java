@@ -18,9 +18,9 @@ public class JPRegistrarSeguro extends JPanel {
     {
     	 
     	
-        setLayout(new GridLayout(7, 1, 0, 16));
+        setLayout(new GridLayout(6, 1, 0, 16));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 60, 160));
+        setBorder(new EmptyBorder(70, 160, 90, 160));
         
         JLabel labelSelect = new JLabel("Llene los datos correspondientes al seguro:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
@@ -38,7 +38,7 @@ public class JPRegistrarSeguro extends JPanel {
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -96,6 +96,11 @@ public class JPRegistrarSeguro extends JPanel {
 
         add(textField);
     }
-		        
+		
+    public static void main(String[] args) 
+    {
+        VentanaLogin ventana = new VentanaLogin();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);}
     
 }

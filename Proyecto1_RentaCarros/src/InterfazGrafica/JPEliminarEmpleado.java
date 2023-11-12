@@ -19,13 +19,13 @@ public class JPEliminarEmpleado extends JPanel {
     {
     	 
     	
-        setLayout(new GridLayout(7, 1, 0, 18));
+        setLayout(new GridLayout(6, 1, 0, 13));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 60, 160));
+        setBorder(new EmptyBorder(70, 160, 100, 160));
         
-        JLabel labelLogin = new JLabel("Ingrese el login del usuario que desea eliminar");
+        JLabel labelLogin = new JLabel("Ingrese el login del usuario que desea eliminar:");
         labelLogin.setHorizontalAlignment(SwingConstants.CENTER);
-        labelLogin.setFont(new Font("Arial", Font.BOLD, 22));
+        labelLogin.setFont(new Font("Arial", Font.BOLD, 20));
 
         add(labelLogin);
 
@@ -37,9 +37,9 @@ public class JPEliminarEmpleado extends JPanel {
         lblRelleno = new JLabel(" ");
         add(lblRelleno);
         
-        JButton btnSalir = new JButton("Salir");
-        btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        JButton btnSalir = new JButton("Regresar");
+        btnSalir.setFont(new Font("Arial", Font.BOLD, 19));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -52,8 +52,8 @@ public class JPEliminarEmpleado extends JPanel {
         });
         
         
-        JButton btnSiguiente = new JButton("Siguiente");
-        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
+        JButton btnSiguiente = new JButton("Eliminar");
+        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 19));
         btnSiguiente.setBackground(new Color(32, 182, 182));
         btnSiguiente.setForeground(Color.WHITE);
         btnSiguiente.setBorder(new LineBorder(Color.BLACK, 2));

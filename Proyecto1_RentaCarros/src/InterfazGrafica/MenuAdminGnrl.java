@@ -43,8 +43,7 @@ public class MenuAdminGnrl extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-        
-          
+                  
         JButton btnGestionar = new JButton("Gestionar vehículos");
         btnGestionar.setFont(new Font("Arial", Font.BOLD, 20));
         btnGestionar.setBackground(new Color(32, 182, 182));
@@ -55,8 +54,7 @@ public class MenuAdminGnrl extends JFrame
             public void actionPerformed(ActionEvent e) 
             {
             	gestionarVehiculos();
-            	
-                
+            	                
             }
         });
         panelCentro.add(btnGestionar);
@@ -130,8 +128,8 @@ public class MenuAdminGnrl extends JFrame
         
     public void gestionarVehiculos()
 	{
-    	final JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo();
-    	final JPRegistrarVehiculo jPRegistrarVehiculo = new JPRegistrarVehiculo();
+    	JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo();
+    	JPRegistrarVehiculo jPRegistrarVehiculo = new JPRegistrarVehiculo();
     	
             String[] opciones = {"Registrar vehículo", "Eliminar vehículo"};
             
@@ -140,14 +138,11 @@ public class MenuAdminGnrl extends JFrame
             
             if (seleccion == 0) {
                 System.out.println(" ");
-                add(jPRegistrarVehiculo, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+                nuevoCentro(jPRegistrarVehiculo);
             } else if (seleccion == 1) {
                 System.out.println(" ");
                 add(jPEliminarVehiculo, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+                nuevoCentro(jPEliminarVehiculo);
             }
 	}
     

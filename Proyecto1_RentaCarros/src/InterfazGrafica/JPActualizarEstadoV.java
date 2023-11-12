@@ -10,55 +10,34 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class JPRegistrarVehiculo extends JPanel {
+public class JPActualizarEstadoV extends JPanel {
 
 	private JLabel lblRelleno;
-	private JLabel lblRelleno2;
-		
-    public JPRegistrarVehiculo() 
+	
+    public JPActualizarEstadoV(MenuEmpleado vent) 
     {
     	 
     	
-        setLayout(new GridLayout(6, 4, 10, 30));
+        setLayout(new GridLayout(5, 1, 0, 24));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 80, 60, 80));
+        setBorder(new EmptyBorder(70, 160, 100, 160));
         
-        JLabel labelSelect = new JLabel("Adicione todos");
-        labelSelect.setHorizontalAlignment(SwingConstants.RIGHT);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 25));
-        add(labelSelect);
-        
-        JLabel labelSelect2 = new JLabel("los datos para el");
-        labelSelect2.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect2.setFont(new Font("Arial", Font.BOLD, 25));
-        add(labelSelect2);
-        
-        JLabel labelSelect3 = new JLabel("nuevo vehículo:");
-        labelSelect3.setHorizontalAlignment(SwingConstants.LEFT);
-        labelSelect3.setFont(new Font("Arial", Font.BOLD, 25));
-        add(labelSelect3);
-        
-        
-        
+        JLabel labelSelect = new JLabel("Digite el nuevo estado del carro:");
+        labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
 
-        addTextFieldWithHint("Matrícula");
-        addTextFieldWithHint("Modelo");
-        addTextFieldWithHint("Sede");
-        addTextFieldWithHint("Capacidad");
-        addTextFieldWithHint("Color");
-        addTextFieldWithHint("Año de fabricación");
-        addTextFieldWithHint("Transmisión");
-        addTextFieldWithHint("Categoría vehpiculo");
-        addTextFieldWithHint("Marca");
-        addTextFieldWithHint("Estado vehículo");
-        addTextFieldWithHint("ID Categoría");
-       
+        add(labelSelect);
+
         lblRelleno = new JLabel(" ");
-        add(lblRelleno);
+        add(lblRelleno); 
         
-        JButton btnSalir = new JButton("Regresar");
-        btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
-        btnSalir.setBackground(new Color(255, 144, 144));
+        addTextFieldWithHint("Nuevo estado");
+        
+          
+        
+        JButton btnSalir = new JButton("Salir");
+        btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSalir.setBackground(new Color(32, 182, 182));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -71,8 +50,8 @@ public class JPRegistrarVehiculo extends JPanel {
         });
         
         
-        JButton btnSiguiente = new JButton("Registrar");
-        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
+        JButton btnSiguiente = new JButton("Siguiente");
+        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 20));
         btnSiguiente.setBackground(new Color(32, 182, 182));
         btnSiguiente.setForeground(Color.WHITE);
         btnSiguiente.setBorder(new LineBorder(Color.BLACK, 2));
@@ -80,24 +59,22 @@ public class JPRegistrarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+
             	
             }
         });
-        add(btnSalir);
-        lblRelleno2 = new JLabel(" ");
-        add(lblRelleno2);
         add(btnSiguiente);
+        add(btnSalir);
         
     }
 
     private void addTextFieldWithHint(String hint) {
         JTextField textField = new JTextField();
-        textField.setFont(new Font("Arial", Font.BOLD, 18));
+        textField.setFont(new Font("Arial", Font.BOLD, 20));
         textField.setForeground(Color.GRAY);
         textField.setHorizontalAlignment(SwingConstants.CENTER);
-        textField.setBorder(new LineBorder(Color.BLACK, 2));
         textField.setText(hint);
+        textField.setBorder(new LineBorder(Color.BLACK, 2));
         textField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -118,7 +95,6 @@ public class JPRegistrarVehiculo extends JPanel {
 
         add(textField);
     }
-	
-    
+		        
     
 }

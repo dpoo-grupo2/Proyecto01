@@ -16,9 +16,7 @@ import vista.Login;
 
 public class VentanaLogin extends JFrame 
 {
-	private JLabel lblRelleno;
-	private JLabel lblRelleno2;
-	private JLabel lblRelleno3;
+	
 	
 	private CargaDatos cargaDatos = new CargaDatos();
 	private HashMap<String,Usuario> usuarios;
@@ -45,16 +43,15 @@ public class VentanaLogin extends JFrame
 
         
         
-        JPanel panelCentro = new JPanel(new GridLayout(8, 1));
+        JPanel panelCentro = new JPanel(new GridLayout(5, 1, 20,35));
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
         JLabel labelIniciarSesion = new JLabel("Iniciar Sesión");
         labelIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
-        panelCentro.setBorder(new EmptyBorder(70, 220, 70, 220));
+        panelCentro.setBorder(new EmptyBorder(70, 160, 70, 160));
         labelIniciarSesion.setFont(new Font("Arial", Font.BOLD, 30));
         panelCentro.add(labelIniciarSesion);
-        lblRelleno2 = new JLabel(" ");
-        panelCentro.add(lblRelleno2);
+        
               
         JTextField textFieldLogin = new JTextFieldWithHint("Login");
         textFieldLogin.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,8 +60,7 @@ public class VentanaLogin extends JFrame
         textFieldLogin.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldLogin);
         
-        lblRelleno = new JLabel(" ");
-        panelCentro.add(lblRelleno);
+        
 
         JTextField textFieldContraseña = new JTextFieldWithHint("Contraseña");
         textFieldContraseña.setHorizontalAlignment(SwingConstants.CENTER);
@@ -73,8 +69,7 @@ public class VentanaLogin extends JFrame
         textFieldContraseña.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldContraseña);
         
-        lblRelleno3 = new JLabel(" ");
-        panelCentro.add(lblRelleno3);
+        
         
         JButton btnLogin = new JButton("Log In");
         btnLogin.setFont(new Font("Arial", Font.BOLD, 20));
@@ -226,7 +221,7 @@ public class VentanaLogin extends JFrame
         public void focusLost(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText(hint);
-                super.setForeground(Color.BLACK);
+                super.setForeground(Color.GRAY);
                 showingHint = true;
             }
         }
