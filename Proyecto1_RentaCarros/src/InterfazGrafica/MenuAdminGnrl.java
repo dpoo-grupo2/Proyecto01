@@ -43,21 +43,24 @@ public class MenuAdminGnrl extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
+        
           
-        JButton btnReserva = new JButton("Gestionar vehículos");
-        btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
-        btnReserva.setBackground(new Color(32, 182, 182));
-        btnReserva.setForeground(Color.WHITE);
-        btnReserva.setBorder(new LineBorder(Color.BLACK, 2));
-        btnReserva.addActionListener(new ActionListener() {
+        JButton btnGestionar = new JButton("Gestionar vehículos");
+        btnGestionar.setFont(new Font("Arial", Font.BOLD, 20));
+        btnGestionar.setBackground(new Color(32, 182, 182));
+        btnGestionar.setForeground(Color.WHITE);
+        btnGestionar.setBorder(new LineBorder(Color.BLACK, 2));
+        btnGestionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
             	gestionarVehiculos();
             	
+            	remove(panelCentro);
+                
             }
         });
-        panelCentro.add(btnReserva);
+        panelCentro.add(btnGestionar);
 
         JButton btnModificar = new JButton("Gestionar seguros");
         btnModificar.setFont(new Font("Arial", Font.BOLD, 20));
@@ -128,42 +131,44 @@ public class MenuAdminGnrl extends JFrame
         
     public void gestionarVehiculos()
 	{
+    	final JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo();
+    	final JPRegistrarVehiculo jPRegistrarVehiculo = new JPRegistrarVehiculo();
     	
             String[] opciones = {"Registrar vehículo", "Eliminar vehículo"};
             
             int seleccion = JOptionPane.showOptionDialog(null, "¿Qué acción desea realizar?", "CarRental", 
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
             
-            if (seleccion == 0) 
-            {
+            if (seleccion == 0) {
                 System.out.println(" ");
-                
-            } else if (seleccion == 1) 
-            {
+                add(jPRegistrarVehiculo, BorderLayout.CENTER);
+                revalidate();
+                repaint();
+            } else if (seleccion == 1) {
                 System.out.println(" ");
-                
-            } else 
-            {
-                System.out.println("");
-        }
+                add(jPEliminarVehiculo, BorderLayout.CENTER);
+                revalidate();
+                repaint();
+            }
 	}
     
     public void gestionarSeguros()
 	{
-    	
-            String[] opciones = {"Añadir seguro", "Eliminar seguro"};
+    	  	
+        String[] opciones = {"Añadir seguro", "Eliminar seguro"};
             
-            int seleccion = JOptionPane.showOptionDialog(null, "¿Qué acción desea realizar?", "CarRental", 
+        int seleccion = JOptionPane.showOptionDialog(null, "¿Qué acción desea realizar?", "CarRental", 
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
             
             if (seleccion == 0) {
                 System.out.println(" ");
+                
             } else if (seleccion == 1) {
                 System.out.println(" ");
-            } else {
                 
-                System.out.println("");
-        }
+            } 
+                
+        
 	}
     
     
