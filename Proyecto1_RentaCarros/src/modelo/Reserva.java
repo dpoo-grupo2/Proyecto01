@@ -17,14 +17,14 @@ public class Reserva
 	private int valorReserva;
 	private ArrayList<ConductorAdicional> lstConductores;
 	private long dias;
-	private int idReserva;
+	private String idReserva;
 	private Vehiculo vehiculo;
 	private int idCategoria;
 	private int tarifaDiaria;
 	private static int tarifaConductor;
 
 public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2
-			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,int idReserva,Vehiculo vehiculo,ArrayList<ConductorAdicional> lstConductores)
+			,String horaEntrega,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,long dias,String idReserva,Vehiculo vehiculo,ArrayList<ConductorAdicional> lstConductores)
 	{
 		
 		
@@ -106,7 +106,7 @@ public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, j
 		return vehiculo;
 		
 	}
-	public int getIdReserva() 
+	public String getIdReserva() 
 	{
 		return idReserva;
 		
@@ -175,7 +175,7 @@ public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, j
 	}
 	public String toString() 
 	{
-		return Integer.toString(idReserva)+" a es una reserva";
+		return idReserva+" a es una reserva";
 		
 	}
 }

@@ -320,16 +320,6 @@ public class CargaDatos {
 		return lstReservas;
 		
 	}
-	public Reserva getReserva(int id){
-		for (Reserva i:lstReservas) 
-		{		
-		if (i.getIdReserva() == id) 
-		{
-			return i ;
-		}
-		}
-		return null;
-	}
 public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 {
 	lstSegurosGeneral = lstNuevo;
@@ -426,11 +416,12 @@ public ArrayList<Reserva> cargarReservas(File archivoReservas )
 	return lstReservas;
 }
 
-private void sobreEscribirReserva(Reserva reserva) {
+public void sobreEscribirReserva(Reserva reserva) {
 	BufferedWriter bw = null;
     FileWriter fw = null;
     Cliente clienteRes = reserva.getClienteRes();
     //obteniendo valor de todas las varibales para escribirlas en el txt
+    String idReserva = reserva.getIdReserva();
     boolean estadoTarjeta = reserva.getTarjeta();
     String sedeEntrega = reserva.getSedeEntrega();
     String sedeRecogida = reserva.getSedeRecogida();
@@ -443,10 +434,10 @@ private void sobreEscribirReserva(Reserva reserva) {
     int valorReserva = reserva.getValor();
     ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
     long dias = reserva.getDias();
-    int idReserva = reserva.getIdReserva();
+
     try {
         String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
-        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+Integer.toBinaryString(idReserva);
+        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+idReserva;
         File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
         if (!file.exists()) {
             file.createNewFile();
@@ -467,5 +458,10 @@ private void sobreEscribirReserva(Reserva reserva) {
             ex.printStackTrace();
         }
     }
+}
+public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros) 
+{
+	BufferedWriter bw = null;
+    FileWriter fw = null;
 }
 }
