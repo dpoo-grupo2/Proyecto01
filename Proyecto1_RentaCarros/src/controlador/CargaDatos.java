@@ -3,9 +3,11 @@ package controlador;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -194,7 +196,7 @@ public class CargaDatos {
 		return clientes;
 	}
 	
-	public void sobreEscribirAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
@@ -225,6 +227,77 @@ public class CargaDatos {
 		
 	}
 	
+	public void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,String anio,String transmision,
+			String gpsVehiculo,String estadoActual,String capacidadPersonas, String Categoria,String idCategoria) {
+		
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+placa+","+color+","+marca+","+modelo+","+anio+","+transmision+","+gpsVehiculo+","+
+	    estadoActual+","+capacidadPersonas+","+Categoria+","+idCategoria;
+	        File file = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+	
+	public static  File eliminarVehiculotxt(Vehiculo vehiculo){        
+
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+		
+        String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
+        File archivoTemp=new File(nomTemp);
+        String placa = vehiculo.getPlaca();
+        try {
+            if(lstVehiculos.exists()){
+                BufferedReader br = new BufferedReader(new FileReader(lstVehiculos));
+                String linea;
+                while((linea=br .readLine())!=null) {
+                	String[] partes = linea.split(",");
+                	if (!placa.equals(partes[0])) {
+                       escribirArchivo(archivoTemp, linea);
+                    }           
+                }
+                br.close();
+            }else{
+                System.out.println("El archivo no Existe");
+            }
+        } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+        }
+        return archivoTemp;
+    }
+	
+	public static void escribirArchivo(File archivo,String info){
+		  try {
+		           if(!archivo.exists()){
+		               archivo.createNewFile();
+		           }
+		          BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(archivo,true), "utf-8"));
+		          bw.write(info + "\r\n");
+		          bw.close();
+		       } catch (Exception ex) { 
+		          System.out.println(ex.getMessage());
+		       } 
+	}
+	
 	public HashMap<String,Sede> getSedes()
 	{
 		return sedes;
@@ -246,11 +319,11 @@ public ArrayList<Seguro> settteLstSeguros(ArrayList<Seguro> lstNuevo)
 	return lstSegurosGeneral; 
 }
 
-public Cliente obtenerUsuarioCliente(String usuario) 
+public Cliente getUsuarioCliente(String usuario) 
 {
 	return lstCliente.get(usuario);
 }
-public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String placa) 
+public Vehiculo getVehiculo(String sede,String estado,int idCategoria,String placa) 
 {
 	try {
 	Sede objSede = sedes.get(sede);
@@ -271,4 +344,5 @@ public Vehiculo obtenerVehiculo(String sede,String estado,int idCategoria,String
 	return null;	
 	}
 	}
+
 }

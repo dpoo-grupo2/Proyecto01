@@ -111,9 +111,8 @@ public class Reserva
 		
 	}
 	
-	public ArrayList<ConductorAdicional> addConductores(ArrayList<ConductorAdicional> lstConductores){
-		this.lstConductores = lstConductores;
-		return lstConductores;
+	public void addConductor(ConductorAdicional Conductor){
+		lstConductores.add(Conductor);
 	}
 	
 	public ArrayList<ConductorAdicional> getConductores()

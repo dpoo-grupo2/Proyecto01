@@ -65,7 +65,7 @@ public class ClienteVista {
 	
 	public void menu(String usuario) {
 	    centinela = true;
-	    cliente = (Cliente) cargaDatos.obtenerUsuarioCliente(usuario);
+	    cliente = (Cliente) cargaDatos.getUsuarioCliente(usuario);
 	    System.out.println(cliente.getNombreCompleto());
 	    
 	    while (centinela) {

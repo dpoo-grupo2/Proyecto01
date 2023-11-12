@@ -66,8 +66,8 @@ public class EmpleadoVista {
 		int categoria = Integer.parseInt(input("Ingrese el ID de la categoria del vehiculo: "));
 		String placa = input("Ingrese la placa del vehiculo a modificar: ");
 		String nEstado = input("Ingrese el nuevo estado del vehiculo");
-		Vehiculo vehiculo = carga.obtenerVehiculo(sede, estado, categoria, placa);
-		vehiculo.cambiarEstado(nEstado); 
+		
+		empleado.cambiarEstadoVehiculo(sede,estado,categoria,placa,nEstado); 
 	}
 
 	public void agregarConductorAdicional() {
@@ -88,14 +88,15 @@ public class EmpleadoVista {
 
 		    if (opcionConductorAdicional == 1) {
 
-		        String nombres = input("\nIngrese el nombre del conductor adicional");
-		        String telefono = input("Ingrese el teléfono del conductor adicional");
-		        String correoElectronico = input("Ingrese el correo electrónico del conductor adicional");
-		        String numeroLicencia = input("Ingrese el número de licencia del conductor adicional");
-		        String paisExpedicion = input("Ingrese el país de expedición de la licencia del conductor adicional");
-		        String fechaVencimiento = input("Ingrese la fecha de vencimiento de la licencia del conductor adicional");
+		        String idReserva = input("\nIngrese el id de la reserva a modificar: ");
+		    	String nombres = input("Ingrese el nombre del conductor adicional: ");
+		        String telefono = input("Ingrese el teléfono del conductor adicional: ");
+		        String correoElectronico = input("Ingrese el correo electrónico del conductor adicional: ");
+		        String numeroLicencia = input("Ingrese el número de licencia del conductor adicional: ");
+		        String paisExpedicion = input("Ingrese el país de expedición de la licencia del conductor adicional: ");
+		        String fechaVencimiento = input("Ingrese la fecha de vencimiento de la licencia del conductor adicional: ");
 		        
-		        empleado.agregarConductorAdicional(nombres, telefono, correoElectronico, numeroLicencia, paisExpedicion, fechaVencimiento);
+		        empleado.agregarConductorAdicional(idReserva,nombres, telefono, correoElectronico, numeroLicencia, paisExpedicion, fechaVencimiento);
 		        
 		        System.out.println("\nConductor adicional agregado a la reserva.");
 		    } else if (opcionConductorAdicional == 2) {
