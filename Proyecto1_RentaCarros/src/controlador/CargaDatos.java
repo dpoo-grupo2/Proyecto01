@@ -547,5 +547,9 @@ public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros,String id)
 		}
     }
 }
+public void addLstReserva(Reserva res) 
+{
+	lstReservas.add(res);
+}
 
 }

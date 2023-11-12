@@ -19,7 +19,7 @@ public class Cliente extends Usuario
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
 	private ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
-	private CargaDatos carga = new CargaDatos();
+	private CargaDatos carga;
 	private HashMap<String,Sede> sedes = carga.getSedes();
 
 
@@ -56,7 +56,7 @@ public class Cliente extends Usuario
 		Reserva reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo,lstConductores);
 		añadirReserva(reserva);
 		carga.sobreEscribirReserva(reserva);
-		System.out.println("SE SUPONE QUE YA SE ESTA AGREGANDO");
+		carga.addLstReserva(reserva);
 		return reserva;
 	}
 	public void añadirReserva(Reserva reserva) 
