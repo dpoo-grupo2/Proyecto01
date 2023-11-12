@@ -215,7 +215,7 @@ public class VentanaSignUp extends JFrame
         public void focusLost(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText(hint);
-                super.setForeground(Color.BLACK);
+                super.setForeground(Color.GRAY);
                 showingHint = true;
             }
         }
