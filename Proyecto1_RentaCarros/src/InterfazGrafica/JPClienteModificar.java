@@ -13,7 +13,7 @@ public class JPClienteModificar extends JPanel {
 
     public JPClienteModificar() {
         setLayout(new GridLayout(6, 1, 0, 18)); 
-        setBackground(new Color(200, 67, 182));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 100, 160));
 
         JLabel labelSelect = new JLabel("¿Qué cambios desea hacerle a su reserva?");

@@ -17,7 +17,7 @@ public class JPClienteReserva extends JPanel {
     	 
     	
         setLayout(new GridLayout(5, 1, 0, 18));
-        setBackground(new Color(200, 4, 182));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 150, 160));
         
         JLabel labelSelect = new JLabel("Seleccione la sede para resevar:");
