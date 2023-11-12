@@ -134,7 +134,6 @@ public class CargaDatos {
     }
 
 	private  HashMap<String, Usuario> cargarUsuarios(File archivoUsuarios) {
-		HashMap<String,Usuario> usuarios = new HashMap<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -230,7 +229,37 @@ public class CargaDatos {
 	        }
 	    }
 	}
-
+	public static Usuario getUsuario(String login){
+		Usuario usuario = usuarios.get(login);
+		return usuario;
+	}
+	
+	public static File eliminarUsuario(Usuario usuario){
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/Usuarios.txt");
+		
+        String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
+        File archivoTemp=new File(nomTemp);
+        String login = usuario.getLogin();
+        try {
+            if(lstVehiculos.exists()){
+                BufferedReader br = new BufferedReader(new FileReader(lstVehiculos));
+                String linea;
+                while((linea=br .readLine())!=null) {
+                	String[] partes = linea.split(",");
+                	if (!login.equals(partes[0])) {
+                       escribirArchivo(archivoTemp, linea);
+                    }           
+                }
+                br.close();
+            }else{
+                System.out.println("El archivo no Existe");
+            }
+        } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+        }
+        return archivoTemp;
+    }
+	
 	private void sobreLst(ArrayList<ConductorAdicional> lst,String id)
 	{
 		for(ConductorAdicional cd: lst) 
@@ -271,7 +300,7 @@ public class CargaDatos {
 		
 	}
 	
-	public void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,String anio,String transmision,
+	public static void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,String anio,String transmision,
 			String gpsVehiculo,String estadoActual,String capacidadPersonas, String Categoria,String idCategoria) {
 		
 		BufferedWriter bw = null;
@@ -367,7 +396,7 @@ public Cliente getUsuarioCliente(String usuario)
 {
 	return lstCliente.get(usuario);
 }
-public Vehiculo getVehiculo(String sede,String estado,int idCategoria,String placa) 
+public static Vehiculo getVehiculo(String sede,String estado,int idCategoria,String placa) 
 {
 	try {
 	Sede objSede = sedes.get(sede);
