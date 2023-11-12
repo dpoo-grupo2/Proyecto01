@@ -18,8 +18,8 @@ public class JPRegistrarVehiculo extends JPanel {
     {
     	 
     	
-        setLayout(new GridLayout(7, 1, 0, 18));
-        setBackground(new Color(200, 74, 182));
+        setLayout(new GridLayout(4, 3, 10, 30));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
         
         JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
@@ -28,10 +28,18 @@ public class JPRegistrarVehiculo extends JPanel {
 
         add(labelSelect);
 
-        addTextFieldWithHint("Sede ubicación");
-        addTextFieldWithHint("Disponibilidad vehículo");
         addTextFieldWithHint("Matrícula");
+        addTextFieldWithHint("Modelo");
+        addTextFieldWithHint("Sede");
+        addTextFieldWithHint("Capacidad");
+        addTextFieldWithHint("Color");
+        addTextFieldWithHint("Año de fabricación");
+        addTextFieldWithHint("Transmisión");
         addTextFieldWithHint("Categoría vehpiculo");
+        addTextFieldWithHint("Marca");
+        addTextFieldWithHint("Estado vehículo");
+        addTextFieldWithHint("ID Categoría");
+       
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));

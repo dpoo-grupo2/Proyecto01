@@ -19,7 +19,7 @@ public class JPEliminarVehiculo extends JPanel {
     	 
     	
         setLayout(new GridLayout(7, 1, 0, 18));
-        setBackground(new Color(200, 4, 182));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
         
         JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
