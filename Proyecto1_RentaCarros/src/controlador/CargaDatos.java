@@ -202,7 +202,6 @@ public class CargaDatos {
 		this.lstCliente = clientes;
 		return clientes;
 	}
-<<<<<<< HEAD
 	
 	public static void sobreEscribirUsuarios(String login, String password, String nombre, String tipo){
 		BufferedWriter bw = null;
@@ -231,9 +230,7 @@ public class CargaDatos {
 	        }
 	    }
 	}
-	
-	public static void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
-=======
+
 	private void sobreLst(ArrayList<ConductorAdicional> lst,String id)
 	{
 		for(ConductorAdicional cd: lst) 
@@ -243,7 +240,7 @@ public class CargaDatos {
 		}
 	}
 	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
