@@ -431,6 +431,46 @@ public Reserva getReserva(String id)
 	return null;
 	
 }
+public void cargarSeguro(String arch) 
+{
+	try (BufferedReader br = new BufferedReader(new FileReader(arch))) {
+        String linea;
+        Seguro seg;
+        try {
+			while ((linea = br.readLine()) != null) 
+			{
+				String[] partes = linea.split(",");
+				try {
+				String name = partes[0];
+				int valor = Integer.parseInt(partes[1]);
+				seg = new Seguro(name,valor);
+				lstSegurosGeneral.add(seg);
+				}
+	        	catch(Exception e)
+	        	{
+	        		continue;
+	        	}
+				
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} catch (FileNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+}
+private void cargarSeguro(File archivoReservas)
+{
+	
+}
 public ArrayList<Reserva> cargarReservas(File archivoReservas ) 
 {
 	try (BufferedReader br = new BufferedReader(new FileReader(archivoReservas))) {

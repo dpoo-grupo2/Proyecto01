@@ -10,7 +10,9 @@ public class VentanaSignUp extends JFrame
 	private JLabel lblRelleno;
 	private JLabel lblRelleno2;
 	private JLabel lblRelleno3;
-	
+	private JPanel panelCentro; 
+	private JButton btnAtras;
+	private JButton btnSignUp;
     public VentanaSignUp() 
     {
         setSize(1050, 650);
@@ -32,7 +34,11 @@ public class VentanaSignUp extends JFrame
 
         
         
+<<<<<<< HEAD
+        panelCentro = new JPanel(new GridLayout(3, 2, 40, 30));
+=======
         JPanel panelCentro = new JPanel(new GridLayout(3, 2, 40, 40));
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setBorder(new EmptyBorder(140, 60, 140, 60));
@@ -103,7 +109,7 @@ public class VentanaSignUp extends JFrame
 
          
         
-        JButton btnAtras = new JButton("Atrás");
+        btnAtras = new JButton("Atrás");
         btnAtras.setFont(new Font("Arial", Font.BOLD, 18));
         btnAtras.setBackground(new Color(32, 182, 182));
         btnAtras.setForeground(Color.WHITE);
@@ -123,22 +129,37 @@ public class VentanaSignUp extends JFrame
         panelOeste.add(btnAtras);
         
         
-        JButton btnSignUp = new JButton("   Sign up   ");
+        btnSignUp = new JButton("   Next   ");
         btnSignUp.setFont(new Font("Arial", Font.BOLD, 18));
         btnSignUp.setBackground(new Color(32, 182, 182));
         btnSignUp.setForeground(Color.WHITE);
         btnSignUp.setBorder(new LineBorder(Color.BLACK, 2));
-        btnSignUp.addActionListener(new ActionListener() {
+        btnSignUp.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	mensaje();
-            	VentanaLogin VentanaLogin = new VentanaLogin();
-            	VentanaLogin.setLocationRelativeTo(null);
-            	VentanaLogin.setVisible(true);
-                dispose();
+            	String user = textFieldUsuario.getText();
+            	String name = textFieldNombre.getText();
+            	String fecha =textFieldFecha.getText();
+            	String correo = textFieldCorreo.getText();
+            	String edad = textFieldEdad.getText();
+            	if (!next(user,name,fecha,correo,edad)) 
+            	{
+            		errorMensaje("no ha puesto toda la informacion");
+            	}
+            	else {
+            		mensaje();
+//                	
+//                	VentanaLogin VentanaLogin = new VentanaLogin();
+//                	VentanaLogin.setLocationRelativeTo(null);
+//                	VentanaLogin.setVisible(true);
+//                    dispose();
+            	}
+            	
             }
         });
+        
         panelOeste.add(btnSignUp);
               
     }
@@ -147,8 +168,29 @@ public class VentanaSignUp extends JFrame
 	{
 		JOptionPane.showMessageDialog(this, "¡Haz sido correctamente registrado!", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 	}
-       
-    
+    public void errorMensaje(String mensaje) 
+    {
+    	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
+    }
+    private boolean revAll(String user,String name,String fecha,String correo,String edad) 
+    {
+    	if (user == ""||name == ""||fecha ==""|| correo == ""|| edad =="") {
+        	return false;
+        	}
+    	else {
+    		return true;
+    	}
+    }
+    private boolean next(String user,String name,String fecha,String correo,String edad) 
+    {
+  		panelCentro.setVisible(false);
+    		JPLicencia panelLic = new JPLicencia(this);
+    		panelCentro = panelLic;
+    		add(panelCentro,BorderLayout.CENTER);
+    		panelCentro.setVisible(true);
+    		return true;
+    }
+    }
     class JTextFieldWithHint extends JTextField implements FocusListener {
         private final String hint;
         private boolean showingHint;
@@ -183,4 +225,3 @@ public class VentanaSignUp extends JFrame
             return showingHint ? "" : super.getText();
         }
     }
-}
