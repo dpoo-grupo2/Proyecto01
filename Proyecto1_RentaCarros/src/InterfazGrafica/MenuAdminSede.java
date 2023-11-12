@@ -8,7 +8,7 @@ import javax.swing.border.*;
 public class MenuAdminSede extends JFrame 
 {
 	private JLabel lblRelleno;
-	
+	private JPanel panelCentro;
 	
     public MenuAdminSede() 
     {
@@ -31,7 +31,7 @@ public class MenuAdminSede extends JFrame
 
         
         
-        JPanel panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
+        panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
@@ -43,7 +43,9 @@ public class MenuAdminSede extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-          
+        JPAgregarEmpleado jPAgregarEmpleado = new JPAgregarEmpleado(this);
+        JPEliminarEmpleado jPEliminarEmpleado = new JPEliminarEmpleado(this);
+        
         JButton btnReserva = new JButton("Crear empleado");
         btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
         btnReserva.setBackground(new Color(32, 182, 182));
@@ -53,7 +55,7 @@ public class MenuAdminSede extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	nuevoCentro(jPAgregarEmpleado);
             	
             }
         });
@@ -68,7 +70,7 @@ public class MenuAdminSede extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	nuevoCentro(jPEliminarEmpleado);
             	
             }
         });
@@ -124,4 +126,13 @@ public class MenuAdminSede extends JFrame
         panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.X_AXIS));
 
     }  
+    
+    public void nuevoCentro(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
+    
 }

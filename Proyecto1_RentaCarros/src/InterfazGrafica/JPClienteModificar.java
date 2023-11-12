@@ -66,6 +66,7 @@ public class JPClienteModificar extends JPanel {
         textField.setFont(new Font("Arial", Font.BOLD, 16));
         textField.setForeground(Color.GRAY);
         textField.setHorizontalAlignment(SwingConstants.CENTER);
+        textField.setBorder(new LineBorder(Color.BLACK, 2));
         textField.setText(hint);
         textField.addFocusListener(new FocusListener() {
             @Override

@@ -18,7 +18,7 @@ public class JPEliminarVehiculo extends JPanel {
     {
     	 
     	
-        setLayout(new GridLayout(7, 1, 0, 18));
+        setLayout(new GridLayout(5, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
         

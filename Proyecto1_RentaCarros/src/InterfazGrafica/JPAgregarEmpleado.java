@@ -14,7 +14,7 @@ public class JPAgregarEmpleado extends JPanel {
 
 	private JLabel lblRelleno;
 	
-    public JPAgregarEmpleado() 
+    public JPAgregarEmpleado(MenuAdminSede vent) 
     {
     	 
     	
@@ -22,16 +22,16 @@ public class JPAgregarEmpleado extends JPanel {
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
         
-        JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
+        JLabel labelSelect = new JLabel("Adicione todos los del nuevo empleado:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 22));
 
         add(labelSelect);
 
         addTextFieldWithHint("Sede ubicación");
-        addTextFieldWithHint("Disponibilidad vehículo");
-        addTextFieldWithHint("Matrícula");
-        addTextFieldWithHint("Categoría vehpiculo");
+        addTextFieldWithHint("Login");
+        addTextFieldWithHint("Nombre completo");
+        addTextFieldWithHint("Contraseña");
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
