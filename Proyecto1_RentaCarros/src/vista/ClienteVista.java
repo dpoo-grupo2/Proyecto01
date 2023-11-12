@@ -340,7 +340,8 @@ public class ClienteVista {
 	public Reserva generarReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, java.util.Date fechaRecogida2, String horaRecogida,java.util.Date fechaEntrega2,String horaEntrega
 																									,ArrayList<Seguro> lstSeguros, Cliente clienteRes,int valorReserva,int dias,int idReserva,Vehiculo vehiculo,ArrayList<ConductorAdicional> lstConductores) 
 	{
-		return cliente.crearReserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida2, horaRecogida, fechaEntrega2, horaEntrega,clienteRes,lstSeguros, valorReserva,lstConductores,dias, idReserva, vehiculo);
+		return null;
+		//return cliente.crearReserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida2, horaRecogida, fechaEntrega2, horaEntrega,clienteRes,lstSeguros, valorReserva,lstConductores,dias, idReserva, vehiculo);
 		
 	}
 	private String SedeEntrega() 
