@@ -50,12 +50,12 @@ public class Cliente extends Usuario
 	{
 		return this.fechaNacimiento;	
 	}
-	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias, int idReserva,Vehiculo vehiculo) 
+	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias, String idReserva,Vehiculo vehiculo) 
 	{
 		System.out.println("esta dentro de cliente");
 		Reserva reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo,lstConductores);
 		añadirReserva(reserva);
-		sobreEscribirReserva(reserva);
+		carga.sobreEscribirReserva(reserva);
 		System.out.println("SE SUPONE QUE YA SE ESTA AGREGANDO");
 		return reserva;
 	}
@@ -64,48 +64,6 @@ public class Cliente extends Usuario
 		lstReservas.add(reserva);
 	}
 	
-	private void sobreEscribirReserva(Reserva reserva) {
-		BufferedWriter bw = null;
-	    FileWriter fw = null;
-	    Cliente clienteRes = reserva.getClienteRes();
-	    //obteniendo valor de todas las varibales para escribirlas en el txt
-	    boolean estadoTarjeta = reserva.getTarjeta();
-	    String sedeEntrega = reserva.getSedeEntrega();
-	    String sedeRecogida = reserva.getSedeRecogida();
-	    Date fechaRecogida = reserva.getFechaRecogida();
-	    String horaRecogida = reserva.getHoraRecogida();
-	    Date fechaEntrega = reserva.getFechaEntrega();
-	    String horaEntrega = reserva.getHoraEntrega();
-	    ArrayList<Seguro> lstSeguro = reserva.getLstSeguro(); // toca ver como poner esto en el txt
-	    String usuario = clienteRes.getLogin();
-	    int valorReserva = reserva.getValor();
-	    ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
-	    long dias = reserva.getDias();
-	    int idReserva = reserva.getIdReserva();
-	    try {
-	        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
-	        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+Integer.toBinaryString(idReserva);
-	        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
-	        if (!file.exists()) {
-	            file.createNewFile();
-	        }
-	        fw = new FileWriter(file.getAbsoluteFile(), true);
-	        bw = new BufferedWriter(fw);
-	        bw.write(data);
-	        System.out.println("¡Información agregada!");
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            if (bw != null)
-	                bw.close();
-	            if (fw != null)
-	                fw.close();
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
-	    }
-	}
 	public Vehiculo verDisponibilidad(String sede,int categoria,Date fechaEntrega,Date fechaRecogida) 
 	{
 		try {

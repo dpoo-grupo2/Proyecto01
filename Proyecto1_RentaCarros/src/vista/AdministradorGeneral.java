@@ -239,11 +239,11 @@ public class AdministradorGeneral {
 		String Categoria = input("Ingrese la categoria del vehiculo ");
 		String idCategoria = input("Ingrese el ID de la categoria");
 		
-		sobreEscribirData(placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria);
+		sobreEscribirVehiculo(placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria);
 		
 	}
 	
-	private void sobreEscribirData(String placa,String color,String marca,String modelo,Integer anio,String transmision,
+	private void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,Integer anio,String transmision,
 			String gpsVehiculo,String estadoActual,String capacidadPersonas, String Categoria,String idCategoria) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
