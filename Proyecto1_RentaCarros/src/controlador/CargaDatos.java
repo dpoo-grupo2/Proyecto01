@@ -202,7 +202,7 @@ public class CargaDatos {
 		this.lstCliente = clientes;
 		return clientes;
 	}
-	
+
 	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
@@ -430,9 +430,11 @@ public void sobreEscribirReserva(Reserva reserva) {
     Date fechaEntrega = reserva.getFechaEntrega();
     String horaEntrega = reserva.getHoraEntrega();
     ArrayList<Seguro> lstSeguro = reserva.getLstSeguro(); // toca ver como poner esto en el txt
+    sobreEscribirSegRes(lstSeguro,idReserva);
     String usuario = clienteRes.getLogin();
     int valorReserva = reserva.getValor();
     ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
+    //sobreEscribirConductorAdicional(lstConductores,idReserva);
     long dias = reserva.getDias();
 
     try {
@@ -459,9 +461,24 @@ public void sobreEscribirReserva(Reserva reserva) {
         }
     }
 }
-public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros) 
+public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros,String id) 
 {
 	BufferedWriter bw = null;
     FileWriter fw = null;
+    String linea;
+    File file = new File("Proyecto1_RentaCarros/data/seguroReserva.txt");
+    
+    for (Seguro seg: lstSeguros) 
+    {
+    	linea = id+","+seg.getNombreSeguro()+","+seg.getValorSeguro();
+    	try {
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+			bw.write(linea);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
 }
