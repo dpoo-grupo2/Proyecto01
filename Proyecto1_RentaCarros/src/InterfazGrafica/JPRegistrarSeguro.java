@@ -10,28 +10,31 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class JPEliminarVehiculo extends JPanel {
+public class JPRegistrarSeguro extends JPanel {
 
 	private JLabel lblRelleno;
 	
-    public JPEliminarVehiculo() 
+    public JPRegistrarSeguro(MenuAdminGnrl vent) 
     {
     	 
     	
-        setLayout(new GridLayout(7, 1, 0, 18));
+        setLayout(new GridLayout(7, 1, 0, 16));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
         
-        JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
+        JLabel labelSelect = new JLabel("Llene los datos correspondientes al seguro:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 22));
 
         add(labelSelect);
 
-        addTextFieldWithHint("Sede ubicación");
-        addTextFieldWithHint("Disponibilidad vehículo");
-        addTextFieldWithHint("Matrícula");
-        addTextFieldWithHint("Categoría vehpiculo");
+        lblRelleno = new JLabel(" ");
+        add(lblRelleno); 
+        
+        addTextFieldWithHint("Nombre seguro");
+        addTextFieldWithHint("Valor seguro");
+          
+        JPSeguroEditado sH = new JPSeguroEditado(vent);
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
@@ -57,7 +60,7 @@ public class JPEliminarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	vent.nuevoCentro(sH);
             	
             }
         });

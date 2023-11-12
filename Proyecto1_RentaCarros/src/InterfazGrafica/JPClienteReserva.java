@@ -11,10 +11,10 @@ import javax.swing.border.LineBorder;
 public class JPClienteReserva extends JPanel {
 
 	private JLabel lblRelleno;
+	
     public JPClienteReserva(MenuCliente vent) 
     {
     	 
-    	
         setLayout(new GridLayout(5, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 150, 160));
@@ -28,8 +28,8 @@ public class JPClienteReserva extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-        final JPClienteSede jPClienteSede = new JPClienteSede();
-        JPClienteSede cS = new JPClienteSede();
+        JPClienteSede cS = new JPClienteSede(vent);
+        
 		JButton btnNorte = new JButton("Sede norte");
 		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
 		btnNorte.setBackground(new Color(32, 182, 182));
@@ -55,11 +55,7 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	setVisible(false);
-                add(jPClienteSede, BorderLayout.CENTER);
-                setVisible(true);
-                revalidate();
-                repaint();
+            	vent.nuevoCentro(cS);
             	
             }
         });
@@ -75,10 +71,7 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	remove(JPClienteReserva.this);
-                add(jPClienteSede, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+            	vent.nuevoCentro(cS);
             	
             }
         });
