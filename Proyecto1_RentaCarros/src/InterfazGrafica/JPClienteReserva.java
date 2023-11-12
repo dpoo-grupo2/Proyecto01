@@ -29,7 +29,7 @@ public class JPClienteReserva extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-        JPClienteSede jPClienteSede = new JPClienteSede();
+        final JPClienteSede jPClienteSede = new JPClienteSede();
         
 		JButton btnNorte = new JButton("Sede norte");
 		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
@@ -40,10 +40,9 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	remove(JPClienteReserva.this);
-                add(jPClienteSede, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+            	setVisible(false);
+            	
+                add(jPClienteSede).setVisible(true);
             	
             }
         });
