@@ -173,9 +173,4 @@ public Reserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, j
 		return valorFinal;
 		
 	}
-	public String toString() 
-	{
-		return idReserva+" a es una reserva";
-		
-	}
 }
