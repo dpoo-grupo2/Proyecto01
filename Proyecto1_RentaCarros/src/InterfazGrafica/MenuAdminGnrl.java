@@ -8,7 +8,7 @@ import javax.swing.border.*;
 public class MenuAdminGnrl extends JFrame 
 {
 	private JLabel lblRelleno;
-	
+	private JPanel panelCentro;
 	
     public MenuAdminGnrl() 
     {
@@ -31,7 +31,7 @@ public class MenuAdminGnrl extends JFrame
 
         
         
-        JPanel panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
+        panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
@@ -56,7 +56,6 @@ public class MenuAdminGnrl extends JFrame
             {
             	gestionarVehiculos();
             	
-            	remove(panelCentro);
                 
             }
         });
@@ -154,7 +153,10 @@ public class MenuAdminGnrl extends JFrame
     
     public void gestionarSeguros()
 	{
-    	  	
+    	JPEliminarSeguro jPEliminarSeguro = new JPEliminarSeguro(this);
+    	JPRegistrarSeguro jPRegistrarSeguro = new JPRegistrarSeguro(this);  	
+    	
+    	
         String[] opciones = {"Añadir seguro", "Eliminar seguro"};
             
         int seleccion = JOptionPane.showOptionDialog(null, "¿Qué acción desea realizar?", "CarRental", 
@@ -162,14 +164,21 @@ public class MenuAdminGnrl extends JFrame
             
             if (seleccion == 0) {
                 System.out.println(" ");
+                nuevoCentro(jPRegistrarSeguro);
                 
             } else if (seleccion == 1) {
                 System.out.println(" ");
-                
+                nuevoCentro(jPEliminarSeguro);
             } 
                 
-        
-	}
+        }
     
+    public void nuevoCentro(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
     
 }

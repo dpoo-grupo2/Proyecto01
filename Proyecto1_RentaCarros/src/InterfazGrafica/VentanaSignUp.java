@@ -34,7 +34,11 @@ public class VentanaSignUp extends JFrame
 
         
         
+<<<<<<< HEAD
         panelCentro = new JPanel(new GridLayout(3, 2, 40, 30));
+=======
+        JPanel panelCentro = new JPanel(new GridLayout(3, 2, 40, 40));
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setBorder(new EmptyBorder(140, 60, 140, 60));
@@ -43,36 +47,42 @@ public class VentanaSignUp extends JFrame
         JTextField textFieldNombre = new JTextFieldWithHint("Nombre completo");
         textFieldNombre.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldNombre.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldNombre.setForeground(Color.GRAY);
         textFieldNombre.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldNombre);
         
         JTextField textFieldCorreo = new JTextFieldWithHint("Correo electrónico");
         textFieldCorreo.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldCorreo.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldCorreo.setForeground(Color.GRAY);
         textFieldCorreo.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldCorreo);
         
         JTextField textFieldEdad = new JTextFieldWithHint("Edad");
         textFieldEdad.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldEdad.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldEdad.setForeground(Color.GRAY);
         textFieldEdad.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldEdad);
         
         JTextField textFieldUsuario = new JTextFieldWithHint("Usuario que desea");
         textFieldUsuario.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldUsuario.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldUsuario.setForeground(Color.GRAY);
         textFieldUsuario.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldUsuario);
 
         JTextField textFieldFecha = new JTextFieldWithHint("Fecha de nacimiento");
         textFieldFecha.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldFecha.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldFecha.setForeground(Color.GRAY);
         textFieldFecha.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldFecha);
         
         JTextField textFieldContraseña = new JTextFieldWithHint("Contraseña");
         textFieldContraseña.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldContraseña.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldContraseña.setForeground(Color.GRAY);
         textFieldContraseña.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldContraseña);
         
@@ -196,6 +206,7 @@ public class VentanaSignUp extends JFrame
         public void focusGained(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText("");
+                super.setForeground(Color.BLACK);
                 showingHint = false;
             }
         }
@@ -204,6 +215,7 @@ public class VentanaSignUp extends JFrame
         public void focusLost(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText(hint);
+                super.setForeground(Color.BLACK);
                 showingHint = true;
             }
         }

@@ -217,6 +217,7 @@ public class VentanaLogin extends JFrame
         public void focusGained(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText("");
+                super.setForeground(Color.BLACK);
                 showingHint = false;
             }
         }
@@ -225,6 +226,7 @@ public class VentanaLogin extends JFrame
         public void focusLost(FocusEvent e) {
             if (this.getText().isEmpty()) {
                 super.setText(hint);
+                super.setForeground(Color.BLACK);
                 showingHint = true;
             }
         }

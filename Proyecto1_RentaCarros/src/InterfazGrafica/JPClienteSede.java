@@ -12,22 +12,24 @@ public class JPClienteSede extends JPanel {
 
 	private JLabel lblRelleno;
 	
-    public JPClienteSede() 
+    public JPClienteSede(MenuCliente vent) 
     {
     	 
-        setLayout(new GridLayout(7, 1, 0, 18));
+        setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 150, 160));
+        setBorder(new EmptyBorder(70, 160, 80, 160));
         
         JLabel labelSelect = new JLabel("Seleccione la categoría del vehículo:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 30));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
         
 		add(labelSelect);
 
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
+//        JPClienteReserva cR = new JPClienteReserva(vent);
+        
 		JButton btnPequeño = new JButton("Pequeño");
 		btnPequeño.setFont(new Font("Arial", Font.BOLD, 20));
 		btnPequeño.setBackground(new Color(32, 182, 182));
@@ -102,7 +104,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+//            	vent.nuevoCentro(cR);
             	
             }
         });
