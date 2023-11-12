@@ -203,7 +203,35 @@ public class CargaDatos {
 		return clientes;
 	}
 	
-	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+	public static void sobreEscribirUsuarios(String login, String password, String nombre, String tipo){
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+login+","+password+","+nombre+","+tipo;
+	        File file = new File("Proyecto1_RentaCarros/data/Usuarios.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+	}
+	
+	public static void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;

@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.ArrayList;
-
 import controlador.CargaDatos;
 
 public class Empleado {
@@ -36,6 +34,7 @@ public class Empleado {
 		String capacidad = Integer.toString(vehiculo.getAnio());
 		String categoria = vehiculo.getCategoria();
 		String idCategoria = Integer.toString(idcategoria);
+		
 		carga.sobreEscribirVehiculo(placa,color,marca,modelo,anio,transmision,gps,nEstado,capacidad,categoria,idCategoria);
 	}
 

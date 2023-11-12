@@ -65,14 +65,8 @@ public class EmpleadoVista {
 		String estado = input("Ingrese el estado actual del vehiculo: ");
 		int categoria = Integer.parseInt(input("Ingrese el ID de la categoria del vehiculo: "));
 		String placa = input("Ingrese la placa del vehiculo a modificar: ");
-		String nEstado = input("Ingrese el nuevo estado del vehiculo");
-<<<<<<< HEAD
-		
-		empleado.cambiarEstadoVehiculo(sede,estado,categoria,placa,nEstado); 
-=======
-		Vehiculo vehiculo = carga.getVehiculo(sede, estado, categoria, placa);
-		vehiculo.cambiarEstado(nEstado); 
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+		String nEstado = input("Ingrese el nuevo estado del vehiculo");		
+		empleado.cambiarEstadoVehiculo(sede,estado,categoria,placa,nEstado);  
 	}
 
 	public void agregarConductorAdicional() {

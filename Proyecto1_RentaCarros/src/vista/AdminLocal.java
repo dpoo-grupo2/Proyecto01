@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import controlador.CargaDatos;
 import modelo.AdministradorLocal;
 
 public class AdminLocal {
@@ -35,10 +36,10 @@ public class AdminLocal {
 		while (centinela) {
 			
 			System.out.println("\nBienvenido Administrador local "+usuario+"\n");
-			System.out.println("1- Gestionar empleados");
-			System.out.println("2- Crear empleados");
-			System.out.println("3- Controlar inventario");
-			System.out.println("4- Salir");
+			System.out.println("1- Agregar empleado");
+			System.out.println("2- Eliminar empleado");
+			System.out.println("2- Controlar inventario");
+			System.out.println("3- Salir");
 			
 			try 
 			{
@@ -50,21 +51,17 @@ public class AdminLocal {
 			}
 			if (1 == opcion) 
 			{
-				
-			}
-			
-			else if(2 == opcion) 
-			{
 				ejecutarRegistrarEmpleado();
 				System.out.println("\nUsuario registrado correctamente...\n");
 				menu(usuario);
 			}
-			else if(3 == opcion) 
+			
+			else if(2 == opcion) 
 			{
-				
+				eliminarEmpleado();
 			}
 			
-			else if (4 == opcion) 
+			else if (3 == opcion) 
 			{
 				System.out.println("\nSaliendo del sistema...");
 	            System.exit(0);
@@ -78,43 +75,22 @@ public class AdminLocal {
 	}
 	
 	
+	private void eliminarEmpleado() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void ejecutarRegistrarEmpleado() {
 		
 		String login = input("\nIngrese el login que quiere ");
 		String password = input("Ingrese  la contraseña que va a usar ");
 		String nombreCompleto = input("Ingrese su nombre completo ");
-		String tipo = input("Ingrese el tipo de usuario ");
 		
-		sobreEscribirData(login, password, nombreCompleto, tipo);
+		sobreEscribirData(login, password, nombreCompleto, "Empleado");
 		
 	}
 	
-	private void sobreEscribirData(String login, String password, String nombreCompleto, String tipo) {
-		BufferedWriter bw = null;
-	    FileWriter fw = null;
-
-	    try {
-	        String data = "\n"+login+","+password+","+nombreCompleto+","+tipo;
-	        File file = new File("Proyecto1_RentaCarros/data/Usuarios.txt");
-	        if (!file.exists()) {
-	            file.createNewFile();
-	        }
-	        fw = new FileWriter(file.getAbsoluteFile(), true);
-	        bw = new BufferedWriter(fw);
-	        bw.write(data);
-	        System.out.println("Información agregada!");
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        try {
-	            if (bw != null)
-	                bw.close();
-	            if (fw != null)
-	                fw.close();
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
-	    }
+	private void sobreEscribirData(String login, String password, String nombre, String tipo) {
+		CargaDatos.sobreEscribirUsuarios(login, password, nombre, tipo);
 	}
-	
 }
