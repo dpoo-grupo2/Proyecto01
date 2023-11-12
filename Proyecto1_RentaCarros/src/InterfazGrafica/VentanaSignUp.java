@@ -34,11 +34,11 @@ public class VentanaSignUp extends JFrame
 
         
         
-<<<<<<< HEAD
+
         panelCentro = new JPanel(new GridLayout(3, 2, 40, 30));
-=======
+
         JPanel panelCentro = new JPanel(new GridLayout(3, 2, 40, 40));
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setBorder(new EmptyBorder(140, 60, 140, 60));
