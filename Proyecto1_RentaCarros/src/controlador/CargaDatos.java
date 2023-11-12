@@ -202,7 +202,14 @@ public class CargaDatos {
 		this.lstCliente = clientes;
 		return clientes;
 	}
-
+	private void sobreLst(ArrayList<ConductorAdicional> lst,String id)
+	{
+		for(ConductorAdicional cd: lst) 
+		{
+			LicenciaConduccion l = cd.getLicencia();
+			sobreEscribirConductorAdicional(id,cd.getNombres(),cd.getTelefono(),cd.getCorreoElectronico(),l.getNumero(),l.paisExpedicion(),l.fechaVencimiento());
+		}
+	}
 	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
@@ -434,7 +441,7 @@ public void sobreEscribirReserva(Reserva reserva) {
     String usuario = clienteRes.getLogin();
     int valorReserva = reserva.getValor();
     ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
-    //sobreEscribirConductorAdicional(lstConductores,idReserva);
+    sobreLst(lstConductores,idReserva);
     long dias = reserva.getDias();
 
     try {
