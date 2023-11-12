@@ -19,7 +19,7 @@ public class Cliente extends Usuario
 	private LicenciaConduccion licencia;
 	private MedioPago medioPago;
 	private ArrayList<Reserva> lstReservas = new ArrayList<Reserva>();
-	private CargaDatos carga;
+	private CargaDatos carga = new CargaDatos();
 	private HashMap<String,Sede> sedes = carga.getSedes();
 
 

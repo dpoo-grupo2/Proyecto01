@@ -8,7 +8,7 @@ import javax.swing.border.*;
 public class MenuCliente extends JFrame 
 {
 	private JLabel lblRelleno;
-	
+	private JPanel panelCentro;
 	
     public MenuCliente() 
     {
@@ -31,7 +31,7 @@ public class MenuCliente extends JFrame
 
         
         
-        JPanel panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
+        panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
@@ -43,8 +43,8 @@ public class MenuCliente extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-        final JPClienteReserva jPClienteReserva = new JPClienteReserva();  
-        final JPClienteModificar jPClienteModificar = new JPClienteModificar();    
+        JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
+        JPClienteModificar jPClienteModificar = new JPClienteModificar();    
         
         
         JButton btnReserva = new JButton("Reservar vehículo");
@@ -56,11 +56,7 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	remove(panelCentro);
-                
-                add(jPClienteReserva, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+            	nuevoCentro(jPClienteReserva);
             	
             }
         });
@@ -143,6 +139,13 @@ public class MenuCliente extends JFrame
 		JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
+    public void nuevoCentro(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
     
     
 }
