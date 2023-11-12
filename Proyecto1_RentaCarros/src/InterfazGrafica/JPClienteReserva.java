@@ -17,7 +17,7 @@ public class JPClienteReserva extends JPanel {
     	 
     	
         setLayout(new GridLayout(5, 1, 0, 18));
-        setBackground(new Color(200, 4, 182));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 150, 160));
         
         JLabel labelSelect = new JLabel("Seleccione la sede para resevar:");
@@ -29,7 +29,7 @@ public class JPClienteReserva extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-        JPClienteSede jPClienteSede = new JPClienteSede();
+        final JPClienteSede jPClienteSede = new JPClienteSede();
         
 		JButton btnNorte = new JButton("Sede norte");
 		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
@@ -40,10 +40,9 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	remove(JPClienteReserva.this);
-                add(jPClienteSede, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+            	setVisible(false);
+            	
+                add(jPClienteSede).setVisible(true);
             	
             }
         });

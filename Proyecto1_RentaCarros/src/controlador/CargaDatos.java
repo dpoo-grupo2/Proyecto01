@@ -202,6 +202,7 @@ public class CargaDatos {
 		this.lstCliente = clientes;
 		return clientes;
 	}
+<<<<<<< HEAD
 	
 	public static void sobreEscribirUsuarios(String login, String password, String nombre, String tipo){
 		BufferedWriter bw = null;
@@ -232,6 +233,17 @@ public class CargaDatos {
 	}
 	
 	public static void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+=======
+	private void sobreLst(ArrayList<ConductorAdicional> lst,String id)
+	{
+		for(ConductorAdicional cd: lst) 
+		{
+			LicenciaConduccion l = cd.getLicencia();
+			sobreEscribirConductorAdicional(id,cd.getNombres(),cd.getTelefono(),cd.getCorreoElectronico(),l.getNumero(),l.paisExpedicion(),l.fechaVencimiento());
+		}
+	}
+	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 			String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
@@ -458,9 +470,11 @@ public void sobreEscribirReserva(Reserva reserva) {
     Date fechaEntrega = reserva.getFechaEntrega();
     String horaEntrega = reserva.getHoraEntrega();
     ArrayList<Seguro> lstSeguro = reserva.getLstSeguro(); // toca ver como poner esto en el txt
+    sobreEscribirSegRes(lstSeguro,idReserva);
     String usuario = clienteRes.getLogin();
     int valorReserva = reserva.getValor();
     ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
+    sobreLst(lstConductores,idReserva);
     long dias = reserva.getDias();
 
     try {
@@ -487,9 +501,25 @@ public void sobreEscribirReserva(Reserva reserva) {
         }
     }
 }
-public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros) 
+public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros,String id) 
 {
 	BufferedWriter bw = null;
     FileWriter fw = null;
+    String linea;
+    File file = new File("Proyecto1_RentaCarros/data/seguroReserva.txt");
+    
+    for (Seguro seg: lstSeguros) 
+    {
+    	linea = id+","+seg.getNombreSeguro()+","+seg.getValorSeguro();
+    	try {
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+			bw.write(linea);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
+
 }

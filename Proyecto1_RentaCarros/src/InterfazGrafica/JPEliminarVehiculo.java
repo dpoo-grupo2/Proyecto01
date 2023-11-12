@@ -5,27 +5,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class JPClienteModificar extends JPanel {
+public class JPEliminarVehiculo extends JPanel {
 
-    public JPClienteModificar() {
-        setLayout(new GridLayout(6, 1, 0, 18)); 
+	private JLabel lblRelleno;
+	
+    public JPEliminarVehiculo() 
+    {
+    	 
+    	
+        setLayout(new GridLayout(7, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 100, 160));
-
-        JLabel labelSelect = new JLabel("¿Qué cambios desea hacerle a su reserva?");
+        setBorder(new EmptyBorder(70, 160, 60, 160));
+        
+        JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
-        labelSelect.setFont(new Font("Arial", Font.BOLD, 22));
+        labelSelect.setFont(new Font("Arial", Font.BOLD, 24));
 
         add(labelSelect);
 
-        addTextFieldWithHint("Sede");
-        addTextFieldWithHint("Fecha (DD/MM/AA)");
-        addTextFieldWithHint("Categoria");
-        addTextFieldWithHint("Hora");
+        addTextFieldWithHint("Sede ubicación");
+        addTextFieldWithHint("Disponibilidad vehículo");
+        addTextFieldWithHint("Matrícula");
+        addTextFieldWithHint("Categoría vehpiculo");
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
@@ -40,6 +46,22 @@ public class JPClienteModificar extends JPanel {
             	
             }
         });
+        
+        
+        JButton btnSiguiente = new JButton("Siguiente");
+        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSiguiente.setBackground(new Color(32, 182, 182));
+        btnSiguiente.setForeground(Color.WHITE);
+        btnSiguiente.setBorder(new LineBorder(Color.BLACK, 2));
+        btnSiguiente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	
+            	
+            }
+        });
+        add(btnSiguiente);
         add(btnSalir);
         
     }
@@ -70,4 +92,6 @@ public class JPClienteModificar extends JPanel {
 
         add(textField);
     }
+		        
+    
 }

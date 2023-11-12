@@ -44,6 +44,8 @@ public class MenuCliente extends JFrame
         panelCentro.add(lblRelleno);        
         
         final JPClienteReserva jPClienteReserva = new JPClienteReserva();  
+        final JPClienteModificar jPClienteModificar = new JPClienteModificar();    
+        
         
         JButton btnReserva = new JButton("Reservar vehículo");
         btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
@@ -74,7 +76,11 @@ public class MenuCliente extends JFrame
             public void actionPerformed(ActionEvent e) 
             {
             	modificarReserva();
-            	
+            	remove(panelCentro);
+                
+                add(jPClienteModificar, BorderLayout.CENTER);
+                revalidate();
+                repaint();
             }
         });
         
@@ -131,11 +137,11 @@ public class MenuCliente extends JFrame
           
     }
 
-      
     
     public void modificarReserva()
 	{
 		JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+		
 	}
     
     

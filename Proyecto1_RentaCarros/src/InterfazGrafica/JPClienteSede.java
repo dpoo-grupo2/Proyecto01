@@ -15,9 +15,8 @@ public class JPClienteSede extends JPanel {
     public JPClienteSede() 
     {
     	 
-    	
         setLayout(new GridLayout(7, 1, 0, 18));
-        setBackground(new Color(200, 84, 182));
+        setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 150, 160));
         
         JLabel labelSelect = new JLabel("Seleccione la categoría del vehículo:");
@@ -110,4 +109,6 @@ public class JPClienteSede extends JPanel {
         add(btnAtras);
 		
     }
+    
+    
 }

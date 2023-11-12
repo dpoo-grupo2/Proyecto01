@@ -58,7 +58,8 @@ public class VentanaLogin extends JFrame
               
         JTextField textFieldLogin = new JTextFieldWithHint("Login");
         textFieldLogin.setHorizontalAlignment(SwingConstants.CENTER);
-        textFieldLogin.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldLogin.setFont(new Font("Arial", Font.PLAIN, 20));
+        textFieldLogin.setForeground(Color.GRAY);
         textFieldLogin.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldLogin);
         
@@ -67,7 +68,8 @@ public class VentanaLogin extends JFrame
 
         JTextField textFieldContraseña = new JTextFieldWithHint("Contraseña");
         textFieldContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-        textFieldContraseña.setFont(new Font("Arial", Font.BOLD, 20));
+        textFieldContraseña.setFont(new Font("Arial", Font.PLAIN, 20));
+        textFieldContraseña.setForeground(Color.GRAY);
         textFieldContraseña.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldContraseña);
         
