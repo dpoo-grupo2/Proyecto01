@@ -1,12 +1,14 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import controlador.CargaDatos;
 import modelo.Cliente;
+import modelo.Seguro;
 import modelo.Usuario;
 import vista.AdminLocal;
 import vista.AdministradorGeneral;
@@ -231,4 +233,6 @@ public class VentanaLogin extends JFrame
             return showingHint ? "" : super.getText();
         }
     }
+
+
 }

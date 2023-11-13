@@ -1,17 +1,22 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import controlador.CargaDatos;
+import modelo.Seguro;
 
 public class MenuAdminGnrl extends JFrame 
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
-	
+	private CargaDatos carga = new CargaDatos();
     public MenuAdminGnrl() 
     {
+    	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -125,6 +130,10 @@ public class MenuAdminGnrl extends JFrame
 
     }
 
+    public ArrayList<Seguro> getLstSeguros()
+    {
+    	return carga.getLstSeguro();
+    }
         
     public void gestionarVehiculos()
 	{

@@ -54,5 +54,3 @@ nataliafuentes48,ktIrP21098,Natalia Fuentes Pérez,Cliente
 qwer,qwe,fff,Empleado
 DOY,FRu,,Empleado
 Hola,SOY,tu,Empleado
-
-SOYYOYMELACHUPAS,tuMadreEn5,Julian,Cliente

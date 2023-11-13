@@ -16,13 +16,13 @@ import javax.swing.border.LineBorder;
 public class JPEliminarSeguro extends JPanel implements ActionListener{
 
 	private JLabel lblRelleno;
-	private CargaDatos cargaDatos = new CargaDatos();
-//	private ArrayList <String> comboBoxOptions = new ArrayList <String>();
-//	private JComboBox<String> lblComboBox;
-//	private ArrayList<Seguro> seguros = CargaDatos.getLstSeguro();  
+	private ArrayList <String> lstOptions = new ArrayList <String>();
+	private JComboBox<String> lblComboBox;
+	private ArrayList<Seguro> seguros;  
 	
     public JPEliminarSeguro(MenuAdminGnrl vent) 
     {
+    	seguros = vent.getLstSeguros();
     	 
     	
         setLayout(new GridLayout(7, 1, 0, 16));
@@ -34,13 +34,14 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
         labelSelect.setFont(new Font("Arial", Font.BOLD, 22));
 
         add(labelSelect);
-
+        addListMenu();
+        String[] comboBoxOptions = new String[lstOptions.size()];
+        addOptions(comboBoxOptions);
         lblRelleno = new JLabel(" ");
         add(lblRelleno); 
-        
-//        lblComboBox = new JComboBox<>(comboBoxOptions);
-//        lblComboBox.addActionListener(this);
-//        add(lblComboBox);
+        lblComboBox = new JComboBox<>(comboBoxOptions);
+        lblComboBox.addActionListener(this);
+        add(lblComboBox);
         
           
         JPSeguroEditado sH = new JPSeguroEditado(vent);
@@ -77,13 +78,31 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
         add(btnSalir);
         
     }
+    private void addListMenu()
+    {
+    	System.out.println(seguros.size());
+    	String info;
+    	int i =1;
+    	for(Seguro seg: seguros) 
+    	{
+    		info = Integer.toString(i)+") "+seg.getNombreSeguro()+": "+seg.getValorSeguro();
+    		lstOptions.add(info);
+    	}
+    }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public void addOptions(String[] lst) 
+	{
+		System.out.println(lstOptions.size());
+		for(int i = 0;i<lstOptions.size();i++) {
+			lst[i] = lstOptions.get(i);
+		}
+	}
+	
 	public static void main(String[] args) 
     {
         VentanaLogin ventana = new VentanaLogin();
