@@ -59,6 +59,7 @@ public class JPRegistrarConductor extends JPanel {
             }
         });
         
+        JPConductorAgregado cA = new JPConductorAgregado(vent);
         
         JButton btnSiguiente = new JButton("Siguiente");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
@@ -69,7 +70,7 @@ public class JPRegistrarConductor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
+            	vent.nuevoCentro(cA); 
             	
             }
         });

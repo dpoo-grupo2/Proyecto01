@@ -54,6 +54,7 @@ public class JPActualizarEstadoV extends JPanel {
             }
         });
         
+        JPEstadoCambiado eC = new JPEstadoCambiado(vent);
         
         JButton btnSiguiente = new JButton("Siguiente");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 20));
@@ -64,7 +65,7 @@ public class JPActualizarEstadoV extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
+            	vent.nuevoCentro(eC); 
             	
             }
         });
