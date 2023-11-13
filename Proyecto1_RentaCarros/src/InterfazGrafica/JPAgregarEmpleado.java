@@ -12,12 +12,10 @@ import javax.swing.border.LineBorder;
 
 public class JPAgregarEmpleado extends JPanel {
 
-	private JLabel lblRelleno;
 	
     public JPAgregarEmpleado(MenuAdminSede vent) 
     {
-    	 
-    	
+    	     	
         setLayout(new GridLayout(7, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(60, 160, 60, 160));
@@ -47,6 +45,7 @@ public class JPAgregarEmpleado extends JPanel {
             }
         });
         
+        JPEmpleadoGestionado eG = new JPEmpleadoGestionado(vent);
         
         JButton btnSiguiente = new JButton("Crear");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
@@ -57,7 +56,7 @@ public class JPAgregarEmpleado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	vent.nuevoCentro(eG);
             	
             }
         });

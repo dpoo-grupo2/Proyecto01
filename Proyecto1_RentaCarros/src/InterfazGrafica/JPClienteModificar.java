@@ -11,7 +11,9 @@ import javax.swing.border.LineBorder;
 
 public class JPClienteModificar extends JPanel {
 
-    public JPClienteModificar() {
+    public JPClienteModificar(MenuCliente vent) 
+    {
+    	
         setLayout(new GridLayout(7, 1, 0, 14)); 
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 70, 160));
@@ -27,9 +29,9 @@ public class JPClienteModificar extends JPanel {
         addTextFieldWithHint("Categoria");
         addTextFieldWithHint("Hora");
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -41,21 +43,23 @@ public class JPClienteModificar extends JPanel {
             }
         });
         
+        JPReservaRegistrada rR = new JPReservaRegistrada(vent);
         
-        JButton btnSiguiente = new JButton("Regresar");
-        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSiguiente.setBackground(new Color(32, 182, 182));
-        btnSiguiente.setForeground(Color.WHITE);
-        btnSiguiente.setBorder(new LineBorder(Color.BLACK, 2));
-        btnSiguiente.addActionListener(new ActionListener() {
+        JButton btnModificar = new JButton("Modificar");
+        btnModificar.setFont(new Font("Arial", Font.BOLD, 20));
+        btnModificar.setBackground(new Color(32, 182, 182));
+        btnModificar.setForeground(Color.WHITE);
+        btnModificar.setBorder(new LineBorder(Color.BLACK, 2));
+        btnModificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	setVisible(false);
+            	vent.nuevoCentro(rR); 
             	
             }
         });
-        add(btnSiguiente);
+        add(btnModificar);
         add(btnSalir);
         
         

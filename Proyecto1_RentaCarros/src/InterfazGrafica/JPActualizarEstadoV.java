@@ -35,16 +35,21 @@ public class JPActualizarEstadoV extends JPanel {
         
           
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	setVisible(false);
+            	vent.setPanelCentro(vent.getPanelCentro2());
+            	JPanel menu = vent.getPanelCentro();
+            	vent.add(menu, BorderLayout.CENTER);
+            	
+            	menu.setVisible(true);
             	
             }
         });

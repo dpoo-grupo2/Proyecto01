@@ -13,10 +13,8 @@ import javax.swing.border.LineBorder;
 public class JPRegistrarConductor extends JPanel {
 
 	
-	
     public JPRegistrarConductor(MenuEmpleado vent) 
     {
-    	 
     	
         setLayout(new GridLayout(5, 1, 10, 20));
         setBackground(new Color(200, 182, 182));
@@ -40,19 +38,24 @@ public class JPRegistrarConductor extends JPanel {
         addTextFieldWithHint("Fecha vencimiento");
         addTextFieldWithHint("Teléfono");
         addTextFieldWithHint("Pais licencia exp.");
-          
-        
+         
+                
         JButton btnRegresar = new JButton("Regresar");
         btnRegresar.setFont(new Font("Arial", Font.BOLD, 18));
-        btnRegresar.setBackground(new Color(32, 182, 182));
+        btnRegresar.setBackground(new Color(255, 144, 144));
         btnRegresar.setForeground(Color.WHITE);
         btnRegresar.setBorder(new LineBorder(Color.BLACK, 2));
         btnRegresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	setVisible(false);
+            	vent.setPanelCentro(vent.getPanelCentro2());
+            	JPanel menu = vent.getPanelCentro();
+            	vent.add(menu, BorderLayout.CENTER);
             	
+            	menu.setVisible(true);
+	            
             }
         });
         
@@ -70,9 +73,9 @@ public class JPRegistrarConductor extends JPanel {
             	
             }
         });
-        add(btnSiguiente);
-        add(btnRegresar);
         
+        add(btnRegresar);
+        add(btnSiguiente);
     }
 
     private void addTextFieldWithHint(String hint) {

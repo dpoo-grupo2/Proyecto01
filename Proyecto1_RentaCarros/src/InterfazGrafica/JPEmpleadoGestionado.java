@@ -8,18 +8,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public class JPSeguroEditado extends JPanel {
+public class JPEmpleadoGestionado extends JPanel {
 
 	private JLabel lblRelleno;
 	
-    public JPSeguroEditado(MenuAdminGnrl vent) 
+    public JPEmpleadoGestionado(MenuAdminSede vent) 
     {
     	 
         setLayout(new GridLayout(3, 1, 0, 30));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(100, 160, 140, 160));
         
-        JLabel label = new JLabel("<html>¡Seguro eliminado/<br>añadido correctamente!</html>");
+        JLabel label = new JLabel("<html>¡Empleado eliminado/<br>añadido correctamente!</html>");
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 30));
         
@@ -27,7 +27,7 @@ public class JPSeguroEditado extends JPanel {
 
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
-        
+		
         
         JButton btnMenu = new JButton("Menú principal");
         btnMenu.setFont(new Font("Arial", Font.BOLD, 20));

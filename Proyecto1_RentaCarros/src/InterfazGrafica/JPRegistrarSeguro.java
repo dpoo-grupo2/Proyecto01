@@ -97,10 +97,5 @@ public class JPRegistrarSeguro extends JPanel {
         add(textField);
     }
 		
-    public static void main(String[] args) 
-    {
-        VentanaLogin ventana = new VentanaLogin();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);}
     
 }

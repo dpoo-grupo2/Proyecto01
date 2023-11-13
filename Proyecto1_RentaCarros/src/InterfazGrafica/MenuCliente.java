@@ -9,6 +9,7 @@ public class MenuCliente extends JFrame
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
+	private JPanel panelCentro2;
 	
     public MenuCliente() 
     {
@@ -44,7 +45,7 @@ public class MenuCliente extends JFrame
         panelCentro.add(lblRelleno);        
         
         JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
-        JPClienteModificar jPClienteModificar = new JPClienteModificar();    
+        JPClienteModificar jPClienteModificar = new JPClienteModificar(this);    
         
         
         JButton btnReserva = new JButton("Reservar vehículo");
@@ -147,5 +148,18 @@ public class MenuCliente extends JFrame
         panelCentro.setVisible(true);
     }
     
+    public JPanel getPanelCentro2()
+    {
+    	return panelCentro2;
+    }
     
+    public void setPanelCentro(JPanel gg)
+    {
+    	 panelCentro = gg;
+    }
+    
+    public JPanel getPanelCentro()
+    {
+    	return panelCentro;
+    }
 }

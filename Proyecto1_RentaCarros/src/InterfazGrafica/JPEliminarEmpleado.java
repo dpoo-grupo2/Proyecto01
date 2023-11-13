@@ -37,6 +37,8 @@ public class JPEliminarEmpleado extends JPanel {
         lblRelleno = new JLabel(" ");
         add(lblRelleno);
         
+        JPEmpleadoGestionado eG = new JPEmpleadoGestionado(vent);
+        
         JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 19));
         btnSalir.setBackground(new Color(255, 144, 144));
@@ -46,7 +48,7 @@ public class JPEliminarEmpleado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	
             	
             }
         });
@@ -61,7 +63,7 @@ public class JPEliminarEmpleado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	vent.nuevoCentro(eG); 
             	
             }
         });
