@@ -41,7 +41,7 @@ public class JPVehiculoEditado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-//            	vent.nuevoCentro(cR);
+            	
             	
             }
         });
