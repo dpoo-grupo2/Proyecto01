@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -38,8 +39,10 @@ public class JPEstadoCambiado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
-            	
+            	ArrayList<JPanel>lst = vent.getPanelLst();
+            	JPanel panel = lst.get(0);
+            	vent.reiniciarLstPanel();
+            	vent.nuevoCentroReg(panel);
             }
         });
         add(btnMenu);

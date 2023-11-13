@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -10,6 +11,7 @@ public class MenuAdminSede extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelAnte;
+	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 	
     public MenuAdminSede() 
     {
@@ -131,7 +133,9 @@ public class MenuAdminSede extends JFrame
     
     public void nuevoCentro(JPanel np) 
     {
+    	lstPanel.add(panelCentro);
     	panelCentro.setVisible(false);
+    	    	
         panelCentro = np;
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setVisible(true);
@@ -141,4 +145,31 @@ public class MenuAdminSede extends JFrame
     {
     	return panelAnte;
     }
+    
+    public void nuevoCentroReg(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
+    
+    
+    public ArrayList<JPanel> getPanelLst()
+    {
+    	return lstPanel;
+    }
+    
+    public void reiniciarLstPanel() 
+    {
+    	lstPanel = new ArrayList<JPanel>();
+    }
+    
+    public void delElement(int i) 
+    {
+    	lstPanel.remove(i);
+    	
+    }
+    
 }
