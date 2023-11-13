@@ -19,7 +19,7 @@ public class JPReservaRegistrada extends JPanel {
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(100, 160, 140, 160));
         
-        JLabel label = new JLabel("<html>¡Tu reserva a quedado/<br>exitosamente registrada!</html>");
+        JLabel label = new JLabel("<html>¡Tu reserva a quedado<br>exitosamente registrada!</html>");
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 30));
         
