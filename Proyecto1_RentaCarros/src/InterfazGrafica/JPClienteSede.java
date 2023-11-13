@@ -8,9 +8,17 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class JPClienteSede extends JPanel {
 
 	private JLabel lblRelleno;
+	private Date fechaRecogida;
+	private Date fechaEntrega;
+	private Date horaRecogida;
+	private Date horaEntrega;
 	
     public JPClienteSede(MenuCliente vent) 
     {
@@ -28,8 +36,7 @@ public class JPClienteSede extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-//        JPClienteReserva cR = new JPClienteReserva(vent);
-        
+
 		JButton btnPequeño = new JButton("Pequeño");
 		btnPequeño.setFont(new Font("Arial", Font.BOLD, 20));
 		btnPequeño.setBackground(new Color(32, 182, 182));
@@ -39,7 +46,16 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	fechaReserva();
+            	horaReserva();
+            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
+            	{
+            		setVisible(false);
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	}
             	
             }
         });
@@ -55,7 +71,16 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	fechaReserva();
+            	horaReserva();
+            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
+            	{
+            		setVisible(false);
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	}
             	
             }
         });
@@ -71,7 +96,16 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	fechaReserva();
+            	horaReserva();
+            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
+            	{
+            		setVisible(false);
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	}
             	
             }
         });
@@ -87,7 +121,16 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	fechaReserva();
+            	horaReserva();
+            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
+            	{
+            		setVisible(false);
+            	}
+            	else
+            	{
+            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	}
             	
             }
         });
@@ -97,14 +140,14 @@ public class JPClienteSede extends JPanel {
         
         JButton btnAtras = new JButton("Regresar");
         btnAtras.setFont(new Font("Arial", Font.BOLD, 20));
-        btnAtras.setBackground(new Color(32, 182, 182));
         btnAtras.setForeground(Color.WHITE);
+        btnAtras.setBackground(new Color(255, 144, 144));
         btnAtras.setBorder(new LineBorder(Color.BLACK, 2));
         btnAtras.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-//            	vent.nuevoCentro(cR);
+
             	
             }
         });
@@ -112,5 +155,85 @@ public class JPClienteSede extends JPanel {
 		
     }
     
+    public void fechaReserva()
+    {
+    	JPanel panel = new JPanel(new GridLayout(2, 2));
+
+        panel.add(new JLabel("Fecha de recogida (DD/MM/YYYY) : "));
+        JTextField fechaRecogidaField = new JTextField();
+        panel.add(fechaRecogidaField);
+
+        panel.add(new JLabel("Fecha de entrega (DD/MM/YYYY) : "));
+        JTextField fechaEntregaField = new JTextField();
+        panel.add(fechaEntregaField);
+
+        
+        int opcion = JOptionPane.showConfirmDialog(null, panel, "Fechas de recogida y entrega", JOptionPane.OK_CANCEL_OPTION);
+
+        
+        if (opcion == JOptionPane.OK_OPTION) {
+            
+        	String fechaRecogidaStr = fechaRecogidaField.getText();
+            String fechaEntregaStr = fechaEntregaField.getText();
+
+        
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+            	
+                Date fechaRecogida = formatoFecha.parse(fechaRecogidaStr);
+                Date fechaEntrega = formatoFecha.parse(fechaEntregaStr);
+
+                
+                System.out.println("Hora de recogida: " + formatoFecha.format(fechaRecogida));
+                System.out.println("Hora de entrega: " + formatoFecha.format(fechaEntrega));
+                
+            } catch (ParseException e) 
+            {
+            	JOptionPane.showMessageDialog(null, "Error, debe llenar todos los campos y poner las fechas en formato (dd/MM/yyyy) ", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	fechaReserva();
+            }
+        }
+    
+    }
+    
+    public void horaReserva()
+    {
+    	JPanel panel = new JPanel(new GridLayout(2, 2));
+
+        panel.add(new JLabel("Hora de recogida (HH:mm):"));
+        JTextField horaRecogidaField = new JTextField();
+        panel.add(horaRecogidaField);
+
+        panel.add(new JLabel("Hora de entrega (HH:mm):"));
+        JTextField horaEntregaField = new JTextField();
+        panel.add(horaEntregaField);
+
+        
+        int opcion = JOptionPane.showConfirmDialog(null, panel, "Horas de recogida y entrega", JOptionPane.OK_CANCEL_OPTION);
+
+        
+        if (opcion == JOptionPane.OK_OPTION) {
+            
+            String horaRecogidaStr = horaRecogidaField.getText();
+            String horaEntregaStr = horaEntregaField.getText();
+
+        
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+            try {
+                Date horaRecogida = formatoHora.parse(horaRecogidaStr);
+                Date horaEntrega = formatoHora.parse(horaEntregaStr);
+
+                
+                System.out.println("Hora de recogida: " + formatoHora.format(horaRecogida));
+                System.out.println("Hora de entrega: " + formatoHora.format(horaEntrega));
+                
+            } catch (ParseException e) 
+            {
+            	JOptionPane.showMessageDialog(null, "Error, debe llenar todos los campos y poner las horas en formato (HH:MM)", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            	horaReserva();
+            }
+        }
+    
+    }
     
 }

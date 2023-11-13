@@ -15,9 +15,9 @@ public class JPClienteReserva extends JPanel {
     public JPClienteReserva(MenuCliente vent) 
     {
     	 
-        setLayout(new GridLayout(5, 1, 0, 18));
+        setLayout(new GridLayout(6, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 150, 160));
+        setBorder(new EmptyBorder(70, 160, 100, 160));
         
         JLabel labelSelect = new JLabel("Seleccione la sede para resevar:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
@@ -77,6 +77,24 @@ public class JPClienteReserva extends JPanel {
         });
         add(btnSur);
         
-		        
+        JButton btnRegresar = new JButton("Regresar");
+        btnRegresar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnRegresar.setBackground(new Color(255, 144, 144));
+        btnRegresar.setForeground(Color.WHITE);
+        btnRegresar.setBorder(new LineBorder(Color.BLACK, 2));
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+//            	setVisible(false);
+//            	vent.setPanelCentro(vent.getPanelCentro2());
+//            	JPanel menu = vent.getPanelCentro();
+//            	vent.add(menu, BorderLayout.CENTER);
+//            	
+//            	menu.setVisible(true);
+	            
+            }
+        });        
+        add(btnRegresar);
     }
 }

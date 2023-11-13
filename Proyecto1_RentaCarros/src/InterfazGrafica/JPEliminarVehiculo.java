@@ -13,9 +13,8 @@ import javax.swing.border.LineBorder;
 public class JPEliminarVehiculo extends JPanel {
 
 	private JLabel lblRelleno;
-//	lblRelleno = new JLabel(" ");
-//    add(lblRelleno);
-    public JPEliminarVehiculo() 
+
+    public JPEliminarVehiculo(MenuAdminGnrl vent) 
     {
     	 
     	
@@ -52,8 +51,9 @@ public class JPEliminarVehiculo extends JPanel {
             }
         });
         
+        JPVehiculoEditado vH = new JPVehiculoEditado(vent);
         
-        JButton btnSiguiente = new JButton("Siguiente");
+        JButton btnSiguiente = new JButton("Eliminar");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
         btnSiguiente.setBackground(new Color(32, 182, 182));
         btnSiguiente.setForeground(Color.WHITE);
@@ -62,7 +62,7 @@ public class JPEliminarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	vent.nuevoCentro(vH);
             	
             }
         });

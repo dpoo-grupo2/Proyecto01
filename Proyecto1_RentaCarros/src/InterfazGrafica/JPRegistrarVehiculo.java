@@ -15,7 +15,7 @@ public class JPRegistrarVehiculo extends JPanel {
 	private JLabel lblRelleno;
 	private JLabel lblRelleno2;
 		
-    public JPRegistrarVehiculo() 
+    public JPRegistrarVehiculo(MenuAdminGnrl vent) 
     {
     	 
     	
@@ -70,6 +70,7 @@ public class JPRegistrarVehiculo extends JPanel {
             }
         });
         
+        JPVehiculoEditado vH = new JPVehiculoEditado(vent);
         
         JButton btnSiguiente = new JButton("Registrar");
         btnSiguiente.setFont(new Font("Arial", Font.BOLD, 18));
@@ -80,7 +81,7 @@ public class JPRegistrarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	vent.nuevoCentro(vH);
             	
             }
         });

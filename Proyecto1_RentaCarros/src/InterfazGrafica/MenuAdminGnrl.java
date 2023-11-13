@@ -128,8 +128,8 @@ public class MenuAdminGnrl extends JFrame
         
     public void gestionarVehiculos()
 	{
-    	JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo();
-    	JPRegistrarVehiculo jPRegistrarVehiculo = new JPRegistrarVehiculo();
+    	JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo(this);
+    	JPRegistrarVehiculo jPRegistrarVehiculo = new JPRegistrarVehiculo(this);
     	
             String[] opciones = {"Registrar vehículo", "Eliminar vehículo"};
             
