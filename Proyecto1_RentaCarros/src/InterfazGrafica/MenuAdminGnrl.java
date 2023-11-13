@@ -7,7 +7,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import controlador.CargaDatos;
+import modelo.Administrador;
 import modelo.Seguro;
+import modelo.Usuario;
 
 public class MenuAdminGnrl extends JFrame 
 {
@@ -16,9 +18,10 @@ public class MenuAdminGnrl extends JFrame
 	private CargaDatos carga = new CargaDatos();
 	private JPanel panelAnte;
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
-	
-    public MenuAdminGnrl() 
+	private Administrador user;
+    public MenuAdminGnrl(Administrador user) 
     {
+    	this.user = user;
     	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
         setSize(1050, 650);
         setTitle("CarRental");
@@ -163,10 +166,11 @@ public class MenuAdminGnrl extends JFrame
     {
     	return panelAnte;
     }
-//    public void añadirVeh(matricula,modelo,sede,capacidad,color,anioFab,transmicion,catVehiculo,marca,estadoVehiculo,idCat) 
-//    {
-//    	
-//    }
+    public Vehiculo añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,boolean estadoVehiculo,int idCat) 
+    {
+    	user.registrarVehiculo(placa, color, marca, modelo, anioFab, transmicion, catVehiculo, catVehiculo, capacidad, marca, idCat, null);
+    	carga.sobreEscribirVehiculo(placa, color, marca, modelo, sede, transmicion, catVehiculo, color, transmicion, catVehiculo, marca);
+    }
     public void gestionarSeguros()
 	{
     	JPEliminarSeguro jPEliminarSeguro = new JPEliminarSeguro(this);
