@@ -16,6 +16,7 @@ public class MenuEmpleado extends JFrame
 	
     public MenuEmpleado() 
     {
+    	
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -33,8 +34,7 @@ public class MenuEmpleado extends JFrame
         panelNorte.add(labelTitulo);
         panelNorte.setBorder(new MatteBorder(0, 0, 6, 0, Color.BLACK));
 
-        
-        
+                
         panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
@@ -50,7 +50,6 @@ public class MenuEmpleado extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-        JPRegistrarConductor jPRegistrarConductor = new JPRegistrarConductor(this);  
         
         JButton btnAgregar = new JButton("Registrar conductores adicionales");
         btnAgregar.setFont(new Font("Arial", Font.BOLD, 20));
@@ -67,7 +66,6 @@ public class MenuEmpleado extends JFrame
         });
         panelCentro.add(btnAgregar);
 
-        JPActualizarEstadoV jPActualizarEstadoV = new JPActualizarEstadoV(this);
         
         JButton btnActualizar = new JButton("Actualizar estado vehículo");
         btnActualizar.setFont(new Font("Arial", Font.BOLD, 20));
@@ -115,8 +113,7 @@ public class MenuEmpleado extends JFrame
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.Y_AXIS));
         panelEste.setLayout(new BoxLayout(panelEste, BoxLayout.X_AXIS));
         
-        
-        
+               
         JPanel panelOeste = new JPanel();
         add(panelOeste, BorderLayout.WEST);
         panelOeste.setBackground(new Color(200, 182, 182));

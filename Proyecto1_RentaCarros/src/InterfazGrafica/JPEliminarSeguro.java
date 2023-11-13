@@ -102,13 +102,5 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
 		for(int i = 0;i<lstOptions.size();i++) {
 			lst[i] = lstOptions.get(i);
 		}
-	}
-	
-	public static void main(String[] args) 
-    {
-        VentanaLogin ventana = new VentanaLogin();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);}
-		        
-    
+	}  
 }

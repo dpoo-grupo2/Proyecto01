@@ -15,14 +15,14 @@ public class MenuAdminSede extends JFrame
 	
     public MenuAdminSede() 
     {
+    	
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
 
-        
-        
+                
         JPanel panelNorte = new JPanel();
         panelNorte.setBackground(new Color(152, 182, 182));
         add(panelNorte, BorderLayout.NORTH);
@@ -79,9 +79,7 @@ public class MenuAdminSede extends JFrame
             }
         });
         
-        
-        
-        
+                    
         panelCentro.add(btnModificar);
         
         JButton btnSalir = new JButton("Salir");

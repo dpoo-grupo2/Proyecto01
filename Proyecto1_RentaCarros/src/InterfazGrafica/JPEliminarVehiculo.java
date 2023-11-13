@@ -16,7 +16,6 @@ public class JPEliminarVehiculo extends JPanel {
     public JPEliminarVehiculo(MenuAdminGnrl vent) 
     {
     	 
-    	
         setLayout(new GridLayout(5, 1, 16, 20));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 110, 60, 110));
@@ -97,7 +96,5 @@ public class JPEliminarVehiculo extends JPanel {
         });
 
         add(textField);
-    }
-		        
-    
+    }		         
 }

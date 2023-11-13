@@ -11,23 +11,20 @@ public class MenuCliente extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelAnte;
-
 	private  JPClienteModificar jPClienteModificar;
-
-
 
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 
     public MenuCliente() 
     {
+    	
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
 
-        
-        
+                
         JPanel panelNorte = new JPanel();
         panelNorte.setBackground(new Color(152, 182, 182));
         add(panelNorte, BorderLayout.NORTH);
@@ -37,8 +34,7 @@ public class MenuCliente extends JFrame
         panelNorte.add(labelTitulo);
         panelNorte.setBorder(new MatteBorder(0, 0, 6, 0, Color.BLACK));
 
-        
-        
+                
         panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
@@ -53,7 +49,7 @@ public class MenuCliente extends JFrame
         panelCentro.add(lblRelleno);        
         
         JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
-         jPClienteModificar = new JPClienteModificar(this);    
+        jPClienteModificar = new JPClienteModificar(this);    
         
         
         JButton btnReserva = new JButton("Reservar vehículo");
@@ -85,9 +81,7 @@ public class MenuCliente extends JFrame
             }
         });
         
-        
-        
-        
+                      
         panelCentro.add(btnModificar);
         
         JButton btnSalir = new JButton("Salir");

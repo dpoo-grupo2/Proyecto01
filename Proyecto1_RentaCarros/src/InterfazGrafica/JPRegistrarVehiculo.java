@@ -18,7 +18,8 @@ public class JPRegistrarVehiculo extends JPanel {
 		
     public JPRegistrarVehiculo(MenuAdminGnrl vent) 
     {
-    	 this.vent = vent;
+    	
+    	this.vent = vent;
     	
         setLayout(new GridLayout(6, 4, 10, 30));
         setBackground(new Color(200, 182, 182));
@@ -39,9 +40,7 @@ public class JPRegistrarVehiculo extends JPanel {
         labelSelect3.setFont(new Font("Arial", Font.BOLD, 25));
         add(labelSelect3);
         
-        
-        
-
+                
         addTextFieldWithHint("Matrícula");
         addTextFieldWithHint("Modelo");
         addTextFieldWithHint("Sede");
