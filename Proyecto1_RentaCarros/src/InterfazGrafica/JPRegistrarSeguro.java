@@ -17,8 +17,7 @@ public class JPRegistrarSeguro extends JPanel {
     public JPRegistrarSeguro(MenuAdminGnrl vent) 
     {
     	 
-    	
-        setLayout(new GridLayout(6, 1, 0, 16));
+    	setLayout(new GridLayout(6, 1, 0, 16));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 90, 160));
         
@@ -96,7 +95,5 @@ public class JPRegistrarSeguro extends JPanel {
         });
 
         add(textField);
-    }
-		
-    
+    }	
 }

@@ -49,18 +49,18 @@ public class JPClienteSede extends JPanel {
             public void actionPerformed(ActionEvent e) 
             {
             	fechaReserva();
-            	horaReserva();
-            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
-            	{
-            		setVisible(false);
-            		vent.nuevoCentro(rR);
-            	}
-            	else
-            	{
-            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
-            		
-            	}
-            	
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    vent.nuevoCentro(rR);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
             }
         });
         add(btnPequeño);
@@ -76,17 +76,18 @@ public class JPClienteSede extends JPanel {
             public void actionPerformed(ActionEvent e) 
             {
             	fechaReserva();
-            	horaReserva();
-            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
-            	{
-            		setVisible(false);
-            		vent.nuevoCentro(rR);
-            	}
-            	else
-            	{
-            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
-            	}
-            	
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    vent.nuevoCentro(rR);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
             }
         });
         add(btnSedan);
@@ -102,17 +103,18 @@ public class JPClienteSede extends JPanel {
             public void actionPerformed(ActionEvent e) 
             {
             	fechaReserva();
-            	horaReserva();
-            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
-            	{
-            		setVisible(false);
-            		vent.nuevoCentro(rR);
-            	}
-            	else
-            	{
-            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
-            	}
-            	
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    vent.nuevoCentro(rR);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
             }
         });
         add(btnSUV);
@@ -128,17 +130,18 @@ public class JPClienteSede extends JPanel {
             public void actionPerformed(ActionEvent e) 
             {
             	fechaReserva();
-            	horaReserva();
-            	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
-            	{
-            		setVisible(false);
-            		vent.nuevoCentro(rR);
-            	}
-            	else
-            	{
-            		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
-            	}
-            	
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    vent.nuevoCentro(rR);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
             }
         });
         add(btnLujo);
@@ -194,14 +197,14 @@ public class JPClienteSede extends JPanel {
                 fechaEntrega = formatoFecha.parse(fechaEntregaStr);
 
                 
-                System.out.println("Hora de recogida: " + formatoFecha.format(fechaRecogida));
-                System.out.println("Hora de entrega: " + formatoFecha.format(fechaEntrega));
                 
             } catch (ParseException e) 
             {
             	JOptionPane.showMessageDialog(null, "Error, debe llenar todos los campos y poner las fechas en formato (dd/MM/yyyy) ", "CarRental", JOptionPane.OK_CANCEL_OPTION);
             	fechaReserva();
             }
+        } else {
+        	
         }
     
     }
@@ -234,15 +237,14 @@ public class JPClienteSede extends JPanel {
                 horaRecogida = formatoHora.parse(horaRecogidaStr);
                 horaEntrega = formatoHora.parse(horaEntregaStr);
 
-                
-                System.out.println("Hora de recogida: " + formatoHora.format(horaRecogida));
-                System.out.println("Hora de entrega: " + formatoHora.format(horaEntrega));
-                
+                                
             } catch (ParseException e) 
             {
             	JOptionPane.showMessageDialog(null, "Error, debe llenar todos los campos y poner las horas en formato (HH:MM)", "CarRental", JOptionPane.OK_CANCEL_OPTION);
             	horaReserva();
             }
+        }else {
+        	
         }
     
     }
