@@ -10,11 +10,7 @@ public class MenuCliente extends JFrame
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
-	private JPanel panelCentro2;
-
 	private JPanel panelAnte;
-	
-
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 
     public MenuCliente() 
@@ -174,10 +170,12 @@ public class MenuCliente extends JFrame
     {
     	return lstPanel;
     }
+    
     public void reiniciarLstPanel() 
     {
     	lstPanel = new ArrayList<JPanel>();
     }
+    
     public void delElement(int i) 
     {
     	lstPanel.remove(i);

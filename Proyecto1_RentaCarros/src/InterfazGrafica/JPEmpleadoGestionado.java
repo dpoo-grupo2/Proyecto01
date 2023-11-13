@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -38,9 +39,10 @@ public class JPEmpleadoGestionado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	VentanaLogin VentanaLogin = new VentanaLogin();
-            	VentanaLogin.setLocationRelativeTo(null);
-            	VentanaLogin.setVisible(true);
+            	ArrayList<JPanel>lst = vent.getPanelLst();
+            	JPanel panel = lst.get(0);
+            	vent.reiniciarLstPanel();
+            	vent.nuevoCentroReg(panel);
             	
             	
             }

@@ -39,7 +39,6 @@ public class JPReservaRegistrada extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
             	ArrayList<JPanel>lst = vent.getPanelLst();
             	JPanel panel = lst.get(0);
             	vent.reiniciarLstPanel();

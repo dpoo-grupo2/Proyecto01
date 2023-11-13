@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -27,10 +28,7 @@ public class JPVehiculoEditado extends JPanel {
 
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
-		
-//        JPClienteReserva cR = new JPClienteReserva(vent);
-        
-        
+		       
         
         JButton btnMenu = new JButton("Menú principal");
         btnMenu.setFont(new Font("Arial", Font.BOLD, 20));
@@ -41,7 +39,10 @@ public class JPVehiculoEditado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	ArrayList<JPanel>lst = vent.getPanelLst();
+            	JPanel panel = lst.get(0);
+            	vent.reiniciarLstPanel();
+            	vent.nuevoCentroReg(panel);
             	
             }
         });

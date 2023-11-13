@@ -15,6 +15,7 @@ public class MenuAdminGnrl extends JFrame
 	private JPanel panelCentro;
 	private CargaDatos carga = new CargaDatos();
 	private JPanel panelAnte;
+	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 	
     public MenuAdminGnrl() 
     {
@@ -186,10 +187,38 @@ public class MenuAdminGnrl extends JFrame
     
     public void nuevoCentro(JPanel np) 
     {
+    	lstPanel.add(panelCentro);
     	panelCentro.setVisible(false);
+    	    	
         panelCentro = np;
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setVisible(true);
+    }
+    
+    public void nuevoCentroReg(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
+    
+    
+    public ArrayList<JPanel> getPanelLst()
+    {
+    	return lstPanel;
+    }
+    
+    public void reiniciarLstPanel() 
+    {
+    	lstPanel = new ArrayList<JPanel>();
+    }
+    
+    public void delElement(int i) 
+    {
+    	lstPanel.remove(i);
+    	
     }
     
 }
