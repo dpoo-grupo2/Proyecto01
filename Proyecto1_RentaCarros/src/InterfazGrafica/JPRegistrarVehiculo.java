@@ -14,10 +14,11 @@ public class JPRegistrarVehiculo extends JPanel {
 
 	private JLabel lblRelleno;
 	private JLabel lblRelleno2;
+	private MenuAdminGnrl vent;
 		
     public JPRegistrarVehiculo(MenuAdminGnrl vent) 
     {
-    	 
+    	 this.vent = vent;
     	
         setLayout(new GridLayout(6, 4, 10, 30));
         setBackground(new Color(200, 182, 182));
@@ -65,7 +66,8 @@ public class JPRegistrarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	 JPanel ante = vent.getPanelAnte();
+            	 vent.nuevoCentro(ante);
             	
             }
         });

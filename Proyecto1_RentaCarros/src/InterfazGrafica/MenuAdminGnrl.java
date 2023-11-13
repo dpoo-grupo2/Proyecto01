@@ -14,6 +14,7 @@ public class MenuAdminGnrl extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private CargaDatos carga = new CargaDatos();
+	private JPanel panelAnte;
     public MenuAdminGnrl() 
     {
     	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
@@ -39,6 +40,7 @@ public class MenuAdminGnrl extends JFrame
         panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
+        panelAnte = panelCentro;
         add(panelCentro, BorderLayout.CENTER);
         
         JLabel labelIniciarSesion = new JLabel("¡Bienvenido Adminsitrador general! ");
@@ -73,6 +75,7 @@ public class MenuAdminGnrl extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	panelAnte = panelCentro;
             	gestionarSeguros();
             	
             }
@@ -154,7 +157,10 @@ public class MenuAdminGnrl extends JFrame
                 nuevoCentro(jPEliminarVehiculo);
             }
 	}
-    
+    public JPanel getPanelAnte() 
+    {
+    	return panelAnte;
+    }
     public void gestionarSeguros()
 	{
     	JPEliminarSeguro jPEliminarSeguro = new JPEliminarSeguro(this);
