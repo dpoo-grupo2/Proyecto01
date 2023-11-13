@@ -143,22 +143,26 @@ public class MenuCliente extends JFrame
     	return panelAnte;
     }
     
-    public void modificarReserva()
-	{
-		String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
-		System.out.println(id);
-		
-		if (id.equals("")) 
-		{
-			errorMensaje("recuerde que debe poner un numero");
-			modificarReserva();
-		}
-		else 
-		{
-            
-			nuevoCentro(jPClienteModificar);
-		}
-	}
+    public void modificarReserva() {
+        JPClienteModificar jPClienteModificar = new JPClienteModificar(this);
+
+        try {
+            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+
+            if (id == null) {
+                
+            	System.out.println("");
+            } else if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
+                modificarReserva();
+            } else {
+                nuevoCentro(jPClienteModificar);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); 
+        }
+    }
+    
     public void errorMensaje(String mensaje) 
     {
     	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);

@@ -62,7 +62,7 @@ public class MenuEmpleado extends JFrame
             public void actionPerformed(ActionEvent e) 
             {
             	agregarConductores();
-            	nuevoCentro(jPRegistrarConductor);
+            	
             }
         });
         panelCentro.add(btnAgregar);
@@ -79,7 +79,7 @@ public class MenuEmpleado extends JFrame
             public void actionPerformed(ActionEvent e) 
             {
             	actualizarEstado();
-            	nuevoCentro(jPActualizarEstadoV);
+            	
             }
         });
         panelCentro.add(btnActualizar);
@@ -136,15 +136,45 @@ public class MenuEmpleado extends JFrame
     	return panelAnte;
     }
     
-    public void agregarConductores()
-	{
-    	JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
-	}
-    
-    public void actualizarEstado()
-	{
-    	JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
-	}
+    public void agregarConductores() {
+        JPRegistrarConductor jPRegistrarConductor = new JPRegistrarConductor(this);
+
+        try {
+            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+
+            if (id == null) {
+                
+                System.out.println("");
+            } else if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
+                agregarConductores();
+            } else {
+                nuevoCentro(jPRegistrarConductor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); 
+        }
+    }
+
+    public void actualizarEstado() {
+        JPActualizarEstadoV jPActualizarEstadoV = new JPActualizarEstadoV(this);
+
+        try {
+            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+
+            if (id == null) {
+               
+            	System.out.println("");
+            } else if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
+                agregarConductores();
+            } else {
+                nuevoCentro(jPActualizarEstadoV);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); 
+        }
+    }
     
     public void nuevoCentro(JPanel np) 
     {

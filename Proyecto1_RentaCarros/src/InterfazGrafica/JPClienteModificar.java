@@ -40,12 +40,8 @@ public class JPClienteModificar extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	ArrayList<JPanel>lst = vent.getPanelLst();
-            	JPanel panel = lst.get(lst.size()-1);
-            	vent.delElement(lst.size()-1);
-            	
-            	vent.nuevoCentroReg(panel);
-            	
+            	JPanel ante = vent.getPanelAnte();
+            	vent.nuevoCentro(ante);
             }
         });
         
