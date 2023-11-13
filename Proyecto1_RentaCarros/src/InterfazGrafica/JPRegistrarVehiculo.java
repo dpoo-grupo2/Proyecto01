@@ -15,7 +15,31 @@ public class JPRegistrarVehiculo extends JPanel {
 	private JLabel lblRelleno;
 	private JLabel lblRelleno2;
 	private MenuAdminGnrl vent;
-		
+	private JTextField txtFMatricula;
+	private JTextField txtFModelo;
+	private JTextField txtFSede;
+	private JTextField txtFCapacidad;
+	private JTextField txtFColor;
+	private JTextField txtFAnio;
+	private JTextField txtFTrans;
+	private JTextField txtFCategoria;
+	private JTextField txtFMarca;
+	private JTextField txtFEstado;
+	private JTextField txtFId;
+	private JTextField txtFPlaca;
+	private String matricula = "";
+	private String modelo = "";
+	private String sede = "";
+	private String capacidad = "";
+	private String color = "";
+	private String anioFab="";
+	private String transmicion = "";
+	private String catVehiculo = "";
+	private String marca = "";
+	private String estadoVehiculo = "";
+	private String idCat = "";
+    private String placa = "";
+    
     public JPRegistrarVehiculo(MenuAdminGnrl vent) 
     {
     	
@@ -41,20 +65,18 @@ public class JPRegistrarVehiculo extends JPanel {
         add(labelSelect3);
         
                 
-        addTextFieldWithHint("Matrícula");
-        addTextFieldWithHint("Modelo");
-        addTextFieldWithHint("Sede");
-        addTextFieldWithHint("Capacidad");
-        addTextFieldWithHint("Color");
-        addTextFieldWithHint("Año de fabricación");
-        addTextFieldWithHint("Transmisión");
-        addTextFieldWithHint("Categoría vehpiculo");
-        addTextFieldWithHint("Marca");
-        addTextFieldWithHint("Estado vehículo");
-        addTextFieldWithHint("ID Categoría");
-       
-        lblRelleno = new JLabel(" ");
-        add(lblRelleno);
+        addTextFieldWithHint("Matrícula",txtFMatricula);
+        addTextFieldWithHint("Modelo",txtFModelo);
+        addTextFieldWithHint("Sede",txtFSede);
+        addTextFieldWithHint("Capacidad",txtFCapacidad);
+        addTextFieldWithHint("Color",txtFColor);
+        addTextFieldWithHint("Año de fabricación",txtFAnio);
+        addTextFieldWithHint("Transmisión",txtFTrans);
+        addTextFieldWithHint("Categoría vehiculo",txtFCategoria);
+        addTextFieldWithHint("Marca",txtFMarca);
+        addTextFieldWithHint("Estado vehículo",txtFEstado);
+        addTextFieldWithHint("ID Categoría",txtFId);
+        addTextFieldWithHint("Placa",txtFPlaca);
         
         JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
@@ -82,7 +104,27 @@ public class JPRegistrarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                matricula = txtFMatricula.getText();
+               	modelo = txtFModelo.getText();
+               	sede = txtFSede.getText();
+				capacidad = txtFCapacidad.getText();
+				color = txtFColor.getText();
+				anioFab=txtFAnio.getText();
+				transmicion = txtFTrans.getText();
+				catVehiculo = txtFCategoria.getText();
+				marca = txtFMarca.getText();
+				estadoVehiculo = txtFEstado.getText();
+				idCat = txtFId.getText();
+				placa = txtFPlaca.getText();
+               if(revAll()){
+               
+//            	vent.añadirVeh(matricula,modelo,sede,capacidad,color,anioFab,transmicion,catVehiculo,marca,estadoVehiculo,idCat);
             	vent.nuevoCentro(vH);
+            	}
+            	else
+            	{
+            	errorMensaje("Recuerde que debe poner todos los datos");
+            	}
             	
             }
         });
@@ -92,33 +134,50 @@ public class JPRegistrarVehiculo extends JPanel {
         add(btnSiguiente);
         
     }
+	private boolean revAll()
+	{
 
-    private void addTextFieldWithHint(String hint) {
-        JTextField textField = new JTextField();
-        textField.setFont(new Font("Arial", Font.BOLD, 18));
-        textField.setForeground(Color.GRAY);
-        textField.setHorizontalAlignment(SwingConstants.CENTER);
-        textField.setBorder(new LineBorder(Color.BLACK, 2));
-        textField.setText(hint);
-        textField.addFocusListener(new FocusListener() {
+	
+	if (matricula.equals("") || modelo.equals("")||sede.equals("")||capacidad.equals("")||color.equals("")||anioFab.equals("")
+	||transmicion.equals("") || catVehiculo.equals("")|| marca.equals("")|| estadoVehiculo.equals("")||idCat.equals(""))
+	{
+	return false;
+	}
+	else
+	{
+	return true;
+	}
+	}
+	private void errorMensaje(String mensaje) 
+    {
+    	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
+    }
+    private void addTextFieldWithHint(String hint,JTextField textField) {
+        JTextField txt= new JTextField();
+        txt.setFont(new Font("Arial", Font.BOLD, 18));
+        txt.setForeground(Color.GRAY);
+        txt.setHorizontalAlignment(SwingConstants.CENTER);
+        txt.setBorder(new LineBorder(Color.BLACK, 2));
+        txt.setText(hint);
+        txt.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (textField.getText().equals(hint)) {
-                    textField.setText("");
-                    textField.setForeground(Color.BLACK);
+                if (txt.getText().equals(hint)) {
+                    txt.setText("");
+                    txt.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (textField.getText().isEmpty()) {
-                    textField.setForeground(Color.GRAY);
-                    textField.setText(hint);
+                if (txt.getText().isEmpty()) {
+                    txt.setForeground(Color.GRAY);
+                    txt.setText(hint);
                 }
             }
         });
-
-        add(textField);
+		textField = txt;
+        add(txt);
     }
 	
     

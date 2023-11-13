@@ -163,6 +163,10 @@ public class MenuAdminGnrl extends JFrame
     {
     	return panelAnte;
     }
+//    public void añadirVeh(matricula,modelo,sede,capacidad,color,anioFab,transmicion,catVehiculo,marca,estadoVehiculo,idCat) 
+//    {
+//    	
+//    }
     public void gestionarSeguros()
 	{
     	JPEliminarSeguro jPEliminarSeguro = new JPEliminarSeguro(this);
