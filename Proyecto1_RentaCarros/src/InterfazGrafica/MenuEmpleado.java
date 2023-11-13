@@ -79,7 +79,7 @@ public class MenuEmpleado extends JFrame
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
