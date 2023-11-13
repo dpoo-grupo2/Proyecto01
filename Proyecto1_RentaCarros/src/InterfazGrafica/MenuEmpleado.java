@@ -10,6 +10,7 @@ public class MenuEmpleado extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelCentro2;
+	private JPanel panelAnte;
 	
     public MenuEmpleado() 
     {
@@ -35,6 +36,7 @@ public class MenuEmpleado extends JFrame
         panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
+        panelAnte = panelCentro;
         add(panelCentro, BorderLayout.CENTER);
         
         panelCentro2 = panelCentro;
@@ -127,6 +129,10 @@ public class MenuEmpleado extends JFrame
 
     }
     
+    public JPanel getPanelAnte() 
+    {
+    	return panelAnte;
+    }
     
     public void agregarConductores()
 	{

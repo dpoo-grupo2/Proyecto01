@@ -38,7 +38,9 @@ public class JPClienteModificar extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	setVisible(false);
+            	JPanel ante = vent.getPanelAnte();
+           	 	vent.nuevoCentro(ante);
             	
             }
         });

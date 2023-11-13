@@ -15,6 +15,7 @@ public class MenuAdminGnrl extends JFrame
 	private JPanel panelCentro;
 	private CargaDatos carga = new CargaDatos();
 	private JPanel panelAnte;
+	
     public MenuAdminGnrl() 
     {
     	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");

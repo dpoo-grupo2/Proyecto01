@@ -173,7 +173,7 @@ public class VentanaSignUp extends JFrame
          }
          else 
          {
-        	 System.out.println("tarjeta nexts");
+        	 
         	 panelTarjeta.next();
         	 }
             	}

@@ -12,8 +12,7 @@ import javax.swing.border.LineBorder;
 
 public class JPEliminarVehiculo extends JPanel {
 
-	private JLabel lblRelleno;
-
+	
     public JPEliminarVehiculo(MenuAdminGnrl vent) 
     {
     	 
@@ -46,7 +45,8 @@ public class JPEliminarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	JPanel ante = vent.getPanelAnte();
+           	 	vent.nuevoCentro(ante);
             	
             }
         });

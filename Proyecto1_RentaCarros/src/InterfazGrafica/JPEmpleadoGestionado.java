@@ -38,7 +38,10 @@ public class JPEmpleadoGestionado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
+            	VentanaLogin VentanaLogin = new VentanaLogin();
+            	VentanaLogin.setLocationRelativeTo(null);
+            	VentanaLogin.setVisible(true);
+            	
             	
             }
         });

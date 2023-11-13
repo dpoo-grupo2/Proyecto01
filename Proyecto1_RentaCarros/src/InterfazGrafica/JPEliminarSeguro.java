@@ -55,7 +55,8 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	JPanel ante = vent.getPanelAnte();
+           	 	vent.nuevoCentro(ante); 
             	
             }
         });
@@ -80,7 +81,7 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
     }
     private void addListMenu()
     {
-    	System.out.println(seguros.size());
+    	
     	String info;
     	int i =1;
     	for(Seguro seg: seguros) 

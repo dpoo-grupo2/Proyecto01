@@ -36,7 +36,7 @@ public class JPRegistrarSeguro extends JPanel {
           
         JPSeguroEditado sH = new JPSeguroEditado(vent);
         
-        JButton btnSalir = new JButton("Salir");
+        JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
         btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
@@ -45,7 +45,8 @@ public class JPRegistrarSeguro extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	JPanel ante = vent.getPanelAnte();
+           	 	vent.nuevoCentro(ante);
             	
             }
         });

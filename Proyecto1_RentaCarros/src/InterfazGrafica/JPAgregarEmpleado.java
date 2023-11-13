@@ -40,7 +40,8 @@ public class JPAgregarEmpleado extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 
+            	JPanel ante = vent.getPanelAnte();
+            	vent.nuevoCentro(ante);
             	
             }
         });
