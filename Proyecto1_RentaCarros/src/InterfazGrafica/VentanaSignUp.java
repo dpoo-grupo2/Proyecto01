@@ -7,9 +7,7 @@ import javax.swing.border.*;
 
 public class VentanaSignUp extends JFrame 
 {
-	private JLabel lblRelleno;
-	private JLabel lblRelleno2;
-	private JLabel lblRelleno3;
+	
 	private JPanel panelCentro; 
 	private JButton btnAtras;
 	private JButton btnSignUp;
@@ -133,7 +131,7 @@ public class VentanaSignUp extends JFrame
 
          
         
-        btnAtras = new JButton("Atrás");
+        btnAtras = new JButton(" Menú principal ");
         btnAtras.setFont(new Font("Arial", Font.BOLD, 18));
         btnAtras.setBackground(new Color(32, 182, 182));
         btnAtras.setForeground(Color.WHITE);
@@ -153,7 +151,7 @@ public class VentanaSignUp extends JFrame
         panelOeste.add(btnAtras);
         
         
-        btnSignUp = new JButton("   Next   ");
+        btnSignUp = new JButton("   Siguiente   ");
         btnSignUp.setFont(new Font("Arial", Font.BOLD, 18));
         btnSignUp.setBackground(new Color(32, 182, 182));
         btnSignUp.setForeground(Color.WHITE);
@@ -163,13 +161,13 @@ public class VentanaSignUp extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	System.out.println(panelActual);
+            	
          if (panelActual.equals("cliente"))
          {
         	 nextCliente();
          }
          else if (panelActual.equals("licencia")) 
-         {System.out.println("next panelLic");
+         {
           
         	 panelLic.next();
          }
@@ -239,13 +237,13 @@ public class VentanaSignUp extends JFrame
 	edad = textFieldEdad.getText();
 	contra = textFieldContraseña.getText();
 	panelActual = "cliente";
-	System.out.println(panelActual);
+	
 	if (!revAll(user,name,fecha,correo,edad,contra)) 
 	{
 		errorMensaje("no ha puesto toda la informacion");
 	}
 	else {
-		System.out.println("to licencia");
+		
     	toLicencia(user,name,fecha,correo,edad,contra);
 
 	}

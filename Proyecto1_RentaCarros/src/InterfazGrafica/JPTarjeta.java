@@ -21,22 +21,25 @@ public class JPTarjeta extends JPanel{
 public JPTarjeta(VentanaSignUp vent) 
 {
 	this.vent = vent;
-	setLayout(new GridLayout(1,3));
+	setLayout(new GridLayout(3,1,15,15));
     setBackground(new Color(200, 182, 182));
-    setBorder(new EmptyBorder(70, 160, 150, 160));
-    txtFieldMedio= new JTextFieldWithHint("medio de pago");
+    setBorder(new EmptyBorder(140, 160, 140, 160));
+    txtFieldMedio= new JTextFieldWithHint("Medio de pago (débito o crédito)");
+    txtFieldMedio.setForeground(Color.GRAY);
     txtFieldMedio.setHorizontalAlignment(SwingConstants.CENTER);
     txtFieldMedio.setFont(new Font("Arial", Font.BOLD, 20));
     txtFieldMedio.setBorder(new LineBorder(Color.BLACK,2));
     add(txtFieldMedio);
     
-    txtFieldNumero= new JTextFieldWithHint("numero tarjeta");
+    txtFieldNumero= new JTextFieldWithHint("Numero tarjeta");
+    txtFieldNumero.setForeground(Color.GRAY);
     txtFieldNumero.setHorizontalAlignment(SwingConstants.CENTER);
     txtFieldNumero.setFont(new Font("Arial", Font.BOLD, 20));
     txtFieldNumero.setBorder(new LineBorder(Color.BLACK,2));
     add(txtFieldNumero);
     
-    txtFieldVenci= new JTextFieldWithHint("fecha de expedicion");
+    txtFieldVenci= new JTextFieldWithHint("Fecha de expedicion");
+    txtFieldVenci.setForeground(Color.GRAY);
     txtFieldVenci.setHorizontalAlignment(SwingConstants.CENTER);
     txtFieldVenci.setFont(new Font("Arial", Font.BOLD, 20));
     txtFieldVenci.setBorder(new LineBorder(Color.BLACK,2));

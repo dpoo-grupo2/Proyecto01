@@ -25,22 +25,25 @@ private JPanel nextPanel;
 	{
 		this.vent = vent;
 		this.nextPanel = nextPanel;
-		setLayout(new GridLayout(1,3));
+		setLayout(new GridLayout(3,1, 15, 15));
         setBackground(new Color(200, 182, 182));
-        setBorder(new EmptyBorder(70, 160, 150, 160));
-        txtFieldNumero= new JTextFieldWithHint("numero licencia");
+        setBorder(new EmptyBorder(140, 160, 140, 160));
+        txtFieldNumero= new JTextFieldWithHint("Numero de licencia");
+        txtFieldNumero.setForeground(Color.GRAY);
         txtFieldNumero.setHorizontalAlignment(SwingConstants.CENTER);
         txtFieldNumero.setFont(new Font("Arial", Font.BOLD, 20));
         txtFieldNumero.setBorder(new LineBorder(Color.BLACK,2));
         add(txtFieldNumero);
         
-        txtFieldPais = new JTextFieldWithHint("pais de expedicion");
+        txtFieldPais = new JTextFieldWithHint("País de expedicion");
+        txtFieldPais.setForeground(Color.GRAY);
         txtFieldPais.setHorizontalAlignment(SwingConstants.CENTER);
         txtFieldPais.setFont(new Font("Arial", Font.BOLD, 20));
         txtFieldPais.setBorder(new LineBorder(Color.BLACK,2));
         add(txtFieldPais);
         
-        txtFieldVenci= new JTextFieldWithHint("pais de expedicion");
+        txtFieldVenci= new JTextFieldWithHint("Fecha de vencimiento (dd/MM/yyyy)");
+        txtFieldVenci.setForeground(Color.GRAY);
         txtFieldVenci.setHorizontalAlignment(SwingConstants.CENTER);
         txtFieldVenci.setFont(new Font("Arial", Font.BOLD, 20));
         txtFieldVenci.setBorder(new LineBorder(Color.BLACK,2));
@@ -67,7 +70,7 @@ private JPanel nextPanel;
 	{
 		if (revAll()) 
 		{
-			System.out.println("empieza a cambiar el panel");
+			
 			vent.remPCentro();
 			vent.setLicenciaValues(num, pais, venc);
 			vent.setPanelCentro(nextPanel);
