@@ -13,6 +13,31 @@ public class VentanaSignUp extends JFrame
 	private JPanel panelCentro; 
 	private JButton btnAtras;
 	private JButton btnSignUp;
+	private String user = "";
+	private String name = "";
+	private String fecha ="";
+	private String correo = "";
+	private String edad = "";
+	private String contra = "";
+	
+	private String num = "";
+	private String pais = "";
+	private String venc = "";
+	
+	private String medio = "";
+	private String numT= "";
+	private String vencT = "";
+	
+	private String panelActual = "cliente";
+	
+	private JTextField textFieldNombre;
+	private JTextField textFieldCorreo;
+	private JTextField textFieldEdad;
+	private JTextField textFieldContraseña;
+	private JTextField textFieldUsuario;
+	private JTextField textFieldFecha ;
+	private JPLicencia panelLic;
+	private JPTarjeta panelTarjeta;
     public VentanaSignUp() 
     {
         setSize(1050, 650);
@@ -21,7 +46,7 @@ public class VentanaSignUp extends JFrame
         setResizable(false);
         setLayout(new BorderLayout());
 
-        
+        panelTarjeta = new JPTarjeta(this);
         
         JPanel panelNorte = new JPanel();
         panelNorte.setBackground(new Color(152, 182, 182));
@@ -37,49 +62,48 @@ public class VentanaSignUp extends JFrame
 
         panelCentro = new JPanel(new GridLayout(3, 2, 40, 30));
 
-        JPanel panelCentro = new JPanel(new GridLayout(3, 2, 40, 40));
 
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setBorder(new EmptyBorder(140, 60, 140, 60));
         
                             
-        JTextField textFieldNombre = new JTextFieldWithHint("Nombre completo");
+        textFieldNombre = new JTextFieldWithHint("Nombre completo");
         textFieldNombre.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldNombre.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldNombre.setForeground(Color.GRAY);
         textFieldNombre.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldNombre);
         
-        JTextField textFieldCorreo = new JTextFieldWithHint("Correo electrónico");
+        textFieldCorreo = new JTextFieldWithHint("Correo electrónico");
         textFieldCorreo.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldCorreo.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldCorreo.setForeground(Color.GRAY);
         textFieldCorreo.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldCorreo);
         
-        JTextField textFieldEdad = new JTextFieldWithHint("Edad");
+        textFieldEdad = new JTextFieldWithHint("Edad");
         textFieldEdad.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldEdad.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldEdad.setForeground(Color.GRAY);
         textFieldEdad.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldEdad);
         
-        JTextField textFieldUsuario = new JTextFieldWithHint("Usuario que desea");
+        textFieldUsuario = new JTextFieldWithHint("Usuario que desea");
         textFieldUsuario.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldUsuario.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldUsuario.setForeground(Color.GRAY);
         textFieldUsuario.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldUsuario);
 
-        JTextField textFieldFecha = new JTextFieldWithHint("Fecha de nacimiento");
+        textFieldFecha = new JTextFieldWithHint("Fecha de nacimiento");
         textFieldFecha.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldFecha.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldFecha.setForeground(Color.GRAY);
         textFieldFecha.setBorder(new LineBorder(Color.BLACK,2));
         panelCentro.add(textFieldFecha);
         
-        JTextField textFieldContraseña = new JTextFieldWithHint("Contraseña");
+        textFieldContraseña = new JTextFieldWithHint("Contraseña");
         textFieldContraseña.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldContraseña.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldContraseña.setForeground(Color.GRAY);
@@ -139,30 +163,29 @@ public class VentanaSignUp extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	String user = textFieldUsuario.getText();
-            	String name = textFieldNombre.getText();
-            	String fecha =textFieldFecha.getText();
-            	String correo = textFieldCorreo.getText();
-            	String edad = textFieldEdad.getText();
-            	if (!next(user,name,fecha,correo,edad)) 
-            	{
-            		errorMensaje("no ha puesto toda la informacion");
-            	}
-            	else {
-            		mensaje();
-//                	
-//                	VentanaLogin VentanaLogin = new VentanaLogin();
-//                	VentanaLogin.setLocationRelativeTo(null);
-//                	VentanaLogin.setVisible(true);
-//                    dispose();
+            	System.out.println(panelActual);
+         if (panelActual.equals("cliente"))
+         {
+        	 nextCliente();
+         }
+         else if (panelActual.equals("licencia")) 
+         {System.out.println("next panelLic");
+          
+        	 panelLic.next();
+         }
+         else 
+         {
+        	 System.out.println("tarjeta nexts");
+        	 panelTarjeta.next();
+        	 }
             	}
             	
             }
-        });
+        );
         
         panelOeste.add(btnSignUp);
               
-    }
+}
 
     public void mensaje()
 	{
@@ -172,25 +195,82 @@ public class VentanaSignUp extends JFrame
     {
     	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
     }
-    private boolean revAll(String user,String name,String fecha,String correo,String edad) 
+    private boolean revAll(String user,String name,String fecha,String correo,String edad,String contra) 
     {
-    	if (user == ""||name == ""||fecha ==""|| correo == ""|| edad =="") {
+    	if (user.equals("")||name.equals("")||fecha.equals("")|| correo.equals("")|| edad.equals("") ||contra.equals("")) {
         	return false;
         	}
     	else {
     		return true;
     	}
     }
-    private boolean next(String user,String name,String fecha,String correo,String edad) 
+    public void remPCentro() 
     {
-  		panelCentro.setVisible(false);
-    		JPLicencia panelLic = new JPLicencia(this);
+    	panelCentro.setVisible(false);
+    }
+    private void toLicencia(String user,String name,String fecha,String correo,String edad,String contra) 
+    {
+  			panelCentro.setVisible(false);
+  			
+    		panelLic = new JPLicencia(this,panelTarjeta);
     		panelCentro = panelLic;
     		add(panelCentro,BorderLayout.CENTER);
     		panelCentro.setVisible(true);
-    		return true;
+    		panelActual = "licencia";
+  			
+    		
     }
+    private void toTarjeta(String user,String name,String fecha,String correo,String edad,String contra,String num,String pais,String venci) 
+    {
+    	
     }
+    public void addPCentro() 
+    {
+    	add(panelCentro,BorderLayout.CENTER);
+    	panelCentro.setVisible(true); 
+    	}
+    
+    public void nextCliente() 
+    {   	
+    user = textFieldUsuario.getText();
+	name = textFieldNombre.getText();
+	fecha =textFieldFecha.getText();
+	correo = textFieldCorreo.getText();
+	edad = textFieldEdad.getText();
+	contra = textFieldContraseña.getText();
+	panelActual = "cliente";
+	System.out.println(panelActual);
+	if (!revAll(user,name,fecha,correo,edad,contra)) 
+	{
+		errorMensaje("no ha puesto toda la informacion");
+	}
+	else {
+		System.out.println("to licencia");
+    	toLicencia(user,name,fecha,correo,edad,contra);
+
+	}
+
+    }
+	public JPanel setPanelCentro(JPanel pCentro) 
+	{
+		panelCentro = pCentro;
+		return panelCentro;
+				}
+	public void setTarjetaValues(String medio,String num,String venci) 
+	{
+		panelActual = "tarjeta";
+		this.medio = medio;
+		numT= num;
+		vencT = venci;
+	}
+public void setLicenciaValues(String num,String pais,String venc) 
+{
+panelActual = "Tarjeta";
+this.num = num;
+this.pais =pais;
+this.venc = venc;
+}
+}
     class JTextFieldWithHint extends JTextField implements FocusListener {
         private final String hint;
         private boolean showingHint;
