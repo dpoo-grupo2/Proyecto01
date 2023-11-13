@@ -9,6 +9,7 @@ public class MenuEmpleado extends JFrame
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
+	private JPanel panelCentro2;
 	
     public MenuEmpleado() 
     {
@@ -35,6 +36,8 @@ public class MenuEmpleado extends JFrame
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
         add(panelCentro, BorderLayout.CENTER);
+        
+        panelCentro2 = panelCentro;
         
         JLabel labelIniciarSesion = new JLabel("¡Bienvenido Empleado!");
         labelIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -79,7 +82,7 @@ public class MenuEmpleado extends JFrame
         
         JButton btnSalir = new JButton("Salir");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSalir.setBackground(new Color(32, 182, 182));
+        btnSalir.setBackground(new Color(255, 144, 144));
         btnSalir.setForeground(Color.WHITE);
         btnSalir.setBorder(new LineBorder(Color.BLACK, 2));
         btnSalir.addActionListener(new ActionListener() {
@@ -142,4 +145,20 @@ public class MenuEmpleado extends JFrame
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setVisible(true);
     }
+    
+    public JPanel getPanelCentro2()
+    {
+    	return panelCentro2;
+    }
+    
+    public void setPanelCentro(JPanel gg)
+    {
+    	 panelCentro = gg;
+    }
+    
+    public JPanel getPanelCentro()
+    {
+    	return panelCentro;
+    }
+    
 }

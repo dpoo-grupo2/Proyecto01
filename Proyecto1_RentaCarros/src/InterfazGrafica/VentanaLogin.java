@@ -138,7 +138,7 @@ public class VentanaLogin extends JFrame
 
         JButton btnSignUp = new JButton("Sign Up");
         btnSignUp.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSignUp.setBackground(new Color(32, 182, 182));
+        btnSignUp.setBackground(new Color(120, 220, 120));
         btnSignUp.setForeground(Color.WHITE);
         btnSignUp.setBorder(new LineBorder(Color.BLACK, 2));
         btnSignUp.addActionListener(new ActionListener() {
