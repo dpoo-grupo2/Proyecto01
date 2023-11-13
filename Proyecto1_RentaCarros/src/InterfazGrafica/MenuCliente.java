@@ -11,11 +11,11 @@ public class MenuCliente extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelAnte;
-<<<<<<< HEAD
+
 	private  JPClienteModificar jPClienteModificar;
 
-=======
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+
+
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 
     public MenuCliente() 
