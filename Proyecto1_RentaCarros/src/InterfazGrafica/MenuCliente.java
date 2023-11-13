@@ -174,17 +174,14 @@ public class MenuCliente extends JFrame
     {
     	return lstPanel;
     }
-    
-    public void delLast() 
+    public void reiniciarLstPanel() 
     {
-    	System.out.println(lstPanel.size());
-    	lstPanel.remove(lstPanel.size()-1);
-    	System.out.println(lstPanel.size());
-    	
+    	lstPanel = new ArrayList<JPanel>();
     }
-    public JPanel getLast() 
+    public void delElement(int i) 
     {
-    	return lstPanel.get(lstPanel.size()-1);
+    	lstPanel.remove(i);
+    	
     }
     public JPanel getPanelCentro()
     {

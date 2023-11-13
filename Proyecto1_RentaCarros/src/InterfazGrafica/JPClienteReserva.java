@@ -87,8 +87,9 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	JPanel panel = vent.getLast();
-            	vent.delLast();
+            	ArrayList<JPanel>lst = vent.getPanelLst();
+            	JPanel panel = lst.get(lst.size()-1);
+            	vent.delElement(lst.size()-1);
             	
             	vent.nuevoCentroReg(panel);
             }
