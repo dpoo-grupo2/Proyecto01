@@ -36,7 +36,8 @@ public class JPClienteSede extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-
+        JPReservaRegistrada rR = new JPReservaRegistrada(vent);
+        
 		JButton btnPequeño = new JButton("Pequeño");
 		btnPequeño.setFont(new Font("Arial", Font.BOLD, 20));
 		btnPequeño.setBackground(new Color(32, 182, 182));
@@ -51,10 +52,12 @@ public class JPClienteSede extends JPanel {
             	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
             	{
             		setVisible(false);
+            		vent.nuevoCentro(rR);
             	}
             	else
             	{
             		JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+            		
             	}
             	
             }
@@ -76,6 +79,7 @@ public class JPClienteSede extends JPanel {
             	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
             	{
             		setVisible(false);
+            		vent.nuevoCentro(rR);
             	}
             	else
             	{
@@ -101,6 +105,7 @@ public class JPClienteSede extends JPanel {
             	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
             	{
             		setVisible(false);
+            		vent.nuevoCentro(rR);
             	}
             	else
             	{
@@ -126,6 +131,7 @@ public class JPClienteSede extends JPanel {
             	if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null)
             	{
             		setVisible(false);
+            		vent.nuevoCentro(rR);
             	}
             	else
             	{
@@ -180,8 +186,8 @@ public class JPClienteSede extends JPanel {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
             try {
             	
-                Date fechaRecogida = formatoFecha.parse(fechaRecogidaStr);
-                Date fechaEntrega = formatoFecha.parse(fechaEntregaStr);
+                fechaRecogida = formatoFecha.parse(fechaRecogidaStr);
+                fechaEntrega = formatoFecha.parse(fechaEntregaStr);
 
                 
                 System.out.println("Hora de recogida: " + formatoFecha.format(fechaRecogida));
@@ -220,8 +226,9 @@ public class JPClienteSede extends JPanel {
         
             SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
             try {
-                Date horaRecogida = formatoHora.parse(horaRecogidaStr);
-                Date horaEntrega = formatoHora.parse(horaEntregaStr);
+            	
+                horaRecogida = formatoHora.parse(horaRecogidaStr);
+                horaEntrega = formatoHora.parse(horaEntregaStr);
 
                 
                 System.out.println("Hora de recogida: " + formatoHora.format(horaRecogida));
