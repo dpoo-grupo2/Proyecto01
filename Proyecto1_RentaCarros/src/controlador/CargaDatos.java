@@ -229,6 +229,40 @@ public class CargaDatos {
 	        }
 	    }
 	}
+	public static void sobreEscribirClientes(String nombre, String edad, String cedula,String fechaNacimiento,String correo,
+			String usuario, String contraseña,String numeroLicencia,String paisExpedicion,String fechaVencimientoLicencia,
+			String tipoPago,String numeroTarjeta,String fechaVencimientoTarjeta) {
+		
+		BufferedWriter bw = null;
+	    FileWriter fw = null;
+
+	    try {
+	        String data = "\n"+usuario+","+contraseña+","+nombre+","+edad+","+cedula+","+fechaNacimiento+","+correo+ ";"
+	        				+numeroLicencia+","+paisExpedicion+","+fechaVencimientoLicencia+";"
+	        				+tipoPago+","+numeroTarjeta+","+fechaVencimientoTarjeta;
+	        
+	        File file = new File("Proyecto1_RentaCarros/data/Clientes.txt");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        fw = new FileWriter(file.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(data);
+	        System.out.println("¡Información agregada!");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (bw != null)
+	                bw.close();
+	            if (fw != null)
+	                fw.close();
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    }
+		
+	}
 	public static Usuario getUsuario(String login){
 		Usuario usuario = usuarios.get(login);
 		return usuario;

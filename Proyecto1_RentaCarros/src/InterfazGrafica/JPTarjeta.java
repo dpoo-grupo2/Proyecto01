@@ -67,6 +67,7 @@ public void next()
 	{
 		vent.setTarjetaValues(medio,num, venc);
 		vent.mensaje();
+		vent.añadirUser();
     	VentanaLogin VentanaLogin = new VentanaLogin();
     	VentanaLogin.setLocationRelativeTo(null);
     	VentanaLogin.setVisible(true);
