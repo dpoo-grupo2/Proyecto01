@@ -13,7 +13,7 @@ public class MenuCliente extends JFrame
 	private JPanel panelCentro2;
 
 	private JPanel panelAnte;
-	
+	private  JPClienteModificar jPClienteModificar;
 
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 
@@ -52,7 +52,7 @@ public class MenuCliente extends JFrame
         panelCentro.add(lblRelleno);        
         
         JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
-        JPClienteModificar jPClienteModificar = new JPClienteModificar(this);    
+         jPClienteModificar = new JPClienteModificar(this);    
         
         
         JButton btnReserva = new JButton("Reservar vehículo");
@@ -80,11 +80,7 @@ public class MenuCliente extends JFrame
             public void actionPerformed(ActionEvent e) 
             {
             	modificarReserva();
-            	remove(panelCentro);
-                
-                add(jPClienteModificar, BorderLayout.CENTER);
-                revalidate();
-                repaint();
+  
             }
         });
         
@@ -148,9 +144,24 @@ public class MenuCliente extends JFrame
     
     public void modificarReserva()
 	{
-		JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+		String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+		System.out.println(id);
 		
+		if (id.equals("")) 
+		{
+			errorMensaje("recuerde que debe poner un numero");
+			modificarReserva();
+		}
+		else 
+		{
+            
+			nuevoCentro(jPClienteModificar);
+		}
 	}
+    public void errorMensaje(String mensaje) 
+    {
+    	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
+    }
     public void nuevoCentro(JPanel np) 
     {
     	lstPanel.add(panelCentro);

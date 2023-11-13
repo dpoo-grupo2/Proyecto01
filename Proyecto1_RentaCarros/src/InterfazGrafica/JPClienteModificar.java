@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -38,9 +40,11 @@ public class JPClienteModificar extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	setVisible(false);
-            	JPanel ante = vent.getPanelAnte();
-           	 	vent.nuevoCentro(ante);
+            	ArrayList<JPanel>lst = vent.getPanelLst();
+            	JPanel panel = lst.get(lst.size()-1);
+            	vent.delElement(lst.size()-1);
+            	
+            	vent.nuevoCentroReg(panel);
             	
             }
         });
