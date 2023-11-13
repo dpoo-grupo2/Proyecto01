@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -86,13 +87,10 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-//            	setVisible(false);
-//            	vent.setPanelCentro(vent.getPanelCentro2());
-//            	JPanel menu = vent.getPanelCentro();
-//            	vent.add(menu, BorderLayout.CENTER);
-//            	
-//            	menu.setVisible(true);
-	            
+            	JPanel panel = vent.getLast();
+            	vent.delLast();
+            	
+            	vent.nuevoCentroReg(panel);
             }
         });        
         add(btnRegresar);
