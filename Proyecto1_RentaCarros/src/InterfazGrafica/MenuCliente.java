@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -10,8 +11,12 @@ public class MenuCliente extends JFrame
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelCentro2;
+<<<<<<< HEAD
 	private JPanel panelAnte;
 	
+=======
+	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01
     public MenuCliente() 
     {
         setSize(1050, 650);
@@ -148,22 +153,39 @@ public class MenuCliente extends JFrame
 	}
     public void nuevoCentro(JPanel np) 
     {
+    	lstPanel.add(panelCentro);
     	panelCentro.setVisible(false);
+
+        panelCentro = np;
+        add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setVisible(true);
+    }
+    public void nuevoCentroReg(JPanel np) 
+    {
+    	panelCentro.setVisible(false);
+
         panelCentro = np;
         add(panelCentro, BorderLayout.CENTER);
         panelCentro.setVisible(true);
     }
     
-    public JPanel getPanelCentro2()
+    
+    public ArrayList<JPanel> getPanelLst()
     {
-    	return panelCentro2;
+    	return lstPanel;
     }
     
-    public void setPanelCentro(JPanel gg)
+    public void delLast() 
     {
-    	 panelCentro = gg;
+    	System.out.println(lstPanel.size());
+    	lstPanel.remove(lstPanel.size()-1);
+    	System.out.println(lstPanel.size());
+    	
     }
-    
+    public JPanel getLast() 
+    {
+    	return lstPanel.get(lstPanel.size()-1);
+    }
     public JPanel getPanelCentro()
     {
     	return panelCentro;

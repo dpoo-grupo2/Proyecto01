@@ -10,6 +10,7 @@ import javax.swing.border.LineBorder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class JPClienteSede extends JPanel {
@@ -19,10 +20,10 @@ public class JPClienteSede extends JPanel {
 	private Date fechaEntrega;
 	private Date horaRecogida;
 	private Date horaEntrega;
-	
+	private MenuCliente vent;
     public JPClienteSede(MenuCliente vent) 
     {
-    	 
+    	 this.vent = vent;
         setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 80, 160));
@@ -153,8 +154,10 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-
+            	JPanel panel = vent.getLast();
+            	vent.delLast();
             	
+            	vent.nuevoCentroReg(panel);
             }
         });
         add(btnAtras);
