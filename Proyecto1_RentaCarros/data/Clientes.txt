@@ -1,3 +1,5 @@
 usuario,contraseña,nombre,edad,cedula,fechaNacimiento,correo;numeroLicencia,paisExpedicion,fechaVencimientoLicencia;tipoPago,numeroTarjeta,fechaVencimientoTarjeta
 3,3,3,3,3,3,3;3,Colombia,3;credito,3,3
 ewqdas,edws,3ew,23,32edwcs,ewdcsx,e3dqws;3eqwsd,e3dw,e3wds;3wdsx,desx,qewdsax
+hola,hola,hola,3,hola,hola,hola;hola,hola,hola;hola,hola,hola
+hello,hello,hello,18,hello,hello,hello;hello,hello,hello;hello,hello,hello

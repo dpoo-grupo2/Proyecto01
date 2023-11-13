@@ -70,7 +70,7 @@ public class VentanaSignUp extends JFrame
 
         panelCentro.setBackground(new Color(200, 182, 182));
         add(panelCentro, BorderLayout.CENTER);
-        panelCentro.setBorder(new EmptyBorder(140, 60, 140, 60));
+        panelCentro.setBorder(new EmptyBorder(110, 60, 110, 60));
         
         JPanel p = new JPanel(new GridLayout(1, 2, 40, 30));
         p.setBackground(new Color(200, 182, 182));
@@ -217,7 +217,7 @@ public class VentanaSignUp extends JFrame
     	CargaDatos.sobreEscribirUsuarios(user, password, name, "Cliente");
     	CargaDatos.sobreEscribirClientes(name,edad,cedula,fecha,correo,user,password,
 				numeroLicencia,paisExp,venciLicencia,medioPago,numeroTarjeta,venciTarjeta);
-    	System.out.println("acabó");
+    	
     	
     }
     
@@ -276,22 +276,23 @@ public class VentanaSignUp extends JFrame
 	panelActual = "cliente";
 	if (!revAll(user,name,fecha,correo,edad,password,cedula)) 
 	{
-		errorMensaje("no ha puesto toda la informacion");
+		errorMensaje("Debes registrar todos los espacios con tu información");
 	}
 	else {
 		try {
-			Integer.parseInt(edad);
-			toLicencia(user,name,fecha,correo,edad,password);
-		}
-		catch(Exception e)
-		{
-			errorMensaje("La edad debe ser un numero mayor a 0.");
-		}
-		
-    	
+			int edadInt = Integer.parseInt(edad);
+	        
+	        if (edadInt > 17) {
+	            toLicencia(user, name, fecha, correo, edad, password);
+	        } else {
+	            errorMensaje("Debes ser mayor de edad (18) para crear una cuenta");
+	        }
+	    } catch (NumberFormatException e) {
+	        errorMensaje("La edad debe ser un número válido");
+	    }
 	}
-
     }
+    
 	public JPanel setPanelCentro(JPanel pCentro) 
 	{
 		panelCentro = pCentro;
