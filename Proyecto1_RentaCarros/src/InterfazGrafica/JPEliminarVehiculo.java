@@ -71,9 +71,16 @@ public class JPEliminarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	vent.containsKey(txtFieldPlaca.getText());
-            	vent.eliminarVehiculo();
-            	vent.nuevoCentro(vH);
+            	if (vent.containsKey(txtFieldPlaca.getText())) 
+            	{
+                	vent.eliminarVehiculo(txtFieldPlaca.getText());
+                	vent.nuevoCentro(vH);
+            	}
+            	else 
+            	{
+            		errorMensaje("esa placa no existe, debe introducir una placa que funcione");
+            	}
+
             	
             }
         });
@@ -82,7 +89,10 @@ public class JPEliminarVehiculo extends JPanel {
         p.add(btnSiguiente);
         add(p);
     }
-
+    private void errorMensaje(String mensaje) 
+    {
+    	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
+    }
     private JTextField addTextFieldWithHint(String hint) {
     	JTextField textField= new JTextField();
     	textField.setFont(new Font("Arial", Font.BOLD, 18));

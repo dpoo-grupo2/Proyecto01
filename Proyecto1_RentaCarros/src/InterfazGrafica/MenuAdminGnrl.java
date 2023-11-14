@@ -257,8 +257,9 @@ public class MenuAdminGnrl extends JFrame
     public Administrador getUser() {
     	return user;
     }
-    public void eliminarVehiculo(Vehiculo veh) 
+    public void eliminarVehiculo(String placa) 
     {
+    	Vehiculo veh = inv.getVehiculo(placa);
     	user.eliminarVehiculo(sedes,veh.getGps(),veh.getPlaca(),veh.getEstado(),veh.getIdCat());
     	carga.eliminarVehiculotxt(veh);
     	inv.eliminarVehiculo(veh.getPlaca());
