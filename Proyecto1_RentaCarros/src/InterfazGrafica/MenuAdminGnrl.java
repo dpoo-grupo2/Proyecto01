@@ -2,14 +2,17 @@ package InterfazGrafica;
 
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import controlador.CargaDatos;
 import modelo.Administrador;
+import modelo.Sede;
 import modelo.Seguro;
 import modelo.Usuario;
+import modelo.Vehiculo;
 
 public class MenuAdminGnrl extends JFrame 
 {
@@ -18,11 +21,15 @@ public class MenuAdminGnrl extends JFrame
 	private CargaDatos carga = new CargaDatos();
 	private JPanel panelAnte;
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
+	private HashMap<String,Sede> sedes = new HashMap<String,Sede>();
 	private Administrador user;
     public MenuAdminGnrl(Administrador user) 
     {
     	this.user = user;
+    	user.setInterfaz(this);
     	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
+    	carga.cargarInformacionVehiculos("./Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+    	sedes = carga.getSedes();
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -166,10 +173,16 @@ public class MenuAdminGnrl extends JFrame
     {
     	return panelAnte;
     }
-    public Vehiculo añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,boolean estadoVehiculo,int idCat) 
+    public void añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,String estadoVehiculo,int idCat,Vehiculo veh) 
     {
-    	user.registrarVehiculo(placa, color, marca, modelo, anioFab, transmicion, catVehiculo, catVehiculo, capacidad, marca, idCat, null);
     	carga.sobreEscribirVehiculo(placa, color, marca, modelo, sede, transmicion, catVehiculo, color, transmicion, catVehiculo, marca);
+    	carga.addSede(veh);
+//    	carga.addVehiculo(veh);
+
+    }
+    public void setLstSeguro(ArrayList<Seguro> lst) 
+    {
+    	carga.settteLstSeguros(lst);
     }
     public void gestionarSeguros()
 	{
@@ -228,5 +241,11 @@ public class MenuAdminGnrl extends JFrame
     	lstPanel.remove(i);
     	
     }
-    
+    public void añadirSeguro(Seguro nSeguro) 
+    {
+    	carga.addSeguro(nSeguro);
+    }
+    public Administrador getUser() {
+    	return user;
+    }
 }

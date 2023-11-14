@@ -7,6 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import controlador.CargaDatos;
+import modelo.Administrador;
 import modelo.Cliente;
 import modelo.Seguro;
 import modelo.Usuario;
@@ -96,8 +97,8 @@ public class VentanaLogin extends JFrame
     	                
     	                if (clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) 
     	                {
-    	                	
-    	                    MenuAdminGnrl menuAdminGnrl = new MenuAdminGnrl();
+    	                	Administrador admin = new Administrador();
+    	                    MenuAdminGnrl menuAdminGnrl = new MenuAdminGnrl(admin);
     	                    menuAdminGnrl.setLocationRelativeTo(null);
     	                    menuAdminGnrl.setVisible(true);
     	    	            dispose();

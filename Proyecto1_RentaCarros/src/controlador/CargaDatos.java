@@ -79,7 +79,7 @@ public class CargaDatos {
         
     }
     
-    private static HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
+    private HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
     {
     	ArrayList<Vehiculo> lstVehiculos = new ArrayList();
     	if (!categoria2.containsKey(carro.getIdCat())) 
@@ -94,7 +94,7 @@ public class CargaDatos {
     	
     }
     
-    private static HashMap<String,HashMap<Integer,CategoriaVehiculo>> addCategoriaDisponibilidad(Sede objSede,Vehiculo vehiculo)
+    private HashMap<String,HashMap<Integer,CategoriaVehiculo>> addCategoriaDisponibilidad(Sede objSede,Vehiculo vehiculo)
     {
     	HashMap<String,HashMap<Integer,CategoriaVehiculo>> mapEstadoVehiculo =objSede.getMapEstadoVehiculo();
     	if (!mapEstadoVehiculo.containsKey(vehiculo.getEstado())) 
@@ -108,7 +108,7 @@ public class CargaDatos {
 		return mapEstadoVehiculo;	
     }
     
-    private static HashMap<String,Sede> addSede(Vehiculo vehiculo)
+    public HashMap<String,Sede> addSede(Vehiculo vehiculo)
     {
     	
     	Sede sede = new Sede(vehiculo.getGps(),"No hay dirección","No hay horario",null,null);
@@ -334,7 +334,7 @@ public class CargaDatos {
 		
 	}
 	
-	public static void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,String anio,String transmision,
+	public void sobreEscribirVehiculo(String placa,String color,String marca,String modelo,String anio,String transmision,
 			String gpsVehiculo,String estadoActual,String capacidadPersonas, String Categoria,String idCategoria) {
 		
 		BufferedWriter bw = null;
@@ -625,5 +625,8 @@ public void addLstReserva(Reserva res)
 {
 	lstReservas.add(res);
 }
-
+public void addSeguro(Seguro seg) 
+{
+	lstSegurosGeneral.add(seg);
+}
 }

@@ -137,7 +137,7 @@ public class AdminLocal {
 		String idCategoria =Integer.toString(vehiculo.getIdCat());
 		
 		File vehiculos = CargaDatos.eliminarVehiculotxt(vehiculo);
-		CargaDatos.sobreEscribirVehiculo(placa, color, marca, modelo, anio, transmision, gps, estado, capacidad, categoria, idCategoria);
+		//CargaDatos.sobreEscribirVehiculo(placa, color, marca, modelo, anio, transmision, gps, estado, capacidad, categoria, idCategoria);
 		
 		return vehiculos; 
 	}
