@@ -22,4 +22,9 @@ public class InventarioVehiculo
     {
     	vehiculos.remove(placa);
     }
+    
+    public Vehiculo getVehiculo(String placa) 
+    {
+    	return vehiculos.get(placa);
+    }
 }
