@@ -13,8 +13,7 @@ import javax.swing.border.LineBorder;
 public class JPRegistrarSeguro extends JPanel {
 
 	private JLabel lblRelleno;
-	private JTextField txtFieldName;
-	private JTextField txtFieldValor;
+	
     public JPRegistrarSeguro(MenuAdminGnrl vent) 
     {
     	 
@@ -31,10 +30,8 @@ public class JPRegistrarSeguro extends JPanel {
         lblRelleno = new JLabel(" ");
         add(lblRelleno); 
         
-        txtFieldName = addTextFieldWithHint("Nombre seguro");
-        add(txtFieldName);
-        txtFieldValor = addTextFieldWithHint("Valor seguro");
-        add(txtFieldValor);
+        addTextFieldWithHint("Nombre seguro");
+        addTextFieldWithHint("Valor seguro");
           
         JPSeguroEditado sH = new JPSeguroEditado(vent);
         
@@ -62,14 +59,9 @@ public class JPRegistrarSeguro extends JPanel {
         btnSiguiente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
-            {try {
-            	vent.addSeguro(txtFieldName.getText(),Integer.parseInt(txtFieldValor.getText()));
+            {
             	vent.nuevoCentro(sH);
-            }
-            catch(Exception e3){
-            	errorMensaje("El valor del seguro debe ser un numero");
-            }
-            
+            	
             }
         });
         add(btnSiguiente);
@@ -77,36 +69,31 @@ public class JPRegistrarSeguro extends JPanel {
         
     }
 
-    private void errorMensaje(String mensaje) 
-    {
-    	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);
-    }
-    private JTextField addTextFieldWithHint(String hint) {
-    	JTextField textField= new JTextField();
-    	textField.setFont(new Font("Arial", Font.BOLD, 18));
-    	textField.setForeground(Color.GRAY);
-    	textField.setHorizontalAlignment(SwingConstants.CENTER);
-    	textField.setBorder(new LineBorder(Color.BLACK, 2));
-    	textField.setText(hint);
-    	textField.addFocusListener(new FocusListener() {
+    private void addTextFieldWithHint(String hint) {
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("Arial", Font.BOLD, 18));
+        textField.setForeground(Color.GRAY);
+        textField.setHorizontalAlignment(SwingConstants.CENTER);
+        textField.setText(hint);
+        textField.setBorder(new LineBorder(Color.BLACK, 2));
+        textField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 if (textField.getText().equals(hint)) {
-                	textField.setText("");
-                	textField.setForeground(Color.BLACK);
+                    textField.setText("");
+                    textField.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 if (textField.getText().isEmpty()) {
-                	textField.setForeground(Color.GRAY);
-                	textField.setText(hint);
+                    textField.setForeground(Color.GRAY);
+                    textField.setText(hint);
                 }
             }
         });
 
-        
-        return textField;
-    }
+        add(textField);
+    }	
 }
