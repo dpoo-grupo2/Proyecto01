@@ -25,7 +25,7 @@ public class Cliente extends Usuario
 
 	public Cliente(String login, String password, String nombreCompleto, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
 	{
-		super(login, password, nombreCompleto,"Empleado");
+		super(login, password, nombreCompleto,"Cliente");
 		this.edad = edad;
 		this.cedula = cedula;
 		this.correoElectronico = correoElectronico;
