@@ -196,9 +196,8 @@ public class VentanaLogin extends JFrame
     
     
     public void CargarDatos(){
-		cargaDatos.cargarInformacionVehiculos("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
-		HashMap<String, Usuario> usuarios = cargaDatos.cargarInformacionUsuarios("Proyecto1_RentaCarros/data/Usuarios.txt");
-		HashMap<String,Cliente> clientes = cargaDatos.cargarInformacionClientes("Proyecto1_RentaCarros/data/Clientes.txt");
+		HashMap<String, Usuario> usuarios = cargaDatos.getUsuarios();
+		HashMap<String,Cliente> clientes = cargaDatos.getClientes();
 		this.usuarios = usuarios;		
 		this.clientes = clientes;
 		System.out.println("");
