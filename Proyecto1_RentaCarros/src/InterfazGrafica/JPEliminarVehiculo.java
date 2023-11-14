@@ -19,31 +19,23 @@ public class JPEliminarVehiculo extends JPanel {
     public JPEliminarVehiculo(MenuAdminGnrl vent) 
     {
     	 
-        setLayout(new GridLayout(5, 1, 16, 20));
+        setLayout(new GridLayout(3, 1, 16, 20));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 110, 60, 110));
-        
-        JPanel p = new JPanel(new GridLayout(2,1));
-        p.setBackground(new Color(200, 182, 182));
-        p.setBorder(new EmptyBorder(70, 110, 60, 110));
-        JLabel labelSelect = new JLabel("Adicione todos los");
+
+
+        JLabel labelSelect = new JLabel("Adicione todos los datos del vehículo:");
         labelSelect.setHorizontalAlignment(SwingConstants.RIGHT);
         labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
-        p.add(labelSelect);
+       add(labelSelect);
 
-        JLabel labelSelect2 = new JLabel("datos del vehículo:");
-        labelSelect2.setHorizontalAlignment(SwingConstants.LEFT);
-        labelSelect2.setFont(new Font("Arial", Font.BOLD, 26));
-        p.add(labelSelect2);
-        
-        add(p);
-        
+
         txtFieldPlaca =addTextFieldWithHint("Placa");
         add(txtFieldPlaca);
         
-        p = new JPanel(new GridLayout(2,1));
+        
+        JPanel p = new JPanel(new GridLayout(2,1,16, 20));
         p.setBackground(new Color(200, 182, 182));
-        p.setBorder(new EmptyBorder(70, 110, 60, 110));
         
         JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
