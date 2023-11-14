@@ -10,6 +10,7 @@ import controlador.CargaDatos;
 import modelo.Administrador;
 import modelo.Seguro;
 import modelo.Usuario;
+import modelo.Vehiculo;
 
 public class MenuAdminGnrl extends JFrame 
 {
@@ -166,7 +167,7 @@ public class MenuAdminGnrl extends JFrame
     {
     	return panelAnte;
     }
-    public Vehiculo añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,boolean estadoVehiculo,int idCat) 
+    public void añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,boolean estadoVehiculo,int idCat) 
     {
     	user.registrarVehiculo(placa, color, marca, modelo, anioFab, transmicion, catVehiculo, catVehiculo, capacidad, marca, idCat, null);
     	carga.sobreEscribirVehiculo(placa, color, marca, modelo, sede, transmicion, catVehiculo, color, transmicion, catVehiculo, marca);

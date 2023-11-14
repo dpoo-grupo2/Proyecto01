@@ -21,6 +21,7 @@ import modelo.AdministradorLocal;
 import modelo.CategoriaVehiculo;
 import modelo.Cliente;
 import modelo.ConductorAdicional;
+import modelo.InventarioVehiculo;
 import modelo.LicenciaConduccion;
 import modelo.MedioPago;
 import modelo.Reserva;
@@ -30,6 +31,7 @@ import modelo.Usuario;
 import modelo.Vehiculo;
 
 public class CargaDatos { 
+	
 	private static HashMap<String,Sede> sedes = new HashMap<String,Sede>();
 	private static HashMap<String,Usuario> usuarios = new HashMap<String,Usuario>();
 	private static CategoriaVehiculo categoria;
@@ -38,8 +40,16 @@ public class CargaDatos {
 	private static HashMap<String, Cliente> lstCliente = new HashMap<String, Cliente>();
 	private String idReserva = "0";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-	public void cargarInformacionVehiculos(String string) 
+    private InventarioVehiculo inventario = new InventarioVehiculo();
+	
+	SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	
+	public CargaDatos() {
+	}
+	
+	
+	
+    public void cargarInformacionVehiculos(String string) 
 	{
     	cargarVehiculos(new File(string));
     }
@@ -51,6 +61,7 @@ public class CargaDatos {
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(",");
                 if (partes.length == 11) {
+                	
                     String placa = partes[0].trim();
                     String color = partes[1].trim();
                     String marca = partes[2].trim();
@@ -62,10 +73,10 @@ public class CargaDatos {
                     String capacidadPersonas = partes[8].trim();
                     String categoria = partes[9].trim();
                     String idCategoria = partes[10].trim();
+                    
                     try {
-                        
-                   
-                        Vehiculo vel = new Vehiculo(placa, color, marca, modelo, Integer.parseInt(anio), transmicion, gpsVehiculo, estadoActual, Integer.parseInt(capacidadPersonas), categoria, Integer.parseInt(idCategoria));
+                    	Vehiculo vel = new Vehiculo(placa, color, marca, modelo, Integer.parseInt(anio), transmicion, gpsVehiculo, estadoActual, Integer.parseInt(capacidadPersonas), categoria, Integer.parseInt(idCategoria));
+                    	inventario.addVehiculo(placa, vel);
                         addSede(vel);
                     } catch (NumberFormatException e) {
 
@@ -625,5 +636,10 @@ public void addLstReserva(Reserva res)
 {
 	lstReservas.add(res);
 }
+
+public InventarioVehiculo getInventario() {
+	return inventario;
+}
+
 
 }

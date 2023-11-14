@@ -2,9 +2,15 @@ package InterfazGrafica;
 
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import controlador.CargaDatos;
+import modelo.InventarioVehiculo;
+import modelo.Vehiculo;
 
 public class MenuEmpleado extends JFrame 
 {
@@ -13,6 +19,7 @@ public class MenuEmpleado extends JFrame
 	private JPanel panelCentro2;
 	private JPanel panelAnte;
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
+	private CargaDatos cargaDatos = new CargaDatos();
 	
     public MenuEmpleado() 
     {
@@ -137,13 +144,13 @@ public class MenuEmpleado extends JFrame
         JPRegistrarConductor jPRegistrarConductor = new JPRegistrarConductor(this);
 
         try {
-            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva a modificar: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 
             if (id == null) {
                 
                 System.out.println("");
             } else if (id.equals("")) {
-                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ninguna reserva ", "CarRental", JOptionPane.ERROR_MESSAGE);
                 agregarConductores();
             } else {
                 nuevoCentro(jPRegistrarConductor);
@@ -154,19 +161,26 @@ public class MenuEmpleado extends JFrame
     }
 
     public void actualizarEstado() {
-        JPActualizarEstadoV jPActualizarEstadoV = new JPActualizarEstadoV(this);
-
+  
         try {
-            String id = JOptionPane.showInputDialog(this, "Digite el ID de la reserva del vehículo que alquiló: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
+            String id = JOptionPane.showInputDialog(this, "Digite la placa del vehículo a modificar: \n ", "CarRental", JOptionPane.INFORMATION_MESSAGE);
 
-            if (id == null) {
-               
-            	System.out.println("");
-            } else if (id.equals("")) {
-                JOptionPane.showMessageDialog(this, "El ID ingresado no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
+            if(id == null) {
+            	JOptionPane.showMessageDialog(this, "Ha ocurrido un error, intente nuevamente", "CarRental", JOptionPane.ERROR_MESSAGE);
+            }
+            else if (id.equals("")) {
+                JOptionPane.showMessageDialog(this, "La placa ingresada no coincide con ningún vehículo ", "CarRental", JOptionPane.ERROR_MESSAGE);
                 agregarConductores();
             } else {
-                nuevoCentro(jPActualizarEstadoV);
+            	InventarioVehiculo inventario = cargaDatos.getInventario();
+            	HashMap<String, Vehiculo> vehiculos = inventario.getVehiculos();
+            	System.out.println(vehiculos);
+            	if (vehiculos.containsKey(id)) {
+            		
+            		Vehiculo vehiculo = vehiculos.get(id);
+            		JPActualizarEstadoV jPActualizarEstadoV = new JPActualizarEstadoV(this, vehiculo);
+            		nuevoCentro(jPActualizarEstadoV);
+            	}
             }
         } catch (Exception e) {
             e.printStackTrace(); 

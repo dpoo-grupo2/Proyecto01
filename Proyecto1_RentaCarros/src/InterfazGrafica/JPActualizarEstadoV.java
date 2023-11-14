@@ -10,11 +10,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Vehiculo;
+
 public class JPActualizarEstadoV extends JPanel {
 
 	private JLabel lblRelleno;
 	
-    public JPActualizarEstadoV(MenuEmpleado vent) 
+    public JPActualizarEstadoV(MenuEmpleado vent, Vehiculo vehiculo) 
     {
     	 
     	
@@ -101,6 +103,7 @@ public class JPActualizarEstadoV extends JPanel {
 
         add(textField);
     }
-		        
+    
+    
     
 }
