@@ -18,4 +18,8 @@ public class InventarioVehiculo
     	else return false;
     }
     
+    public void eliminarVehiculo(String placa) 
+    {
+    	vehiculos.remove(placa);
+    }
 }

@@ -30,7 +30,7 @@ public class MenuAdminGnrl extends JFrame
     	this.user = user;
     	user.setInterfaz(this);
     	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
-    	carga.cargarInformacionVehiculos("./Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+//    	carga.cargarInformacionVehiculos("./Proyecto1_RentaCarros/data/ListaVehiculos.txt");
     	sedes = carga.getSedes();
         setSize(1050, 650);
         setTitle("CarRental");
@@ -256,5 +256,11 @@ public class MenuAdminGnrl extends JFrame
     }
     public Administrador getUser() {
     	return user;
+    }
+    public void eliminarVehiculo(Vehiculo veh) 
+    {
+    	user.eliminarVehiculo(sedes,veh.getGps(),veh.getPlaca(),veh.getEstado(),veh.getIdCat());
+    	carga.eliminarVehiculotxt(veh);
+    	inv.eliminarVehiculo(veh.getPlaca());
     }
 }

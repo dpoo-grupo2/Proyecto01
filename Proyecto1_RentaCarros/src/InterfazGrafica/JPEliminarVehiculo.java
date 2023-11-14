@@ -10,6 +10,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Vehiculo;
+
 public class JPEliminarVehiculo extends JPanel {
 
 	private JTextField txtFieldPlaca;
@@ -69,6 +71,8 @@ public class JPEliminarVehiculo extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	vent.containsKey(txtFieldPlaca.getText());
+            	vent.eliminarVehiculo();
             	vent.nuevoCentro(vH);
             	
             }
@@ -108,5 +112,8 @@ public class JPEliminarVehiculo extends JPanel {
         return textField;
     }
 
-    
+ public void elVehiculo(Vehiculo veh) 
+ {
+	 
+ }
 }
