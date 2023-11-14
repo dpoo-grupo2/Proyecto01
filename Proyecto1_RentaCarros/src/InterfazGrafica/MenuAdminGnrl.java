@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.*;
@@ -27,10 +28,9 @@ public class MenuAdminGnrl extends JFrame
 	private InventarioVehiculo inv = carga.getInventario();
     public MenuAdminGnrl(Administrador user) 
     {
+
     	this.user = user;
     	user.setInterfaz(this);
-    	carga.cargarSeguro("./Proyecto1_RentaCarros/data/Seguros.txt");
-//    	carga.cargarInformacionVehiculos("./Proyecto1_RentaCarros/data/ListaVehiculos.txt");
     	sedes = carga.getSedes();
         setSize(1050, 650);
         setTitle("CarRental");
@@ -154,7 +154,10 @@ public class MenuAdminGnrl extends JFrame
     {
     	return carga.getLstSeguro();
     }
-        
+    public void eliminarSeguro(Seguro seg) 
+    {
+    	user.eliminarSeguro(seg.getNombreSeguro());
+    }   
     public void gestionarVehiculos()
 	{
     	JPEliminarVehiculo jPEliminarVehiculo = new JPEliminarVehiculo(this);
@@ -193,6 +196,8 @@ public class MenuAdminGnrl extends JFrame
     {
     	carga.settteLstSeguros(lst);
     }
+    
+    
     public void gestionarSeguros()
 	{
     	JPEliminarSeguro jPEliminarSeguro = new JPEliminarSeguro(this);
@@ -249,6 +254,10 @@ public class MenuAdminGnrl extends JFrame
     {
     	lstPanel.remove(i);
     	
+    }
+    public File eliminarSegurostxt(String name) 
+    {
+    return carga.eliminarSegurotxt(name);	
     }
     public void añadirSeguro(Seguro nSeguro) 
     {

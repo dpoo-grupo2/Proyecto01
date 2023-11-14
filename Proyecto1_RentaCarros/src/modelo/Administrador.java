@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -80,6 +81,11 @@ for (int i = 0; i < lstSeguro.size(); i++) {
 }
 lstSeguro.remove(pos);
 interfaz.setLstSeguro(lstSeguro);
+
+File temp = interfaz.eliminarSegurostxt(nombreSeguro);
+File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+bd.delete();
+temp.renameTo(bd);
 return true;
 }
 catch(Exception e)

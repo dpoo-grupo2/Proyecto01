@@ -23,8 +23,7 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
     public JPEliminarSeguro(MenuAdminGnrl vent) 
     {
     	seguros = vent.getLstSeguros();
-    	 
-    	
+
         setLayout(new GridLayout(7, 1, 0, 16));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 60, 160));
@@ -71,6 +70,11 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	String sr = (String) lblComboBox.getSelectedItem();
+            	System.out.println(sr);
+            	String[] arr = sr.split("\\)\\",5);
+            	Seguro seg = seguros.get(Integer.parseInt(arr[0])-1);
+            	vent.eliminarSeguro(seg);
             	vent.nuevoCentro(sH);
             	
             }
@@ -79,15 +83,18 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
         add(btnSalir);
         
     }
+    
     private void addListMenu()
     {
     	
     	String info;
     	int i =1;
+    	System.out.println(seguros.size());
     	for(Seguro seg: seguros) 
     	{
     		info = Integer.toString(i)+") "+seg.getNombreSeguro()+": "+seg.getValorSeguro();
     		lstOptions.add(info);
+    		i++;
     	}
     }
 

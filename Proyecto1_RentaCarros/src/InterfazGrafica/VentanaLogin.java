@@ -11,11 +11,9 @@ import modelo.Administrador;
 import modelo.Cliente;
 import modelo.Seguro;
 import modelo.Usuario;
-import vista.AdminLocal;
-import vista.AdministradorGeneral;
-import vista.ClienteVista;
+
 import vista.EmpleadoVista;
-import vista.Login;
+
 
 public class VentanaLogin extends JFrame 
 {

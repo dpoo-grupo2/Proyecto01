@@ -206,6 +206,7 @@ public class CargaDatos {
 	
 	public void cargarSeguro(String arch)
 	{
+		lstSegurosGeneral = new ArrayList<Seguro>();
 		try (BufferedReader br = new BufferedReader(new FileReader(arch))) {
 	        String linea;
 	        Seguro seg;
@@ -217,6 +218,7 @@ public class CargaDatos {
 					String name = partes[0];
 					int valor = Integer.parseInt(partes[1]);
 					seg = new Seguro(name,valor);
+					System.out.println(seg);
 					lstSegurosGeneral.add(seg);
 					}
 		        	catch(Exception e)
@@ -225,6 +227,8 @@ public class CargaDatos {
 		        	}
 					
 				}
+				System.out.println("QUE ESTA PASANDCO");
+				System.out.println(lstSegurosGeneral.size());
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -536,7 +540,31 @@ public class CargaDatos {
         }
         return archivoTemp;
     }
-	
+	public File eliminarSegurotxt(String name){        
+
+		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/Seguros.txt");
+		
+        String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
+        File archivoTemp=new File(nomTemp);
+        try {
+            if(lstVehiculos.exists()){
+                BufferedReader br = new BufferedReader(new FileReader(lstVehiculos));
+                String linea;
+                while((linea=br .readLine())!=null) {
+                	String[] partes = linea.split(",");
+                	if (!name.equals(partes[0])) {
+                       escribirArchivo(archivoTemp, linea);
+                    }           
+                }
+                br.close();
+            }else{
+                System.out.println("El archivo no Existe");
+            }
+        } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+        }
+        return archivoTemp;
+    }
 	public HashMap<String, Usuario> getUsuarios(){
 		return usuarios;
 	}
