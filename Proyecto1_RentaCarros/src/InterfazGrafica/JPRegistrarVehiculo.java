@@ -10,6 +10,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Administrador;
+
 public class JPRegistrarVehiculo extends JPanel {
 
 	private JLabel lblRelleno;
@@ -37,11 +39,12 @@ public class JPRegistrarVehiculo extends JPanel {
 	private String estadoVehiculo = "";
 	private String idCat = "";
     private String placa = "";
-    
+    private Administrador admin;
     public JPRegistrarVehiculo(MenuAdminGnrl vent) 
     {
     	
     	this.vent = vent;
+    	admin = vent.getUser();
     	
         setLayout(new GridLayout(6, 4, 10, 30));
         setBackground(new Color(200, 182, 182));
@@ -146,20 +149,22 @@ public class JPRegistrarVehiculo extends JPanel {
           	   Integer.parseInt("tu");
 
            	}
-           	error = "Recuerde que el estado del vehiculo debe ser true o false";
-           	if (estadoVehiculo.equals("false") || estadoVehiculo.equals("true"))
+           	error = "Recuerde que el estado del vehiculo debe ser mantenimiento, disponible, limpieza o alquilado";
+           	System.out.println(estadoVehiculo.equals("disponible"));
+           	if (estadoVehiculo.equals("mantenimiento") || estadoVehiculo.equals("disponible")||estadoVehiculo.equals("limpieza")||estadoVehiculo.equals("alquilado"))
            	{
                	Integer.parseInt(anioFab);
-
+               	System.out.println("pero entra  bobo");
            	}
            	else 
            	{
-           		System.out.println(estadoVehiculo);
            		Integer.parseInt("tu");
            	}
-            	vent.añadirVeh(placa,modelo,sede,Integer.parseInt(capacidad),color,Integer.parseInt(anioFab),transmicion,catVehiculo,marca,Boolean.parseBoolean(estadoVehiculo),Integer.parseInt(idCat));
+           	error = "hubo un error, revis que los datos esten bien";
+            	admin.registrarVehiculo(placa, color, marca, modelo,Integer.parseInt(anioFab), transmicion, sede, estadoVehiculo, Integer.parseInt(capacidad),
+            			catVehiculo, Integer.parseInt(idCat));
             	vent.nuevoCentro(vH);
-            	}
+            	   }
                catch(Exception e1) 
                {
             	   errorMensaje(error);

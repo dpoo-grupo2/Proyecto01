@@ -3,66 +3,24 @@ package modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import InterfazGrafica.MenuAdminGnrl;
 import controlador.CargaDatos;
 
 public class Administrador 
 {
 private CategoriaVehiculo categoria;
 private Vehiculo vehiculo;
-private CargaDatos carga = new CargaDatos();
-private ArrayList<Seguro> lstSeguroGrande = carga.getLstSeguro();
-
+private ArrayList<Seguro> lstSeguro;
+private MenuAdminGnrl interfaz;
 public Vehiculo registrarVehiculo(String placa,String color,String marca,String modelo, int anio, String transmicion, String gpsVehiculo, String estadoActual, int capacidadPersonas,
-		String categoria,int idCategoria,HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes) 
+		String categoria,int idCategoria) 
 {
 	vehiculo = new Vehiculo(placa,color,marca,modelo,anio,transmicion,gpsVehiculo,estadoActual,capacidadPersonas,categoria,idCategoria);
-	addSede(vehiculo,sedes);
+	System.out.println("el veh se crea bien");
+	interfaz.añadirVeh(placa, modelo, gpsVehiculo,capacidadPersonas,color, anio, transmicion, categoria, marca, estadoActual, idCategoria,vehiculo);
+
 	return vehiculo;
 }
-
-private HashMap<Integer,CategoriaVehiculo> addVehiculoCat(HashMap<Integer,CategoriaVehiculo> categoria2, Vehiculo carro)
-{
-	ArrayList<Vehiculo> lstVehiculos = new ArrayList<Vehiculo>();
-	if (!categoria2.containsKey(carro.getIdCat())) 
-	{
-		
-		categoria = new CategoriaVehiculo(carro.getCategoria(), carro.getIdCat(),lstVehiculos , 0, 0, 0);
-		categoria2.put(carro.getIdCat(), categoria);
-	}
-	CategoriaVehiculo cat = categoria2.get(carro.getIdCat());
-	cat.añadirElemento(carro);
-	return categoria2;
-	
-}
-
-private HashMap<String,HashMap<Integer,CategoriaVehiculo>> addCategoriaDisponibilidad(HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad,Vehiculo vehiculo)
-{
-	if (!disponibilidad.containsKey(vehiculo.getEstado())) 
-	{
-		HashMap<Integer,CategoriaVehiculo> mapCat = new HashMap<Integer,CategoriaVehiculo>(); 
-		disponibilidad.put(vehiculo.getEstado(),mapCat);
-	}
-	HashMap<Integer,CategoriaVehiculo> map2 = disponibilidad.get(vehiculo.getEstado());
-	addVehiculoCat(map2,vehiculo);
-	
-	return disponibilidad;	
-}
-
-private HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> addSede(Vehiculo vehiculo,HashMap<String,HashMap<String,HashMap<Integer,CategoriaVehiculo>>> sedes)
-{
-	
-	if (!sedes.containsKey(vehiculo.getGps())) 
-	{
-		HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad = new HashMap<String,HashMap<Integer,CategoriaVehiculo>>();
-		sedes.put(vehiculo.getGps(),disponibilidad);
-	}
-	HashMap<String,HashMap<Integer,CategoriaVehiculo>> disponibilidad2 = sedes.get(vehiculo.getGps());
-	addCategoriaDisponibilidad(disponibilidad2,vehiculo);
-	
-	return sedes;
-	
-}
-
 
 public Vehiculo eliminarVehiculo(HashMap<String,Sede> sedes,String sede,String placa,String disponibilidad,int idCategoria)
 {
@@ -100,8 +58,7 @@ public Vehiculo eliminarVehiculo(HashMap<String,Sede> sedes,String sede,String p
 public boolean añadirElementSeguros(Seguro nuevoSeguro)
 {
 try{
-	lstSeguroGrande.add(nuevoSeguro);
-	carga.settteLstSeguros(lstSeguroGrande);
+	interfaz.añadirSeguro(nuevoSeguro);
 	return true;
 	}
 catch(Exception e)
@@ -112,17 +69,17 @@ return false;
 public boolean eliminarSeguro(String nombreSeguro)
 {
 try{
-int pos = lstSeguroGrande.size()+1;
-for (int i = 0; i < lstSeguroGrande.size(); i++) {
-	if (lstSeguroGrande.get(i).getNombreSeguro().equals(nombreSeguro))
+int pos = lstSeguro.size()+1;
+for (int i = 0; i < lstSeguro.size(); i++) {
+	if (lstSeguro.get(i).getNombreSeguro().equals(nombreSeguro))
 	{
 	pos = i;
 	break;
 	}
 	
 }
-lstSeguroGrande.remove(pos);
-carga.settteLstSeguros(lstSeguroGrande);
+lstSeguro.remove(pos);
+interfaz.setLstSeguro(lstSeguro);
 return true;
 }
 catch(Exception e)
@@ -134,10 +91,10 @@ return false;
 public Seguro modificarInfo(String nombreSeguro,String opcion,String nuevoValor)
 {
 Seguro obj = null;
-for (int i = 0; i < lstSeguroGrande.size(); i++) {
-	if (lstSeguroGrande.get(i).getNombreSeguro().equals(nombreSeguro))
+for (int i = 0; i < lstSeguro.size(); i++) {
+	if (lstSeguro.get(i).getNombreSeguro().equals(nombreSeguro))
 	{
-	obj = lstSeguroGrande.get(i);
+	obj = lstSeguro.get(i);
 	}
 }
 if (opcion.equals("nombre"))
@@ -156,5 +113,12 @@ return null;
 }
 
 
+}
+public void setLstSeguro(ArrayList<Seguro>lst) 
+{
+lstSeguro = lst;	
+}
+public void setInterfaz(MenuAdminGnrl interfaz ) {
+	this.interfaz = interfaz;
 }
 }
