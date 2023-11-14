@@ -45,11 +45,11 @@ public class CargaDatos {
 	SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 	
 	public CargaDatos() {
-		cargarVehiculos(new File("Proyecto01/data/ListaVehiculos.txt"));
-		cargarUsuarios(new File("Proyecto01/data/Usuarios.txt"));
-		cargarClientes(new File("Proyecto01/data/Clientes.txt"));
-		cargarSeguro("Proyecto01/data/Seguros.txt");
-		cargarReservas(new File("Proyecto01/data/Reservas.txt"));
+		cargarVehiculos(new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt"));
+		cargarUsuarios(new File("Proyecto1_RentaCarros/data/Usuarios.txt"));
+		cargarClientes(new File("Proyecto1_RentaCarros/data/Clientes.txt"));
+		cargarSeguro("Proyecto1_RentaCarros/data/Seguros.txt");
+		cargarReservas(new File("Proyecto1_RentaCarros/data/Reservas.txt"));
 	}
 
     public void addSeguro(Seguro seg) 
@@ -141,7 +141,7 @@ public class CargaDatos {
         
     }
     
-	private  HashMap<String, Usuario> cargarUsuarios(File archivoUsuarios) {
+	private void cargarUsuarios(File archivoUsuarios) {
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -158,10 +158,9 @@ public class CargaDatos {
         } catch (IOException e) {
             e.printStackTrace();
         }
-		return usuarios;
 	}
 	
-	private HashMap<String,Cliente> cargarClientes(File archivoClientes){
+	private void cargarClientes(File archivoClientes){
 		HashMap<String,Cliente> clientes = new HashMap<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoClientes))) {
             String linea;
@@ -203,7 +202,6 @@ public class CargaDatos {
             e.printStackTrace();
         }
 		this.lstCliente = clientes;
-		return clientes;
 	}
 	
 	public void cargarSeguro(String arch)
@@ -243,7 +241,7 @@ public class CargaDatos {
 		}
 	}
 	
-	public ArrayList<Reserva> cargarReservas(File archivoReservas ) 
+	public void cargarReservas(File archivoReservas ) 
 	{
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoReservas))) {
 	        String linea;
@@ -291,10 +289,9 @@ public class CargaDatos {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return lstReservas;
 	}
 	
-	public static void sobreEscribirUsuarios(String login, String password, String nombre, String tipo){
+	public void sobreEscribirUsuarios(String login, String password, String nombre, String tipo){
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
 
@@ -322,7 +319,7 @@ public class CargaDatos {
 	    }
 	}
 	
-	public static void sobreEscribirClientes(String nombre, String edad, String cedula,String fechaNacimiento,String correo,
+	public void sobreEscribirClientes(String nombre, String edad, String cedula,String fechaNacimiento,String correo,
 			String usuario, String contraseña,String numeroLicencia,String paisExpedicion,String fechaVencimientoLicencia,
 			String tipoPago,String numeroTarjeta,String fechaVencimientoTarjeta) {
 		
@@ -475,7 +472,7 @@ public class CargaDatos {
 	    }
 	}
 	
-	private static void escribirArchivo(File archivo,String info){
+	private void escribirArchivo(File archivo,String info){
 		  try {
 		           if(!archivo.exists()){
 		               archivo.createNewFile();
@@ -488,7 +485,7 @@ public class CargaDatos {
 		       } 
 	}
 	
-	public static File eliminarUsuario(Usuario usuario){
+	public File eliminarUsuario(Usuario usuario){
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/Usuarios.txt");
 		
         String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
@@ -514,7 +511,7 @@ public class CargaDatos {
         return archivoTemp;
     }
 
-	public static  File eliminarVehiculotxt(Vehiculo vehiculo){        
+	public File eliminarVehiculotxt(Vehiculo vehiculo){        
 
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
 		
@@ -541,9 +538,17 @@ public class CargaDatos {
         return archivoTemp;
     }
 	
-	public static Usuario getUsuario(String login){
+	public HashMap<String, Usuario> getUsuarios(){
+		return usuarios;
+	}
+	
+	public Usuario getUsuario(String login){
 		Usuario usuario = usuarios.get(login);
 		return usuario;
+	}
+	
+	public InventarioVehiculo getInventario() {
+		return inventario;
 	}
 	
 	public HashMap<String,Sede> getSedes()
@@ -569,7 +574,11 @@ public class CargaDatos {
 		lstSegurosGeneral = lstNuevo;
 		return lstSegurosGeneral; 
 	}
-
+	
+	public HashMap<String,Cliente> getClientes(){
+		return lstCliente;
+	}
+	
 	public Cliente getUsuarioCliente(String usuario) 
 	{
 		return lstCliente.get(usuario);
@@ -636,11 +645,7 @@ public class CargaDatos {
 		lstReservas.add(res);
 	}
 	
-
-	public InventarioVehiculo getInventario() {
-		return inventario;
-	}
 	
-		
+	
 
 }
