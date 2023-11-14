@@ -1,2 +1,3 @@
 usuario,contraseña,nombre,edad,cedula,fechaNacimiento,correo;numeroLicencia,paisExpedicion,fechaVencimientoLicencia;tipoPago,numeroTarjeta,fechaVencimientoTarjeta
 3,3,3,21,252451,11/12/2004,3@gmail.com;1100123,italia,11/1/2058;credito,1100123,11/12/2080
+tbonnett,tbonnett,Thomas,19,1054,12/11/2004,thomas@andes;1052,Italia,12/11/2080;credito,105042,11/12/2022

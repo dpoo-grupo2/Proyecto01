@@ -10,11 +10,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Empleado;
 import modelo.Vehiculo;
 
 public class JPActualizarEstadoV extends JPanel {
 
 	private JLabel lblRelleno;
+	private JTextField txtEstado;
+	private Empleado empleado = new Empleado();
 	
     public JPActualizarEstadoV(MenuEmpleado vent, Vehiculo vehiculo) 
     {
@@ -33,7 +36,7 @@ public class JPActualizarEstadoV extends JPanel {
         lblRelleno = new JLabel(" ");
         add(lblRelleno); 
         
-        addTextFieldWithHint("Nuevo estado");
+        addtxtEstadoWithHint("Nuevo estado");
         
           
         
@@ -67,7 +70,10 @@ public class JPActualizarEstadoV extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	vent.nuevoCentro(eC); 
+	    		String estado = txtEstado.getText();
+	    		vehiculo.cambiarEstado(estado);
+	    		empleado.cambiarEstadoVehiculo(vehiculo, estado);
+	    		vent.nuevoCentro(eC); 
             	
             }
         });
@@ -76,32 +82,32 @@ public class JPActualizarEstadoV extends JPanel {
         
     }
 
-    private void addTextFieldWithHint(String hint) {
-        JTextField textField = new JTextField();
-        textField.setFont(new Font("Arial", Font.BOLD, 20));
-        textField.setForeground(Color.GRAY);
-        textField.setHorizontalAlignment(SwingConstants.CENTER);
-        textField.setText(hint);
-        textField.setBorder(new LineBorder(Color.BLACK, 2));
-        textField.addFocusListener(new FocusListener() {
+    private void addtxtEstadoWithHint(String hint) {
+    	txtEstado = new JTextField();
+        txtEstado.setFont(new Font("Arial", Font.BOLD, 20));
+        txtEstado.setForeground(Color.GRAY);
+        txtEstado.setHorizontalAlignment(SwingConstants.CENTER);
+        txtEstado.setText(hint);
+        txtEstado.setBorder(new LineBorder(Color.BLACK, 2));
+        txtEstado.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (textField.getText().equals(hint)) {
-                    textField.setText("");
-                    textField.setForeground(Color.BLACK);
+                if (txtEstado.getText().equals(hint)) {
+                    txtEstado.setText("");
+                    txtEstado.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (textField.getText().isEmpty()) {
-                    textField.setForeground(Color.GRAY);
-                    textField.setText(hint);
+                if (txtEstado.getText().isEmpty()) {
+                    txtEstado.setForeground(Color.GRAY);
+                    txtEstado.setText(hint);
                 }
             }
         });
 
-        add(textField);
+        add(txtEstado);
     }
     
     

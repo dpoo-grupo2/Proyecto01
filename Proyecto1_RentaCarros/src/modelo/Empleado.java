@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.File;
+
 import controlador.CargaDatos;
 
 public class Empleado {
@@ -18,22 +20,24 @@ public class Empleado {
         reserva.addConductor(conductorAdicional);
 	}
 	
-	public void cambiarEstadoVehiculo(String sede, String estado, int idcategoria, String placa, String nEstado){
+	public void cambiarEstadoVehiculo(Vehiculo vehiculo,String nEstado){
 		
-		Vehiculo vehiculo = carga.getVehiculo(sede, estado, idcategoria, placa);
 		vehiculo.cambiarEstado(nEstado);
-		carga.eliminarVehiculotxt(vehiculo);
+		File temp = carga.eliminarVehiculotxt(vehiculo);
+		File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+		bd.delete();
+		temp.renameTo(bd);
 		
+		String placa = vehiculo.getPlaca();
 		String color = vehiculo.getColor();
 		String marca = vehiculo.getMarca();
 		String modelo = vehiculo.getModelo();
 		String anio = Integer.toString(vehiculo.getAnio());
 		String transmision = vehiculo.getTransmicion();
 		String gps = vehiculo.getGps();
-		String vestado = vehiculo.getEstado();
 		String capacidad = Integer.toString(vehiculo.getAnio());
 		String categoria = vehiculo.getCategoria();
-		String idCategoria = Integer.toString(idcategoria);
+		String idCategoria = Integer.toString(vehiculo.getIdCat());
 		
 		carga.sobreEscribirVehiculo(placa,color,marca,modelo,anio,transmision,gps,nEstado,capacidad,categoria,idCategoria);
 	}

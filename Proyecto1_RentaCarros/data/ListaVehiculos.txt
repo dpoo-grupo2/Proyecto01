@@ -1,5 +1,4 @@
 placa,color,marca,modelo,anio,transmision,gpsVehiculo,estadoActual,capacidadPersonas,Categoria,idCategoria
-ABC123,rojo,Chevrolet,Spark,2020,mecanico,sedeCentro,alquilado,4,pequenio,1
 DEF456,azul,Ford,Fiesta,2019,mecanico,sedeNorte,disponible,5,sedan,2
 GHI789,verde,Nissan,X-Trail,2021,automatico,sedeSur,mantenimiento,7,SUV,3
 JKL012,blanco,Honda,Accord,2018,mecanico,sedeCentro,limpieza,5,sedan,2
@@ -49,13 +48,5 @@ TBG124,azul,Nissan,GTR,2018,mecanico,sedeSur,alquilado,2,lujo,4
 GOL000,negro,Volkswagen,Gol,2017,mecanico,sedeCentro,disponible,5,pequenio,1
 SEX069,violeta,Susuki,Swift,2020,mecanico,sedeNorte,mantenimiento,5,pequenio,1
 TAS690,gris,Nissan,March,2022,mecanico,sedeSur,limpieza,5,pequenio,1
-q,w,e,r,1,q,w,e,r,t,r
-11,1,1,1,1,1,1,1,1,,1
-1,1,,1,1,1,1,,1,1,1
-1,1,1,1,1,1,,1,1,1,1
-111,,1,1,1,1,1,q,1q,1,11
-11,rokjo,tu,dse,20200,mec,sedeCentro,disponible,3,2,2
-1,1,sdes,cuo,2002,mec,sedeNorte,disponible,50,2,2
-tyj,a,fwgg,gerhg,2321,dsfsfsdf,rettt,suuuuuuu,4,suv,2
-1,1,1,1,1,1,1,1,1,1,1
-VWX234,rojo,maed,edcd,Sede sur,mecnaico,pequenio,rojo,mecnaico,pequenio,maed
+VWX234,rojo,maed,edcd,Sede sur,mecnaico,pequenio,rojo,mecanico,pequenio,
+ABC123,rojo,Chevrolet,Spark,2020,mecanico,sedeCentro,disponible,2020,pequenio,1

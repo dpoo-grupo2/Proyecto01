@@ -174,7 +174,6 @@ public class MenuEmpleado extends JFrame
             } else {
             	InventarioVehiculo inventario = cargaDatos.getInventario();
             	HashMap<String, Vehiculo> vehiculos = inventario.getVehiculos();
-            	System.out.println(vehiculos);
             	if (vehiculos.containsKey(id)) {
             		
             		Vehiculo vehiculo = vehiculos.get(id);
