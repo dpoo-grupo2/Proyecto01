@@ -218,7 +218,7 @@ public class CargaDatos {
 					String name = partes[0];
 					int valor = Integer.parseInt(partes[1]);
 					seg = new Seguro(name,valor);
-					System.out.println(seg);
+
 					lstSegurosGeneral.add(seg);
 					}
 		        	catch(Exception e)
@@ -227,8 +227,7 @@ public class CargaDatos {
 		        	}
 					
 				}
-				System.out.println("QUE ESTA PASANDCO");
-				System.out.println(lstSegurosGeneral.size());
+
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -515,9 +514,7 @@ public class CargaDatos {
     }
 
 	public File eliminarVehiculotxt(Vehiculo vehiculo){        
-
 		File lstVehiculos = new File ("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
-		
         String nomTemp="Proyecto1_RentaCarros/data/temp.txt";
         File archivoTemp=new File(nomTemp);
         String placa = vehiculo.getPlaca();

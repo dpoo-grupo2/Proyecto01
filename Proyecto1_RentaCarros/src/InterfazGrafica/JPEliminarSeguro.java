@@ -72,7 +72,7 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
             {
             	String sr = (String) lblComboBox.getSelectedItem();
             	System.out.println(sr);
-            	String[] arr = sr.split("\\)\\",5);
+            	String[] arr = sr.split(" ",5);
             	Seguro seg = seguros.get(Integer.parseInt(arr[0])-1);
             	vent.eliminarSeguro(seg);
             	vent.nuevoCentro(sH);
@@ -89,7 +89,7 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
     	
     	String info;
     	int i =1;
-    	System.out.println(seguros.size());
+
     	for(Seguro seg: seguros) 
     	{
     		info = Integer.toString(i)+") "+seg.getNombreSeguro()+": "+seg.getValorSeguro();
@@ -105,7 +105,7 @@ public class JPEliminarSeguro extends JPanel implements ActionListener{
 	}
 	public void addOptions(String[] lst) 
 	{
-		System.out.println(lstOptions.size());
+
 		for(int i = 0;i<lstOptions.size();i++) {
 			lst[i] = lstOptions.get(i);
 		}

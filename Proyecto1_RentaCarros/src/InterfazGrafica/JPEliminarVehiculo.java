@@ -29,7 +29,7 @@ public class JPEliminarVehiculo extends JPanel {
         labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
        add(labelSelect);
 
-
+       
         txtFieldPlaca =addTextFieldWithHint("Placa");
         add(txtFieldPlaca);
         
@@ -66,6 +66,7 @@ public class JPEliminarVehiculo extends JPanel {
             	if (vent.containsKey(txtFieldPlaca.getText())) 
             	{
                 	vent.eliminarVehiculo(txtFieldPlaca.getText());
+                	
                 	vent.nuevoCentro(vH);
             	}
             	else 

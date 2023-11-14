@@ -269,8 +269,10 @@ public class MenuAdminGnrl extends JFrame
     public void eliminarVehiculo(String placa) 
     {
     	Vehiculo veh = inv.getVehiculo(placa);
-    	user.eliminarVehiculo(sedes,veh.getGps(),veh.getPlaca(),veh.getEstado(),veh.getIdCat());
-    	carga.eliminarVehiculotxt(veh);
-    	inv.eliminarVehiculo(veh.getPlaca());
+    	
+    	File temp = carga.eliminarVehiculotxt(veh);
+		File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+		bd.delete();
+		temp.renameTo(bd);
     }
 }
