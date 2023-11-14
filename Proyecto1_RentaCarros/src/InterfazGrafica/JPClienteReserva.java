@@ -29,7 +29,6 @@ public class JPClienteReserva extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-        JPClienteSede cS = new JPClienteSede(vent);
         
 		JButton btnNorte = new JButton("Sede norte");
 		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
@@ -40,6 +39,7 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	JPClienteSede cS = new JPClienteSede(vent,"sedeNorte");
             	vent.nuevoCentro(cS);
             	
             }
