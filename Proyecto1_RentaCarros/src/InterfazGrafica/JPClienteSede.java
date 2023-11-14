@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.KeyPair;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,9 +22,12 @@ public class JPClienteSede extends JPanel {
 	private Date horaRecogida;
 	private Date horaEntrega;
 	private MenuCliente vent;
-    public JPClienteSede(MenuCliente vent) 
+	private String sede;
+
+    public JPClienteSede(MenuCliente vent, String sede) 
     {
-    	 this.vent = vent;
+    	this.sede = sede;
+    	this.vent = vent;
         setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 80, 160));
@@ -168,7 +172,7 @@ public class JPClienteSede extends JPanel {
 		
     }
     
-    public void fechaReserva()
+    public String[] fechaReserva()
     {
     	JPanel panel = new JPanel(new GridLayout(2, 2));
 
@@ -206,7 +210,10 @@ public class JPClienteSede extends JPanel {
         } else {
         	
         }
-    
+        
+        String fechaEntregaStr = null;
+		String[] fechas = {fechaEntregaStr};
+        return fechas;
     }
     
     public void horaReserva()
