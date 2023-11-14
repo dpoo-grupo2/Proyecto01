@@ -123,7 +123,7 @@ public class VentanaSignUp extends JFrame
         
 
         
-        textFieldUsuario = new JTextFieldWithHint("Usuario que desea");
+        textFieldUsuario = new JTextFieldWithHint("Usuario");
         textFieldUsuario.setHorizontalAlignment(SwingConstants.CENTER);
         textFieldUsuario.setFont(new Font("Arial", Font.BOLD, 20));
         textFieldUsuario.setForeground(Color.GRAY);
