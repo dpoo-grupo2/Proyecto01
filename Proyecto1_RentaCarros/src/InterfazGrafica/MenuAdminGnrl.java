@@ -173,11 +173,11 @@ public class MenuAdminGnrl extends JFrame
     {
     	return panelAnte;
     }
-<<<<<<< HEAD
-    public void añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,boolean estadoVehiculo,int idCat) 
-=======
+
+   
+
     public void añadirVeh(String placa,String modelo,String sede,int capacidad,String color,int anioFab,String transmicion,String catVehiculo,String marca,String estadoVehiculo,int idCat,Vehiculo veh) 
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+
     {
     	carga.sobreEscribirVehiculo(placa, color, marca, modelo, sede, transmicion, catVehiculo, color, transmicion, catVehiculo, marca);
     	carga.addSede(veh);

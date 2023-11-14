@@ -636,17 +636,16 @@ public void addLstReserva(Reserva res)
 {
 	lstReservas.add(res);
 }
-<<<<<<< HEAD
+
 
 public InventarioVehiculo getInventario() {
 	return inventario;
 }
 
 
-=======
 public void addSeguro(Seguro seg) 
 {
 	lstSegurosGeneral.add(seg);
 }
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+
 }
