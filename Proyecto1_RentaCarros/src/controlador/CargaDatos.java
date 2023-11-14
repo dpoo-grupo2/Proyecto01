@@ -270,7 +270,6 @@ public class CargaDatos {
 	            	Vehiculo veh = getVehiculo(sedeEntrega,"alquilado",idCategoria,placa);//getVehiculo(); toca ver bien que parametros le paso
 	            	Reserva reserva = new Reserva(estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega
 	            			,horaEntrega,lstSeguros,objCliente,valorReserva,dias,idReserva,veh,lstConductores);
-	            	objCliente.añadirReserva(reserva);
 	        		lstReservas.add(reserva);
 
 	        	}
