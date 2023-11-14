@@ -20,14 +20,15 @@ public class MenuAdminGnrl extends JFrame
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
-	private CargaDatos carga = new CargaDatos();
+	private CargaDatos carga;
 	private JPanel panelAnte;
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 	private HashMap<String,Sede> sedes = new HashMap<String,Sede>();
 	private Administrador user;
-	private InventarioVehiculo inv = carga.getInventario();
+	private InventarioVehiculo inv;
     public MenuAdminGnrl(Administrador user) 
     {
+    	cargar();
 
     	this.user = user;
     	user.setInterfaz(this);
@@ -54,6 +55,7 @@ public class MenuAdminGnrl extends JFrame
         panelCentro = new JPanel(new GridLayout(5, 1, 0, 18));
         panelCentro.setBackground(new Color(200, 182, 182));
         panelCentro.setBorder(new EmptyBorder(70, 160, 150, 160));
+        
         panelAnte = panelCentro;
         add(panelCentro, BorderLayout.CENTER);
         
@@ -152,6 +154,7 @@ public class MenuAdminGnrl extends JFrame
     }
     public ArrayList<Seguro> getLstSeguros()
     {
+
     	return carga.getLstSeguro();
     }
     public void eliminarSeguro(Seguro seg) 
@@ -274,5 +277,10 @@ public class MenuAdminGnrl extends JFrame
 		File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
 		bd.delete();
 		temp.renameTo(bd);
+    }
+    public void cargar() 
+    {
+    	carga =  new CargaDatos();
+    	inv = carga.getInventario();
     }
 }

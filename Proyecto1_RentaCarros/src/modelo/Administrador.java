@@ -70,26 +70,16 @@ return false;
 public boolean eliminarSeguro(String nombreSeguro)
 {
 try{
-int pos = lstSeguro.size()+1;
-for (int i = 0; i < lstSeguro.size(); i++) {
-	if (lstSeguro.get(i).getNombreSeguro().equals(nombreSeguro))
-	{
-	pos = i;
-	break;
-	}
-	
-}
-lstSeguro.remove(pos);
-interfaz.setLstSeguro(lstSeguro);
 
 File temp = interfaz.eliminarSegurostxt(nombreSeguro);
-File bd = new File("Proyecto1_RentaCarros/data/ListaVehiculos.txt");
+File bd = new File("Proyecto1_RentaCarros/data/Seguros.txt");
 bd.delete();
 temp.renameTo(bd);
 return true;
 }
 catch(Exception e)
 {
+
 return false;
 }
 

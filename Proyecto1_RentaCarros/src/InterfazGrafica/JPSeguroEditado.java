@@ -9,13 +9,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controlador.CargaDatos;
+import modelo.InventarioVehiculo;
+
 public class JPSeguroEditado extends JPanel {
 
 	private JLabel lblRelleno;
-	
     public JPSeguroEditado(MenuAdminGnrl vent) 
     {
-    	 
         setLayout(new GridLayout(3, 1, 0, 30));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(100, 160, 140, 160));
