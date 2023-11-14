@@ -13,5 +13,9 @@ public class InventarioVehiculo
 	public HashMap<String,Vehiculo> getVehiculos(){
 		return vehiculos;
 	}
+    public boolean existKey(String key) {
+    	if (vehiculos.containsKey(key)) return true;
+    	else return false;
+    }
     
 }
