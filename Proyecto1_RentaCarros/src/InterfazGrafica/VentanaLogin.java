@@ -98,10 +98,10 @@ public class VentanaLogin extends JFrame
     	                if (clsUsuario.getTipoUsuario().equals("AdministradorGeneral")) 
     	                {
 
-    	                	
-    	                    MenuAdminGnrl menuAdminGnrl = new MenuAdminGnrl(null);
-
     	                	Administrador admin = new Administrador();
+    	                    MenuAdminGnrl menuAdminGnrl = new MenuAdminGnrl(admin);
+
+
 
     	                    menuAdminGnrl.setLocationRelativeTo(null);
     	                    menuAdminGnrl.setVisible(true);

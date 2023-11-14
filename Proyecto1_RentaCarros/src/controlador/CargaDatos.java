@@ -648,4 +648,5 @@ public void addSeguro(Seguro seg)
 	lstSegurosGeneral.add(seg);
 }
 
+
 }

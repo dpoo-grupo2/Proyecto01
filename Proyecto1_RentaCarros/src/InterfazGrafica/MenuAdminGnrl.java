@@ -9,6 +9,7 @@ import javax.swing.border.*;
 
 import controlador.CargaDatos;
 import modelo.Administrador;
+import modelo.InventarioVehiculo;
 import modelo.Sede;
 import modelo.Seguro;
 import modelo.Usuario;
@@ -23,6 +24,7 @@ public class MenuAdminGnrl extends JFrame
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
 	private HashMap<String,Sede> sedes = new HashMap<String,Sede>();
 	private Administrador user;
+	private InventarioVehiculo inv = carga.getInventario();
     public MenuAdminGnrl(Administrador user) 
     {
     	this.user = user;
@@ -144,7 +146,10 @@ public class MenuAdminGnrl extends JFrame
         panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.X_AXIS));
 
     }
-
+    public boolean containsKey(String key) 
+    {
+    	return inv.existKey(key);
+    }
     public ArrayList<Seguro> getLstSeguros()
     {
     	return carga.getLstSeguro();
@@ -181,7 +186,7 @@ public class MenuAdminGnrl extends JFrame
     {
     	carga.sobreEscribirVehiculo(placa, color, marca, modelo, sede, transmicion, catVehiculo, color, transmicion, catVehiculo, marca);
     	carga.addSede(veh);
-//    	carga.addVehiculo(veh);
+    	inv.addVehiculo(placa, veh);
 
     }
     public void setLstSeguro(ArrayList<Seguro> lst) 

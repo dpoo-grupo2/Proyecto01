@@ -161,6 +161,12 @@ public class JPRegistrarVehiculo extends JPanel {
            		Integer.parseInt("tu");
            	}
            	error = "hubo un error, revis que los datos esten bien";
+           		if (vent.containsKey(placa))Integer.parseInt(anioFab);
+           		else 
+           		{
+           			error = "esa placa ya existe y no pueden haber 2 vehiculos con la misma placa";
+           		}
+           		
             	admin.registrarVehiculo(placa, color, marca, modelo,Integer.parseInt(anioFab), transmicion, sede, estadoVehiculo, Integer.parseInt(capacidad),
             			catVehiculo, Integer.parseInt(idCat));
             	vent.nuevoCentro(vH);

@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 
 public class JPEliminarVehiculo extends JPanel {
 
+	private JTextField txtFieldPlaca;
 	
     public JPEliminarVehiculo(MenuAdminGnrl vent) 
     {
@@ -20,20 +21,27 @@ public class JPEliminarVehiculo extends JPanel {
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 110, 60, 110));
         
+        JPanel p = new JPanel(new GridLayout(2,1));
+        p.setBackground(new Color(200, 182, 182));
+        p.setBorder(new EmptyBorder(70, 110, 60, 110));
         JLabel labelSelect = new JLabel("Adicione todos los");
         labelSelect.setHorizontalAlignment(SwingConstants.RIGHT);
         labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
-        add(labelSelect);
+        p.add(labelSelect);
 
         JLabel labelSelect2 = new JLabel("datos del vehículo:");
         labelSelect2.setHorizontalAlignment(SwingConstants.LEFT);
         labelSelect2.setFont(new Font("Arial", Font.BOLD, 26));
-        add(labelSelect2);
+        p.add(labelSelect2);
         
-        addTextFieldWithHint("Sede ubicación");
-        addTextFieldWithHint("Disponibilidad vehículo");
-        addTextFieldWithHint("Matrícula");
-        addTextFieldWithHint("Categoría vehpiculo");
+        add(p);
+        
+        txtFieldPlaca =addTextFieldWithHint("Placa");
+        add(txtFieldPlaca);
+        
+        p = new JPanel(new GridLayout(2,1));
+        p.setBackground(new Color(200, 182, 182));
+        p.setBorder(new EmptyBorder(70, 110, 60, 110));
         
         JButton btnSalir = new JButton("Regresar");
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
@@ -66,35 +74,39 @@ public class JPEliminarVehiculo extends JPanel {
             }
         });
         
-        add(btnSalir);
-        add(btnSiguiente);
+        p.add(btnSalir);
+        p.add(btnSiguiente);
+        add(p);
     }
 
-    private void addTextFieldWithHint(String hint) {
-        JTextField textField = new JTextField();
-        textField.setFont(new Font("Arial", Font.BOLD, 18));
-        textField.setForeground(Color.GRAY);
-        textField.setHorizontalAlignment(SwingConstants.CENTER);
-        textField.setText(hint);
-        textField.setBorder(new LineBorder(Color.BLACK, 2));
-        textField.addFocusListener(new FocusListener() {
+    private JTextField addTextFieldWithHint(String hint) {
+    	JTextField textField= new JTextField();
+    	textField.setFont(new Font("Arial", Font.BOLD, 18));
+    	textField.setForeground(Color.GRAY);
+    	textField.setHorizontalAlignment(SwingConstants.CENTER);
+    	textField.setBorder(new LineBorder(Color.BLACK, 2));
+    	textField.setText(hint);
+    	textField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 if (textField.getText().equals(hint)) {
-                    textField.setText("");
-                    textField.setForeground(Color.BLACK);
+                	textField.setText("");
+                	textField.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 if (textField.getText().isEmpty()) {
-                    textField.setForeground(Color.GRAY);
-                    textField.setText(hint);
+                	textField.setForeground(Color.GRAY);
+                	textField.setText(hint);
                 }
             }
         });
 
-        add(textField);
-    }		         
+        
+        return textField;
+    }
+
+    
 }
