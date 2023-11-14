@@ -214,7 +214,11 @@ public class MenuAdminGnrl extends JFrame
             } 
                 
         }
-    
+    public void addSeguro(String name,int valor) 
+    {
+    	Seguro seg = new Seguro(name,valor);
+    	user.añadirElementSeguros(null);
+    }
     public void nuevoCentro(JPanel np) 
     {
     	lstPanel.add(panelCentro);
