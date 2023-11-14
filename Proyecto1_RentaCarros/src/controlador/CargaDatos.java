@@ -194,7 +194,7 @@ public class CargaDatos {
                     String fechaVencimientoTarjeta = infoTarget[2].trim();
                     MedioPago medioPago = new MedioPago(tipo, numero, fechaVencimientoTarjeta);
                     
-                    Cliente clsCliente = new Cliente(usuario,contraseña,nombreCompleto,"Cliente",Integer.parseInt(edad),cedula,fechaNacimiento,correo,licencia, medioPago);
+                    Cliente clsCliente = new Cliente(usuario,contraseña,nombreCompleto,Integer.parseInt(edad),cedula,fechaNacimiento,correo,licencia, medioPago);
                     clientes.put(usuario,clsCliente);
                 } 
             }

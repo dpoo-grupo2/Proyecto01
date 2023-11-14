@@ -23,9 +23,9 @@ public class Cliente extends Usuario
 	private HashMap<String,Sede> sedes = carga.getSedes();
 
 
-	public Cliente(String login, String password, String nombreCompleto, String tipoUsuario, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
+	public Cliente(String login, String password, String nombreCompleto, int edad,String cedula,String fechaNacimiento, String correoElectronico, LicenciaConduccion licencia, MedioPago medioPago)
 	{
-		super(login, password, nombreCompleto,tipoUsuario);
+		super(login, password, nombreCompleto,"Empleado");
 		this.edad = edad;
 		this.cedula = cedula;
 		this.correoElectronico = correoElectronico;

@@ -43,6 +43,8 @@ public class VentanaSignUp extends JFrame
 	private JTextField textFieldCedula ;
 	private JPLicencia panelLic;
 	private JPTarjeta panelTarjeta;
+	private CargaDatos carga = new CargaDatos();
+	
     public VentanaSignUp() 
     {
         setSize(1050, 650);
@@ -214,8 +216,8 @@ public class VentanaSignUp extends JFrame
 }
     public void añadirUser() 
     {
-    	CargaDatos.sobreEscribirUsuarios(user, password, name, "Cliente");
-    	CargaDatos.sobreEscribirClientes(name,edad,cedula,fecha,correo,user,password,
+    	carga.sobreEscribirUsuarios(user, password, name, "Cliente");
+    	carga.sobreEscribirClientes(name,edad,cedula,fecha,correo,user,password,
 				numeroLicencia,paisExp,venciLicencia,medioPago,numeroTarjeta,venciTarjeta);
     	
     	
