@@ -23,6 +23,7 @@ public class JPClienteSede extends JPanel {
 	private Date horaEntrega;
 	private MenuCliente vent;
 	private String sede;
+	private JPReservaRegistrada rR;
 
     public JPClienteSede(MenuCliente vent, String sede) 
     {
@@ -41,7 +42,7 @@ public class JPClienteSede extends JPanel {
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
 		
-        JPReservaRegistrada rR = new JPReservaRegistrada(vent);
+        rR = new JPReservaRegistrada(vent);
         
 		JButton btnPequeño = new JButton("Pequeño");
 		btnPequeño.setFont(new Font("Arial", Font.BOLD, 20));
@@ -56,7 +57,8 @@ public class JPClienteSede extends JPanel {
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                     setVisible(false);
-                    vent.nuevoCentro(rR);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
@@ -83,7 +85,8 @@ public class JPClienteSede extends JPanel {
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                     setVisible(false);
-                    vent.nuevoCentro(rR);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
@@ -110,7 +113,8 @@ public class JPClienteSede extends JPanel {
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                     setVisible(false);
-                    vent.nuevoCentro(rR);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
@@ -137,7 +141,8 @@ public class JPClienteSede extends JPanel {
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                     setVisible(false);
-                    vent.nuevoCentro(rR);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
