@@ -131,6 +131,6 @@ private void errorMensaje(String mensaje)
 private void mensaje(String mensaje) 
 {
 	
-	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.ERROR_MESSAGE);}
+	JOptionPane.showMessageDialog(this, mensaje, "CarRental", JOptionPane.INFORMATION_MESSAGE);}
 }
 
