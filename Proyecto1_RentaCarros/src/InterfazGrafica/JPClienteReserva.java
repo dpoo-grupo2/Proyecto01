@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 public class JPClienteReserva extends JPanel {
 
 	private JLabel lblRelleno;
+	private JPClienteSede cS;
 	
     public JPClienteReserva(MenuCliente vent) 
     {
@@ -39,7 +40,7 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	JPClienteSede cS = new JPClienteSede(vent,"sedeNorte");
+            	 cS= new JPClienteSede(vent,"sedeNorte");
             	vent.nuevoCentro(cS);
             	
             }
