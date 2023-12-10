@@ -23,8 +23,7 @@ public class JPClienteSede extends JPanel {
 	private Date horaEntrega;
 	private MenuCliente vent;
 	private String sede;
-	private JPReservaRegistrada rR;
-
+	private JPReservaRegistrada rR; 
     public JPClienteSede(MenuCliente vent, String sede) 
     {
     	this.sede = sede;
@@ -44,6 +43,8 @@ public class JPClienteSede extends JPanel {
 		
         rR = new JPReservaRegistrada(vent);
         
+        JPanel p1 = new JPanel(new GridLayout(1,2,16,20));
+        p1.setBackground(new Color(200, 182, 182));
 		JButton btnPequeño = new JButton("Pequeño");
 		btnPequeño.setFont(new Font("Arial", Font.BOLD, 20));
 		btnPequeño.setBackground(new Color(32, 182, 182));
@@ -69,8 +70,37 @@ public class JPClienteSede extends JPanel {
                 }
             }
         });
-        add(btnPequeño);
+        p1.add(btnPequeño);
         
+        JButton btnMoto= new JButton("Moto");
+        btnMoto.setFont(new Font("Arial", Font.BOLD, 20));
+        btnMoto.setBackground(new Color(32, 182, 182));
+        btnMoto.setForeground(Color.WHITE);
+        btnMoto.setBorder(new LineBorder(Color.BLACK, 2));
+        btnMoto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	fechaReserva();
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
+            }
+        });
+        p1.add(btnMoto);
+        add(p1);
+        JPanel p2 = new JPanel(new GridLayout(1,2,16,20));
+        p2.setBackground(new Color(200, 182, 182));
         
         JButton btnSedan= new JButton("Sedan");
         btnSedan.setFont(new Font("Arial", Font.BOLD, 20));
@@ -97,15 +127,14 @@ public class JPClienteSede extends JPanel {
                 }
             }
         });
-        add(btnSedan);
+        p2.add(btnSedan);
         
-        
-        JButton btnSUV = new JButton("SUV");
-        btnSUV.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSUV.setBackground(new Color(32, 182, 182));
-        btnSUV.setForeground(Color.WHITE);
-        btnSUV.setBorder(new LineBorder(Color.BLACK, 2));
-        btnSUV.addActionListener(new ActionListener() {
+        JButton btnAtv= new JButton("Atv");
+        btnAtv.setFont(new Font("Arial", Font.BOLD, 20));
+        btnAtv.setBackground(new Color(32, 182, 182));
+        btnAtv.setForeground(Color.WHITE);
+        btnAtv.setBorder(new LineBorder(Color.BLACK, 2));
+        btnAtv.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
@@ -125,7 +154,38 @@ public class JPClienteSede extends JPanel {
                 }
             }
         });
-        add(btnSUV);
+        p2.add(btnAtv);
+        
+        add(p2);
+        JPanel p3 = new JPanel(new GridLayout(1,2,16,20));
+        p3.setBackground(new Color(200, 182, 182));
+        
+        JButton btnBici = new JButton("bicicleta");
+        btnBici.setFont(new Font("Arial", Font.BOLD, 20));
+        btnBici.setBackground(new Color(32, 182, 182));
+        btnBici.setForeground(Color.WHITE);
+        btnBici.setBorder(new LineBorder(Color.BLACK, 2));
+        btnBici.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	fechaReserva();
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
+            }
+        });
+
         
         
         JButton btnLujo = new JButton("Lujo");
@@ -153,9 +213,66 @@ public class JPClienteSede extends JPanel {
                 }
             }
         });
-        add(btnLujo);
+        p3.add(btnLujo);
+        p3.add(btnBici);
+        add(p3);
         
+        JPanel p4 = new JPanel(new GridLayout(1,2,16,20));
+        p4.setBackground(new Color(200, 182, 182));
+        JButton btnSuv= new JButton("Sedan");
+        btnSuv.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSuv.setBackground(new Color(32, 182, 182));
+        btnSuv.setForeground(Color.WHITE);
+        btnSuv.setBorder(new LineBorder(Color.BLACK, 2));
+        btnSuv.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	fechaReserva();
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
+            }
+        });
+        p4.add(btnSuv);
         
+        JButton btnPatineta= new JButton("Sedan");
+        btnPatineta.setFont(new Font("Arial", Font.BOLD, 20));
+        btnPatineta.setBackground(new Color(32, 182, 182));
+        btnPatineta.setForeground(Color.WHITE);
+        btnPatineta.setBorder(new LineBorder(Color.BLACK, 2));
+        btnPatineta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	fechaReserva();
+                horaReserva();
+                if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                    setVisible(false);
+                    JPMedioPago mp = new JPMedioPago(vent,null);
+                    vent.nuevoCentro(mp);
+                } else {
+                    
+                    if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
+                    }
+                }
+            }
+        });
+        p4.add(btnPatineta);
+        add(p4);
         
         JButton btnAtras = new JButton("Regresar");
         btnAtras.setFont(new Font("Arial", Font.BOLD, 20));
