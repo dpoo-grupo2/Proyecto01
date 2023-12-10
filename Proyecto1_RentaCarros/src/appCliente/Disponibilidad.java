@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -40,7 +43,7 @@ public class Disponibilidad extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	mostrarVentanaFecha("Sede Norte");
             	
             }
         });
@@ -56,7 +59,7 @@ public class Disponibilidad extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	mostrarVentanaFecha("Sede Centro");;
             }
         });
         add(btnCentro);
@@ -71,7 +74,7 @@ public class Disponibilidad extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	
+            	mostrarVentanaFecha("Sede Sur");
             }
         });
         add(btnSur);
@@ -94,4 +97,30 @@ public class Disponibilidad extends JPanel {
         });        
         add(btnRegresar);
     }
+    
+    private void mostrarVentanaFecha(String sede) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            
+            String fechaInicioStr = JOptionPane.showInputDialog(null, "Ingrese la fecha de inicio (dd/MM/yyyy):", "Rango de Fechas", JOptionPane.QUESTION_MESSAGE);
+            String fechaFinStr = JOptionPane.showInputDialog(null, "Ingrese la fecha de fin (dd/MM/yyyy):", "Rango de Fechas", JOptionPane.QUESTION_MESSAGE);
+
+            Date fechaInicio = dateFormat.parse(fechaInicioStr);
+            Date fechaFin = dateFormat.parse(fechaFinStr);
+
+            
+            int cantidadDisponibles = VehiculosDisponibles(sede, fechaInicio, fechaFin);
+
+            
+            JOptionPane.showMessageDialog(null, "Cantidad de vehículos disponibles en " + sede + ": " + cantidadDisponibles, "Resultados", JOptionPane.INFORMATION_MESSAGE);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error en el formato de fecha. Por favor, use el formato dd/MM/yyyy.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private int VehiculosDisponibles(String sede, Date fechaInicio, Date fechaFin) {
+       
+        return 7;
+    }
+    
 }
