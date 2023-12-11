@@ -356,7 +356,7 @@ public class CargaDatos {
 		
 	}
 	
-	private void sobreLst(ArrayList<ConductorAdicional> lst,String id)
+	private static void sobreLst(ArrayList<ConductorAdicional> lst,String id)
 	{
 		for(ConductorAdicional cd: lst) 
 		{
@@ -365,7 +365,7 @@ public class CargaDatos {
 		}
 	}
 	
-	public void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
+	public static void sobreEscribirConductorAdicional(String placa,String nombres, String telefono, String correoElectronico, String numeroLicencia,
 
 		String paisExpedicion, String fechaVencimiento) {
 		BufferedWriter bw = null;
@@ -428,7 +428,7 @@ public class CargaDatos {
 	    }
 	}
 	
-	public void sobreEscribirReserva(Reserva reserva) {
+	public static void sobreEscribirReserva(Reserva reserva) {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
 	    Cliente clienteRes = reserva.getClienteRes();
@@ -580,6 +580,10 @@ public class CargaDatos {
 		return sedes;
 		
 	}
+	public static Sede getSede(String sede) 
+	{
+		return sedes.get(sede);
+	}
 	
 	public ArrayList<Seguro> getLstSeguro()
 	{
@@ -587,7 +591,7 @@ public class CargaDatos {
 		
 	}
 	
-	public ArrayList<Reserva> getLstReserva()
+	public static ArrayList<Reserva> getLstReserva()
 	{
 		return lstReservas;
 		
@@ -644,7 +648,7 @@ public class CargaDatos {
 		
 	}	
 	
-	public void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros,String id) 
+	public static void sobreEscribirSegRes(ArrayList<Seguro> lstSeguros,String id) 
 	{
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
@@ -664,9 +668,13 @@ public class CargaDatos {
 			}
 	    }
 	}
-	public void addLstReserva(Reserva res) 
+	public static void addLstReserva(Reserva res) 
 	{
 		lstReservas.add(res);
+	}
+	public String getIdReserva() 
+	{
+		return idReserva;
 	}
 	
 	

@@ -59,7 +59,11 @@ public class MenuAppCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+<<<<<<< HEAD
             	nuevoCentro(reserva);
+=======
+            	nuevoCentro(jPClienteReserva);
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
             	
             }
         });

@@ -122,8 +122,8 @@ public class VentanaLogin extends JFrame
     	    	            dispose();
     	    	            
     	                } else if (clsUsuario.getTipoUsuario().equals("Cliente")) {
-    	                    
-    	                	MenuCliente menuCliente = new MenuCliente();
+    	                	Usuario usuario = usuarios.get(login);
+    	                	MenuCliente menuCliente = new MenuCliente(cargaDatos,usuario);
     	                	menuCliente.setLocationRelativeTo(null);
     	                	menuCliente.setVisible(true);
     	    	            dispose();

@@ -9,6 +9,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Cliente;
+import modelo.ConductorAdicional;
+import modelo.Reserva;
+import modelo.Seguro;
+import modelo.Vehiculo;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,13 +28,31 @@ public class JPClienteSede extends JPanel {
 	private Date horaRecogida;
 	private Date horaEntrega;
 	private MenuCliente vent;
+<<<<<<< HEAD
 	private String sedeR;
 	private String sedeE;
+=======
+	private String sedeEntrega;
+	private String sedeRecogida;
+	private int idCategoria;
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	private JPReservaRegistrada rR; 
+<<<<<<< HEAD
     public JPClienteSede(MenuCliente vent, String sedeRecogida, String sedeEntrega) 
+=======
+	private Vehiculo veh;
+	private Cliente cliente;
+    public JPClienteSede(MenuCliente vent, String sedeEntrega,String sedeRecogida,Cliente cliente) 
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
     {
+<<<<<<< HEAD
     	sedeR = sedeRecogida;
     	sedeE = sedeEntrega;
+=======
+    	this.cliente = cliente;
+    	this.sedeEntrega = sedeEntrega;
+    	this.sedeRecogida = sedeRecogida;
+>>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
     	this.vent = vent;
         setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));
@@ -56,16 +80,27 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 1;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
@@ -83,6 +118,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 5;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -113,10 +149,12 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 2;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                     setVisible(false);
+                    
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
                 } else {
@@ -140,6 +178,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 6;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -171,6 +210,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 7;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -199,6 +239,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 4;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -221,7 +262,7 @@ public class JPClienteSede extends JPanel {
         
         JPanel p4 = new JPanel(new GridLayout(1,2,16,20));
         p4.setBackground(new Color(200, 182, 182));
-        JButton btnSuv= new JButton("Sedan");
+        JButton btnSuv= new JButton("SUV");
         btnSuv.setFont(new Font("Arial", Font.BOLD, 20));
         btnSuv.setBackground(new Color(32, 182, 182));
         btnSuv.setForeground(Color.WHITE);
@@ -230,6 +271,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria =3;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -248,7 +290,7 @@ public class JPClienteSede extends JPanel {
         });
         p4.add(btnSuv);
         
-        JButton btnPatineta= new JButton("Sedan");
+        JButton btnPatineta= new JButton("Patineta");
         btnPatineta.setFont(new Font("Arial", Font.BOLD, 20));
         btnPatineta.setBackground(new Color(32, 182, 182));
         btnPatineta.setForeground(Color.WHITE);
@@ -257,6 +299,7 @@ public class JPClienteSede extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	idCategoria = 8;
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
@@ -379,5 +422,22 @@ public class JPClienteSede extends JPanel {
         }
     
     }
+    private void crearReserva() 
+    {
+    	ArrayList<Seguro> lstSeguros = new ArrayList<Seguro>();
+    	ArrayList<ConductorAdicional> lstConduct = new ArrayList<ConductorAdicional>();
+    	SimpleDateFormat formatoFechaHora = new SimpleDateFormat("HH:mm");
+    	String horaRecogidaStr = formatoFechaHora.format(horaRecogida);
+    	String horaEntregaStr = formatoFechaHora.format(horaEntrega);
+    	System.out.println(vent.getIdReservas());
+    	
+    	cliente.crearReserva(false, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogidaStr, fechaEntrega, horaEntregaStr, cliente, lstSeguros, 0, lstConduct, 0, vent.getIdReservas(), veh);
+   
+    }
+    private Vehiculo verDisponibilidad(String sedeEntrega,int idCat,Date fechaEntrega,Date fechaRecogida) 
+    {
+    	return cliente.verDisponibilidad(sedeEntrega, idCategoria, fechaEntrega, fechaRecogida);
+    }
+    
     
 }
