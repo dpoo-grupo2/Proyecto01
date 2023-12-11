@@ -1,1 +1,4 @@
 idReserva,estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,lstSeguro,cliente,valorReserva,lstConductores,dias,placa,idCategoria
+
+false,sedeNorte,sedeNorte,Mon Dec 21 00:00:00 COT 2020,20:00,Fri Dec 25 00:00:00 COT 2020,20:00,lstSeguro,3,0,lstConductores,0,idReserva
+false,sedeSur,sedeNorte,Tue Oct 20 00:00:00 COT 2020,20:00,Sun Oct 25 00:00:00 COT 2020,20:00,lstSeguro,3,0,lstConductores,0,false

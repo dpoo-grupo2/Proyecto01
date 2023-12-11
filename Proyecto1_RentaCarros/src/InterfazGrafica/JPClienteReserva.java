@@ -9,6 +9,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelo.Cliente;
+
 public class JPClienteReserva extends JPanel {
 
 	private JLabel lblRelleno;
@@ -17,8 +19,8 @@ public class JPClienteReserva extends JPanel {
 	private JComboBox<String> comboBoxEntrega;
 	private JComboBox<String> comboBoxRecogida;
 	
-	private String[] comboBoxOptions = {"sede norte","sede sur","sede este"};
-    public JPClienteReserva(MenuCliente vent) 
+	private String[] comboBoxOptions = {"sedeNorte","sedeSur","sedeEste"};
+    public JPClienteReserva(MenuCliente vent,Cliente cliente) 
     {
     	 
         setLayout(new GridLayout(6, 1, 0, 18));
@@ -74,7 +76,7 @@ public class JPClienteReserva extends JPanel {
                 	vent.errorMensaje("Es necesario que elija una sede de entrega y recogida del vehiculo");;
                 }
                 else {
-            	cS = new JPClienteSede(vent,sedeEntrega,sedeRecogida);
+            	cS = new JPClienteSede(vent,sedeEntrega,sedeRecogida,cliente);
             	vent.nuevoCentro(cS);
                 }
             }

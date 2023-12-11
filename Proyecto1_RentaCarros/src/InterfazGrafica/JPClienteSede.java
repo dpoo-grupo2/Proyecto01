@@ -34,8 +34,9 @@ public class JPClienteSede extends JPanel {
 	private JPReservaRegistrada rR; 
 	private Vehiculo veh;
 	private Cliente cliente;
-    public JPClienteSede(MenuCliente vent, String sedeEntrega,String sedeRecogida) 
+    public JPClienteSede(MenuCliente vent, String sedeEntrega,String sedeRecogida,Cliente cliente) 
     {
+    	this.cliente = cliente;
     	this.sedeEntrega = sedeEntrega;
     	this.sedeRecogida = sedeRecogida;
     	this.vent = vent;
@@ -70,8 +71,10 @@ public class JPClienteSede extends JPanel {
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
                 	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
                 	if (veh==null) 
                 	{
+                		System.out.println(veh.getCapacidad());
                 		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
                 	}
                 	else {
@@ -405,15 +408,17 @@ public class JPClienteSede extends JPanel {
         }
     
     }
-    private Reserva crearReserva() 
+    private void crearReserva() 
     {
     	ArrayList<Seguro> lstSeguros = new ArrayList<Seguro>();
     	ArrayList<ConductorAdicional> lstConduct = new ArrayList<ConductorAdicional>();
     	SimpleDateFormat formatoFechaHora = new SimpleDateFormat("HH:mm");
     	String horaRecogidaStr = formatoFechaHora.format(horaRecogida);
     	String horaEntregaStr = formatoFechaHora.format(horaEntrega);
+    	System.out.println(vent.getIdReservas());
+    	
     	cliente.crearReserva(false, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogidaStr, fechaEntrega, horaEntregaStr, cliente, lstSeguros, 0, lstConduct, 0, vent.getIdReservas(), veh);
-    	return null;
+   
     }
     private Vehiculo verDisponibilidad(String sedeEntrega,int idCat,Date fechaEntrega,Date fechaRecogida) 
     {

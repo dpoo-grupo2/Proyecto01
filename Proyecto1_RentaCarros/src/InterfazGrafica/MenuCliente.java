@@ -53,7 +53,7 @@ public class MenuCliente extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-        JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
+        JPClienteReserva jPClienteReserva = new JPClienteReserva(this,cliente);  
         jPClienteModificar = new JPClienteModificar(this);    
         
         
