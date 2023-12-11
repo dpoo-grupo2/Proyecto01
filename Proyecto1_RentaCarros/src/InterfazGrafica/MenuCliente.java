@@ -48,7 +48,7 @@ public class MenuCliente extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-        JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
+        JPSedeRecogida jPSedeRecogida = new JPSedeRecogida(this);  
         jPClienteModificar = new JPClienteModificar(this);    
         
         
@@ -61,7 +61,7 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	nuevoCentro(jPClienteReserva);
+            	nuevoCentro(jPSedeRecogida);
             	
             }
         });

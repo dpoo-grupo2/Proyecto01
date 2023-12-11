@@ -22,11 +22,13 @@ public class JPClienteSede extends JPanel {
 	private Date horaRecogida;
 	private Date horaEntrega;
 	private MenuCliente vent;
-	private String sede;
+	private String sedeR;
+	private String sedeE;
 	private JPReservaRegistrada rR; 
-    public JPClienteSede(MenuCliente vent, String sede) 
+    public JPClienteSede(MenuCliente vent, String sedeRecogida, String sedeEntrega) 
     {
-    	this.sede = sede;
+    	sedeR = sedeRecogida;
+    	sedeE = sedeEntrega;
     	this.vent = vent;
         setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));

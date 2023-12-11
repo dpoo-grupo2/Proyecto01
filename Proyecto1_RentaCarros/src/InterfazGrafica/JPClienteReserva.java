@@ -10,18 +10,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 public class JPClienteReserva extends JPanel {
-
+	
+	private String sedeRecogida;
 	private JLabel lblRelleno;
 	private JPClienteSede cS;
 	
-    public JPClienteReserva(MenuCliente vent) 
+    public JPClienteReserva(MenuCliente vent, String sedeR) 
     {
-    	 
+    	sedeRecogida = sedeR;
         setLayout(new GridLayout(6, 1, 0, 18));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 100, 160));
         
-        JLabel labelSelect = new JLabel("Seleccione la sede para resevar:");
+        JLabel labelSelect = new JLabel("Seleccione la sede donde desea entregar el vehiculo:");
         labelSelect.setHorizontalAlignment(SwingConstants.CENTER);
         labelSelect.setFont(new Font("Arial", Font.BOLD, 26));
         
@@ -40,7 +41,7 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 cS= new JPClienteSede(vent,"sedeNorte");
+            	cS= new JPClienteSede(vent,sedeRecogida,"sedeNorte");
             	vent.nuevoCentro(cS);
             	
             }
@@ -57,8 +58,8 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	cS= new JPClienteSede(vent,sedeRecogida,"sedeNorte");
             	vent.nuevoCentro(cS);
-            	
             }
         });
         add(btnCentro);
@@ -73,8 +74,8 @@ public class JPClienteReserva extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+            	cS= new JPClienteSede(vent,sedeRecogida,"sedeNorte");
             	vent.nuevoCentro(cS);
-            	
             }
         });
         add(btnSur);
