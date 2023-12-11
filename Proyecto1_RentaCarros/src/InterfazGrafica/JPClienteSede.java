@@ -416,6 +416,7 @@ public class JPClienteSede extends JPanel {
     	SimpleDateFormat formatoFechaHora = new SimpleDateFormat("HH:mm");
     	String horaRecogidaStr = formatoFechaHora.format(horaRecogida);
     	String horaEntregaStr = formatoFechaHora.format(horaEntrega);
+    	
     	int asam = Integer.parseInt(vent.getIdReservas()) + 1;
     	cliente.crearReserva(false, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogidaStr, fechaEntrega, horaEntregaStr, cliente, lstSeguros, 0, lstConduct, 0, Integer.toString(asam), veh);
    

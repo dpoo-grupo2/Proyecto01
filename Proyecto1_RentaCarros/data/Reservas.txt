@@ -1,2 +1,1 @@
 idReserva,estadoTarjeta,sedeEntrega,sedeRecogida,fechaRecogida,horaRecogida,fechaEntrega,horaEntrega,lstSeguro,cliente,valorReserva,lstConductores,dias,placa,idCategoria
-,idReservafalse,sedeNorte,sedeSur,Sun Dec 20 00:00:00 COT 2020,20:00,Sat Dec 26 00:00:00 COT 2020,20:00,lstSeguro,3,0,lstConductores,0CDE789,1
