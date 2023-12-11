@@ -109,13 +109,23 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
@@ -169,13 +179,23 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
@@ -201,13 +221,23 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
@@ -230,18 +260,27 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
-                }
-            }
+                }}
         });
         p3.add(btnLujo);
         p3.add(btnBici);
@@ -262,13 +301,23 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
@@ -290,13 +339,23 @@ public class JPClienteSede extends JPanel {
             	fechaReserva();
                 horaReserva();
                 if (fechaEntrega != null && fechaRecogida != null && horaRecogida != null && horaEntrega != null) {
+                	veh = verDisponibilidad(sedeEntrega,idCategoria,fechaEntrega,fechaRecogida);
+                	
+                	if (veh==null) 
+                	{
+                		System.out.println(veh.getCapacidad());
+                		vent.errorMensaje("en esas fechas no hay vehiculos disponibles");
+                	}
+                	else {
                     setVisible(false);
+                    crearReserva();
                     JPMedioPago mp = new JPMedioPago(vent,null);
                     vent.nuevoCentro(mp);
+                    }
                 } else {
                     
                     if (fechaEntrega == null && fechaRecogida == null && horaRecogida == null && horaEntrega == null) {
-                        
+                         
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe de llenar todos los campos para completar la reserva", "CarRental", JOptionPane.OK_CANCEL_OPTION);
                     }
