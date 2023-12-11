@@ -48,8 +48,7 @@ public class MenuAppCliente extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-//        JPClienteReserva jPClienteReserva = new JPClienteReserva(this);  
-
+        ReservaCliente reserva = new ReservaCliente(this);
         
         JButton btnReserva = new JButton("Reservar vehículo");
         btnReserva.setFont(new Font("Arial", Font.BOLD, 20));
@@ -60,10 +59,11 @@ public class MenuAppCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-//            	nuevoCentro(jPClienteReserva);
+            	nuevoCentro(reserva);
             	
             }
         });
+        
         panelCentro.add(btnReserva);
 
         
