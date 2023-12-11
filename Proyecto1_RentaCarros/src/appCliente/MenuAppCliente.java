@@ -60,7 +60,7 @@ public class MenuAppCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-//            	nuevoCentro(jPClienteReserva);
+            	nuevoCentro(jPClienteReserva);
             	
             }
         });
