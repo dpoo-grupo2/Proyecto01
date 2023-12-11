@@ -53,11 +53,8 @@ public class MenuCliente extends JFrame
         lblRelleno = new JLabel(" ");
         panelCentro.add(lblRelleno);        
         
-<<<<<<< HEAD
-        JPSedeRecogida jPSedeRecogida = new JPSedeRecogida(this);  
-=======
+        
         JPClienteReserva jPClienteReserva = new JPClienteReserva(this,cliente);  
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
         jPClienteModificar = new JPClienteModificar(this);    
         
         
@@ -70,7 +67,7 @@ public class MenuCliente extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	nuevoCentro(jPSedeRecogida);
+            	nuevoCentro(jPClienteReserva);
             	
             }
         });

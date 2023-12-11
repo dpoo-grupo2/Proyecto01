@@ -28,32 +28,19 @@ public class JPClienteSede extends JPanel {
 	private Date horaRecogida;
 	private Date horaEntrega;
 	private MenuCliente vent;
-<<<<<<< HEAD
-	private String sedeR;
-	private String sedeE;
-=======
 	private String sedeEntrega;
 	private String sedeRecogida;
 	private int idCategoria;
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
 	private JPReservaRegistrada rR; 
-<<<<<<< HEAD
-    public JPClienteSede(MenuCliente vent, String sedeRecogida, String sedeEntrega) 
-=======
 	private Vehiculo veh;
 	private Cliente cliente;
     public JPClienteSede(MenuCliente vent, String sedeEntrega,String sedeRecogida,Cliente cliente) 
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
     {
-<<<<<<< HEAD
-    	sedeR = sedeRecogida;
-    	sedeE = sedeEntrega;
-=======
-    	this.cliente = cliente;
-    	this.sedeEntrega = sedeEntrega;
     	this.sedeRecogida = sedeRecogida;
->>>>>>> branch 'main' of https://github.com/dpoo-grupo2/Proyecto01.git
+    	this.sedeEntrega = sedeEntrega;
+    	this.cliente = cliente;
     	this.vent = vent;
+    	
         setLayout(new GridLayout(7, 1, 0, 14));
         setBackground(new Color(200, 182, 182));
         setBorder(new EmptyBorder(70, 160, 80, 160));
@@ -429,9 +416,8 @@ public class JPClienteSede extends JPanel {
     	SimpleDateFormat formatoFechaHora = new SimpleDateFormat("HH:mm");
     	String horaRecogidaStr = formatoFechaHora.format(horaRecogida);
     	String horaEntregaStr = formatoFechaHora.format(horaEntrega);
-    	System.out.println(vent.getIdReservas());
-    	
-    	cliente.crearReserva(false, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogidaStr, fechaEntrega, horaEntregaStr, cliente, lstSeguros, 0, lstConduct, 0, vent.getIdReservas(), veh);
+    	int asam = Integer.parseInt(vent.getIdReservas()) + 1;
+    	cliente.crearReserva(false, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogidaStr, fechaEntrega, horaEntregaStr, cliente, lstSeguros, 0, lstConduct, 0, Integer.toString(asam), veh);
    
     }
     private Vehiculo verDisponibilidad(String sedeEntrega,int idCat,Date fechaEntrega,Date fechaRecogida) 

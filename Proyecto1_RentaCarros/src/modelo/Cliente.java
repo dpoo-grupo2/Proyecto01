@@ -50,8 +50,8 @@ public class Cliente extends Usuario
 
 	public Reserva crearReserva(boolean estadoTarjeta, String sedeEntrega, String sedeRecogida, Date fechaRecogida, String horaRecogida, Date fechaEntrega,String horaEntrega,Cliente cliente,ArrayList<Seguro> lstSeguro,int valorReserva,ArrayList<ConductorAdicional> lstConductores,int dias, String idReserva,Vehiculo vehiculo) 
 	{
-		System.out.println("esta dentro de cliente");
 		Reserva reserva = new Reserva(estadoTarjeta, sedeEntrega, sedeRecogida, fechaRecogida, horaRecogida, fechaEntrega, horaEntrega, lstSeguro, cliente,valorReserva,dias,idReserva, vehiculo,lstConductores);
+		reserva.calcularValor();
 		añadirReserva(reserva);
 		CargaDatos.sobreEscribirReserva(reserva);
 		CargaDatos.addLstReserva(reserva);

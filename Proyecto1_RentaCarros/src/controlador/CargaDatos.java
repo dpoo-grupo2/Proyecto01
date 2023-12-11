@@ -254,7 +254,13 @@ public class CargaDatos {
 	        	String[] partes = linea.split(",");
 
 	        	try {
-	        		idReserva= partes[0]; 
+	        		if (partes[0].equals("idReserva")) {
+	        		idReserva= "0"; 
+	        		}
+	        		else 
+	        		{
+	        			idReserva=partes[0];
+	        		}
 	            	boolean estadoTarjeta = Boolean.parseBoolean(partes[1]);
 	            	String sedeEntrega = partes[2];
 	            	String sedeRecogida = partes[3];
@@ -432,6 +438,7 @@ public class CargaDatos {
 		BufferedWriter bw = null;
 	    FileWriter fw = null;
 	    Cliente clienteRes = reserva.getClienteRes();
+	    Vehiculo veh = reserva.getvehiculo();
 	    //obteniendo valor de todas las varibales para escribirlas en el txt
 	    String idReserva = reserva.getIdReserva();
 	    boolean estadoTarjeta = reserva.getTarjeta();
@@ -448,10 +455,11 @@ public class CargaDatos {
 	    ArrayList<ConductorAdicional> lstConductores = reserva.getConductores(); //toca ver como poner esto en el txt
 	    sobreLst(lstConductores,idReserva);
 	    long dias = reserva.getDias();
-	
+	    String placa = veh.getPlaca();
+	    int idCategoria = veh.getIdCat();
 	    try {
-	        String data = "\n"+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
-	        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+","+idReserva;
+	        String data = idReserva+Boolean.toString(estadoTarjeta)+","+sedeEntrega+","+sedeRecogida+","+fechaRecogida+","+horaRecogida+","+fechaEntrega+","+
+	        horaEntrega+","+"lstSeguro"+","+usuario+","+Integer.toString(valorReserva)+","+"lstConductores"+","+Long.toString(dias)+placa+","+Integer.toString(idCategoria)+"\n";
 	        File file = new File("Proyecto1_RentaCarros/data/Reservas.txt");
 	        if (!file.exists()) {
 	            file.createNewFile();
@@ -674,6 +682,7 @@ public class CargaDatos {
 	}
 	public String getIdReserva() 
 	{
+		System.out.println(idReserva);
 		return idReserva;
 	}
 	
