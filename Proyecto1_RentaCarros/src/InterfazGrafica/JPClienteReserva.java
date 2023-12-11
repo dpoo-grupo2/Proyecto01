@@ -13,7 +13,11 @@ public class JPClienteReserva extends JPanel {
 
 	private JLabel lblRelleno;
 	private JPClienteSede cS;
+
+	private JComboBox<String> comboBoxEntrega;
+	private JComboBox<String> comboBoxRecogida;
 	
+	private String[] comboBoxOptions = {"sede norte","sede sur","sede este"};
     public JPClienteReserva(MenuCliente vent) 
     {
     	 
@@ -29,55 +33,53 @@ public class JPClienteReserva extends JPanel {
 
 		lblRelleno = new JLabel(" ");
         add(lblRelleno);
+        JPanel j = new JPanel(new GridLayout(1,2,16,20));
+		j.setBackground(new Color(200, 182, 182));
+		JLabel lbl1 = new JLabel("Sede entrega:");
+        lbl1.setHorizontalAlignment(SwingConstants.CENTER);
+        lbl1.setFont(new Font("Arial", Font.BOLD, 26));
+        
+		JLabel lbl2 = new JLabel("Sede recogida:");
+        lbl2.setHorizontalAlignment(SwingConstants.CENTER);
+        lbl2.setFont(new Font("Arial", Font.BOLD, 26));
+        j.add(lbl1);
+        j.add(lbl2);
+        add(j);
+		JPanel p = new JPanel(new GridLayout(1,2,16,20));
+		p.setBackground(new Color(200, 182, 182));
+		comboBoxEntrega = new JComboBox<>(comboBoxOptions);
+		comboBoxEntrega.addActionListener(comboBoxEntrega);
 		
+		comboBoxRecogida = new JComboBox<>(comboBoxOptions);
+		comboBoxRecogida.addActionListener(comboBoxRecogida);
+		
+		p.add(comboBoxEntrega);
+		p.add(comboBoxRecogida);
+		add(p);
         
-		JButton btnNorte = new JButton("Sede norte");
-		btnNorte.setFont(new Font("Arial", Font.BOLD, 20));
-		btnNorte.setBackground(new Color(32, 182, 182));
-		btnNorte.setForeground(Color.WHITE);
-		btnNorte.setBorder(new LineBorder(Color.BLACK, 2));
-		btnNorte.addActionListener(new ActionListener() {
+		
+        JButton btnSiguiente = new JButton("Siguiente");
+        btnSiguiente.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSiguiente.setBackground(new Color(32, 182, 182));
+        btnSiguiente.setForeground(Color.WHITE);
+        btnSiguiente.setBorder(new LineBorder(Color.BLACK, 2));
+        btnSiguiente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-            	 cS= new JPClienteSede(vent,"sedeNorte");
+                String sedeEntrega = (String) comboBoxEntrega.getSelectedItem();
+                String sedeRecogida = (String) comboBoxRecogida.getSelectedItem();
+                if(sedeEntrega.isEmpty() || sedeRecogida.isEmpty()) 
+                {
+                	vent.errorMensaje("Es necesario que elija una sede de entrega y recogida del vehiculo");;
+                }
+                else {
+            	cS = new JPClienteSede(vent,sedeEntrega,sedeRecogida);
             	vent.nuevoCentro(cS);
-            	
+                }
             }
         });
-        add(btnNorte);
-        
-        
-        JButton btnCentro= new JButton("Sede centro");
-        btnCentro.setFont(new Font("Arial", Font.BOLD, 20));
-        btnCentro.setBackground(new Color(32, 182, 182));
-        btnCentro.setForeground(Color.WHITE);
-        btnCentro.setBorder(new LineBorder(Color.BLACK, 2));
-        btnCentro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-            	vent.nuevoCentro(cS);
-            	
-            }
-        });
-        add(btnCentro);
-        
-        
-        JButton btnSur = new JButton("Sede sur");
-        btnSur.setFont(new Font("Arial", Font.BOLD, 20));
-        btnSur.setBackground(new Color(32, 182, 182));
-        btnSur.setForeground(Color.WHITE);
-        btnSur.setBorder(new LineBorder(Color.BLACK, 2));
-        btnSur.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-            	vent.nuevoCentro(cS);
-            	
-            }
-        });
-        add(btnSur);
+        add(btnSiguiente);
         
         JButton btnRegresar = new JButton("Regresar");
         btnRegresar.setFont(new Font("Arial", Font.BOLD, 18));

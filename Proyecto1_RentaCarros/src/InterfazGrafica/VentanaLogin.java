@@ -123,7 +123,7 @@ public class VentanaLogin extends JFrame
     	    	            
     	                } else if (clsUsuario.getTipoUsuario().equals("Cliente")) {
     	                    
-    	                	MenuCliente menuCliente = new MenuCliente();
+    	                	MenuCliente menuCliente = new MenuCliente(cargaDatos,usuario);
     	                	menuCliente.setLocationRelativeTo(null);
     	                	menuCliente.setVisible(true);
     	    	            dispose();

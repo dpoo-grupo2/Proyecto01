@@ -6,18 +6,23 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import controlador.CargaDatos;
+import modelo.Cliente;
+import modelo.Usuario;
+
 public class MenuCliente extends JFrame 
 {
 	private JLabel lblRelleno;
 	private JPanel panelCentro;
 	private JPanel panelAnte;
 	private  JPClienteModificar jPClienteModificar;
-
+	private CargaDatos carga;
 	private ArrayList<JPanel> lstPanel = new ArrayList<JPanel>();
-
-    public MenuCliente() 
+	private Cliente cliente;
+    public MenuCliente(CargaDatos carga,Usuario user) 
     {
-    	
+    	this.carga = carga;
+    	cliente=carga.getUsuarioCliente(user.getLogin());
         setSize(1050, 650);
         setTitle("CarRental");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -198,5 +203,9 @@ public class MenuCliente extends JFrame
     public JPanel getPanelCentro()
     {
     	return panelCentro;
+    }
+    public  String getIdReservas() 
+    {
+    	return carga.getIdReserva();
     }
 }
